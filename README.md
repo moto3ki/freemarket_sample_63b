@@ -17,16 +17,17 @@ Things you may want to cover:
 |------|----|-------|
 |name|string|null: false|
 |profile|text|
-|email|string|null: false|
+|email|string|null: false, unique: true|
 |image|string|
 |kanji_last_name|string|null: false|
 |kanji_first_name|string|null: false|
 |kana_last_name|string|null: false|
 |kana_first_name|string|null: false|
 |birth_day|date|null: false|
-|real_adress|text|
+|post_code|integer|
+|real_adress|text|null: false|
 |send_adress|text|
-|tel_no|text|
+|tel_no|integer|
 
 ### Association
 - has_many :items
