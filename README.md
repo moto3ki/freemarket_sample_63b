@@ -24,9 +24,6 @@ Things you may want to cover:
 |kana_last_name|string|null: false|
 |kana_first_name|string|null: false|
 |birth_day|date|null: false|
-|post_code|integer|
-|real_adress|text|null: false|
-|send_adress|text|
 |tel_no|integer|
 
 ### Association
@@ -37,6 +34,8 @@ Things you may want to cover:
 - has_many :liked_items, through: :likes, source: :item
 - has_many :rates
 - has_many :ratings, through: :rates, source: :rated_user
+- has_one  :send_address
+- has_one  :real_address
 
 
 ## 2. credit_cards Table
@@ -76,19 +75,16 @@ Things you may want to cover:
 |delivery_ period_type|integer|null: false, index: true|
 |price|integer|null: false, index: true|
 |like_cnt|integer|null: false|
-|category1_id|integer|null: false, foreign_key: true|
-|category2_id|integer|foreign_key: true|
-|category3_id|integer|foreign_key: true|
+|category_id|integer|null: false, foreign_key: true|
 
 ### Association
 - belongs_to :user
-- belongs_to :category1
-- belongs_to :category2
-- belongs_to :category3
+- belongs_to :category
 - has_many :item_images, dependent: :destroy
 - has_many :comments, dependent: :destroy
 - has_many :likes, dependent: :destroy
 - has_many :liked_users, through: :likes, source: :user
+
 
 ## 5. item_images Table
 |Column|Type|Options|
@@ -123,37 +119,43 @@ Things you may want to cover:
 - belongs_to :item
 
 
-## 8. category1s Table
+## 8. categories Table
 |Column|Type|Options|
 |------|----|-------|
 |name|integer|null: false|
+|ancestry|string|
 
 ### Association
 - has_many :items
-- has_many :category2s
+- has_ancestry
 
 
-## 9. category2s Table
+## 9. send_address Table
 |Column|Type|Options|
 |------|----|-------|
-|category1_id|integer|null: false, foreign_key: true|
-|name|integer|null: false|
+|user_id|integer|null: false, foreign_key: true|
+|post_code|string|null: false|
+|prefectures|string|null: false|
+|city|string|null: false|
+|address|string|null: false|
+|building_name|string|
 
 ### Association
-- has_many :items
-- has_many :category3s
-- belongs_to :category1s
+- belongs_to :user
 
-## 10. category3s Table
+
+## 10. real_address Table
 |Column|Type|Options|
 |------|----|-------|
-|category2_id|integer|null: false, foreign_key: true|
-|name|integer|null: false|
+|user_id|integer|null: false, foreign_key: true|
+|post_code|string|null: false|
+|prefectures|string|null: false|
+|city|string|null: false|
+|address|string|null: false|
+|building_name|string|
 
 ### Association
-- has_many :items
-- belongs_to :category2s
-
+- belongs_to :user
 
 
 * Database initialization
