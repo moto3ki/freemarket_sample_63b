@@ -85,9 +85,9 @@ Things you may want to cover:
 - belongs_to :category1
 - belongs_to :category2
 - belongs_to :category3
-- has_many :item_images
-- has_many :comments
-- has_many :likes
+- has_many :item_images, dependent: :destroy
+- has_many :comments, dependent: :destroy
+- has_many :likes, dependent: :destroy
 - has_many :liked_users, through: :likes, source: :user
 
 ## 5. item_images Table
