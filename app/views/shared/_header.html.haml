@@ -1,0 +1,45 @@
+%header.header
+  .header__inner
+    .header__inner__top
+      .header__inner__top__title
+        = image_tag("/logo_image/fmarket_logo_white.svg")
+      .header__inner__top__search
+        .header__inner__top__search--input
+          %input#item-search{type: "text", placeholder: "何かお探しですか？"}/
+        .header__inner__top__search--icon
+          = link_to "#" do
+            = icon 'fa', 'search', id: "search-icon"
+    .header__inner__bottom
+      %ul.header__inner__bottom__left
+        %li.header__inner__bottom__left__contents
+          = link_to "#", class: "left-links" do
+            = icon 'fa', 'list', class: "left-icon"
+            カテゴリーから探す
+        %li.header__inner__bottom__left__contents
+          = link_to "#", class: "left-links" do
+            = icon 'fa', 'tags', class: "left-icon"
+            ブランドから探す
+      - if 1 == 1
+        %ul.header__inner__bottom__right
+          %li.header__inner__bottom__right__contents
+            = link_to "#", class: "signin-links" do
+              = icon 'far', 'heart', class: "signin-icon"
+              いいね一覧
+          %li.header__inner__bottom__right__contents
+            = link_to "#", class: "signin-links" do
+              = icon 'far', 'bell', class: "signin-icon"
+              お知らせ
+          %li.header__inner__bottom__right__contents
+            = link_to "#", class: "signin-links" do
+              = icon 'fas', 'check', class: "signin-icon"
+              やることリスト
+          %li.header__inner__bottom__right__contents
+            = link_to "#", class: "signin-links" do
+              = image_tag("/logo_image/profile.jpg", class: "profile-image")
+              マイページ
+      - else
+        %ul.header__inner__bottom__right
+          %li.header__inner__bottom__right__signup
+            = link_to "新規会員登録"
+          %li.header__inner__bottom__right__signin
+            = link_to "ログイン"
