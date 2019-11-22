@@ -1,0 +1,17 @@
+.home
+  = image_tag("/top_image/top.png", class: "top-image")
+  .popular-category
+    .popular-category__title
+      人気のカテゴリー
+  .item-lists
+    %h3.item-lists__title
+      出品一覧
+    %ul.item-lists__items
+      - 10.times do |i|
+        %li.item-lists__items__item
+          = link_to "#", class: "item-link" do
+            = image_tag("/item_image/sample.png", class: "item-lists__items__item__image")
+            %h4.item-lists__items__item__namebox
+              .item-lists__items__item__namebox__name
+                サンプルサンプルサンプルサンプル
+  
