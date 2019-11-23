@@ -28,3 +28,6 @@
 
 # 画像がGitにアップロードされないように
 public/uploads/*
+
+# railsのバージョンが5.2以降からは不要
+# config/secrets.yml
