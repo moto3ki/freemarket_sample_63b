@@ -1,0 +1,122 @@
+.header{
+  @include height_width(100px, 100%);
+  box-shadow: 2px 2px 4px gray;
+  position:relative;
+  &__inner{
+    @include height_width(100%, 70%);
+    margin: 0 auto;
+    &__top{
+      @include height_width(40px, 100%);
+      @include flexbox_space-between;
+      padding-top: 10px;
+      &__title{
+        width: 100px;
+        line-height: 60px;
+      }
+      &__search{
+        position: relative;
+        @include height_width(100%, calc(100% - 120px));
+        
+        &--input{
+          @include height_width(100%, 100%);
+          #item-search{
+            @include height_width(100%, calc(100% - 14px));
+            border-radius: 5px;
+            padding-left: 10px;
+            font-size: 16px;
+          }
+        }
+        &--icon{
+          position: absolute;
+          right: 10px;
+          top: 10px;
+          #search-icon{
+            color: black;
+          }
+        }
+      }
+    }
+    &__bottom{
+      @include height_width(40px, 100%);
+      @include flexbox_space-between;
+      padding-top: 10px;
+      font-size: 14px;
+      &__left{
+        display: flex;
+        align-items: center;
+        font-weight: bold;
+        &__contents{
+          width: 150px;
+          margin-right: 10px;
+        }
+        .left-icon{
+          color: $main_color;
+        }
+        .left-links{
+          color: black;
+          text-decoration: none;
+          &:hover{
+            color: $link_color;
+          }
+        }
+        
+
+      }
+      &__right{
+        display: flex;
+        align-items: center;
+        
+        &__contents{
+          white-space: nowrap;
+          margin-left: 20px;
+          
+          .signin-icon{
+            margin-right: 5px;
+          }
+          .signin-links{
+            color: black;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            .profile-image{
+              margin-right: 5px;
+              width: 30px;
+              border-radius: 100%;
+            }
+            &:hover{
+              color: $link_color;
+            }
+          }
+          .sign-in{
+            color: black;
+            text-decoration: none;
+          }
+        }
+        &__signup{
+          a{
+            white-space: nowrap;
+            background-color: $main_color;
+            color: white;
+            text-decoration: none;
+            padding: 7px 15px;
+            border-radius: 5px;
+            margin-right: 10px;
+            border: 1px solid $main_color;
+          }
+        }
+        &__signin{
+          a{
+            white-space: nowrap;
+            background-color: white;
+            color: $link_color;
+            text-decoration: none;
+            padding: 7px 15px;
+            text-align: center;
+            border-radius: 5px;
+            border: 1px solid $link_color;
+          }
+        }
+      }
+    }
+  }
+}
