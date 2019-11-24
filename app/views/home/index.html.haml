@@ -1,1 +1,24 @@
-hello worod
+.home
+  = image_tag("/top_image/top.png", class: "top-image")
+  .popular-category
+    .popular-category__title
+      人気のカテゴリー
+  .item-lists
+    .item-lists__head
+      .item-lists__head__title
+        出品一覧
+      .item-lists__head__more-link
+        = link_to "#" do
+          もっと見る
+          = icon 'fas', 'angle-right'
+    %ul.item-lists__items
+      - 10.times do |i|
+        %li.item-lists__items__item
+          = link_to "#", class: "item-link" do
+            = image_tag("/item_image/sample.png", class: "item-lists__items__item__image")
+            .item-lists__items__item__price
+              ¥8,888
+            .item-lists__items__item__namebox
+              .item-lists__items__item__namebox__name
+                サンプルサンプルサンプルサンプル
+= render "shared/sell_button"

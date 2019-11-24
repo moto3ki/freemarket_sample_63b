@@ -1,0 +1,24 @@
+.sell_button{
+  @include height_width(160px, 160px);
+  position: absolute;
+  position: fixed;
+  bottom: 40px;
+  right: 40px;
+  background-color: $main-color;
+  border-radius: 100%;
+  text-align: center;
+  margin: 0 auto;
+  &__string{
+    padding-top: 30px;
+    font-size: 24px;
+    font-weight: bold;
+  }
+  &__icon{
+    display: block;
+    font-size: 60px;
+  }
+  a{
+    text-decoration: none;
+    color: white;
+  }
+}

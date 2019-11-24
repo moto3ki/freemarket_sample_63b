@@ -1,0 +1,29 @@
+.footer{
+  @include height_width(200px, 100%);
+  background-color: rgb(51, 50, 50);
+  &__inner{
+    @include height_width(100%, 70%);
+    margin: 0 auto;
+    text-align: center;
+    color: white;
+    position: relative;
+    &__bottom{
+      @include height_width(50px, 100%);
+      position: absolute;
+      bottom: 0;
+      padding-bottom: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      &__logo{
+        width: 150px;
+        position: absolute;
+        left: 0;
+      }
+      &__copyright{
+        
+        font-size: 12px;
+      }
+    }
+  }
+}
