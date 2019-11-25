@@ -93,28 +93,6 @@
       }
     }
 
-    &__require{
-      background: #ea352d;
-      margin: 0 0 0 8px;
-      padding: 2px 4px;
-      border-radius: 2px;
-      color: #fff;
-      font-size: 12px;
-      vertical-align: top;
-      float: left;
-
-      &--grey{
-        background: #AAAAAA;
-        margin: 0 0 0 8px;
-        padding: 2px 4px;
-        border-radius: 2px;
-        color: #fff;
-        font-size: 12px;
-        vertical-align: top;
-        float: left;
-      }
-    }
-
     &__second{
       display:flex;
       width: 300px;
@@ -202,6 +180,5 @@
       line-height: 48px;
       margin-top: 30px;
     }
-
   }
 

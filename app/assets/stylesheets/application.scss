@@ -2,13 +2,14 @@
 @import "font-awesome-sprockets";
 @import "font-awesome";
 
+@import "modules/common";
 @import "modules/mixin";
 @import "modules/variable";
 
 @import "shared/header";
 @import "shared/footer";
-@import "shared/sign-up-header";
-@import "shared/sign-up-footer";
+@import "shared/sub-header";
+@import "shared/sub-footer";
 @import "shared/sell_button";
 @import "home/index";
 @import "sign-up/sign-up";

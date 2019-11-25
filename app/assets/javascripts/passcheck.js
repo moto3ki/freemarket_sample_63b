@@ -1,5 +1,3 @@
-window.addEventListener('DOMContentLoaded', function(){
-    // 画面を読み込み終わったら
 $(function() {
   var password  = '#user_encrypted_password';
     // パスワードの入力画面のクラスをpasswardに入れる
@@ -17,5 +15,5 @@ $(function() {
       }
   });
 });
-});
+
 
