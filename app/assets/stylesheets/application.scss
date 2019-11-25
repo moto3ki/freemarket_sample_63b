@@ -4,8 +4,11 @@
 
 @import "modules/mixin";
 @import "modules/variable";
+@import "modules/link";
 
 @import "shared/header";
 @import "shared/footer";
 @import "shared/sell_button";
 @import "home/index";
+
+@import "items/show";

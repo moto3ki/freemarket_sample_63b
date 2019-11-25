@@ -1,0 +1,8 @@
+.blue-link{
+  color: #0099E8;
+  text-decoration: none;
+  &:hover{
+    text-decoration: underline;
+    opacity: 0.7;
+  }
+}
