@@ -1,24 +1,12 @@
 
-//必須と任意
+/*必須*/ 
 .require{
-  background: #ea352d;
-  margin: 0 0 0 8px;
-  padding: 2px 4px;
-  border-radius: 2px;
-  color: #fff;
-  font-size: 12px;
-  vertical-align: top;
-  float: left;
-
-  &--grey{
-    background: #AAAAAA;
-    margin: 0 0 0 8px;
-    padding: 2px 4px;
-    border-radius: 2px;
-    color: #fff;
-    font-size: 12px;
-    vertical-align: top;
-    float: left;
-  }
+  @include require_set;
+  background-color: #ea352d;
 }
 
+/*任意*/ 
+.arbitrary{
+  @include require_set;
+  background-color: #AAAAAA;
+}

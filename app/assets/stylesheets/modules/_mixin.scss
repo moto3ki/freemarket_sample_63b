@@ -17,3 +17,13 @@
   justify-content: space-between;
 }
 
+/*必須と任意*/
+@mixin require_set{
+  margin: 0 0 0 8px;
+  padding: 2px 4px;
+  border-radius: 2px;
+  color: #fff;
+  font-size: 12px;
+  vertical-align: top;
+  float: left;
+}
