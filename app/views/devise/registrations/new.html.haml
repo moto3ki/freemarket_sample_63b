@@ -1,21 +1,57 @@
-%h2 Sign up
-= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
-  = render "devise/shared/error_messages", resource: resource
-  .field
-    = f.label :email
-    %br/
-    = f.email_field :email, autofocus: true, autocomplete: "email"
-  .field
-    = f.label :password
-    - if @minimum_password_length
-      %em
-        (#{@minimum_password_length} characters minimum)
-    %br/
-    = f.password_field :password, autocomplete: "new-password"
-  .field
-    = f.label :password_confirmation
-    %br/
-    = f.password_field :password_confirmation, autocomplete: "new-password"
-  .actions
-    = f.submit "Sign up"
-= render "devise/shared/links"
+.signup-container
+  =render 'shared/sign-up-header'
+  .signup-main
+    .signup-panel
+      %h2.signup-panel__title 会員情報入力
+      = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
+        .signup-panel__insert
+          .signup-inner
+            .signup-form
+              .signup-form__label ニックネーム
+              %span.signup-form__require 必須
+              = f.text_field :name, class:"input-default", placeholder: "例) メルカリ太郎"
+            .signup-form
+              .signup-form__label メールアドレス
+              %span.signup-form__require 必須
+              = f.email_field :email, class:"input-default", placeholder:"PC・携帯どちらでも可"
+            .signup-form
+              .signup-form__label  パスワード
+              %span.signup-form__require 必須
+              = f.password_field  :encrypted_password, class:"input-default", placeholder:"7文字以上",autocomplete:"off"
+              .signup-form__label__check-box
+                %input.signup-form__label__check-box__input{type: "checkbox"}
+                %label.signup-form__label__check-box__text パスワードを表示する
+            .signup-form
+              %h3.signup-form__label 本人確認
+              %br
+              %p.signup-text 安心・安全にご利用いただくために、お客さまの本人情報の登録にご協力ください。他のお客さまに公開されることはありません。
+            .signup-form
+              .signup-form__label  お名前(全角)
+              %span.signup-form__require 必須
+              .signup-form__second
+                = f.text_field :kanji_last_name, class:"default-half",placeholder:"例)山田"
+                = f.text_field :kanji_first_name, class:"default-half",placeholder:"例)彩"
+            .signup-form
+              .signup-form__label  お名前カナ(全角)
+              %span.signup-form__require 必須
+              .signup-form__second
+                = f.text_field :kana_last_name, class:"default-half",placeholder:"例)ヤマダ"
+                = f.text_field :kana_first_name, class:"default-half",placeholder:"例)アヤ"
+            .signup-form 
+              .signup-form__label  生年月日
+              %span.signup-form__require 必須
+              .birthday-form
+                != sprintf(f.date_select(:birth_day, prefix:'birthday',with_css_classes:'input-default', prompt:"--",use_month_numbers:true, start_year:Time.now.year, end_year:1900, date_separator:'%s'),'年','月')+'日'
+                %p.birth-text ※ 本人情報は正しく入力してください。会員登録後、修正するにはお時間を頂く場合があります。
+            .signup-form
+              .signup-form
+                %br
+                %p.signup-text 
+                  「次へ進む」のボタンを押すことにより、
+                  %a{href: "", target: "_blank"}> 利用規約
+                  に同意したものとみなします
+                %button.btn-default.signup-btn--red
+                  次へ進む
+
+  =render 'shared/sign-up-footer'
+
