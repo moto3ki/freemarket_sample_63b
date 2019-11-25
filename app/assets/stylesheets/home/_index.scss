@@ -40,11 +40,10 @@
       @include flexbox_space-between;
       flex-direction: row;
       flex-wrap: wrap;
-      
       &__item{
         @include height_width(220px, 180px);
-        margin: 10px 0;
-        background-color: lightgrey;
+        margin: 10px 10px;
+        background-color: white;
         position: relative;
         &__image{
           @include height_width(70%, 100%);
@@ -78,6 +77,14 @@
           text-decoration: none;
         }
       }
+<<<<<<< HEAD
+=======
+      .item-empty {
+        @include height_width(220px, 180px);
+        margin: 10px 10px;
+        position: relative;
+      }
+>>>>>>> 79d87468a00033aa8d10dae5645e3d3953ddddcc
     }
   }
 }
