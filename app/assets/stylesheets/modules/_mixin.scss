@@ -1,0 +1,33 @@
+/* 高さ幅指定 */
+@mixin height_width($height, $width){
+  height: $height;
+  width: $width;
+}
+
+/* 文字列設定 */
+@mixin string_set($font_size, $font_weight, $color){
+  font-size: $font_size;
+  font-weight: $font_weight;
+  color: $color;
+}
+
+/* ブロック横並び両端寄せ */
+@mixin flexbox_space-between{
+  display: flex;
+  justify-content: space-between;
+}
+
+/* ブロック横並び両端寄せ */
+@mixin hover_color($color){
+  &:hover {
+    text-decoration: none;
+    color: $color;
+  }
+}
+
+@mixin hover_background_color($color){
+  &:hover {
+    text-decoration: none;
+    background-color: $color;
+  }
+}

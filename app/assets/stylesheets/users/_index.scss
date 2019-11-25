@@ -1,7 +1,7 @@
 .l-container {
   width: 1020px;
   margin: 40px auto 0;
-  background-color: #eeeeee;
+  background-color: $normal_gray;
 
   .l-content {
     width: 700px;
@@ -28,18 +28,16 @@
         color: #333;
 
         &__icon {
+          @include height_width(60px, 60px);
           overflow: hidden;
-          width: 60px;
-          height: 60px;
           margin: 0 auto;
           border-radius: 50%;
           background-color: rgb(172, 171, 171);
         }
 
         &__name {
-          font-weight: 600;
+          @include string_set(14px, 600, #333);
           margin: 8px 0 0;
-          font-size: 14px;
         }
 
         &__rating {
@@ -52,7 +50,8 @@
 
             .left-count {
               margin: 0 0 0 8px;
-              font-weight: 600;
+              @include string_set(14px, 600, #333);
+              
             }
           }
 
@@ -63,7 +62,7 @@
 
             .right-count {
               margin: 0 0 0 8px;
-              font-weight: 600;
+              @include string_set(14px, 600, #333);
             }
           }
         }
@@ -73,8 +72,8 @@
       background: #fff;
 
       &__tabs {
+        background: $dark_gray;
         border: 0;
-        background: #eee;
         font-size: 0;
         
         .active {
@@ -88,15 +87,10 @@
             position: relative;
             cursor: pointer;
             display: block;
-            color: #333;
-            font-size: 16px;
+            @include string_set(16px, 600, #333);
             line-height: 72px;
-            border-top: 2px solid #ea352d;
-
-            &:hover {
-              text-decoration: none;
-              color: #8f8f8f;
-            }
+            border-top: 2px solid $main_color;
+            @include hover_color(#8f8f8f);
           }
         }
 
@@ -105,21 +99,16 @@
           display: inline-block;
           text-align: center;
           vertical-align: top;
-          background-color: #eee;
+          background-color: $dark_gray;
           
           
           a {
             position: relative;
             cursor: pointer;
             display: block;
-            color: #333;
-            font-size: 16px;
+            @include string_set(16px, 600, #333);
             line-height: 72px;
-
-            &:hover {
-              text-decoration: none;
-              color: #8f8f8f;
-            }
+            @include hover_color(#8f8f8f);
           }
         }
       }
@@ -129,7 +118,7 @@
           display: block;
 
           &__news,li {
-            border-bottom: 1px solid #eee;
+            border-bottom: 1px solid $dark_gray;
             position: relative;
             
             .news-link {
@@ -139,19 +128,14 @@
               color: #333;
               font-size: 14px;
               text-decoration: none;
-
-              &:hover {
-                text-decoration: none;
-                background-color: #f8f8f8;
-              }
+              @include hover_background_color($light_gray);
 
               .news-logo {
                 position: relative;
                 overflow: hidden;
                 float: left;
-                width: 48px;
-                height: 48px;
-                background-color: #c2c2c2;
+                @include height_width(48px, 48px);
+                background-color: $dark_gray;
                 margin: 0;
 
                 .logo-image {
@@ -189,6 +173,7 @@
                   }
 
                   .notice-date {
+                    display: inline-block;
                     vertical-align: middle;
                   }
                 }
@@ -212,16 +197,13 @@
               display: block;
               height: 56px;
               margin: 0 auto;
-              background: #eee;
+              background: $dark_gray;
               color: #333;
               line-height: 56px;
               text-align: center;
               text-decoration: none;
+              @include hover_background_color($light_gray);
 
-              &:hover {
-                text-decoration: none;
-                background-color: #f8f8f8;
-              }
             }
           }
         }
@@ -239,7 +221,7 @@
 
     &__title {
       background: #fafafa;
-      font-size: 16px;
+      @include string_set(16px, 600, #333);
       line-height: 72px;
       padding: 0 16px;
     }
@@ -259,16 +241,11 @@
         .buying-btn,a {
           position: relative;
           display: block;
-          color: #333;
-          font-size: 16px;
+          @include string_set(16px, 600, #333);
           line-height: 72px;
           text-decoration: none;
-          border-top: 2px solid #ea352d;
-
-          &:hover {
-            text-decoration: none;
-            color: #8f8f8f;
-          }
+          border-top: 2px solid $main_color;
+          @include hover_color(#8f8f8f);
         }
       }
 
@@ -281,14 +258,11 @@
         .buying-btn,a {
           position: relative;
           display: block;
-          color: #333;
-          font-size: 16px;
+          @include string_set(16px, 600, #333);
           line-height: 72px;
           text-decoration: none;
-
-          &:hover {
-            color: #8f8f8f;
-          }
+          cursor: pointer;
+          @include hover_color(#8f8f8f);
         }
       }
     }
