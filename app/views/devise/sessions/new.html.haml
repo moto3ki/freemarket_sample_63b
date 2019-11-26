@@ -25,8 +25,7 @@
               = f.password_field :password, autocomplete: "off",placeholder: 'パスワード', class: "login-input-text input-default"
             .login-actions
               = f.submit "Log in",class: "login-submit btn-default btn-red"
-              %p.forget-password
-              = link_to "#" do
+              = link_to "#",class:"forget-password" do
                 パスワードをお忘れの方
 
   =render 'shared/sub-footer'
