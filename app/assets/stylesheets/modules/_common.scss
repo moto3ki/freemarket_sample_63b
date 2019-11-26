@@ -1,0 +1,12 @@
+
+/*必須*/ 
+.require{
+  @include require_set;
+  background-color: #ea352d;
+}
+
+/*任意*/ 
+.arbitrary{
+  @include require_set;
+  background-color: #AAAAAA;
+}
