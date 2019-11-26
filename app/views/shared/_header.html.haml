@@ -19,7 +19,7 @@
           = link_to "#", class: "left-links" do
             = icon 'fa', 'tags', class: "left-icon"
             ブランドから探す
-      - if user_signed_in?&& current_user.id == ＠user.id
+      - if user_signed_in?
         %ul.header__inner__bottom__right
           %li.header__inner__bottom__right__contents
             = link_to "#", class: "signin-links" do
@@ -42,6 +42,6 @@
       - else
         %ul.header__inner__bottom__right
           %li.header__inner__bottom__right__signup
-            = link_to "新規登録", new_registration_path(resource_name)
+            = link_to "新規登録", new_user_registration_path 
           %li.header__inner__bottom__right__signin
-            = link_to "ログイン", new_session_path(resource_name)
+            = link_to "ログイン", new_user_session_path

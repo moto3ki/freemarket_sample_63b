@@ -11,4 +11,6 @@ class User < ApplicationRecord
   has_many :liked_items, through: :likes, source: :item
   has_many :rates
   has_many :ratings, through: :rates, source: :rated_user
+  has_one :send_address
+  has_one :real_address
 end
