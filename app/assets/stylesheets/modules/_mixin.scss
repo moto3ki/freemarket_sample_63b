@@ -17,7 +17,7 @@
   justify-content: space-between;
 }
 
-/* ブロック横並び両端寄せ */
+/* hover時、文字の色を変更 */
 @mixin hover_color($color){
   &:hover {
     text-decoration: none;
@@ -25,13 +25,15 @@
   }
 }
 
+/* hover時、背景の色を変更 */
 @mixin hover_background_color($color){
   &:hover {
     text-decoration: none;
     background-color: $color;
   }
+}
 
-/*必須と任意*/
+/* 必須と任意 */
 @mixin require_set{
   margin: 0 0 0 8px;
   padding: 2px 4px;
