@@ -16,3 +16,8 @@
   display: flex;
   justify-content: space-between;
 }
+
+@mixin sub_container_type1{
+  padding: 40px;
+  border-bottom: 1px solid $main_back_color;
+}
