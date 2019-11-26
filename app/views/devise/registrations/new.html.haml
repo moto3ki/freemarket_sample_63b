@@ -48,7 +48,9 @@
                 %br
                 %p.signup-text 
                   「次へ進む」のボタンを押すことにより、
-                  %a{href: "", target: "_blank"}> 利用規約
+                  = link_to "#", class: "signup-text__link" do
+                    利用規約
+                %p.signup-text
                   に同意したものとみなします
                 %button.btn-default.signup-btn--red
                   次へ進む

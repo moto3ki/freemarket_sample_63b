@@ -2,12 +2,15 @@
   %nav
     %ul.clearfix
       %li
-        %a{:href => ""} プライバシーポリシー
+        = link_to "#", class: "sub-link" do
+          プライバシーポリシー
       %li
-        %a{:href => ""} メルカリ利用規約
+        = link_to "#", class: "sub-link" do
+          メルカリ利用規約
       %li
-        %a{:href => ""} 特定商取引に関する表記
-  %a.signup-footer__logo{:href => ""}
+        = link_to "#", class: "sub-link" do
+          特定商取引に関する表記
+  .signup-footer__logo
     = image_tag("/logo_image/fmarket_logo_white2.svg")
   %p
     %small © 2019 Mercari
