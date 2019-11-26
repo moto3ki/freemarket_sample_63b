@@ -1,0 +1,26 @@
+.signup-footer{
+  z-index: 1;
+  height: 250px;
+  padding: 40px 0;
+  text-align: center;
+
+  ul {
+    list-style: none;
+  }
+
+  li {
+    display: inline-block;
+    margin: 0 0 0 16px;
+    font-size: 12px;
+  }
+
+  .sub-link {
+    display: block;
+    color: #333;
+  }
+
+  &__logo{
+  @include height_width(65px, 80px);
+  margin: 40px auto 0;
+  }
+}
