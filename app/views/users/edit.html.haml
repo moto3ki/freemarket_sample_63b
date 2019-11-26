@@ -1,167 +1,154 @@
-!!!
-%html{lang: "ja"}
-  %head
-    %meta{charset: "UTF-8"}
-    %title
-      メルカリ - 中古や未使用のフリマ
-      
-    %body
-      %header
-      
-      %nav
-        
-      %main.l-container.clearfix
-        .l-content
-          %section.l-chapter-container.mypage-identification
-            %h2.l-chapter-head
-              本人情報の登録
-            %form.l-single-inner{action: "https://www.mercari.com/jp/mypage/identification/save/", method: "POST", novalidate: ""}
-              %div
-                %p
-                  お客さまの本人情報をご登録ください。
-                  %br
-                  登録されたお名前・生年月日を変更する場合、本人確認書類の提出が必要になります。
-                %p.text-right
-                  %a{href: "/jp/help_center/article/495/", target: "_blank"}
-                    本人確認書類のアップロードについて
-                    %i.fas.fa-angle-right         
-              .form-group
-                %label お名前
-                %p 松嵜 航
-              .form-group
-                %label お名前カナ
-                %p マツザキ ワタル
-              .form-group
-                %label{for: "birthday"} 生年月日
-                %p 2019/11/22
-              .form-group
-                %label{for: "zip_code"} 郵便番号
-                %span.form-arbitrary 任意
-                %br
-                %input.input-default{name: "zip_code", placeholder: "例）1234567", type: "text", value: ""}
-              .form-group
-                %label{for: "prefecture"} 都道府県
-                %span.form-arbitrary 任意
-                .select-wrap
-                  %i.fas.fa-angle-down
-                  %select.select-default{name: "prefecture"}
-                    %option{value: "--"}
-                      &ndash; &ndash;
-                    %option{value: "北海道"}
-                      北海道
-                    %option{value: "青森県"}
-                      青森県
-                    %option{value: "岩手県"}
-                      岩手県
-                    %option{value: "宮城県"}
-                      宮城県
-                    %option{value: "秋田県"}
-                      秋田県
-                    %option{value: "山形県"}
-                      山形県
-                    %option{value: "福島県"}
-                      福島県
-                    %option{value: "東京都"}
-                      東京都
-                    %option{value: "神奈川県"}
-                      神奈川県
-                    %option{value: "埼玉県"}
-                      埼玉県
-                    %option{value: "千葉県"}
-                      千葉県
-                    %option{value: "茨城県"}
-                      茨城県
-                    %option{value: "栃木県"}
-                      栃木県
-                    %option{value: "群馬県"}
-                      群馬県
-                    %option{value: "山梨県"}
-                      山梨県
-                    %option{value: "新潟県"}
-                      新潟県
-                    %option{value: "長野県"}
-                      長野県
-                    %option{value: "富山県"}
-                      富山県
-                    %option{value: "石川県"}
-                      石川県
-                    %option{value: "福井県"}
-                      福井県
-                    %option{value: "愛知県"}
-                      愛知県
-                    %option{value: "岐阜県"}
-                      岐阜県
-                    %option{value: "静岡県"}
-                      静岡県
-                    %option{value: "三重県"}
-                      三重県
-                    %option{value: "大阪府"}
-                      大阪府
-                    %option{value: "兵庫県"}
-                      兵庫県
-                    %option{value: "京都府"}
-                      京都府
-                    %option{value: "滋賀県"}
-                      滋賀県
-                    %option{value: "奈良県"}
-                      奈良県
-                    %option{value: "和歌山県"}
-                      和歌山県
-                    %option{value: "鳥取県"}
-                      鳥取県
-                    %option{value: "島根県"}
-                      島根県
-                    %option{value: "岡山県"}
-                      岡山県
-                    %option{value: "広島県"}
-                      広島県
-                    %option{value: "山口県"}
-                      山口県
-                    %option{value: "徳島県"}
-                      徳島県
-                    %option{value: "香川県"}
-                      香川県
-                    %option{value: "愛媛県"}
-                      愛媛県
-                    %option{value: "高知県"}
-                      高知県
-                    %option{value: "福岡県"}
-                      福岡県
-                    %option{value: "佐賀県"}
-                      佐賀県
-                    %option{value: "長崎県"}
-                      長崎県
-                    %option{value: "熊本県"}
-                      熊本県
-                    %option{value: "大分県"}
-                      大分県
-                    %option{value: "宮崎県"}
-                      宮崎県
-                    %option{value: "鹿児島県"}
-                      鹿児島県
-                    %option{value: "沖縄県"}
-                      沖縄県
-              .form-group
-                %label{for: "city"} 市区町村
-                %span.form-arbitrary 任意
-                %br
-                %input.input-default{name: "city", placeholder: "例) 横浜市緑区", type: "text", value: ""}
-              .form-group
-                %label{for: "address1_label"} 番地
-                %span.form-arbitrary 任意
-                %br
-                %input.input-default{name: "address1", placeholder: "例) 青山1−1−1", type: "text", value: ""}
-              .form-group
-                %label{for: "address2_label"} 建物名
-                %span.form-arbitrary 任意
-                %br
-                %input.input-default{name: "address2", placeholder: "例) 柳ビル103", type: "text", value: ""}
-                %button.btn-default.btn-red{type: "submit"} 登録する
-              .form-group.text-right
-                %p
-                  %a{href: "/jp/help_center/article/423/", target: "_blank"}
-                    本人情報の登録について
-                    %i.fas.fa-angle-right
-              %input{name: "__csrf_value", type: "hidden", value: "e1288c17f6f2ffee3d364a0559400b4be1e0ab41581118f60337fde2150faf10cf0929020d91f3e00002dedc1b33664fff28e79f9928c1ad475b97501d08ee36d"}
-        = render partial: "shared/side_bar"
-      %footer
+%main.l-container.clearfix
+  .l-content
+    %section.l-chapter-container.mypage-identification
+      %h2.l-chapter-head
+        本人情報の登録
+      %form.l-single-inner{action: "https://www.mercari.com/jp/mypage/identification/save/", method: "POST", novalidate: ""}
+        %div
+          %p
+            お客さまの本人情報をご登録ください。
+            %br
+            登録されたお名前・生年月日を変更する場合、本人確認書類の提出が必要になります。
+          %p.text-right
+            %a{href: "/jp/help_center/article/495/", target: "_blank"}
+              本人確認書類のアップロードについて
+              %i.fas.fa-angle-right         
+        .form-group
+          %label お名前
+          %p 松嵜 航
+        .form-group
+          %label お名前カナ
+          %p マツザキ ワタル
+        .form-group
+          %label{for: "birthday"} 生年月日
+          %p 2019/11/22
+        .form-group
+          %label{for: "zip_code"} 郵便番号
+          %span.form-arbitrary 任意
+          %br
+          %input.input-default{name: "zip_code", placeholder: "例）1234567", type: "text", value: ""}
+        .form-group
+          %label{for: "prefecture"} 都道府県
+          %span.form-arbitrary 任意
+          .select-wrap
+            %i.fas.fa-angle-down
+            %select.select-default{name: "prefecture"}
+              %option{value: "--"}
+                &ndash; &ndash;
+              %option{value: "北海道"}
+                北海道
+              %option{value: "青森県"}
+                青森県
+              %option{value: "岩手県"}
+                岩手県
+              %option{value: "宮城県"}
+                宮城県
+              %option{value: "秋田県"}
+                秋田県
+              %option{value: "山形県"}
+                山形県
+              %option{value: "福島県"}
+                福島県
+              %option{value: "東京都"}
+                東京都
+              %option{value: "神奈川県"}
+                神奈川県
+              %option{value: "埼玉県"}
+                埼玉県
+              %option{value: "千葉県"}
+                千葉県
+              %option{value: "茨城県"}
+                茨城県
+              %option{value: "栃木県"}
+                栃木県
+              %option{value: "群馬県"}
+                群馬県
+              %option{value: "山梨県"}
+                山梨県
+              %option{value: "新潟県"}
+                新潟県
+              %option{value: "長野県"}
+                長野県
+              %option{value: "富山県"}
+                富山県
+              %option{value: "石川県"}
+                石川県
+              %option{value: "福井県"}
+                福井県
+              %option{value: "愛知県"}
+                愛知県
+              %option{value: "岐阜県"}
+                岐阜県
+              %option{value: "静岡県"}
+                静岡県
+              %option{value: "三重県"}
+                三重県
+              %option{value: "大阪府"}
+                大阪府
+              %option{value: "兵庫県"}
+                兵庫県
+              %option{value: "京都府"}
+                京都府
+              %option{value: "滋賀県"}
+                滋賀県
+              %option{value: "奈良県"}
+                奈良県
+              %option{value: "和歌山県"}
+                和歌山県
+              %option{value: "鳥取県"}
+                鳥取県
+              %option{value: "島根県"}
+                島根県
+              %option{value: "岡山県"}
+                岡山県
+              %option{value: "広島県"}
+                広島県
+              %option{value: "山口県"}
+                山口県
+              %option{value: "徳島県"}
+                徳島県
+              %option{value: "香川県"}
+                香川県
+              %option{value: "愛媛県"}
+                愛媛県
+              %option{value: "高知県"}
+                高知県
+              %option{value: "福岡県"}
+                福岡県
+              %option{value: "佐賀県"}
+                佐賀県
+              %option{value: "長崎県"}
+                長崎県
+              %option{value: "熊本県"}
+                熊本県
+              %option{value: "大分県"}
+                大分県
+              %option{value: "宮崎県"}
+                宮崎県
+              %option{value: "鹿児島県"}
+                鹿児島県
+              %option{value: "沖縄県"}
+                沖縄県
+        .form-group
+          %label{for: "city"} 市区町村
+          %span.form-arbitrary 任意
+          %br
+          %input.input-default{name: "city", placeholder: "例) 横浜市緑区", type: "text", value: ""}
+        .form-group
+          %label{for: "address1_label"} 番地
+          %span.form-arbitrary 任意
+          %br
+          %input.input-default{name: "address1", placeholder: "例) 青山1−1−1", type: "text", value: ""}
+        .form-group
+          %label{for: "address2_label"} 建物名
+          %span.form-arbitrary 任意
+          %br
+          %input.input-default{name: "address2", placeholder: "例) 柳ビル103", type: "text", value: ""}
+          %button.btn-default.btn-red{type: "submit"} 登録する
+        .form-group.text-right
+          %p
+            %a{href: "/jp/help_center/article/423/", target: "_blank"}
+              本人情報の登録について
+              %i.fas.fa-angle-right
+        %input{name: "__csrf_value", type: "hidden", value: "e1288c17f6f2ffee3d364a0559400b4be1e0ab41581118f60337fde2150faf10cf0929020d91f3e00002dedc1b33664fff28e79f9928c1ad475b97501d08ee36d"}
+  = render partial: "shared/side_bar"

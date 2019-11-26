@@ -43,3 +43,27 @@
   vertical-align: top;
   float: left;
 }
+
+/* プルダウン */
+@mixin pull_down($width) {
+  position: relative;
+  z-index: 2;
+  height: 48px;
+  padding: 0 16px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  background: 0;
+  font-size: 16px;
+  line-height: 1.5;
+  cursor: pointer;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+/* float対策のcleafix */
+@mixin clear_fix {
+  content: "";
+  display: block;
+  clear: both;
+}
