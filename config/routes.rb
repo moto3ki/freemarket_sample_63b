@@ -4,4 +4,5 @@ Rails.application.routes.draw do
   root "home#index"
 
   resources :sell, only: [:new]
+  resources :users, only: [:index]
 end
