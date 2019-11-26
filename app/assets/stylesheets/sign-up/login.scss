@@ -1,0 +1,105 @@
+
+.login-panel{
+  max-width: none;
+  width: 456px;
+  margin: 0 auto;
+  background: #fff;
+
+  &__no-acount{
+    padding: 40px 64px;
+    text-align: center;
+    border-bottom: 1px solid #eee;
+
+    p {
+      font-size: 14px;
+    }
+
+    &__btn{
+      display: block;
+      margin: 8px 0 0;
+      border: 1px solid #0099e8;
+      background: #0099e8;
+      color: #fff;
+      line-height: 40px;
+      text-decoration: none;
+      font-size: 14px;
+    }
+  } 
+
+  &__insert{
+    padding: 32px 64px;
+    margin: 0 20px;
+}
+
+.login-inner {
+  max-width: 343px;
+  margin: 20px auto;
+  text-align: center;
+
+  .login-btn{
+    margin-left: 10px;
+  }
+
+  .btn-default {
+    display: block;
+    width: 320px;
+    line-height: 48px;
+    font-size: 14px;
+    border: 1px solid transparent;
+    -webkit-transition: all ease-out .3s;
+    transition: all ease-out .3s;
+    cursor: pointer;
+    text-align: center;
+  }
+
+  #facebook{
+    background: #385185;
+    color: #fff;
+  }
+
+  #Google{
+    margin: 16px 0 0;
+    background: #fff url(/jp/assets/img/common/common/google.svg) no-repeat 3px top;
+    border: #979797 solid 1px;
+    color: #333;
+  }
+
+  .form-group{
+    margin: 24px 0 0;
+
+    .input-default {
+      @include height_width(28px,320px);
+      margin: 0 auto;
+      padding: 10px 0px 8px;
+      border-radius: 4px;
+      border: 1px solid #ccc;
+      background: #fff;
+      line-height: 1.5;
+      font-size: 16px;
+    }
+  }
+    .login-actions{
+      margin-left: 10px;
+    }
+      .login-submit {
+        margin: 24px 0 0;
+      }
+      .btn-red {
+        background: #ea352d;
+        border: 1px solid #ea352d;
+        color: #fff;
+      }
+    
+  }
+}
+
+  .forget-password{
+    display: block;
+    color:#0099e8;
+    font-size: 14px;
+    text-decoration: none;
+    text-align: left;
+    padding-bottom: 20px;
+    margin-top: 20px;
+
+  }
