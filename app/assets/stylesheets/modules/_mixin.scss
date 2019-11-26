@@ -46,6 +46,7 @@
 
 /* プルダウン */
 @mixin pull_down($width) {
+  width: $width;
   position: relative;
   z-index: 2;
   height: 48px;
