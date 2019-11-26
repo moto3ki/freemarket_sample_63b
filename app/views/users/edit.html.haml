@@ -9,6 +9,7 @@
       %header
       
       %nav
+        
       %main.l-container.clearfix
         .l-content
           %section.l-chapter-container.mypage-identification
@@ -162,5 +163,5 @@
                     本人情報の登録について
                     %i.fas.fa-angle-right
               %input{name: "__csrf_value", type: "hidden", value: "e1288c17f6f2ffee3d364a0559400b4be1e0ab41581118f60337fde2150faf10cf0929020d91f3e00002dedc1b33664fff28e79f9928c1ad475b97501d08ee36d"}
-                
+        = render partial: "shared/side_bar"
       %footer
