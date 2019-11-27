@@ -1,12 +1,14 @@
 Rails.application.routes.draw do
   devise_for :users
+  root "home#index"
   
-  resources :signup do
+  resources :signup, only: [:create] do 
     collection do
       get 'step1'
     end
   end
+  
+  resources :items, only: [:new, :create]
+  resources :users, only: [:index, :edit]
 
-  root "users#index"
-  resources :users, only: [:index]
 end

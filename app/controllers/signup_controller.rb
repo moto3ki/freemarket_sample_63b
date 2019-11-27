@@ -9,7 +9,8 @@ class SignupController < ApplicationController
     birth_day = Date.new(
       params[:user]["birth_day(1i)"].to_i,
       params[:user]["birth_day(2i)"].to_i,
-      params[:user]["birth_day(3i)"].to_i)
+      params[:user]["birth_day(3i)"].to_i
+    )
 
     @user = User.new(
       nickname: user_params[:nickname], 
@@ -22,12 +23,12 @@ class SignupController < ApplicationController
       birth_day: birth_day
     )
     
-     if @user.save
+    if @user.save
       session[:id] = @user.id
       sign_in User.find(session[:id]) unless user_signed_in?
-     else
+    else
       redirect_to new_user_registration_path
-     end
+    end
    
   end
 

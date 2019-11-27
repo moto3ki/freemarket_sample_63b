@@ -1,0 +1,17 @@
+%main.l-container.clearfix
+  .l-content
+    .profile
+      .profile__head
+        プロフィール
+      = form_with url: users_path, method: :post do |f|
+        .setting-profile-icon
+          %figure
+            %img
+          = f.text_field :name, class: "input-default"
+        .setting-profile-content
+          = f.text_area :profile, class: "textarea-default"
+          = f.submit "変更する", class: "btn-default btn-red"
+
+  = render "shared/side_bar"
+
+    
