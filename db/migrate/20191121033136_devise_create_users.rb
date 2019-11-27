@@ -16,7 +16,7 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.2]
       t.date    :birth_day,          null: false
       t.integer :post_code
       t.text    :real_adress,        null: false
-      t.text    :send_adree
+      t.text    :send_adress        
       t.integer :tel_no
 
 
