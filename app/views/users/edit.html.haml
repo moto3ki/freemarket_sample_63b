@@ -3,17 +3,15 @@
     .profile
       .profile__head
         プロフィール
-      // Lv2でform_withを実装する //  
-      %form 
+      = form_with url: users_path, method: :post do |f|
         .setting-profile-icon
           %figure
             %img
-          %input.input-default
-            user_name
+          = f.text_field :name, class: "input-default"
         .setting-profile-content
-          %textarea.textarea-default
-            プロフィール内容
-          %button.btn-default.btn-red
-            変更する
+          = f.text_area :profile, class: "textarea-default"
+          = f.submit "変更する", class: "btn-default btn-red"
 
   = render "shared/side_bar"
+
+    
