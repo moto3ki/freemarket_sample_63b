@@ -30,6 +30,7 @@ Things you may want to cover:
 - has_many :items
 - has_many :comments
 - has_many :credit_cards
+- has_many  :purchases
 - has_many :likes
 - has_many :liked_items, through: :likes, source: :item
 - has_many :rates
@@ -65,14 +66,14 @@ Things you may want to cover:
 |Column|Type|Options|
 |------|----|-------|
 |user_id|integer|null: false, foreign_key: true|
-|buyer_id|integer|foreign_key: {to_table: :users}|
-|name|integer|null: false, index: true|
+|name|string|null: false, index: true|
 |explain|text|null: false|
 |status|integer|null: false, index: true|
-|delivery_charge_type|integer|null: false|
-|delivery_method_no|integer|null: false|
+|condition|integer|null: false, index: true|
+|delivery_charge|integer|null: false|
+|delivery_method|integer|null: false|
 |from_area|string|null: false|
-|delivery_ period_type|integer|null: false, index: true|
+|delivery_period|integer|null: false, index: true|
 |price|integer|null: false, index: true|
 |like_cnt|integer|null: false|
 |category_id|integer|null: false, foreign_key: true|
@@ -84,6 +85,7 @@ Things you may want to cover:
 - has_many :comments, dependent: :destroy
 - has_many :likes, dependent: :destroy
 - has_many :liked_users, through: :likes, source: :user
+- has_one  :purchase
 
 
 ## 5. item_images Table
@@ -156,6 +158,17 @@ Things you may want to cover:
 
 ### Association
 - belongs_to :user
+
+
+## 11. purchases Table
+|Column|Type|Options|
+|------|----|-------|
+|user_id|integer|null: false, foreign_key: true|
+|item_id|integer|null: false, foreign_key: true|
+
+### Association
+- belongs_to :user
+- belongs_to :item
 
 
 * Database initialization
