@@ -1,0 +1,18 @@
+.signup-container
+  =render 'shared/sub-header'
+  .signup-main
+    .signup-panel
+      %h2.signup-panel__title 会員登録完了
+      .signup-panel__insert
+        .signup-inner
+          .signup-form
+            %p.signup-text--center
+              ありがとうございます。
+              %br 会員登録が完了しました。
+          .signup-form
+            .signup-btn
+              = link_to "/", class: ".btn-default signup-btn--red" do
+                メルカリをはじめる
+
+  =render 'shared/sub-footer'
+
