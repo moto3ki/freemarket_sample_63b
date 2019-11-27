@@ -20,6 +20,7 @@
 @mixin sub_container_type1{
   padding: 40px;
   border-bottom: 1px solid $main_back_color;
+}
 
   /* hover時、文字の色を変更 */
 @mixin hover_color($color){
