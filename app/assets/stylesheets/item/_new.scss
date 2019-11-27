@@ -26,6 +26,7 @@
         margin-top: 16px;
         border: 1px dashed lightgray;
         background-color: $main_back_color;
+        cursor: pointer;
         &__message{
           @include string_set(13px, bold, #333333);
           text-align: center;
@@ -113,6 +114,20 @@
       }
       &__select{
         &__payer{
+          &__title{
+            @include string_set(14px, bold, #333333);
+          }
+          &__pulldown{
+            select{
+              display: block;
+              background: transparent;
+              appearance: none; 
+              width: 400px;
+            }
+          } 
+        }
+        &__method{
+          margin-top: 50px;
           &__title{
             @include string_set(14px, bold, #333333);
           }

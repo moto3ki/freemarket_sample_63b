@@ -1,6 +1,9 @@
 .item-sell-page
   .inner-container
-    = form_with url: root_path do |f|
+    - if @item.errors.full_messages.length != 0 || @item_images.errors.full_messages.length != 0
+      = @item.errors.full_messages
+      = @item_images.errors.full_messages
+    = form_with(url: items_path, method: :post) do |f|
       .title-box
         商品の情報を入力
       .item-image-box
@@ -10,6 +13,7 @@
           最大10枚までアップロードできます
         = f.label :image do
           .item-image-box__upload
+            = f.file_field :image, class: "img-hidden"
             %p.item-image-box__upload__message
               ドラッグアンドドロップ
               %br
@@ -36,7 +40,7 @@
             .item-detail-box__select__status__title
               商品の状態
             .item-detail-box__select__status__pulldown
-              = f.select :status, [['---', 0], ['sample', 1]]
+              = f.select :condition, [['---', 0], ['sample', 1]]
       .item-delivery-box
         .item-delivery-box__title
           配送について
@@ -45,17 +49,22 @@
             .item-delivery-box__select__payer__title
               配送料の負担
             .item-delivery-box__select__payer__pulldown
-              = f.select :xxx, [['---', 0], ['sample', 1]]
+              = f.select :delivery_charge, [['---', 0], ['sample', 1]]
+          .item-delivery-box__select__method
+            .item-delivery-box__select__method__title
+              配送の方法
+            .item-delivery-box__select__method__pulldown
+              = f.select :delivery_method, [['---', 0], ['sample', 1]]
           .item-delivery-box__select__area
             .item-delivery-box__select__area__title
               発送元の地域
             .item-delivery-box__select__area__pulldown
-              = f.select :xxx, [['---', 0], ['sample', 1]]
+              = f.select :from_area, [['---', 0], ['sample', 1]]
           .item-delivery-box__select__period
             .item-delivery-box__select__period__title
               発送までの日数
             .item-delivery-box__select__period__pulldown
-              = f.select :xxx, [['---', 0], ['sample', 1]]
+              = f.select :delivery_period, [['---', 0], ['sample', 1]]
       .item-price-box
         .item-price-box__title
           販売価格(300〜9,999,999)
@@ -78,8 +87,7 @@
               \-
       .item-sell-box
         .item-sell-box__sell-button
-          = link_to "#" do
-            出品する
+          = f.submit "出品する"
         .item-sell-box__back-button
           = link_to "#" do
             もどる
