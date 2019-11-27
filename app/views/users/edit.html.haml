@@ -1,0 +1,19 @@
+%main.l-container.clearfix
+  .l-content
+    .profile
+      .profile__head
+        プロフィール
+      // Lv2でform_withを実装する //  
+      %form 
+        .setting-profile-icon
+          %figure
+            %img
+          %input.input-default
+            user_name
+        .setting-profile-content
+          %textarea.textarea-default
+            プロフィール内容
+          %button.btn-default.btn-red
+            変更する
+
+  = render "shared/side_bar"
