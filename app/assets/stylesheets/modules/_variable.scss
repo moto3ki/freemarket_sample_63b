@@ -5,11 +5,23 @@
 /************************/
 /* 色関連変数            */
 /************************/
-$main_color: rgb(247, 10, 10);
+$main_color: #ea352d;
 
 $link_color: rgb(38, 173, 167);
+
+$facebook_color: #385185;
+
+$twitter_color: #5D9DC9;
+
+$pinterest_color: #AA262A;
+
+$main_back_color: rgb(245, 245, 245);
 
 $dark_gray:  rgb(230, 230, 230);
 $normal_gray: rgb(240, 240, 240);
 $light_gray: rgb(250, 250, 250);
 
+/************************/
+/* フォント関連変数        */
+/************************/
+$main_font: 'Source Sans Pro', Helvetica , Arial, '游ゴシック体', 'YuGothic', 'メイリオ', 'Meiryo', sans-serif;

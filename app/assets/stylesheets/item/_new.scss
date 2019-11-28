@@ -1,0 +1,248 @@
+.item-sell-page{
+  width: 100%;
+  background-color: $main_back_color;
+  font-family: $main_font;
+  .inner-container{
+    width: 700px;
+    background-color: white;
+    margin: 0 auto;
+    .title-box{
+      @include string_set(22px, bold, #333333);
+      text-align: center;
+      padding: 32px 16px;
+      border-bottom: 1px solid $main_back_color;
+    }
+    .item-image-box{
+      @include sub_container_type1;
+      &__title{
+        @include string_set(16px, bold, #333333);
+      }
+      &__explain{
+        @include string_set(14px, normal, #333333);
+        margin-top: 8px;
+      }
+      &__upload{
+        padding: 40px;
+        margin-top: 16px;
+        border: 1px dashed lightgray;
+        background-color: $main_back_color;
+        cursor: pointer;
+        &__message{
+          @include string_set(13px, bold, #333333);
+          text-align: center;
+          padding: 20px 0;
+        }
+      }
+    }
+    .item-content-box{
+      @include sub_container_type1;
+      &__name-title{
+        @include string_set(14px, bold, #333333);
+      }
+      &__name-input{
+        margin-top: 8px;
+        input{
+          @include string_set(16px, normal, #333333);
+          width: 100%;
+          box-sizing: border-box;
+          padding: 10px 16px 8px;
+          border: 1px solid lightgray;
+          border-radius: 5px;
+          outline: none;
+        }
+      }
+      &__explain-title{
+        @include string_set(14px, bold, #333333);
+        margin-top: 30px;
+      }
+      &__explain-input{
+        margin-top: 8px;
+        textarea{
+          @include string_set(16px, normal, #333333);
+          @include height_width(140px, 100%);
+          max-width: 100%;
+          min-width: 100%;
+          box-sizing: border-box;
+          padding: 10px;
+          border: 1px solid lightgray;
+          min-height: 104px;
+          outline: none;
+        }
+      }
+    }
+    .item-detail-box{
+      @include sub_container_type1;
+      @include flexbox_space-between;
+      &__title{
+        @include string_set(14px, bold, #888888);
+      }
+      &__select{
+        &__category{
+          &__title{
+            @include string_set(14px, bold, #333333);
+          }
+          &__pulldown{
+            select{
+              display: block;
+              background: transparent;
+              appearance: none; 
+              width: 400px;
+            }
+          }
+        }
+        &__status{
+          margin-top: 50px;
+          &__title{
+            @include string_set(14px, bold, #333333);
+          }
+          &__pulldown{
+            select{
+              display: block;
+              background: transparent;
+              appearance: none; 
+              width: 400px;
+            }
+          }
+        }
+      }
+    }
+    .item-delivery-box{
+      @include sub_container_type1;
+      @include flexbox_space-between;
+      &__title{
+        @include string_set(14px, bold, #888888);
+      }
+      &__select{
+        &__payer{
+          &__title{
+            @include string_set(14px, bold, #333333);
+          }
+          &__pulldown{
+            select{
+              display: block;
+              background: transparent;
+              appearance: none; 
+              width: 400px;
+            }
+          } 
+        }
+        &__method{
+          margin-top: 50px;
+          &__title{
+            @include string_set(14px, bold, #333333);
+          }
+          &__pulldown{
+            select{
+              display: block;
+              background: transparent;
+              appearance: none; 
+              width: 400px;
+            }
+          } 
+        }
+        &__area{
+          margin-top: 50px;
+          &__title{
+            @include string_set(14px, bold, #333333);
+          }
+          &__pulldown{
+            select{
+              display: block;
+              background: transparent;
+              appearance: none; 
+              width: 400px;
+            }
+          } 
+        }
+        &__period{
+          margin-top: 50px;
+          &__title{
+            @include string_set(14px, bold, #333333);
+          }
+          &__pulldown{
+            select{
+              display: block;
+              background: transparent;
+              appearance: none; 
+              width: 400px;
+            }
+          } 
+        }
+      }
+    }
+    .item-price-box{
+      @include sub_container_type1;
+      @include flexbox_space-between;
+      &__title{
+        @include string_set(14px, bold, #888888);  
+      }
+      &__set{
+        &__price{
+          border-bottom: 1px solid;
+          width: 400px;
+          @include flexbox_space-between;
+          margin-bottom: 30px;
+          &__title{
+            @include string_set(14px, bold, #333333);
+          }
+          &__value{
+
+          }
+        }
+        &__fee{
+          border-bottom: 1px solid;
+          width: 400px;
+          @include flexbox_space-between;
+          margin-bottom: 30px;
+          &__title{
+            @include string_set(14px, normal, #333333);
+          }
+          &__value{
+            float: right;
+            clear: both;
+          }
+        }
+        &__profit{
+          border-bottom: 1px solid;
+          width: 400px;
+          @include flexbox_space-between;
+          margin-bottom: 30px;
+          &__title{
+            @include string_set(16px, bold, #333333);
+          }
+          &__value{
+          }
+        }
+      }
+    }
+    .item-sell-box{
+      @include sub_container_type1;
+      &__sell-button{
+        a{
+          @include string_set(13px, normal, #FFFFFF);
+          text-decoration: none;
+          text-align: center;
+          padding: 15px 0;
+          display: block;
+          width: 100%;
+          background-color: $main_color;
+          cursor: pointer;
+        }
+      }
+      &__back-button{
+        margin-top: 30px;
+        a{
+          @include string_set(13px, normal, #FFFFFF);
+          text-decoration: none;
+          text-align: center;
+          padding: 15px 0;
+          display: block;
+          margin: 0 auto;
+          width: 50%;
+          background-color: #AAAAAA;
+          cursor: pointer;
+        }
+      }
+    }
+  }
+}
