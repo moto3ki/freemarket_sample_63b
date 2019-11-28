@@ -1,0 +1,36 @@
+
+
+
+.l-container {
+  width: 1020px;
+  margin: 40px auto 0;
+
+  .l-content {
+    width: 700px;
+    float: right;
+
+    .l-chapter{
+      
+      &__head{
+        text-align: center;
+        font-size: 24px;
+        padding: 8px 24px;
+        border-bottom: 2px solid;
+      }
+    }
+  }
+
+    .l-single-inner{
+      padding: 64px;
+
+        .l-single-content{
+          max-width: 320px;
+          margin: 0 auto;
+        }
+
+        .settings-pay-list{
+        }
+
+    }
+
+}
