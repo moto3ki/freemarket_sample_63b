@@ -11,5 +11,7 @@ Rails.application.routes.draw do
   
   resources :items, only: [:new, :show, :create]
   resources :users, only: [:index, :edit, :update]
+  resources :credit_cards, only: [:index]
+
 
 end
