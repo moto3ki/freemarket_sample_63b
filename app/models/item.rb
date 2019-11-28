@@ -5,7 +5,6 @@ class Item < ApplicationRecord
 
   validates :name, presence: true
 
-  # 状態
   enum condition: {
     "新品、未使用":       1,
     "未使用に近い":       2,
@@ -15,13 +14,11 @@ class Item < ApplicationRecord
     "全体的に状態が悪い":  6
   }
   
-  # 配送料負担
   enum delivery_charge: {
     "送料込み(出品者負担)": 1,
     "着払い(購入者負担)":   2
   }
  
-  # 配送方法
   enum delivery_method: {
     "未定":                 1,
     "らくらくメルカリ便":     2,
@@ -34,7 +31,6 @@ class Item < ApplicationRecord
     "ゆうパケット":          9,
   }
 
-  # 発送日目安
   enum delivery_period: {
     "1~2日で発送": 1,
     "2~3日で発送": 2,
