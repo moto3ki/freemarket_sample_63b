@@ -11,16 +11,15 @@
           .l-single-content
             .l-chapter-sub-head クレジットカード一覧
           %ul.settings-pay-list
-            %li
-              = form_for "#", url: "#", method: :delete do |f|
-                %figure
-                  %img{alt: "visa", height: "15", src: "/card_image/visa.jpg", width: "49"}/
-                %input{name: "card_security_code", type: "hidden", value: "#"}/
-                .settings-card-num ************9999
-                .settings-card-limit 12 / 20
-                %input{name: "card_name", type: "hidden", value: "#"}/
-                %li
-                = f.submit "削除する", class: 'settings-card-delete'
+            = form_for "#",  html: { class: "form" }, url: "#", method: :delete do |f|
+              %figure
+                %img{alt: "visa", height: "15", src: "/card_image/visa.jpg", width: "49"}/
+              %input{name: "card_security_code", type: "hidden", value: "#"}/
+              .settings-card-num ************9999
+              .settings-card-limit 12 / 20
+              %input{name: "card_name", type: "hidden", value: "#"}/
+              %li
+              = f.submit "削除する", class: 'settings-card-delete'
         %section
         .settings-pay-about
           = link_to "https://www.mercari.com/jp/help_center/category/6/", class: "settings-pay-about__link" do
