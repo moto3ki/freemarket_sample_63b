@@ -47,11 +47,4 @@
   font-size: 12px;
   vertical-align: top;
   float: left;
-}
-
-/* placeholderの色指定 */
-@mixin placeholder($color) {
-  &::placeholder {
-    color: $color;
-  }
 } 

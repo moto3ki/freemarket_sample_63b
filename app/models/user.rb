@@ -13,4 +13,6 @@ class User < ApplicationRecord
   # has_many :ratings, through: :rates, source: :rated_user
   # has_one :send_address
   # has_one :real_address
+
+  validates :nickname, presence: true
 end

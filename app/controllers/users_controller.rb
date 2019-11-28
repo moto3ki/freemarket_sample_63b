@@ -5,13 +5,17 @@ class UsersController < ApplicationController
   end
 
   def edit
-    @user = User.find(params[:id])
+    @user = find_user_by_id
   end
 
   def update
-    user = User.find(params[:id])
-    user.update(user_params)
-
+    @user = find_user_by_id
+    @user.update(user_params)
+      if @user.save
+        redirect_to edit_user_path
+      else
+        redirect_to edit_user_path
+      end
   end
 
 
@@ -20,6 +24,10 @@ class UsersController < ApplicationController
 
   def user_params
     params.require(:user).permit(:nickname, :profile)
+  end
+
+  def find_user_by_id
+    User.find(params[:id])
   end
 
 
