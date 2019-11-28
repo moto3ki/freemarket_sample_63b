@@ -2,7 +2,7 @@
   .side-bar__mypage-nav
     %ul.side-bar__mypage-nav__list
       %li
-        = link_to  "#", class: "mypage-nav-list-item" do
+        = link_to users_path(current_user), class: "mypage-nav-list-item" do
           マイページ
           = icon 'fas', 'angle-right', class: 'icon-arrow-right'
       %li
@@ -69,7 +69,7 @@
     %ul.side-bar__mypage-nav__list
       %li
         = link_to  edit_user_path(current_user), class: "mypage-nav-list-item" do
-          プロティール
+          プロフィール
           = icon 'fas','angle-right', class: 'icon-arrow-right'
       %li
         = link_to  "#", class: "mypage-nav-list-item" do

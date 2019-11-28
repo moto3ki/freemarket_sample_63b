@@ -3,15 +3,13 @@
     .profile
       .profile__head
         プロフィール
-      = form_with url: users_path, method: :post do |f|
+      = form_with model: @user, local: true  do |f|
         .setting-profile-icon
           %figure
             %img
-          = f.text_field :name, class: "input-default"
+          = f.text_field :nickname, class: "input-default",placeholder: "例）たっちゃん"
         .setting-profile-content
-          = f.text_area :profile, class: "textarea-default"
+          = f.text_area :profile, class: "textarea-default", placeholder: "例）こんにちは！ご覧いただきありがとうございます。気持ちよくお取引出来るよう心がけていますので、よろしくお願いします！！"
           = f.submit "変更する", class: "btn-default btn-red"
 
   = render "shared/side_bar"
-
-    
