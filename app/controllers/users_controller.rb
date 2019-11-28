@@ -1,21 +1,20 @@
 class UsersController < ApplicationController
+  before_action :set_user
 
   def index
 
   end
 
   def edit
-    @user = find_user_by_id
+    
   end
 
   def update
-    @user = find_user_by_id
-    @user.update(user_params)
-      if @user.save
-        redirect_to edit_user_path
-      else
-        redirect_to edit_user_path
-      end
+    if @user.update(user_params)
+      redirect_to edit_user_path
+    else
+      redirect_to edit_user_path
+    end
   end
 
 
@@ -26,8 +25,8 @@ class UsersController < ApplicationController
     params.require(:user).permit(:nickname, :profile)
   end
 
-  def find_user_by_id
-    User.find(params[:id])
+  def set_user
+    @user =User.find(params[:id])
   end
 
 
