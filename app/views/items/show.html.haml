@@ -1,19 +1,20 @@
 .item-purchase-page
   .item-container
     .item-container__title
-      メルカリ(商品名)
+      = @item.name
     .item-container__overview
       .item-container__overview__left
         .item-container__overview__left__main-image
-          = image_tag("/logo_image/profile.jpg")
+          = image_tag @item.item_images[0].image.to_s
         .item-container__overview__left__sub-images
           - 10.times do |i|
             = image_tag("/logo_image/profile.jpg")
       .item-container__overview__right
-        = render "item_overview"
+        = render "item_overview", { item: @item }
     .item-container__price
       %span.item-container__price__value
-        ¥8,888
+        ¥
+        = comma_to_jpy(@item.price)
       %span.item-container__price__tax
         (税込)
       %span.item-container__price__postage
@@ -21,13 +22,12 @@
     = link_to "#", class: "item-container__purchase-link" do
       購入画面に進む
     .item-container__explain
-      外では履いてませんが、汚れが少しあります。
-      %br
-      写真3、4枚目で確認できます。
+      = simple_format(@item.explain)
     .item-container__buttons
       = link_to "#", class: "item-container__buttons__likes" do
         = icon 'far', 'heart'
-        いいね! 6
+        いいね!
+        = @item.like_cnt
       = link_to "#", class: "item-container__buttons__inappropriate " do
         = icon 'far', 'flag'
         不適切な商品の報告
