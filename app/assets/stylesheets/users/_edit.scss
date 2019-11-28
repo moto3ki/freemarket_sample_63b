@@ -11,6 +11,42 @@
         border-top: 1px solid #f5f5f5;
         padding: 40px;
         }
+        .form-group {
+          margin: 40px 0 0;
+          label {
+            font-weight: 600;
+            display: inline-block;
+          }
+          .form-arbitrary {
+            background: #ccc;
+            margin: 0 0 0 8px;
+            margin: 0 0 0 8px;
+            padding: 2px 4px;
+            border-radius: 2px;
+            color: #fff;
+            font-size: 12px;
+            vertical-align: top;
+          }
+          .input-default {
+            width: 94.5%;
+            margin: 8px 0 0;
+            height: 30px;
+            padding: 10px 16px 8px;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+            background: #fff;
+            line-height: 1.5;
+            font-size: 16px;
+          }
+          .select-wrap {
+            height: 100%;
+            #prefecture_id {
+              @include pull_down(100%);
+              background-color: #fff;
+              margin-top: 8px;
+            }
+          }
+        }
       }
     .l-chapter-container {
       margin: 40px 0 0;
@@ -30,7 +66,17 @@
   }
 }
 
-
+.fa-angle-down {
+  position: absolute;
+  right: 180px;
+  top: 850px;
+  z-index: 3;
+  color: #888;
+  font-size: 30px;
+  -webkit-transform: translate(0, -50%);
+  transform: translate(0, -50%);
+  margin-top: 8px;
+}
 
 .l-chapter-head {
   font-size: 24px;
@@ -56,54 +102,8 @@ a {
   text-decoration: none;
 }
 
-.form-group {
-  margin: 40px 0 0;
-  label {
-    font-weight: 600;
-    display: inline-block;
-  }
-  .form-arbitrary {
-    background: #ccc;
-    margin: 0 0 0 8px;
-    margin: 0 0 0 8px;
-    padding: 2px 4px;
-    border-radius: 2px;
-    color: #fff;
-    font-size: 12px;
-    vertical-align: top;
-  }
-  .input-default {
-    width: 94.5%;
-    margin: 8px 0 0;
-    height: 25px;
-    padding: 10px 16px 8px;
-    border-radius: 4px;
-    border: 1px solid #ccc;
-    background: #fff;
-    line-height: 1.5;
-    font-size: 16px;
-  }
-  .select-default {
-    @include pull_down(100%);
-  }
-}
 
-.select-wrap {
-  margin: 8px 0 0;
-}
 
-.fa-angle-down {
-  position: absolute;
-  right: 16px;
-  top: 50%;
-  z-index: 2;
-  color: #888;
-  font-size: 30px;
-  -webkit-transform: translate(0, -50%);
-  transform: translate(0, -50%);
-  margin-right: 170px;
-  margin-top: 520px;
-}
 
 .btn-default {
   display: block;
