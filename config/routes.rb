@@ -4,8 +4,8 @@ Rails.application.routes.draw do
   
   resources :signup, only: [:create] do 
     collection do
-      get 'member_info'
-      get 'tel_no'
+      get 'step1'
+      get 'step2'
     end
   end
   

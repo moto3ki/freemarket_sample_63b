@@ -1,10 +1,10 @@
 class SignupController < ApplicationController
  
-  def member_info
+  def step1
     @user = User.new 
   end
 
-  def tel_no
+  def step2
     @user = User.new 
     birth_day = Date.new(
       params[:user]["birth_day(1i)"].to_i,
@@ -34,14 +34,13 @@ class SignupController < ApplicationController
       kana_first_name:session[:kana_first_name],
       birth_day: session[:birth_day],
       tel_no: user_params[:tel_no]
-    )
-     if @user.save
+    ) 
+    if @user.save
       session[:id] = @user.id
       sign_in User.find(session[:id]) unless user_signed_in?
-     else
+    else
       redirect_to new_user_registration_path
-     end
-   
+    end
   end
 
   private
