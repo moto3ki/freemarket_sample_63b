@@ -1,9 +1,14 @@
 class ItemsController < ApplicationController
+
   def new
     @item = Item.new
     @item_images = ItemImage.new
   end
 
+  def show
+    
+  end
+  
   def create
     @item = Item.new(item_params)
     @item_images = @item.item_images.new(item_image_params)
