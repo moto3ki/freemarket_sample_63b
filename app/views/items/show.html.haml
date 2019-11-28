@@ -5,7 +5,7 @@
     .item-container__overview
       .item-container__overview__left
         .item-container__overview__left__main-image
-          = image_tag("/logo_image/profile.jpg")
+          = image_tag @item.item_images[0].image.to_s
         .item-container__overview__left__sub-images
           - 10.times do |i|
             = image_tag("/logo_image/profile.jpg")
@@ -14,7 +14,7 @@
     .item-container__price
       %span.item-container__price__value
         ¥
-        = converting_to_jpy(@item.price)
+        = comma_to_jpy(@item.price)
       %span.item-container__price__tax
         (税込)
       %span.item-container__price__postage
