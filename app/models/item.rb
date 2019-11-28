@@ -5,9 +5,6 @@ class Item < ApplicationRecord
 
   validates :name, presence: true
 
-  ########################################
-  # enum定義                             #
-  ########################################
   # 状態
   enum condition: {
     "新品、未使用":       1,
