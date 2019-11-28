@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_27_075107) do
+ActiveRecord::Schema.define(version: 2019_11_28_054156) do
 
   create_table "item_images", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "item_id", null: false
@@ -53,7 +53,7 @@ ActiveRecord::Schema.define(version: 2019_11_27_075107) do
     t.string "kana_last_name", null: false
     t.string "kana_first_name", null: false
     t.date "birth_day", null: false
-    t.integer "tel_no"
+    t.string "tel_no"
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"

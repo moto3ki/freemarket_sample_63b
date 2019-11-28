@@ -24,7 +24,7 @@ Things you may want to cover:
 |kana_last_name|string|null: false|
 |kana_first_name|string|null: false|
 |birth_day|date|null: false|
-|tel_no|integer|
+|tel_no|string|
 
 ### Association
 - has_many :items
