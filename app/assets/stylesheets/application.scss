@@ -14,7 +14,8 @@
 
 @import "home/index";
 
-@import "sell/new";
+@import "item/new";
+@import "items/show";
 
 @import "users/index";
 @import "users/side_bar";
@@ -22,3 +23,5 @@
 
 @import "sign-up/sign-up";
 @import "sign-up/login";
+
+@import "registers/new";

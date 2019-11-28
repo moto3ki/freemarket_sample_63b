@@ -1,17 +1,17 @@
-%main.l-container
+%main.l-container.clearfix
   .l-content
     .mypage-user
       %a.mypage-user__link
         %img.mypage-user__link__icon
         .mypage-user__link__name
-          user_name
+          = current_user.nickname
         .mypage-user__link__rating
           .mypage-user__link__rating--left
             評価
             %span.left-count
               0
           .mypage-user__link__rating--right
-            出店数
+            出品数
             %span.right-count
               0
     .information

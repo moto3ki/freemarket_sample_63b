@@ -1,0 +1,18 @@
+.signup-container
+  =render 'shared/sub-header'
+  .signup-main
+    .signup-panel
+      %h2.signup-panel__title 電話番号登録
+      = form_with(model: @user,url: signup_index_path,local: true, method: :post) do |f|
+        .signup-panel__insert
+          .signup-inner
+            .signup-form
+              .signup-form__label 携帯電話の番号
+              = f.text_field :tel_no, class:"input-default", placeholder: "携帯の電話番号を入力"
+              .signup-form
+                %p.signup-text 
+                  本人確認のため、携帯電話のSMS(ショートメッセージサービス)を利用するして認証を行います。
+              = f.submit "次へ進む", class: 'signup-btn--red'
+              %p.signup-text 
+                ※電話番号は本人確認や不正利用防止のため利用しています。他のユーザーに公開されることはありません。
+  =render 'shared/sub-footer'

@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class SellControllerTest < ActionDispatch::IntegrationTest
+class SignupControllerTest < ActionDispatch::IntegrationTest
   # test "the truth" do
   #   assert true
   # end

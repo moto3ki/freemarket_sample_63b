@@ -1,0 +1,77 @@
+.item-purchase-page
+  .item-container
+    .item-container__title
+      = @item.name
+    .item-container__overview
+      .item-container__overview__left
+        .item-container__overview__left__main-image
+          = image_tag @item.item_images[0].image.to_s
+        .item-container__overview__left__sub-images
+          - 10.times do |i|
+            = image_tag("/logo_image/profile.jpg")
+      .item-container__overview__right
+        = render "item_overview", { item: @item }
+    .item-container__price
+      %span.item-container__price__value
+        ¥
+        = comma_to_jpy(@item.price)
+      %span.item-container__price__tax
+        (税込)
+      %span.item-container__price__postage
+        送料込み
+    = link_to "#", class: "item-container__purchase-link" do
+      購入画面に進む
+    .item-container__explain
+      = simple_format(@item.explain)
+    .item-container__buttons
+      = link_to "#", class: "item-container__buttons__likes" do
+        = icon 'far', 'heart'
+        いいね!
+        = @item.like_cnt
+      = link_to "#", class: "item-container__buttons__inappropriate " do
+        = icon 'far', 'flag'
+        不適切な商品の報告
+      = link_to "#", class: "item-container__buttons__peace blue-link" do
+        = icon 'fas', 'lock'
+        あんしん・あんぜんへの取り組み
+  .comment-container
+    = form_with url: root_path, class: "comment-container__form" do |f|
+      %p.comment-container__form__caution
+        相手のことを考え丁寧なコメントを心がけましょう。
+        不快な言葉遣いなどは利用制限や退会処分となることがあります。
+      = f.text_area :text_area, class: "comment-container__form__input"
+      = f.submit "コメントする", class: "comment-container__form__submit"
+  .introduction-item-container
+    = link_to "#", class: "blue-link" do
+      .introduction-item-container__left
+        = icon 'fas', 'angle-left'
+        左のアイテム
+    = link_to "#", class: "blue-link" do
+      .introduction-item-container__right
+        右のアイテム
+        = icon 'fas', 'angle-right'
+  .sns-container
+    .sns-container__icon
+      = link_to "#" do
+        = icon 'fab', 'facebook-square', class: "sns-container__icon--facebook"
+      = link_to "#" do
+        = icon 'fab', 'twitter-square', class: "sns-container__icon--twitter"
+      = link_to "#" do
+        = icon 'fab', 'pinterest-square', class: "sns-container__icon--pinterest"
+  .other-item-container
+    = link_to "#", class:"other-item-container__title blue-link" do
+      XXXXさんのその他の商品
+    .other-item-container__items
+      - 9.times do |i|
+        .other-item-container__items__item
+          = link_to "#", class: "item-link" do
+            = image_tag("/item_image/sample.png", class: "other-item-container__items__item__image")
+            .other-item-container__items__item__explain
+              .other-item-container__items__item__explain__title
+                サンプル商品サンプル商品サンプル商品サンプル商品
+              .other-item-container__items__item__explain__bottom
+                .other-item-container__items__item__explain__bottom__price
+                  ¥8,888
+                .other-item-container__items__item__explain__bottom__likes
+                  = icon 'far', 'heart'
+                  いいね
