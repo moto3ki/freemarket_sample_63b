@@ -1,0 +1,25 @@
+
+/*必須*/ 
+.require{
+  @include require_set;
+  background-color: #ea352d;
+}
+
+/*任意*/ 
+.arbitrary{
+  @include require_set;
+  background-color: #AAAAAA;
+}
+
+.img-hidden{
+  visibility:hidden;
+}
+
+.blue-link{
+  color: #0099E8;
+  text-decoration: none;
+  &:hover{
+    text-decoration: underline;
+    opacity: 0.7;
+  }
+}

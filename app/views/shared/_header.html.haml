@@ -19,7 +19,7 @@
           = link_to "#", class: "left-links" do
             = icon 'fa', 'tags', class: "left-icon"
             ブランドから探す
-      - if 1 == 1
+      - if user_signed_in?
         %ul.header__inner__bottom__right
           %li.header__inner__bottom__right__contents
             = link_to "#", class: "signin-links" do
@@ -34,12 +34,14 @@
               = icon 'fas', 'check', class: "signin-icon"
               やることリスト
           %li.header__inner__bottom__right__contents
-            = link_to "#", class: "signin-links" do
+            = link_to users_path, class: "signin-links" do
               = image_tag("/logo_image/profile.jpg", class: "profile-image")
               マイページ
+          %li.header__inner__bottom__right__contents
+            = link_to "ログアウト", destroy_user_session_path, method: :delete, class: '"signin-links'
       - else
         %ul.header__inner__bottom__right
           %li.header__inner__bottom__right__signup
-            = link_to "新規会員登録"
+            = link_to "新規登録", new_user_registration_path 
           %li.header__inner__bottom__right__signin
-            = link_to "ログイン"
+            = link_to "ログイン", new_user_session_path
