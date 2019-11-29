@@ -6,7 +6,7 @@ class UsersController < ApplicationController
   end
 
   def edit
-    
+
   end
 
   def update
@@ -16,6 +16,12 @@ class UsersController < ApplicationController
       redirect_to edit_user_path
     end
   end
+
+  def logout
+
+  end
+
+
 
 
 

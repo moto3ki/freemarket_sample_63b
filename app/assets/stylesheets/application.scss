@@ -11,6 +11,7 @@
 @import "shared/sub-header";
 @import "shared/sub-footer";
 @import "shared/sell_button";
+@import "shared/side_bar";
 
 @import "home/index";
 
@@ -20,8 +21,8 @@
 @import "purchases/new";
 
 @import "users/index";
-@import "users/side_bar";
 @import "users/edit";
+@import "users/logout";
 
 @import "sign-up/sign-up";
 @import "sign-up/login";
