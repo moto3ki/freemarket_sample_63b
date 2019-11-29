@@ -19,8 +19,7 @@
         .item-container__pay-price__value
           = comma_to_jpy(@item.price)
       .item-container__purchase-button
-        = link_to "#" do
-          購入する
+        = link_to "購入する", item_purchases_path, method: :post
     .delivery-address-container
       .delivery-address-container__title
         配送先
