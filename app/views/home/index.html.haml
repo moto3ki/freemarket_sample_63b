@@ -12,7 +12,7 @@
           もっと見る
           = icon 'fas', 'angle-right'
     %ul.item-lists__items
-      - @items.zip(@item_images).each do |item, item_image|
-        = render partial: "list", locals: {item: item, item_image: item_image}
+      - @items.each do |item|
+        = render partial: "list", locals: {item: item}
         
 = render "shared/sell_button"
