@@ -2,7 +2,8 @@
   .header__inner
     .header__inner__top
       .header__inner__top__title
-        = image_tag("/logo_image/fmarket_logo_white.svg")
+        = link_to root_path do
+          = image_tag("/logo_image/fmarket_logo_white.svg")
       .header__inner__top__search
         .header__inner__top__search--input
           %input#item-search{type: "text", placeholder: "何かお探しですか？"}/
