@@ -22,20 +22,30 @@ class SignupController < ApplicationController
     session[:birth_day] = birth_day
   end
 
+  def step3
+    @user = User.new
+    @user.build_send_address
+    #usend_addressモデルと関連付ける。
+    session[:tel_no] = user_params[:tel_no]
+  end
+
   def create
     
     @user = User.new(
-      nickname: session[:nickname],
-      email: session[:email],
-      password: session[:password],
-      kanji_last_name:session[:kanji_last_name],
+      nickname:        session[:nickname],
+      email:           session[:email],
+      password:        session[:password],
+      kanji_last_name: session[:kanji_last_name],
       kanji_first_name:session[:kanji_first_name],
-      kana_last_name:session[:kana_last_name],
-      kana_first_name:session[:kana_first_name],
-      birth_day: session[:birth_day],
-      tel_no: user_params[:tel_no]
-    ) 
-    if @user.save
+      kana_last_name:  session[:kana_last_name],
+      kana_first_name: session[:kana_first_name],
+      birth_day:       session[:birth_day],
+      tel_no:          session[:tel_no]
+    )
+    @user.build_send_address(user_params[:send_address_attributes])
+    # userにヒモ付けられたsend_addressにuser_paramsにあるsend_address_attributesの値を引数として渡す。
+    binding.pry
+    if @user.save 
       session[:id] = @user.id
       sign_in User.find(session[:id]) unless user_signed_in?
     else
@@ -54,7 +64,18 @@ class SignupController < ApplicationController
       :kana_last_name,
       :kana_first_name,
       :birth_day,
-      :tel_no
+      :tel_no,
+      send_address_attributes: [:id,
+      :kanji_last_name,  
+      :kanji_first_name, 
+      :kana_last_name, 
+      :kana_first_name,  
+      :post_code, 
+      :prefectures,      
+      :city,     
+      :address,          
+      :building_name,
+      :tel_no]
     )
   end
 end
