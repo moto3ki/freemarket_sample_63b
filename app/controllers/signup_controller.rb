@@ -44,7 +44,7 @@ class SignupController < ApplicationController
     )
     @user.build_send_address(user_params[:send_address_attributes])
     # userにヒモ付けられたsend_addressにuser_paramsにあるsend_address_attributesの値を引数として渡す。
-    binding.pry
+
     if @user.save 
       session[:id] = @user.id
       sign_in User.find(session[:id]) unless user_signed_in?
