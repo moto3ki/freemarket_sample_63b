@@ -13,7 +13,6 @@
         = render "item_overview", { item: @item }
     .item-container__price
       %span.item-container__price__value
-        ¥
         = comma_to_jpy(@item.price)
       %span.item-container__price__tax
         (税込)

@@ -9,7 +9,9 @@ Rails.application.routes.draw do
     end
   end
   
-  resources :items, only: [:new, :show, :create]
+  resources :items, only: [:new, :show, :create] do
+    resources :purchases, only: [:new]
+  end
   resources :users, only: [:index, :edit, :update]
   resources :registers, only: [:new]
 end

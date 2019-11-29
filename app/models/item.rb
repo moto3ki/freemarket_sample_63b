@@ -4,7 +4,7 @@ class Item < ApplicationRecord
   has_many :item_images, dependent: :destroy
 
   validates :name, presence: true
-
+  
   enum condition: {
     "新品、未使用":       1,
     "未使用に近い":       2,
