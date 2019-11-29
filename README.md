@@ -85,7 +85,7 @@ Things you may want to cover:
 - has_many :comments, dependent: :destroy
 - has_many :likes, dependent: :destroy
 - has_many :liked_users, through: :likes, source: :user
-- has_one  :purchase
+- has_one  :purchase, dependent: :destroy
 
 
 ## 5. item_images Table
