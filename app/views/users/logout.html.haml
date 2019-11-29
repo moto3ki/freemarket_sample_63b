@@ -1,6 +1,6 @@
 %main.l-container.clearfix
   .l-content
     .logout
-      = link_to "#", class: "logout-btn" do
+      = link_to destroy_user_session_path, method: :delete, class: "logout-btn" do
         ログアウト
   = render "shared/side_bar"
