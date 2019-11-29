@@ -13,14 +13,12 @@
         = render "item_overview", { item: @item }
     .item-container__price
       %span.item-container__price__value
-        ¥
         = comma_to_jpy(@item.price)
       %span.item-container__price__tax
         (税込)
       %span.item-container__price__postage
         送料込み
-    = link_to "#", class: "item-container__purchase-link" do
-      購入画面に進む
+    = link_to "購入画面に進む", new_item_purchase_path(@item), class: "item-container__purchase-link"
     .item-container__explain
       = simple_format(@item.explain)
     .item-container__buttons
