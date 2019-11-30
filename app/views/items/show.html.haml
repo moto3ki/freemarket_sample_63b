@@ -1,44 +1,6 @@
-.item-purchase-page
-  .item-container
-    .item-container__title
-      = @item.name
-    .item-container__overview
-      .item-container__overview__left
-        .item-container__overview__left__main-image
-          = image_tag @item.item_images[0].image.to_s
-        .item-container__overview__left__sub-images
-          - 10.times do |i|
-            = image_tag("/logo_image/profile.jpg")
-      .item-container__overview__right
-        = render "item_overview", { item: @item }
-    .item-container__price
-      %span.item-container__price__value
-        = comma_to_jpy(@item.price)
-      %span.item-container__price__tax
-        (税込)
-      %span.item-container__price__postage
-        送料込み
-    = link_to "購入画面に進む", new_item_purchase_path(@item), class: "item-container__purchase-link"
-    .item-container__explain
-      = simple_format(@item.explain)
-    .item-container__buttons
-      = link_to "#", class: "item-container__buttons__likes" do
-        = icon 'far', 'heart'
-        いいね!
-        = @item.like_cnt
-      = link_to "#", class: "item-container__buttons__inappropriate " do
-        = icon 'far', 'flag'
-        不適切な商品の報告
-      = link_to "#", class: "item-container__buttons__peace blue-link" do
-        = icon 'fas', 'lock'
-        あんしん・あんぜんへの取り組み
-  .comment-container
-    = form_with url: root_path, class: "comment-container__form" do |f|
-      %p.comment-container__form__caution
-        相手のことを考え丁寧なコメントを心がけましょう。
-        不快な言葉遣いなどは利用制限や退会処分となることがあります。
-      = f.text_area :text_area, class: "comment-container__form__input"
-      = f.submit "コメントする", class: "comment-container__form__submit"
+.item-show-page
+  = render 'item', { item: @item }
+  = render 'comment'
   .introduction-item-container
     = link_to "#", class: "blue-link" do
       .introduction-item-container__left

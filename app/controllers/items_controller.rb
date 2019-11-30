@@ -21,6 +21,11 @@ class ItemsController < ApplicationController
     end
   end
 
+  def own_show
+    @user = User.find(current_user.id)
+    @item = Item.find(params[:id])
+  end
+
   private
   def item_params
     params.permit(:name,

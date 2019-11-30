@@ -1,0 +1,35 @@
+.item-container
+  .item-container__title
+    = item.name
+  .item-container__overview
+    .item-container__overview__left
+      .item-container__overview__left__main-image
+        = image_tag item.item_images[0].image.to_s
+      .item-container__overview__left__sub-images
+        - 10.times do |i|
+          = image_tag("/logo_image/profile.jpg")
+    .item-container__overview__right
+      = render "item_overview", { item: item }
+  .item-container__price
+    %span.item-container__price__value
+      = comma_to_jpy(item.price)
+    %span.item-container__price__tax
+      (税込)
+    %span.item-container__price__postage
+      送料込み
+  -if item.user.id != current_user.id
+    = link_to "購入画面に進む", new_item_purchase_path(item), class: "item-container__purchase-link"
+  .item-container__explain
+    = simple_format(item.explain)
+  -if params[:action] == "show"
+    .item-container__buttons
+      = link_to "#", class: "item-container__buttons__likes" do
+        = icon 'far', 'heart'
+        いいね!
+        = item.like_cnt
+      = link_to "#", class: "item-container__buttons__inappropriate " do
+        = icon 'far', 'flag'
+        不適切な商品の報告
+      = link_to "#", class: "item-container__buttons__peace blue-link" do
+        = icon 'fas', 'lock'
+        あんしん・あんぜんへの取り組み
