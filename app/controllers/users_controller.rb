@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:edit, :update]
+  before_action :set_user, only: [:edit, :update, :selling_items, :sold_items]
 
   def index
 
@@ -21,9 +21,13 @@ class UsersController < ApplicationController
 
   end
 
+  def selling_items
+    @selling_items = @user.items.where(status: 0)
+  end
 
-
-
+  def sold_items
+    @sold_items = @user.items.where(status: 1)
+  end
 
   private
 
@@ -32,7 +36,7 @@ class UsersController < ApplicationController
   end
 
   def set_user
-    @user =User.find(params[:id])
+    @user = User.find(current_user.id)
   end
 
 end
