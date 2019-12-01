@@ -1,4 +1,5 @@
 class ItemsController < ApplicationController
+  before_action :set_item, only: [:show, :own_show, :destroy]
 
   def new
     @item = Item.new
@@ -6,7 +7,7 @@ class ItemsController < ApplicationController
   end
 
   def show
-    @item = Item.find(params[:id])
+    
   end
   
   def create
@@ -22,7 +23,7 @@ class ItemsController < ApplicationController
   end
 
   def destroy
-    if Item.find(params[:id]).destroy
+    if @item.destroy
       redirect_to selling_items_users_path
     else
       render own_show
@@ -30,7 +31,7 @@ class ItemsController < ApplicationController
   end
 
   def own_show
-    @item = Item.find(params[:id])
+    
   end
 
   private
@@ -51,5 +52,9 @@ class ItemsController < ApplicationController
 
   def item_image_params
     params.permit(:image)
+  end
+
+  def set_item
+    @item = Item.find(params[:id])
   end
 end
