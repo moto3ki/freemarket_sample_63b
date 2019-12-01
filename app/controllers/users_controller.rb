@@ -21,6 +21,14 @@ class UsersController < ApplicationController
 
   end
 
+  def selling_items
+    @selling_items = current_user.items.where(status: 0)
+  end
+
+  def sold_items
+    @sold_items = current_user.items.where(status: 1)
+  end
+  
   private
 
   def user_params
@@ -28,7 +36,7 @@ class UsersController < ApplicationController
   end
 
   def set_user
-    @user =User.find(params[:id])
+    @user = User.find(params[:id])
   end
 
 end

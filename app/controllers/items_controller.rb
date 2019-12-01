@@ -22,7 +22,6 @@ class ItemsController < ApplicationController
   end
 
   def own_show
-    @user = User.find(current_user.id)
     @item = Item.find(params[:id])
   end
 

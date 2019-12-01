@@ -22,12 +22,11 @@
       @include string_set(16px, inherit, #333333);
     }
     &__submit{
-      background-color: #AAAAAA;
-      width: 100%;
-      margin-top: 8px;
       @include string_set(14px, inherit, #FFFFFF);
+      @include height_width(50px ,100%);
+      background-color: #AAAAAA;
+      margin-top: 8px;
       border: 1px solid #aaa;
-      height: 50px;
     }
   }
 }

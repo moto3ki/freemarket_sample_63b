@@ -43,8 +43,7 @@
           padding: 8px;
         }
         &__data{
-          width: calc(300px - 115px);
-          height: 23px;
+          @include height_width(23px ,calc(300px - 115px));
           border: 1px solid #F5F5F5;
           padding: 8px;
         }
