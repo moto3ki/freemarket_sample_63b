@@ -12,6 +12,10 @@ Rails.application.routes.draw do
   
   resources :items, only: [:new, :show, :create] do
     resources :purchases, only: [:new, :create]
+
+    member do
+      get 'own_show'
+    end
   end
   resources :users, only: [:index, :edit, :update] do
     collection do
@@ -19,6 +23,7 @@ Rails.application.routes.draw do
       get 'selling_items'
       get 'sold_items'
     end
+    
   end
   resources :registers, only: [:new]
 end

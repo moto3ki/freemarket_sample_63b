@@ -28,7 +28,7 @@ class UsersController < ApplicationController
   def sold_items
     @sold_items = current_user.items.where(status: 1)
   end
-
+  
   private
 
   def user_params

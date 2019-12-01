@@ -1,0 +1,12 @@
+.item-own-show-page
+  = render "item", { item: @item }
+  .operation-container
+    = link_to "#" do
+      .edit-btn
+        編集する
+    %p.text-center
+      or
+    = link_to "#" do
+      .delete-btn
+        削除する
+  = render 'comment'

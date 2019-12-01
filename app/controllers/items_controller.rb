@@ -1,4 +1,5 @@
 class ItemsController < ApplicationController
+  before_action :set_item, only: [:show, :own_show]
 
   def new
     @item = Item.new
@@ -6,7 +7,7 @@ class ItemsController < ApplicationController
   end
 
   def show
-    @item = Item.find(params[:id])
+    
   end
   
   def create
@@ -19,6 +20,10 @@ class ItemsController < ApplicationController
     else
       render :new
     end
+  end
+
+  def own_show
+    
   end
 
   private
@@ -39,5 +44,9 @@ class ItemsController < ApplicationController
 
   def item_image_params
     params.permit(:image)
+  end
+
+  def set_item
+    @item = Item.find(params[:id])
   end
 end
