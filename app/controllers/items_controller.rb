@@ -1,5 +1,5 @@
 class ItemsController < ApplicationController
-  before_action :set_item, only: [:show, :own_show]
+  before_action :set_item, only: [:show, :own_show, :destroy]
 
   def new
     @item = Item.new
@@ -19,6 +19,14 @@ class ItemsController < ApplicationController
       redirect_to root_path
     else
       render :new
+    end
+  end
+
+  def destroy
+    if @item.destroy
+      redirect_to selling_items_users_path
+    else
+      render own_show
     end
   end
 
