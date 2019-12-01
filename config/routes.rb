@@ -16,8 +16,9 @@ Rails.application.routes.draw do
   resources :users, only: [:index, :edit, :update] do
     collection do
       get 'logout'
+      get 'selling_items'
+      get 'sold_items'
     end
   end
-  
   resources :registers, only: [:new]
 end
