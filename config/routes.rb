@@ -10,7 +10,7 @@ Rails.application.routes.draw do
     end
   end
   
-  resources :items, only: [:new, :show, :create] do
+  resources :items, only: [:new, :show, :create, :destroy] do
     resources :purchases, only: [:new, :create]
 
     member do

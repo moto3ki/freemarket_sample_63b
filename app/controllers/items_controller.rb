@@ -21,6 +21,14 @@ class ItemsController < ApplicationController
     end
   end
 
+  def destroy
+    if Item.find(params[:id]).destroy
+      redirect_to selling_items_users_path
+    else
+      render own_show
+    end
+  end
+
   def own_show
     @item = Item.find(params[:id])
   end
