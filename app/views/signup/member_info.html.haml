@@ -2,7 +2,7 @@
   .signup-main
     .signup-panel
       %h2.signup-panel__title 会員情報入力
-      = form_with(model: @user,url: step2_signup_index_path,local: true, method: :get) do |f|
+      = form_with(model: @user,url: tel_no_signup_index_path,local: true, method: :get) do |f|
         .signup-panel__insert
           .signup-inner
             .signup-form

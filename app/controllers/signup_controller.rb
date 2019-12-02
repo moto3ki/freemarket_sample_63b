@@ -1,23 +1,23 @@
 class SignupController < ApplicationController
-  before_action :validates_step1, only: :step2
+  before_action :validates_member_info, only: :tel_no
  
-  def step1
+  def member_info
     @user = User.new 
   end
 
-  def step2
+  def tel_no
     @user = User.new 
     
   end
 
-  def step3
+  def address
     @user = User.new
     @user.build_send_address
     #usend_addressモデルと関連付ける。
     session[:tel_no] = user_params[:tel_no]
   end
 
-  def validates_step1
+  def validates_member_info
     
     #step1で入力した値をsessionに保持
     if params[:user]["birth_day(1i)"].present? && params[:user]["birth_day(2i)"].present? && params[:user]["birth_day(3i)"].present?
