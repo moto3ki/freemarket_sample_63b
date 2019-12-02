@@ -2,7 +2,7 @@ class UsersController < ApplicationController
   before_action :set_user, only: [:edit, :update]
 
   def index
-
+    @purchases = current_user.purchases
   end
 
   def edit
