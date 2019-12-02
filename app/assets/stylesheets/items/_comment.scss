@@ -1,0 +1,32 @@
+.comment-container{
+  width: 700px;
+  margin: 10px auto;
+  background-color: white;
+  padding: 24px 0;
+  &__form{
+    width: 90%;
+    margin: 0 auto;
+    padding: 8px;
+    &__caution{
+      @include string_set(14px, inherit, #333333);
+      width: 97%;
+      padding: 8px;
+      background-color: #fff6de;
+    }
+    &__input{
+      width: 97%;
+      min-height: 104px;
+      margin-top: 10px;
+      padding: 8px;
+      border: 1px solid #ccc;
+      @include string_set(16px, inherit, #333333);
+    }
+    &__submit{
+      @include string_set(14px, inherit, #FFFFFF);
+      @include height_width(50px ,100%);
+      background-color: #AAAAAA;
+      margin-top: 8px;
+      border: 1px solid #aaa;
+    }
+  }
+}

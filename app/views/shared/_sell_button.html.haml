@@ -1,5 +1,11 @@
 .sell_button
-  = link_to "#" do 
-    .sell_button__string
-      出品
-      = icon 'fas', 'camera', class: "sell_button__icon"
+  - if user_signed_in?
+    = link_to new_item_path do 
+      .sell_button__string
+        出品
+        = icon 'fas', 'camera', class: "sell_button__icon"
+  - else
+    = link_to new_user_session_path do 
+      .sell_button__string
+        出品
+        = icon 'fas', 'camera', class: "sell_button__icon"

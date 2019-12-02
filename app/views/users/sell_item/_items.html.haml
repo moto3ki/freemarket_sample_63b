@@ -1,0 +1,18 @@
+- items.each do |item|
+  = link_to own_show_item_path(item) do
+    %li.item
+      .item__left
+        .item__left__img
+          = image_tag item.item_images[0].image.to_s
+        .item__left__info
+          .item__left__info__top
+            = item.name
+          .item__left__info__bottom
+            %span.item__left__info__bottom__icon
+              = icon 'far', 'heart'
+              0
+            %span.item__left__info__bottom__icon
+              = icon 'far', 'comment'
+              0
+      .item__right
+        = icon 'fas', 'angle-right', class: 'icon-arrow-right'

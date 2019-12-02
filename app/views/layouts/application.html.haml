@@ -8,9 +8,12 @@
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
   %body
-    - if params[:controller] == "home"
+    - if params[:controller] == "home" || params[:controller] == "users" || params[:controller] == "items" && (params[:action] == "show" || params[:action] == "own_show")
       = render "shared/header"
       = yield
+      = render "shared/sell_button"
       = render "shared/footer"
     - else
+      = render "shared/sub-header"
       = yield
+      = render "shared/sub-footer"

@@ -10,9 +10,20 @@ Rails.application.routes.draw do
     end
   end
   
-  resources :items, only: [:new, :show, :create] do
+  resources :items, only: [:new, :show, :create, :destroy] do
     resources :purchases, only: [:new, :create]
+
+    member do
+      get 'own_show'
+    end
   end
-  resources :users, only: [:index, :edit, :update]
+  resources :users, only: [:index, :edit, :update] do
+    collection do
+      get 'logout'
+      get 'selling_items'
+      get 'sold_items'
+    end
+    
+  end
   resources :registers, only: [:new]
 end

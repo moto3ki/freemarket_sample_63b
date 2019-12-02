@@ -12,13 +12,6 @@
           もっと見る
           = icon 'fas', 'angle-right'
     %ul.item-lists__items
-      - 10.times do |i|
-        %li.item-lists__items__item
-          = link_to "#", class: "item-link" do
-            = image_tag("/item_image/sample.png", class: "item-lists__items__item__image")
-            .item-lists__items__item__price
-              ¥8,888
-            .item-lists__items__item__namebox
-              .item-lists__items__item__namebox__name
-                サンプルサンプルサンプルサンプル
-= render "shared/sell_button"
+      - @items.each do |item|
+        = render partial: "list", locals: {item: item}
+
