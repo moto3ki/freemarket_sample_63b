@@ -10,14 +10,26 @@
               .signup-form__label ニックネーム
               %span.require 必須
               = f.text_field :nickname, class:"input-default", placeholder: "例) メルカリ太郎"
+            .error-text
+              - @user.errors.full_messages_for(:nickname).each do |message|
+                %div
+                  = message
             .signup-form
               .signup-form__label メールアドレス
               %span.require 必須
               = f.email_field :email, class:"input-default", placeholder:"PC・携帯どちらでも可"
+            .error-text
+              - @user.errors.full_messages_for(:email).each do |message|
+                %div
+                  = message
             .signup-form
               .signup-form__label  パスワード
               %span.require 必須
               = f.password_field  :password, class:"input-default", placeholder:"7文字以上",autocomplete:"off"
+            .error-text
+              - @user.errors.full_messages_for(:password).each do |message|
+                %div
+                  = message
               .signup-form__label__check-box
                 %input.signup-form__label__check-box__input{type: "checkbox"}
                 %label.signup-form__label__check-box__text パスワードを表示する
@@ -31,17 +43,35 @@
               .signup-form__second
                 = f.text_field :kanji_last_name, class:"default-half",placeholder:"例)山田"
                 = f.text_field :kanji_first_name, class:"default-half",placeholder:"例)彩"
-            .signup-form
+            .error-text
+              - @user.errors.full_messages_for(:kanji_last_name).each do |message|
+                %div
+                  = message
+              - @user.errors.full_messages_for(:kanji_first_name).each do |message|
+                %div
+                  = message
+            .signup-for
               .signup-form__label  お名前カナ(全角)
               %span.require 必須
               .signup-form__second
                 = f.text_field :kana_last_name, class:"default-half",placeholder:"例)ヤマダ"
                 = f.text_field :kana_first_name, class:"default-half",placeholder:"例)アヤ"
+            .error-text
+              - @user.errors.full_messages_for(:kana_last_name).each do |message|
+                %div
+                  = message
+              - @user.errors.full_messages_for(:kana_first_name).each do |message|
+                %div
+                  = message
             .signup-form 
               .signup-form__label  生年月日
               %span.require 必須
               .birthday-form
                 != sprintf(f.date_select(:birth_day,with_css_classes:'input-default', prompt:"--",use_month_numbers:true, start_year:Time.now.year, end_year:1900, date_separator:'%s'),'年','月')+'日'
+                .error-text
+                  - @user.errors.full_messages_for(:birth_day).each do |message|
+                    %div
+                      = message
                 %p.birth-text ※ 本人情報は正しく入力してください。会員登録後、修正するにはお時間を頂く場合があります。
             .signup-form
               .signup-form
@@ -52,8 +82,7 @@
                     利用規約
                 %p.signup-text
                   に同意したものとみなします
-                %button.btn-default.signup-btn--red
-                  次へ進む
+                = f.submit "次へ進む", class: 'signup-btn--red'
 
   =render 'shared/sub-footer'
 

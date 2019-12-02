@@ -16,5 +16,24 @@ class User < ApplicationRecord
   accepts_nested_attributes_for :send_address
   # has_one :real_address
 
-  validates :nickname, presence: true
+  #メールアドレス用バリデーション
+  VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i 
+
+  validates :nickname,          presence: true
+  validates :email,             presence: true 
+  validates :email,             format: { with: VALID_EMAIL_REGEX },uniqueness: true,allow_blank: true
+  validates :password,          presence: true
+  validates :password,          format: {with: /\A[a-zA-Z]+\z/ && /\A[0-9]+\z/, message: "は英字と数字の両方を含めて設定してください"}, allow_blank: true
+  validates :password,          length: { in: 7..128, message: "は7文字以上128文字以下で入力してください"}, allow_blank: true
+  validates :kanji_last_name,   presence: true
+  validates :kanji_last_name,   format: {with: /\A[ぁ-んァ-ン一-龥]/}, allow_blank: true
+  validates :kanji_first_name,  presence: true
+  validates :kanji_first_name,  format: {with: /\A[ぁ-んァ-ン一-龥]/}, allow_blank: true
+  validates :kana_last_name,    presence: true
+  validates :kana_last_name,    kana: true, allow_blank: true
+  validates :kana_first_name,   presence: true
+  validates :kana_first_name,   kana: true, allow_blank: true
+  validates :birth_day,         presence: true
+  validates :tel_no,            presence: true
+  validates :tel_no,            format: {with: /\A\d{10,11}\z/}, allow_blank: true
 end
