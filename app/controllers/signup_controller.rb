@@ -1,5 +1,6 @@
 class SignupController < ApplicationController
   before_action :validates_member_info, only: :tel_no
+  before_action :validates_tel_no, only: :address
  
   def member_info
     @user = User.new 
@@ -11,10 +12,11 @@ class SignupController < ApplicationController
   end
 
   def address
+    session[:tel_no] = user_params[:tel_no]
     @user = User.new
     @user.build_send_address
     #usend_addressモデルと関連付ける。
-    session[:tel_no] = user_params[:tel_no]
+    
   end
 
   def validates_member_info
@@ -53,7 +55,7 @@ class SignupController < ApplicationController
 
     # 仮で作成したインスタンスのバリデーションチェックを行う.
     # 仮のインスタンスを作成しないとバリデーションが通らないため
-    render '/signup/step1' unless @user.valid?
+    render '/signup/member_info' unless @user.valid?
   end
 
   def create
