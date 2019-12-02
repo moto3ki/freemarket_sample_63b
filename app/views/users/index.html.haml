@@ -70,8 +70,8 @@
         .buy-item__content
           %ul#buying-list.buy-item__content__list.active-2
             %li.buy-item__content__list__text
-              取引中の商品がありません
           %ul#buyed-list.buy-item__content__list
-            %li.buy-item__content__list__text
-              過去に取引した商品がありません
-  
+            = render 'users/buy_item/list', { buy_items: @purchases }
+            %li.all-show
+              = link_to  "#", class: "all-show-btn" do
+                一覧を見る

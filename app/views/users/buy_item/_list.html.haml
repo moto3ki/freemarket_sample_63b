@@ -1,0 +1,9 @@
+- buy_items.each do |buy_item|
+  %li.item-box
+    = link_to  "#", class: "news-link" do
+      .item-photo
+        = image_tag buy_item.item.item_images[0].image.to_s, class:'item-image'
+      .item-body
+        .item-text
+          = buy_item.item.name + "  購入しました。  取引が完了しました。"
+      = icon 'fas', 'angle-right', class: 'icon-arrow-right'
