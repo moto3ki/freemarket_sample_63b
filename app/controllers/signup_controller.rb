@@ -1,6 +1,7 @@
 class SignupController < ApplicationController
   before_action :validates_member_info, only: :tel_no
   before_action :validates_tel_no, only: :address
+  before_action :validates_address, only: :create
  
   def member_info
     @user = User.new 
@@ -13,9 +14,7 @@ class SignupController < ApplicationController
 
   def address
     
-    @user = User.new
-    @user.build_send_address
-    #usend_addressモデルと関連付ける。
+    @send_address = SendAddress.new
     
   end
 
@@ -55,7 +54,7 @@ class SignupController < ApplicationController
 
     # 仮で作成したインスタンスのバリデーションチェックを行う.
     # 仮のインスタンスを作成しないとバリデーションが通らないため
-    render '/signup/member_info' unless @user.valid?
+    render '/signup/member_info' unless @user.valid?(:member_info_set)
   end
 
   def validates_tel_no
@@ -72,31 +71,49 @@ class SignupController < ApplicationController
       tel_no:          session[:tel_no]
     )
 
-    render '/signup/tel_no' unless @user.valid?
-  end
 
-  def create
-    
-    @user = User.new(
-      nickname:        session[:nickname],
-      email:           session[:email],
-      password:        session[:password],
-      kanji_last_name: session[:kanji_last_name],
-      kanji_first_name:session[:kanji_first_name],
-      kana_last_name:  session[:kana_last_name],
-      kana_first_name: session[:kana_first_name],
-      birth_day:       session[:birth_day],
-      tel_no:          session[:tel_no]
-    )
-    @user.build_send_address(user_params[:send_address_attributes])
-    # userにヒモ付けられたsend_addressにuser_paramsにあるsend_address_attributesの値を引数として渡す。
+    render '/signup/tel_no' unless @user.valid?
 
     if @user.save 
       session[:id] = @user.id
       sign_in User.find(session[:id]) unless user_signed_in?
-    else
-      redirect_to new_user_registration_path
     end
+  end
+
+  def validates_address
+    @send_address = SendAddress.new(
+      user_id:          current_user.id,
+      kanji_last_name:  send_address_params[:kanji_last_name],
+      kanji_first_name: send_address_params[:kanji_first_name],
+      kana_last_name:   send_address_params[:kana_last_name],
+      kana_first_name:  send_address_params[:kana_first_name],
+      post_code:        send_address_params[:post_code],
+      prefecture_id:    send_address_params[:prefecture_id],
+      city:             send_address_params[:city],
+      address:          send_address_params[:address],
+      building_name:    send_address_params[:building_name],
+      tel_no:           send_address_params[:tel_no]
+    )
+
+    render '/signup/address' unless @send_address.valid?
+  end
+
+  def create
+    @send_address = SendAddress.create(
+      user_id:          current_user.id,
+      kanji_last_name:  send_address_params[:kanji_last_name],
+      kanji_first_name: send_address_params[:kanji_first_name],
+      kana_last_name:   send_address_params[:kana_last_name],
+      kana_first_name:  send_address_params[:kana_first_name],
+      post_code:        send_address_params[:post_code],
+      prefecture_id:    send_address_params[:prefecture_id],
+      city:             send_address_params[:city],
+      address:          send_address_params[:address],
+      building_name:    send_address_params[:building_name],
+      tel_no:           send_address_params[:tel_no]
+    )
+
+    
   end
 
   private
@@ -110,18 +127,22 @@ class SignupController < ApplicationController
       :kana_last_name,
       :kana_first_name,
       :birth_day,
-      :tel_no,
-      send_address_attributes: [:id,
-      :kanji_last_name,  
+      :tel_no
+    )
+  end
+
+  def send_address_params
+    params.require(:send_address).permit(
+      :kanji_last_name,
       :kanji_first_name, 
       :kana_last_name, 
       :kana_first_name,  
       :post_code, 
-      :prefectures,      
+      :prefecture_id,      
       :city,     
       :address,          
       :building_name,
-      :tel_no]
+      :tel_no
     )
   end
 end
