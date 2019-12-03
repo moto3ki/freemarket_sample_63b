@@ -10,6 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+
 ActiveRecord::Schema.define(version: 2019_12_03_035501) do
 
   create_table "item_images", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -28,12 +29,12 @@ ActiveRecord::Schema.define(version: 2019_12_03_035501) do
     t.integer "condition", null: false
     t.integer "delivery_charge", null: false
     t.integer "delivery_method", null: false
-    t.string "from_area", null: false
     t.integer "delivery_period", null: false
     t.integer "price", null: false
     t.integer "like_cnt", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "prefecture_id", null: false
     t.index ["condition"], name: "index_items_on_condition"
     t.index ["delivery_period"], name: "index_items_on_delivery_period"
     t.index ["name"], name: "index_items_on_name"
@@ -49,6 +50,18 @@ ActiveRecord::Schema.define(version: 2019_12_03_035501) do
     t.datetime "updated_at", null: false
     t.index ["item_id"], name: "index_purchases_on_item_id"
     t.index ["user_id"], name: "index_purchases_on_user_id"
+  end
+
+  create_table "real_addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.string "post_code", null: false
+    t.string "prefectures", null: false
+    t.string "city", null: false
+    t.string "address", null: false
+    t.string "building_name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_real_addresses_on_user_id"
   end
 
   create_table "send_addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -93,5 +106,6 @@ ActiveRecord::Schema.define(version: 2019_12_03_035501) do
   add_foreign_key "items", "users"
   add_foreign_key "purchases", "items"
   add_foreign_key "purchases", "users"
+  add_foreign_key "real_addresses", "users"
   add_foreign_key "send_addresses", "users"
 end

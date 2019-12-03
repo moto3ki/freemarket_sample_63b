@@ -10,7 +10,7 @@ Rails.application.routes.draw do
     end
   end
   
-  resources :items, only: [:new, :show, :create, :destroy] do
+  resources :items, only: [:new, :show, :create, :destroy, :edit, :update] do
     resources :purchases, only: [:new, :create]
 
     member do
@@ -24,6 +24,9 @@ Rails.application.routes.draw do
       get 'sold_items'
     end
     
+    resources :real_address, only: [:new, :create]
   end
-  resources :registers, only: [:new]
+  
+  resources :items, only: [:new, :show, :create]
+  
 end

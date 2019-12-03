@@ -52,11 +52,35 @@
             line-height: 1.5;
             font-size: 16px;
             box-sizing: border-box;
+            @include focus_border_color($link-color);
 
             input{
               outline: 0;
               font-family: inherit;
             }
+          }
+          
+          .error-form{
+            @include height_width(48px, 220px);
+            margin: 0 0 0 8px;
+            vertical-align: middle;
+            padding: 10px 16px 8px;
+            border-radius: 4px;
+            background: #fff;
+            line-height: 1.5;
+            font-size: 16px;
+            box-sizing: border-box;
+            border: 1px solid red;
+            @include focus_border_color($link-color);
+
+            input{
+              outline: 0;
+              font-family: inherit;
+            }
+          }
+          .error-comment {
+            @include string_set(16px, normal, red);
+            text-align: center;
           }
         }
 
@@ -76,13 +100,9 @@
             font-size: 16px;
             line-height: 1.5;
             box-sizing: border-box;
-
-            &:focus{
-              outline: none;
-              border: 1px solid $link_color;
-            }
-              
+            @include focus_border_color($link-color);
           }
+
           .btn-default {
             margin: 16px 0 0;
             display: block;
