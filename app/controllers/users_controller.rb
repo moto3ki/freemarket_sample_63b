@@ -2,7 +2,7 @@ class UsersController < ApplicationController
   before_action :set_user, only: [:edit, :update]
 
   def index
-
+    
   end
 
   def edit
@@ -38,5 +38,6 @@ class UsersController < ApplicationController
   def set_user
     @user = User.find(params[:id])
   end
+
 
 end

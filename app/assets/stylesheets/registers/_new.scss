@@ -40,7 +40,7 @@
           }
           .select-wrap {
             height: 100%;
-            #prefecture_id {
+            #real_address_prefectures {
               @include pull_down(100%);
               background-color: #fff;
               margin-top: 8px;
@@ -69,7 +69,7 @@
 .fa-angle-down {
   position: absolute;
   right: 180px;
-  top: 850px;
+  top: 980px;
   z-index: 3;
   color: #888;
   font-size: 30px;
@@ -115,16 +115,13 @@ a {
   transition: all ease-out .3s;
   cursor: pointer;
   text-align: center;
+  margin: 40px 0 0 0;
 }
 
 .btn-red {
   background: #ea352d;
   border: 1px solid #ea352d;
   color: #fff;
-}
-
-button {
-  margin: 40px 0 0 0;
 }
 
 

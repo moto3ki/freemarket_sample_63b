@@ -4,7 +4,7 @@
     %section.l-chapter-container.mypage-identification
       %h2.l-chapter-head
         本人情報の登録
-      %form.l-single-inner{action: "https://www.mercari.com/jp/mypage/identification/save/", method: "POST", novalidate: ""}
+      = form_with model: @realaddress, url: user_real_address_index_path, local: true, method: :post, class: "l-single-inner" do |f|
         %div
           %p
             お客さまの本人情報をご登録ください。
@@ -14,48 +14,51 @@
             %a{href: "/jp/help_center/article/495/", target: "_blank"}
               本人確認書類のアップロードについて
               %i.fas.fa-angle-right
-        = form_with do |f|
           .form-group
-            %label お名前
-            %p 仮メン 次郎
+            %label :お名前
+            %p
+            = current_user.kanji_last_name
+            = current_user.kanji_first_name
           .form-group
-            %label お名前カナ
-            %p カリメン ジロウ
+            %label :お名前カナ
+            %p
+            = current_user.kana_last_name
+            = current_user.kana_first_name
           .form-group
-            %label{for: "birthday"} 生年月日
-            %p 2019/11/22
+            %label :生年月日
+            %p
+            = current_user.birth_day
           .form-group
-            %label{for: "zip_code"} 郵便番号
+            %label :郵便番号
             %span.form-arbitrary 任意
             %br
-            %input.input-default{name: "zip_code", placeholder: "例）1234567", type: "text", value: ""}
+            = f.text_field :post_code, class: "input-default", placeholder: "例）1234567", type: "text"
           .form-group
-            %label{for: "prefecture"} 都道府県
+            %label :都道府県
             %span.form-arbitrary 任意
             .select-wrap
               %i.fas.fa-angle-down
-              = f.collection_select :prefecture_id, Prefecture.all, :id, :name
+              = f.collection_select :prefectures, Prefecture.all, :id, :name
           .form-group
-            %label{for: "city"} 市区町村
+            %label :市区町村
             %span.form-arbitrary 任意
             %br
-            %input.input-default{name: "city", placeholder: "例) 横浜市緑区", type: "text", value: ""}
+            = f.text_field :city, class: "input-default", placeholder: "例) 横浜市緑区", type: "text"
           .form-group
-            %label{for: "address1_label"} 番地
+            %label :番地
             %span.form-arbitrary 任意
             %br
-            %input.input-default{name: "address1", placeholder: "例) 青山1−1−1", type: "text", value: ""}
+            = f.text_field :address, class: "input-default", placeholder: "例) 青山1−1−1", type: "text"
           .form-group
-            %label{for: "address2_label"} 建物名
+            %label :建物名
             %span.form-arbitrary 任意
             %br
-            %input.input-default{name: "address2", placeholder: "例) 柳ビル103", type: "text", value: ""}
-            %button.btn-default.btn-red{type: "submit"} 登録する
+            = f.text_field :building_name, class: "input-default", placeholder: "例) 柳ビル103", type: "text"
+          = f.submit "登録する", class: "btn-default btn-red"
           .form-group.text-right
             %p
               %a{href: "/jp/help_center/article/423/", target: "_blank"}
                 本人情報の登録について
                 %i.fas.fa-angle-right
-          %input{name: "__csrf_value", type: "hidden"}
   = render partial: "shared/side_bar"
 = render partial: "shared/footer"

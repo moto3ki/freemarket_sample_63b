@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_29_024905) do
+ActiveRecord::Schema.define(version: 2019_11_29_043804) do
 
   create_table "item_images", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "item_id", null: false
@@ -49,6 +49,18 @@ ActiveRecord::Schema.define(version: 2019_11_29_024905) do
     t.datetime "updated_at", null: false
     t.index ["item_id"], name: "index_purchases_on_item_id"
     t.index ["user_id"], name: "index_purchases_on_user_id"
+  end
+
+  create_table "real_addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.string "post_code", null: false
+    t.string "prefectures", null: false
+    t.string "city", null: false
+    t.string "address", null: false
+    t.string "building_name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_real_addresses_on_user_id"
   end
 
   create_table "send_addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -93,5 +105,6 @@ ActiveRecord::Schema.define(version: 2019_11_29_024905) do
   add_foreign_key "items", "users"
   add_foreign_key "purchases", "items"
   add_foreign_key "purchases", "users"
+  add_foreign_key "real_addresses", "users"
   add_foreign_key "send_addresses", "users"
 end
