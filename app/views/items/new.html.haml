@@ -1,9 +1,6 @@
 .item-sell-page
   .inner-container
-    - if @item.errors.full_messages.length != 0 || @item_images.errors.full_messages.length != 0
-      = @item.errors.full_messages
-      = @item_images.errors.full_messages
-    = form_with(url: items_path, method: :post) do |f|
+    = form_with(model: @item, data: { remote: false }) do |f|
       .title-box
         商品の情報を入力
       .item-image-box
@@ -14,19 +11,22 @@
         = f.label :image do
           .item-image-box__upload
             = f.file_field :image, class: "img-hidden"
-            %p.item-image-box__upload__message
-              ドラッグアンドドロップ
-              %br
-              またはクリックしてファイルをアップロード
+            - if @item.item_images.present?
+              = image_tag @item.item_images[0].image.to_s
+            - else
+              %p.item-image-box__upload__message
+                ドラッグアンドドロップ
+                %br
+                またはクリックしてファイルをアップロード
       .item-content-box
         .item-content-box__name-title
           商品名
         .item-content-box__name-input
-          = f.text_field :name, class: "", placeholder: "商品名（必須40文字まで）"
+          = f.text_field :name, class: "", value: @item.name, placeholder: "商品名（必須40文字まで）"
         .item-content-box__explain-title
           商品説明
         .item-content-box__explain-input
-          = f.text_area :explain, class: "", placeholder: "商品の説明（必須1,000文字以内）（色、素材、重さ、定価、注意点など）例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです"
+          = f.text_area :explain, class: "", value: @item.explain, placeholder: "商品の説明（必須1,000文字以内）（色、素材、重さ、定価、注意点など）例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです"
       .item-detail-box
         .item-detail-box__title
           商品の詳細
@@ -40,7 +40,7 @@
             .item-detail-box__select__status__title
               商品の状態
             .item-detail-box__select__status__pulldown
-              = f.select :condition, [['---', 0], ['sample', 1]]
+              = f.select :condition, options_for_select(Item.conditions.keys, selected: @item.condition)
       .item-delivery-box
         .item-delivery-box__title
           配送について
@@ -49,22 +49,22 @@
             .item-delivery-box__select__payer__title
               配送料の負担
             .item-delivery-box__select__payer__pulldown
-              = f.select :delivery_charge, [['---', 0], ['sample', 1]]
+              = f.select :delivery_charge, options_for_select(Item.delivery_charges.keys, selected: @item.delivery_charge)
           .item-delivery-box__select__method
             .item-delivery-box__select__method__title
               配送の方法
             .item-delivery-box__select__method__pulldown
-              = f.select :delivery_method, [['---', 0], ['sample', 1]]
+              = f.select :delivery_method, options_for_select(Item.delivery_methods.keys, selected: @item.delivery_method)
           .item-delivery-box__select__area
             .item-delivery-box__select__area__title
               発送元の地域
             .item-delivery-box__select__area__pulldown
-              = f.select :from_area, [['---', 0], ['sample', 1]]
+              = f.collection_select :prefecture_id, Prefecture.all, :id, :name, selected: @item.prefecture_id
           .item-delivery-box__select__period
             .item-delivery-box__select__period__title
               発送までの日数
             .item-delivery-box__select__period__pulldown
-              = f.select :delivery_period, [['---', 0], ['sample', 1]]
+              = f.select :delivery_period, options_for_select(Item.delivery_periods.keys, selected: @item.delivery_period)
       .item-price-box
         .item-price-box__title
           販売価格(300〜9,999,999)
@@ -74,20 +74,20 @@
               価格
             .item-price-box__set__price__value
               ¥
-              = f.text_field :price, placeholder: "例）300"
+              = f.text_field :price, value: @item.price, placeholder: "例）300", id: "item-price"
           %li.item-price-box__set__fee
             .item-price-box__set__fee__title
               販売手数料 (10%)
-            .item-price-box__set__fee__value
+            .item-price-box__set__fee__value#item-sell-fee
               \-
           %li.item-price-box__set__profit
             .item-price-box__set__profit__title
               販売利益
-            .item-price-box__set__profit__value
+            .item-price-box__set__profit__value#item-sell-profit
               \-
       .item-sell-box
         .item-sell-box__sell-button
-          = f.submit "出品する"
+          = f.submit
         .item-sell-box__back-button
           = link_to "#" do
             もどる
