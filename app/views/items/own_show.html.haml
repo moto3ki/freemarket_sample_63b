@@ -1,9 +1,7 @@
 .item-own-show-page
   = render "item", { item: @item }
   .operation-container
-    = link_to "#" do
-      .edit-btn
-        編集する
+    = link_to "編集する", edit_item_path(@item), class: "edit-btn"
     %p.text-center
       or
     = link_to "削除する", item_path(@item), method: :delete, data: { confirm: '削除しますか？' }, class: "delete-btn"

@@ -1,5 +1,5 @@
 class ItemsController < ApplicationController
-  before_action :set_item, only: [:show, :own_show, :destroy]
+  before_action :set_item, only: [:show, :edit, :update, :own_show, :destroy]
 
   def new
     @item = Item.new
@@ -22,6 +22,18 @@ class ItemsController < ApplicationController
     end
   end
 
+  def edit
+    render template: 'items/new'
+  end
+
+  def update
+    if @item.update(item_params)
+      redirect_to own_show_item_path(@item)
+    else
+      render :edit
+    end
+  end
+
   def destroy
     if @item.destroy
       redirect_to selling_items_users_path
@@ -36,12 +48,13 @@ class ItemsController < ApplicationController
 
   private
   def item_params
-    params.permit(:name,
+    params.require(:item)
+          .permit(:name,
                   :explain,
                   :condition,
                   :delivery_charge,
                   :delivery_method,
-                  :from_area,
+                  :prefecture_id,
                   :delivery_period,
                   :price)
           .merge(user_id: current_user.id,
@@ -51,7 +64,7 @@ class ItemsController < ApplicationController
   end
 
   def item_image_params
-    params.permit(:image)
+    params.require(:item).permit(:image)
   end
 
   def set_item
