@@ -13,8 +13,8 @@ class User < ApplicationRecord
   # has_many :rates
   # has_many :ratings, through: :rates, source: :rated_user
   has_one :send_address
+  has_one :real_address
   accepts_nested_attributes_for :send_address
-  # has_one :real_address
 
   #メールアドレス用バリデーション
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i 
