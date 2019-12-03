@@ -2,18 +2,18 @@ class UsersController < ApplicationController
   before_action :set_user, only: [:edit, :update]
 
   def index
-    
+    @purchases = current_user.purchases
   end
 
   def edit
-
+    
   end
 
   def update
     if @user.update(user_params)
       redirect_to edit_user_path
     else
-      redirect_to edit_user_path
+      render 'edit'
     end
   end
 

@@ -1,16 +1,35 @@
 class SignupController < ApplicationController
+  before_action :validates_member_info, only: :tel_no
+  before_action :validates_tel_no, only: :address
  
-  def step1
+  def member_info
     @user = User.new 
   end
 
-  def step2
+  def tel_no
     @user = User.new 
-    birth_day = Date.new(
-      params[:user]["birth_day(1i)"].to_i,
-      params[:user]["birth_day(2i)"].to_i,
-      params[:user]["birth_day(3i)"].to_i
-    )
+    
+  end
+
+  def address
+    
+    @user = User.new
+    @user.build_send_address
+    #usend_addressモデルと関連付ける。
+    
+  end
+
+  def validates_member_info
+    
+    #step1で入力した値をsessionに保持
+    if params[:user]["birth_day(1i)"].present? && params[:user]["birth_day(2i)"].present? && params[:user]["birth_day(3i)"].present?
+
+      birth_day = Date.new(
+        params[:user]["birth_day(1i)"].to_i,
+        params[:user]["birth_day(2i)"].to_i,
+        params[:user]["birth_day(3i)"].to_i
+      )
+    end
    
     session[:nickname] = user_params[:nickname]
     session[:email] = user_params[:email]
@@ -20,13 +39,40 @@ class SignupController < ApplicationController
     session[:kana_last_name] = user_params[:kana_last_name]
     session[:kana_first_name] = user_params[:kana_first_name]
     session[:birth_day] = birth_day
+
+    #バリデーション用に、仮でインスタンスを作成する
+    @user = User.new(
+      nickname: session[:nickname], # sessionに保存された値をインスタンスに渡す
+      email: session[:email],
+      password: session[:password],
+      kanji_last_name: session[:kanji_last_name],
+      kanji_first_name:session[:kanji_first_name],
+      kana_last_name:  session[:kana_last_name],
+      kana_first_name: session[:kana_first_name],
+      birth_day:       session[:birth_day],
+      tel_no:          "09012345678"
+    )
+
+    # 仮で作成したインスタンスのバリデーションチェックを行う.
+    # 仮のインスタンスを作成しないとバリデーションが通らないため
+    render '/signup/member_info' unless @user.valid?
   end
 
-  def step3
-    @user = User.new
-    @user.build_send_address
-    #usend_addressモデルと関連付ける。
+  def validates_tel_no
     session[:tel_no] = user_params[:tel_no]
+    @user = User.new(
+      nickname:        session[:nickname],
+      email:           session[:email],
+      password:        session[:password],
+      kanji_last_name: session[:kanji_last_name],
+      kanji_first_name:session[:kanji_first_name],
+      kana_last_name:  session[:kana_last_name],
+      kana_first_name: session[:kana_first_name],
+      birth_day:       session[:birth_day],
+      tel_no:          session[:tel_no]
+    )
+
+    render '/signup/tel_no' unless @user.valid?
   end
 
   def create
@@ -79,3 +125,4 @@ class SignupController < ApplicationController
     )
   end
 end
+

@@ -89,6 +89,7 @@
           font-weight: 1;
           vertical-align: middle;
           cursor: pointer;
+          color: #333;
         }
       }
     }
@@ -182,3 +183,10 @@
     }
   }
 
+  .error-text{
+    color: #ea352d;
+    line-height: 1.5;
+    font-size: 14px;
+    text-align: left;
+    padding: 5px;
+  }

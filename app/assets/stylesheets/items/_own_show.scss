@@ -12,6 +12,7 @@
     box-sizing: border-box;
     .edit-btn{
       @include string_set(14px, normal, #FFFFFF);
+      display: block;
       margin: 16px 0;
       padding: 16px;
       text-align: center;

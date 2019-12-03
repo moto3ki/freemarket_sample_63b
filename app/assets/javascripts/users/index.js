@@ -1,4 +1,4 @@
-$(document).on('turbolinks:load', function () {
+$(function(){
   let news_tabs = $(".information__tabs__btn");
   
   function newsTabSwitch () {
