@@ -19,7 +19,7 @@ class User < ApplicationRecord
   #メールアドレス用バリデーション
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i 
 
-  validates :nickname,          presence: true,on: :validates_member_info
+  validates :nickname,          presence: true,on: :validates_member_info,on: :update
   validates :email,             presence: true,on: :validates_member_info
   validates :email,             format: { with: VALID_EMAIL_REGEX },uniqueness: true,allow_blank: true,on: :validates_member_info
   validates :password,          presence: true,on: :validates_member_info
