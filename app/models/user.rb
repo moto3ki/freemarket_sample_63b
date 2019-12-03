@@ -34,6 +34,6 @@ class User < ApplicationRecord
   validates :kana_first_name,   presence: true,on: :validates_member_info
   validates :kana_first_name,   kana: true, allow_blank: true,on: :validates_member_info
   validates :birth_day,         presence: true,on: :validates_member_info
-  validates :tel_no,            presence: true,on: :validates_member_tel_no
-  validates :tel_no,            format: {with: /\A\d{10,11}\z/}, allow_blank: true,on: :validates_tel_no
+  validates :tel_no,            presence: true
+  validates :tel_no,            format: {with:/\A\d{10}\z|\A\d{11}\z/}, allow_blank: true
 end
