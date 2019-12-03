@@ -1,11 +1,14 @@
 class SendAddress < ApplicationRecord
   belongs_to :user
-  
+
+  #名前用のバリデーション
+  VALID_KANJIL_REGEX = /\A[ぁ-んァ-ン一-龥]/
+
   #バリデーション
   validates :kanji_last_name,   presence: true
-  validates :kanji_last_name,   format: {with: /\A[ぁ-んァ-ン一-龥]/}, allow_blank: true
+  validates :kanji_last_name,   format: {with: VALID_KANJIL_REGEX}, allow_blank: true
   validates :kanji_first_name,  presence: true
-  validates :kanji_first_name,  format: {with: /\A[ぁ-んァ-ン一-龥]/}, allow_blank: true
+  validates :kanji_first_name,  format: {with: VALID_KANJIL_REGEX}, allow_blank: true
   validates :kana_last_name,    presence: true
   validates :kana_last_name,    kana: true, allow_blank: true
   validates :kana_first_name,   presence: true
