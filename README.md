@@ -72,7 +72,7 @@ Things you may want to cover:
 |condition|integer|null: false, index: true|
 |delivery_charge|integer|null: false|
 |delivery_method|integer|null: false|
-|from_area|string|null: false|
+|prefecture_id|integer|null: false, foreign_key: true|
 |delivery_period|integer|null: false, index: true|
 |price|integer|null: false, index: true|
 |like_cnt|integer|null: false|

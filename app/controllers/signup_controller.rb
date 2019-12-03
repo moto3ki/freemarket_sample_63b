@@ -12,7 +12,7 @@ class SignupController < ApplicationController
   end
 
   def address
-    session[:tel_no] = user_params[:tel_no]
+    
     @user = User.new
     @user.build_send_address
     #usend_addressモデルと関連付ける。
@@ -56,6 +56,23 @@ class SignupController < ApplicationController
     # 仮で作成したインスタンスのバリデーションチェックを行う.
     # 仮のインスタンスを作成しないとバリデーションが通らないため
     render '/signup/member_info' unless @user.valid?
+  end
+
+  def validates_tel_no
+    session[:tel_no] = user_params[:tel_no]
+    @user = User.new(
+      nickname:        session[:nickname],
+      email:           session[:email],
+      password:        session[:password],
+      kanji_last_name: session[:kanji_last_name],
+      kanji_first_name:session[:kanji_first_name],
+      kana_last_name:  session[:kana_last_name],
+      kana_first_name: session[:kana_first_name],
+      birth_day:       session[:birth_day],
+      tel_no:          session[:tel_no]
+    )
+
+    render '/signup/tel_no' unless @user.valid?
   end
 
   def create

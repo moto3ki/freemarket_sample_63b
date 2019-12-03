@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_29_040116) do
+ActiveRecord::Schema.define(version: 2019_12_03_014044) do
 
   create_table "credit_cards", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "user_id", null: false
@@ -36,12 +36,12 @@ ActiveRecord::Schema.define(version: 2019_11_29_040116) do
     t.integer "condition", null: false
     t.integer "delivery_charge", null: false
     t.integer "delivery_method", null: false
-    t.string "from_area", null: false
     t.integer "delivery_period", null: false
     t.integer "price", null: false
     t.integer "like_cnt", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "prefecture_id", null: false
     t.index ["condition"], name: "index_items_on_condition"
     t.index ["delivery_period"], name: "index_items_on_delivery_period"
     t.index ["name"], name: "index_items_on_name"
