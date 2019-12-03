@@ -13,23 +13,24 @@ class User < ApplicationRecord
   # has_many :rates
   # has_many :ratings, through: :rates, source: :rated_user
   has_one :send_address
-  # has_one :real_address
+  has_one :real_address
+
 
   #メールアドレス用バリデーション
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i 
   #名前用のバリデーション
   VALID_KANJIL_REGEX = /\A[ぁ-んァ-ン一-龥]/
 
-  validates :nickname,          presence: true
+  validates :nickname,          presence: true,on: :member_info_set,on: :update
   validates :email,             presence: true,on: :member_info_set
   validates :email,             format: { with: VALID_EMAIL_REGEX },uniqueness: true,allow_blank: true,on: :member_info_set
   validates :password,          presence: true,on: :member_info_set
-  validates :password,          format: {with: /\A(?=.*?[a-z])(?=.*?\d)[a-z\d]{7,100}+\z/i, message: "は英字と数字の両方を含めて設定してください"}, allow_blank: true,on: :member_info_set
+  validates :password,          format: {with: /\A(?=.*?[a-z])(?=.*?\d)[a-z\d]{7,128}+\z/i, message: "は英字と数字の両方を含めて設定してください"}, allow_blank: true,on: :member_info_set
   validates :password,          length: { in: 7..128, message: "は7文字以上128文字以下で入力してください"}, allow_blank: true,on: :member_info_set
   validates :kanji_last_name,   presence: true,on: :member_info_set
-  validates :kanji_last_name,   format: {with: VALID_KANJIL_REGEX}, allow_blank: true,on: :member_info_set
+  validates :kanji_last_name,   format: {with: /\A[ぁ-んァ-ン一-龥]/}, allow_blank: true,on: :member_info_set
   validates :kanji_first_name,  presence: true,on: :member_info_set
-  validates :kanji_first_name,  format: {with: VALID_KANJIL_REGEX}, allow_blank: true,on: :member_info_set
+  validates :kanji_first_name,  format: {with: /\A[ぁ-んァ-ン一-龥]/}, allow_blank: true,on: :member_info_set
   validates :kana_last_name,    presence: true,on: :member_info_set
   validates :kana_last_name,    kana: true, allow_blank: true,on: :member_info_set
   validates :kana_first_name,   presence: true,on: :member_info_set

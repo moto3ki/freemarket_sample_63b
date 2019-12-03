@@ -1,6 +1,5 @@
 class SendAddress < ApplicationRecord
   belongs_to :user
-
   #名前用のバリデーション
   VALID_KANJIL_REGEX = /\A[ぁ-んァ-ン一-龥]/
 
