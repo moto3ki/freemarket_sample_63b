@@ -1,0 +1,30 @@
+.item-purchase-page
+  .inner-container
+    .title-container
+      購入内容の確認
+    .item-container
+      .item-container__title
+        .item-container__title__image
+          = image_tag @item.item_images[0].image.to_s
+        .item-container__title__name
+          = @item.name
+      .item-container__price
+        .item-container__price__value
+          = comma_to_jpy(@item.price)
+        .item-container__price__postage
+          = @item.postage_set
+      .item-container__pay-price
+        .item-container__pay-price__title
+          支払い金額
+        .item-container__pay-price__value
+          = comma_to_jpy(@item.price)
+      .item-container__purchase-button
+        = link_to "購入する", item_purchases_path, method: :post
+    .delivery-address-container
+      .delivery-address-container__title
+        配送先
+      .delivery-address-container__value
+    .payment-method-container
+      .payment-method-container__title
+        支払い方法
+      .payment-method-container__value

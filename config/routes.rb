@@ -4,13 +4,11 @@ Rails.application.routes.draw do
   
   resources :signup, only: [:create] do 
     collection do
-      get 'step1'
-      get 'step2'
+      get 'member_info'
+      get 'tel_no'
+      get 'address'
     end
   end
-  
-  resources :items, only: [:new, :show, :create]
-  resources :users, only: [:index, :edit, :update]
 
   resources :credit_cards, only: [:new, :show] do
     collection do
@@ -19,5 +17,21 @@ Rails.application.routes.draw do
       post 'delete', to: 'credit_cards#delete'
     end
   end
+  
+  resources :items, only: [:new, :show, :create, :destroy] do
+    resources :purchases, only: [:new, :create]
 
+    member do
+      get 'own_show'
+    end
+  end
+  resources :users, only: [:index, :edit, :update] do
+    collection do
+      get 'logout'
+      get 'selling_items'
+      get 'sold_items'
+    end
+    
+  end
+  resources :registers, only: [:new]
 end

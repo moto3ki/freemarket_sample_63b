@@ -1,0 +1,117 @@
+.item-purchase-page{
+  width: 100%;
+  height: 100%;
+  padding-top: 40px;
+  background-color: rgb(245, 245, 245);
+  font-family: $main_font;
+  .inner-container{
+    width: 700px;
+    margin: 0 auto;
+    background-color: white;
+    .title-container{
+      @include string_set(22px, bold, #333333);
+      padding: 16px;
+      border-bottom: 1px solid $main_back_color;
+      text-align: center;
+    }
+    .item-container{
+      padding: 24px 87.5px;
+      box-sizing: border-box;
+      border-bottom: 1px solid $main_back_color;
+      &__title{
+        display: flex;
+        justify-content: flex-start;
+        width: 320px;
+        height: 85px;
+        &__image{
+          width: 64px;
+          img{
+            width: 100%;
+          }
+        }
+        &__name{
+          @include string_set(16px, bold, #333333);
+          width: 240px;
+          margin-left: 16px;
+        }
+      }
+      &__price{
+        width: 320px;
+        margin-top: 8px;
+        display: flex;
+        justify-content: center;
+        &__value{
+          @include string_set(22px, bold, #333333);
+        }
+        &__postage{
+          @include string_set(14px, normal, #888888);
+          padding-top: 4px;
+          margin-left: 8px;
+        }
+      }
+      &__pay-price{
+        @include flexbox_space-between;
+        width: 320px;
+        margin: 0 auto;
+        margin-top: 8px;
+        &__title{
+          @include string_set(18px, bold, #333333);
+          padding: 16px 0;
+        }
+        &__value{
+          @include string_set(28px, bold, #333333);
+          padding: 14px 0;
+        }
+      }
+      &__purchase-button{
+        width: 320px;
+        margin: 0 auto;
+        margin-top: 16px;
+        a{
+          @include string_set(14px, bold, #FFFFFF);
+          text-decoration: none;
+          width: 100%;
+          background-color: #888888;
+          text-align: center;
+          padding: 15px 0;
+          display: block;
+          margin: 0 auto;
+          width: 100%;
+          cursor: pointer;
+        }
+      }
+    }
+    .delivery-address-container{
+      padding: 24px 87.5px;
+      box-sizing: border-box;
+      border-bottom: 1px solid $main_back_color;
+      &__title{
+        @include string_set(14px, bold, #333333);
+        width: 320px;
+        margin: 0 auto;
+        margin-top: 16px;
+      }
+      &__value{
+        width: 320px;
+        margin: 0 auto;
+        margin-top: 16px;
+      }
+    }
+    .payment-method-container{
+      padding: 24px 87.5px;
+      box-sizing: border-box;
+      border-bottom: 1px solid $main_back_color;
+      &__title{
+        @include string_set(14px, bold, #333333);
+        width: 320px;
+        margin: 0 auto;
+        margin-top: 16px;
+      }
+      &__value{
+        width: 320px;
+        margin: 0 auto;
+        margin-top: 16px;
+      }
+    }
+  }
+}

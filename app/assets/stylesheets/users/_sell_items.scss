@@ -1,0 +1,85 @@
+.user-sell-items-page{
+  @include height_width(100%, 100%);
+  background-color: $main_back_color;
+  padding-top: 40px;
+  .inner-container{
+    width: 1020px;
+    margin: 0 auto;
+    font-family: $main-font;
+    @include flexbox_space-between;
+    .sell-list{
+      @include height_width(100%, 700px);
+      background-color: #FFF;
+      &__title{
+        @include string-set(16ox, bold, #333333);
+        padding: 0 16px;
+        line-height: 72px;
+      }
+      &__tabs{
+        display: flex;
+        text-align: center;
+        &__tab{
+          display: block;
+          width: 50%;
+          line-height: 72px;
+          background-color: #EEE;
+          @include string-set(16ox, bold, #333333);
+          &:hover{
+            color: #888888;
+          }
+        }
+        .active{
+          border-top: 2px solid $main-color;
+          background-color: #FFF;
+        }
+      }
+      .active-items{
+        display: block;
+        .item{
+          padding: 16px;
+          @include flexbox_space-between;
+          border-bottom: 1px solid $main_back_color;
+          &__left{
+            &__img{
+              float: left;
+              img{
+                @include height_width(48px, 48px);
+              }
+            }
+            &__info{
+              margin-left: 16px;
+              float: left;
+              &__top{
+                @include string-set(14ox, normal, #333333);
+              }
+              &__bottom{
+                margin-top: 8px;
+               &__icon{
+                @include string-set(14ox, normal, #888888);
+                margin-right: 6px;
+               }
+              }
+            }
+          }
+          &__right{
+            position: relative;
+            .icon-arrow-right {
+              position: absolute;
+              top: 50%;
+              right: 8px;
+              color: #333333;
+              font-size: 22px;
+              transform: translate(0, -50%);
+            }
+          }
+          &:hover{
+            background-color: $light_gray;
+          }
+        }
+      }
+      &__items{
+        display: none;
+      }
+    }
+  }
+}

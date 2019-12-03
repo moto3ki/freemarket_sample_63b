@@ -1,4 +1,4 @@
-$(document).on('turbolinks:load', function () {
+$(function(){
   $('.mypage-nav-list-item').hover(
     function(){
       $(this).find('.icon-arrow-right').css({color: '#333'}).animate({right: "10px"}, 50);

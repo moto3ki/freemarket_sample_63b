@@ -79,5 +79,8 @@ gem 'carrierwave'
 gem 'mini_magick'
 gem 'fog-aws'
 gem 'jquery-rails'
-
 gem 'payjp'
+gem 'active_hash'
+gem 'active_decorator'
+# エラーメッセージを日本語化
+gem 'rails-i18n'

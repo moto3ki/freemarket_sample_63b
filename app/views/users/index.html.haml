@@ -1,76 +1,77 @@
-%main.l-container.clearfix
-  .l-content
-    .mypage-user
-      %a.mypage-user__link
-        %img.mypage-user__link__icon
-        .mypage-user__link__name
-          = current_user.nickname
-        .mypage-user__link__rating
-          .mypage-user__link__rating--left
-            評価
-            %span.left-count
-              0
-          .mypage-user__link__rating--right
-            出品数
-            %span.right-count
-              0
-    .information
-      %ul.information__tabs
-        %li.information__tabs__btn.active
-          %a
-            お知らせ
-        %li.information__tabs__btn
-          %a
-            やることリスト
-      .content
-        %ul.content__list.active
-          %li.content__list__news
-            = link_to  "#", class: "news-link" do
-              .news-logo
-                = image_tag "/logo_image/logo_red.svg", class:'logo-image'
-              .news-body
-                .news-text
-                  明日、P999還元クーポンの有効期限が切れます！タップして詳細を確認しましょう。
-                .news-icon-time
-                  = icon 'far', 'clock', class: 'icon-time'
-                  .notice-date
-                    １日前
-              = icon 'fas', 'angle-right', class: 'icon-arrow-right'
-          %li.all-show
-            = link_to  "#", class: "all-show-btn" do
-              一覧を見る
-        %ul.content__list
-          %li.content__list__news
-            = link_to  "#", class: "news-link" do
-              .news-logo
-                = image_tag "/logo_image/logo_red.svg", class:'logo-image'
-              .news-body
-                .news-text
-                  ご登録のメールアドレスに認証メールを送りました。メールに記載のURLをクリックして、メールアドレスを認証してください。
-                .news-icon-time
-                  = icon 'far', 'clock', class: 'icon-time'
-                  .notice-date
-                    １日前
-              = icon 'fas', 'angle-right', class: 'icon-arrow-right'
-          %li.all-show
-            = link_to  "#", class: "all-show-btn" do
-              一覧を見る
-    .buy-item
-      .buy-item__title
-        購入した商品
-      %ul.buy-item__tabs
-        %li#buying-tab.buy-item__tabs__btn.active-2
-          %a.buying-btn
-            取引中
-        %li#buyed-tab.buy-item__tabs__btn
-          %a.buyed-btn
-            過去の取引
-      .buy-item__content
-        %ul#buying-list.buy-item__content__list.active-2
-          %li.buy-item__content__list__text
-            取引中の商品がありません
-        %ul#buyed-list.buy-item__content__list
-          %li.buy-item__content__list__text
-            過去に取引した商品がありません
-  
-  = render "shared/side_bar"
+%main.user-mypage-top
+  .l-container.clearfix
+    = render "shared/side_bar"
+    .l-content
+      .mypage-user
+        %a.mypage-user__link
+          %img.mypage-user__link__icon
+          .mypage-user__link__name
+            = current_user.nickname
+          .mypage-user__link__rating
+            .mypage-user__link__rating--left
+              評価
+              %span.left-count
+                0
+            .mypage-user__link__rating--right
+              出品数
+              %span.right-count
+                0
+      .information
+        %ul.information__tabs
+          %li.information__tabs__btn.active
+            %a
+              お知らせ
+          %li.information__tabs__btn
+            %a
+              やることリスト
+        .content
+          %ul.content__list.active
+            %li.content__list__news
+              = link_to  "#", class: "news-link" do
+                .news-logo
+                  = image_tag "/logo_image/logo_red.svg", class:'logo-image'
+                .news-body
+                  .news-text
+                    明日、P999還元クーポンの有効期限が切れます！タップして詳細を確認しましょう。
+                  .news-icon-time
+                    = icon 'far', 'clock', class: 'icon-time'
+                    .notice-date
+                      １日前
+                = icon 'fas', 'angle-right', class: 'icon-arrow-right'
+            %li.all-show
+              = link_to  "#", class: "all-show-btn" do
+                一覧を見る
+          %ul.content__list
+            %li.content__list__news
+              = link_to  "#", class: "news-link" do
+                .news-logo
+                  = image_tag "/logo_image/logo_red.svg", class:'logo-image'
+                .news-body
+                  .news-text
+                    ご登録のメールアドレスに認証メールを送りました。メールに記載のURLをクリックして、メールアドレスを認証してください。
+                  .news-icon-time
+                    = icon 'far', 'clock', class: 'icon-time'
+                    .notice-date
+                      １日前
+                = icon 'fas', 'angle-right', class: 'icon-arrow-right'
+            %li.all-show
+              = link_to  "#", class: "all-show-btn" do
+                一覧を見る
+      .buy-item
+        .buy-item__title
+          購入した商品
+        %ul.buy-item__tabs
+          %li#buying-tab.buy-item__tabs__btn.active-2
+            %a.buying-btn
+              取引中
+          %li#buyed-tab.buy-item__tabs__btn
+            %a.buyed-btn
+              過去の取引
+        .buy-item__content
+          %ul#buying-list.buy-item__content__list.active-2
+            %li.buy-item__content__list__text
+          %ul#buyed-list.buy-item__content__list
+            = render 'users/buy_item/list', { buy_items: @purchases }
+            %li.all-show
+              = link_to  "#", class: "all-show-btn" do
+                一覧を見る

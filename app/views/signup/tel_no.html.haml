@@ -1,9 +1,8 @@
 .signup-container
-  =render 'shared/sub-header'
   .signup-main
     .signup-panel
       %h2.signup-panel__title 電話番号登録
-      = form_with(model: @user,url: signup_index_path,local: true, method: :post) do |f|
+      = form_with(model:@user,url: address_signup_index_path,local: true, method: :get) do |f|
         .signup-panel__insert
           .signup-inner
             .signup-form
@@ -15,4 +14,3 @@
               = f.submit "次へ進む", class: 'signup-btn--red'
               %p.signup-text 
                 ※電話番号は本人確認や不正利用防止のため利用しています。他のユーザーに公開されることはありません。
-  =render 'shared/sub-footer'

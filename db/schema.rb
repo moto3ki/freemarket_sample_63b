@@ -50,6 +50,32 @@ ActiveRecord::Schema.define(version: 2019_11_29_040116) do
     t.index ["user_id"], name: "index_items_on_user_id"
   end
 
+  create_table "purchases", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "item_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["item_id"], name: "index_purchases_on_item_id"
+    t.index ["user_id"], name: "index_purchases_on_user_id"
+  end
+
+  create_table "send_addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.string "kanji_last_name", null: false
+    t.string "kanji_first_name", null: false
+    t.string "kana_last_name", null: false
+    t.string "kana_first_name", null: false
+    t.string "post_code", null: false
+    t.string "prefectures", null: false
+    t.string "city", null: false
+    t.string "address", null: false
+    t.string "building_name"
+    t.string "tel_no"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_send_addresses_on_user_id"
+  end
+
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "nickname", null: false
     t.string "email", default: "", null: false
@@ -73,4 +99,7 @@ ActiveRecord::Schema.define(version: 2019_11_29_040116) do
 
   add_foreign_key "item_images", "items"
   add_foreign_key "items", "users"
+  add_foreign_key "purchases", "items"
+  add_foreign_key "purchases", "users"
+  add_foreign_key "send_addresses", "users"
 end
