@@ -1,0 +1,24 @@
+%main.cards-page-show
+  .l-container.clearfix
+    = render "shared/side_bar" 
+    .l-content
+      .l-content__head 支払い方法
+      .l-content__inner
+        .l-content__inner__head クレジットカード一覧
+        .l-content__inner__list
+          .l-content__inner__list--paynum
+            = "**** **** **** " + @default_card_information.last4
+          .l-content__inner__list--paynum
+            - exp_month = @default_card_information.exp_month.to_s
+            - exp_year = @default_card_information.exp_year.to_s.slice(2,3)
+            = exp_month + " / " + exp_year
+          = form_with(model: @credit_cards,url: delete_credit_cards_path,local: true, method: :post, id: 'charge-form',  name: "inputForm") do |f|
+            %input{ type: "hidden", name: "card_id", value: "" }
+            = f.submit "削除する", class: "l-content__inner__list--remove"
+      .pay-about
+        = link_to "#", class: "settings-pay-about__link" do
+          .pay-about__text
+            支払い方法について
+          = icon 'fa', 'angle-right', class: 'icon-angle-right'
+
+    = render "shared/sell_button"
