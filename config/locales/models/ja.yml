@@ -13,3 +13,8 @@ ja:
         kana_first_name:  名(カナ)
         birth_day:        誕生日
         tel_no:           電話番号
+    models:
+      real_address: 住所
+    attributes:
+      real_address:
+        post_code: ''
