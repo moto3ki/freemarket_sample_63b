@@ -10,7 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_03_014044) do
+
+ActiveRecord::Schema.define(version: 2019_12_03_035501) do
+
+  create_table "credit_cards", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.string "customer_id", null: false
+    t.string "card_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "item_images", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "item_id", null: false
@@ -70,13 +79,13 @@ ActiveRecord::Schema.define(version: 2019_12_03_014044) do
     t.string "kana_last_name", null: false
     t.string "kana_first_name", null: false
     t.string "post_code", null: false
-    t.string "prefectures", null: false
     t.string "city", null: false
     t.string "address", null: false
     t.string "building_name"
     t.string "tel_no"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "prefecture_id", null: false
     t.index ["user_id"], name: "index_send_addresses_on_user_id"
   end
 

@@ -2,6 +2,7 @@ ja:
   activerecord:
     models:
       user: ユーザー
+      send_address: 配送元・お届け先住所の登録
     attributes:
       user:
         nickname:         ニックネーム
@@ -18,3 +19,15 @@ ja:
     attributes:
       real_address:
         post_code: ''
+      send_address: 
+        kanji_last_name:  性
+        kanji_first_name: 名
+        kana_last_name:   性(カナ)
+        kana_first_name:  名(カナ)
+        post_code:        郵便番号
+        prefecture_id:    都道府県  
+        city:             市区町村
+        address:          番地     
+        building_name:    建物名
+        tel_no:           電話番号
+
