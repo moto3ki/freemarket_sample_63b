@@ -37,14 +37,34 @@
             background: #fff;
             line-height: 1.5;
             font-size: 16px;
+            .has-error {
+              border-color: #ea352d;
+            }
           }
           .select-wrap {
             height: 100%;
+            position: relative;
             #real_address_prefectures {
               @include pull_down(100%);
               background-color: #fff;
               margin-top: 8px;
             }
+            .fa-angle-down {
+              position: absolute;
+              right: 20px;
+              top: 24px;
+              z-index: 3;
+              color: #888;
+              font-size: 30px;
+              -webkit-transform: translate(0, -50%);
+              transform: translate(0, -50%);
+              margin-top: 8px;
+            }
+          }
+          .has-error-text {
+            color: #ea352d;
+            line-height: 1.5;
+            font-size: 14px;
           }
         }
       }
@@ -66,17 +86,7 @@
   }
 }
 
-.fa-angle-down {
-  position: absolute;
-  right: 180px;
-  top: 980px;
-  z-index: 3;
-  color: #888;
-  font-size: 30px;
-  -webkit-transform: translate(0, -50%);
-  transform: translate(0, -50%);
-  margin-top: 8px;
-}
+
 
 .l-chapter-head {
   font-size: 24px;
