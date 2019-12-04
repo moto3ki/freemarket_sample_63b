@@ -14,7 +14,7 @@
             .card-list
               .list__label 有効期限
               %span.require 必須
-              != sprintf(f.date_select(:expiration_date,with_css_classes:'input-expire', order:[:month,:year], use_month_numbers:true, discard_day:true, start_year:Time.now.year-2000+2000, end_year:Time.now.year-2000+10+2000, date_separator:'%s'),'月') + '年'
+              != sprintf(f.date_select(:expiration_date,with_css_classes:'input-expire', order:[:month,:year], use_month_numbers:true, discard_day:true, start_year:Time.now.year-2000, end_year:Time.now.year+10-2000, date_separator:'%s'),'月') + '年'
             .card-list
               .list__label セキュリティコード
               %span.require 必須

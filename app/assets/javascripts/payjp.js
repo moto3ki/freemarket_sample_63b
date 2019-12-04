@@ -5,11 +5,13 @@ document.addEventListener(
       let btn = document.getElementById("token_submit"); //IDがtoken_submitの場合に取得されます
       btn.addEventListener("click", e => { //ボタンが押されたときに作動します
         e.preventDefault(); //ボタンを一旦無効化します
+        var year = document.getElementById("_expiration_date_1i").value
+        year = Number(year) + 2000;
         let credit_card = {
           number: document.getElementById("credit_card_number").value,
           cvc: document.getElementById("cvc").value,
           exp_month: document.getElementById("_expiration_date_2i").value,
-          exp_year: document.getElementById("_expiration_date_1i").value,
+          exp_year: year
         }; //入力されたデータを取得します。
         Payjp.createToken(credit_card, (status, response) => {
           if (status === 200) { //成功した場合
