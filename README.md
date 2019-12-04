@@ -124,7 +124,7 @@ Things you may want to cover:
 ## 8. categories Table
 |Column|Type|Options|
 |------|----|-------|
-|name|integer|null: false|
+|name|string|null: false|
 |ancestry|string|
 
 ### Association

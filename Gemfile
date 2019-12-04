@@ -81,5 +81,7 @@ gem 'fog-aws'
 gem 'jquery-rails'
 gem 'active_hash'
 gem 'active_decorator'
+gem 'ancestry'
 # エラーメッセージを日本語化
 gem 'rails-i18n'
+
