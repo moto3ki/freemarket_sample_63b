@@ -7,14 +7,14 @@ class CreditCardsController < ApplicationController
     redirect_to action: "show" if credit_card.exists?
   end
 
-  def pay #Payjpとcredit_Cardデータベースを作成
+  def pay
     
     Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
     if params['payjp-token'].blank?
       redirect_to action: "new"
     else
       customer = Payjp::Customer.create(
-      description: '登録テスト', #この1行は消しても良い
+      description: '登録テスト',
       card: params['payjp-token'],
       metadata: {user_id: current_user.id}
       ) 
@@ -27,7 +27,7 @@ class CreditCardsController < ApplicationController
     end
   end
 
-  def delete #Payjpとcredit_Cardデータベースを削除
+  def delete
     credit_card = CreditCard.where(user_id: current_user.id).first
     if credit_card.blank?
     else
@@ -39,7 +39,7 @@ class CreditCardsController < ApplicationController
       redirect_to action: "new"
   end
 
-  def show #credit_Cardのデータpayjpに送り情報を取り出し
+  def show
     credit_card = CreditCard.where(user_id: current_user.id).first
     if credit_card.blank?
       redirect_to action: "new" 
