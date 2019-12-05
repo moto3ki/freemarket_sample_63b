@@ -74,10 +74,3 @@
   -moz-appearance: none;
   appearance: none;
 }
-
-/* float対策のcleafix */
-@mixin clear_fix {
-  content: "";
-  display: block;
-  clear: both;
-}

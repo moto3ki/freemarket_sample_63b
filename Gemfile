@@ -86,5 +86,6 @@ gem 'jquery-rails'
 gem 'payjp'
 gem 'active_hash'
 gem 'active_decorator'
+gem 'ancestry'
 # エラーメッセージを日本語化
 gem 'rails-i18n'
