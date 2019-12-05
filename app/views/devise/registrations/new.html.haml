@@ -7,9 +7,8 @@
           = link_to "/signup/member_info", class: ".btn-default signup-btn--red" do
             %i.far.fa-envelope
               メールアドレスで登録する
-          %button#facebook.btn-default
+          = link_to user_facebook_omniauth_authorize_path do
             %i.fab.fa-facebook-square.facebook-icon
-            Facebookで登録
           %button#Google.btn-default
             %i.fab.fa-google.google-icon
             Googleで登録

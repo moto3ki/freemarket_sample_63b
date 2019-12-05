@@ -8,7 +8,7 @@
       .login-form__insert
         .login-inner
           .login-btn
-            %button#facebook.btn-default.btn-sns.btn-sns-facebook
+            = link_to user_facebook_omniauth_authorize_path do
               %i.fab.fa-facebook-square.facebook-icon
               Facebookでログイン
             %button#Google.btn-default.btn-sns.btn-sns-google
