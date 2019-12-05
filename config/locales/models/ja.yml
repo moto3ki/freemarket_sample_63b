@@ -3,6 +3,8 @@ ja:
     models:
       user: ユーザー
       send_address: 配送元・お届け先住所の登録
+      real_address: 住所
+      item: 商品
     attributes:
       user:
         nickname:         ニックネーム
@@ -14,9 +16,6 @@ ja:
         kana_first_name:  名(カナ)
         birth_day:        誕生日
         tel_no:           電話番号
-    models:
-      real_address: 住所
-    attributes:
       real_address:
         post_code: ''
       send_address: 
@@ -30,4 +29,14 @@ ja:
         address:          番地     
         building_name:    建物名
         tel_no:           電話番号
-
+      item:
+        name:            ''
+        explain:         ''
+        condition:       ''
+        delivery_charge: ''
+        delivery_method: ''
+        delivery_period: ''
+        price:           ''
+        prefecture_id:   ''
+      item_image:
+        image:           画像
