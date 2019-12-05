@@ -11,6 +11,14 @@ Rails.application.routes.draw do
       get 'address'
     end
   end
+
+  resources :credit_cards, only: [:new, :show] do
+    collection do
+      post 'paymethod_show', to: 'credit_cards#show'
+      post 'pay', to: 'credit_cards#pay'
+      post 'delete', to: 'credit_cards#delete'
+    end
+  end
   
   resources :items, only: [:new, :show, :create, :destroy, :edit, :update] do
     resources :purchases, only: [:new, :create]
@@ -30,5 +38,6 @@ Rails.application.routes.draw do
   end
   
   resources :items, only: [:new, :show, :create]
+  resources :categories, only: [:index]
   
 end
