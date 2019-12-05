@@ -123,8 +123,3 @@ a {
   border: 1px solid #ea352d;
   color: #fff;
 }
-
-
-.clearfix:after {
-  @include clear_fix
-}

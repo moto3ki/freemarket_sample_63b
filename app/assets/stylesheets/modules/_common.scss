@@ -27,3 +27,9 @@
 .text-center{
   text-align: center;
 }
+
+.clearfix:after {
+  content: "";
+  display: block;
+  clear: both;
+}
