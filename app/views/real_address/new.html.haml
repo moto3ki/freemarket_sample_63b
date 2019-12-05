@@ -33,6 +33,10 @@
             %span.form-arbitrary 任意
             %br
             = f.text_field :post_code, class: "input-default", placeholder: "例）1234567", type: "text"
+            - if @realaddress.errors.any?
+              %ul.has-error-text
+                - @realaddress.errors.full_messages.each do |message|
+                  %li= message
           .form-group
             %label :都道府県
             %span.form-arbitrary 任意
