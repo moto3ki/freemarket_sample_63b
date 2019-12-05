@@ -74,7 +74,7 @@ ActiveRecord::Schema.define(version: 2019_12_03_081913) do
     t.string "prefectures", null: false
     t.string "city", null: false
     t.string "address", null: false
-    t.string "building_name"
+    t.string "building_name", default: "", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_real_addresses_on_user_id"
