@@ -21,22 +21,20 @@ class User < ApplicationRecord
   #名前用のバリデーション
   VALID_KANJIL_REGEX = /\A[ぁ-んァ-ン一-龥]/
 
-  validates :nickname,          presence: true,on: :member_info_set,on: :update
-  validates :email,             presence: true,on: :member_info_set
-  validates :email,             format: { with: VALID_EMAIL_REGEX },uniqueness: true,allow_blank: true,on: :member_info_set
-  validates :password,          presence: true,on: :member_info_set
-  validates :password,          format: {with: /\A(?=.*?[a-z])(?=.*?\d)[a-z\d]{7,128}+\z/i, message: "は英字と数字の両方を含めて設定してください"}, allow_blank: true,on: :member_info_set
-  validates :password,          length: { in: 7..128, message: "は7文字以上128文字以下で入力してください"}, allow_blank: true,on: :member_info_set
-  validates :kanji_last_name,   presence: true,on: :member_info_set
-  validates :kanji_last_name,   format: {with: /\A[ぁ-んァ-ン一-龥]/}, allow_blank: true,on: :member_info_set
-  validates :kanji_first_name,  presence: true,on: :member_info_set
-  validates :kanji_first_name,  format: {with: /\A[ぁ-んァ-ン一-龥]/}, allow_blank: true,on: :member_info_set
-  validates :kana_last_name,    presence: true,on: :member_info_set
-  validates :kana_last_name,    kana: true, allow_blank: true,on: :member_info_set
-  validates :kana_first_name,   presence: true,on: :member_info_set
-  validates :kana_first_name,   kana: true, allow_blank: true,on: :member_info_set
-  validates :birth_day,         presence: true,on: :member_info_set
+  validates :nickname,          presence: true
+  validates :email,             presence: true
+  validates :email,             format: { with: VALID_EMAIL_REGEX },uniqueness: true,allow_blank: true
+  validates :password,          presence: true
+  validates :password,          format: {with: /\A(?=.*?[a-z])(?=.*?\d)[a-z\d]+\z/i, message: "は英字と数字の両方を含めて設定してください"}, allow_blank: true
+  validates :kanji_last_name,   presence: true
+  validates :kanji_last_name,   format: {with: /\A[ぁ-んァ-ン一-龥]/}, allow_blank: true
+  validates :kanji_first_name,  presence: true
+  validates :kanji_first_name,  format: {with: /\A[ぁ-んァ-ン一-龥]/}, allow_blank: true
+  validates :kana_last_name,    presence: true
+  validates :kana_last_name,    kana: true, allow_blank: true
+  validates :kana_first_name,   presence: true
+  validates :kana_first_name,   kana: true, allow_blank: true
+  validates :birth_day,         presence: true
   validates :tel_no,            presence: true
   validates :tel_no,            format: {with:/\A\d{10}\z|\A\d{11}\z/}, allow_blank: true
-
 end
