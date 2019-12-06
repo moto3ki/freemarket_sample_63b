@@ -12,14 +12,14 @@
                 .label__top カード番号
                 .require 必須
               = f.text_field :credit_card_number, class: 'input-number', placeholder: '半角数字のみ', maxlength: "16"
-              %figure.card-img
-                %img{alt: "visa", height: "20", src: "/card_image/visa.svg", width: "49"}/
-                %img{alt: "master-card", height: "20", src: "/card_image/master-card.svg", width: "34"}/
-                %img{alt: "saison-card", height: "20", src: "/card_image/saison-card.svg", width: "30"}/
-                %img{alt: "jcb", height: "20", src: "/card_image/jcb.svg", width: "32"}/
-                %img{alt: "american_express", height: "20", src: "/card_image/american_express.svg", width: "21"}/
-                %img{alt: "dinersclub", height: "20", src: "/card_image/dinersclub.svg", width: "32"}/
-                %img{alt: "discover", height: "20", src: "/card_image/discover.svg", width: "32"}/
+              .card-img
+                = image_tag("/card_image/visa.svg", width: '49', height: '20', alt: "visa")
+                = image_tag("/card_image/master-card.svg", width: '34', height: '20', alt: "master-card")
+                = image_tag("/card_image/saison-card.svg", width: '30', height: '20', alt: "saison-card")
+                = image_tag("/card_image/jcb.svg", width: '32', height: '20', alt: "jcb")
+                = image_tag("/card_image/american_express.svg", width: '21', height: '20', alt: "american_express")
+                = image_tag("/card_image/dinersclub.svg", width: '32', height: '20', alt: "dinersclub")
+                = image_tag("/card_image/discover.svg", width: '32', height: '20', alt: "discover")
             .card-list
               .label.clearfix
                 .label__top 有効期限
