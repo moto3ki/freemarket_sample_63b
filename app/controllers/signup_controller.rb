@@ -75,12 +75,18 @@ class SignupController < ApplicationController
       birth_day:       session[:birth_day],
       tel_no:          session[:tel_no]
     )
-
+    
     render '/signup/tel_no' unless @user.valid?
 
     if @user.save 
       session[:id] = @user.id
-      SnsCredential.update(user_id:  @user.id)
+
+      if session["devise.sns_id"].present?
+         sns = SnsCredential.find(session["devise.sns_id"])
+         sns.user_id = @user.id
+         sns.save
+      end
+      
       sign_in User.find(session[:id]) unless user_signed_in?
     end
   end
@@ -117,7 +123,6 @@ class SignupController < ApplicationController
       building_name:    send_address_params[:building_name],
       tel_no:           send_address_params[:tel_no]
     )
-
     
   end
 

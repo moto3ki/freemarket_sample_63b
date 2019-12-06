@@ -47,27 +47,23 @@ class User < ApplicationRecord
     uid = auth.uid
     provider = auth.provider
     snscredential = SnsCredential.where(uid: uid, provider: provider).first
-
     if snscredential.present? #sns登録のみ完了してるユーザー
-       user = User.find_by(id: snscredential.user_id)
+      user = User.find(snscredential.user_id)
       unless user.present? #ユーザーが存在しないなら
         user = set_user(auth)
       end
       sns = snscredential
-
     else #sns登録 未
       user = User.where(email: auth.info.email).first
       if user.present? #会員登録 済
         user = set_user(auth)
-        sns = SnsCredential.new(
+        sns = SnsCredential.create(
           uid: uid,
           provider: provider,
           user_id: user.id
         )
- 
       else #会員登録 未
         user = set_user(auth)
-
         sns = SnsCredential.create(
           uid: uid,
           provider: provider
@@ -85,5 +81,4 @@ class User < ApplicationRecord
       email: auth.info.email
     )
   end
-
 end
