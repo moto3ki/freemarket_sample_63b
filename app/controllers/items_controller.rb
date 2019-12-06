@@ -23,6 +23,7 @@ class ItemsController < ApplicationController
   end
 
   def edit
+    @item_images = ItemImage.new
     render template: 'items/new'
   end
 
