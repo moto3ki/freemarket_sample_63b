@@ -18,15 +18,24 @@
                 ドラッグアンドドロップ
                 %br
                 またはクリックしてファイルをアップロード
+        .error-text
+          - @item_images.errors.full_messages_for(:image).each do |message|
+            = message
       .item-content-box
         .item-content-box__name-title
           商品名
         .item-content-box__name-input
           = f.text_field :name, class: "", value: @item.name, placeholder: "商品名（必須40文字まで）"
+        .error-text
+          - @item.errors.full_messages_for(:name).each do |message|
+            = message
         .item-content-box__explain-title
           商品説明
         .item-content-box__explain-input
           = f.text_area :explain, class: "", value: @item.explain, placeholder: "商品の説明（必須1,000文字以内）（色、素材、重さ、定価、注意点など）例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです"
+        .error-text
+          - @item.errors.full_messages_for(:explain).each do |message|
+            = message
       .item-detail-box
         .item-detail-box__title
           商品の詳細
@@ -41,6 +50,9 @@
               商品の状態
             .item-detail-box__select__status__pulldown
               = f.select :condition, options_for_select(Item.conditions.keys, selected: @item.condition)
+            .error-text
+              - @item.errors.full_messages_for(:condition).each do |message|
+                = message
       .item-delivery-box
         .item-delivery-box__title
           配送について
@@ -50,21 +62,33 @@
               配送料の負担
             .item-delivery-box__select__payer__pulldown
               = f.select :delivery_charge, options_for_select(Item.delivery_charges.keys, selected: @item.delivery_charge)
+            .error-text
+              - @item.errors.full_messages_for(:delivery_charge).each do |message|
+                = message
           .item-delivery-box__select__method
             .item-delivery-box__select__method__title
               配送の方法
             .item-delivery-box__select__method__pulldown
               = f.select :delivery_method, options_for_select(Item.delivery_methods.keys, selected: @item.delivery_method)
+            .error-text
+              - @item.errors.full_messages_for(:delivery_method).each do |message|
+                = message
           .item-delivery-box__select__area
             .item-delivery-box__select__area__title
               発送元の地域
             .item-delivery-box__select__area__pulldown
               = f.collection_select :prefecture_id, Prefecture.all, :id, :name, selected: @item.prefecture_id
+            .error-text
+              - @item.errors.full_messages_for(:prefecture_id).each do |message|
+                = message
           .item-delivery-box__select__period
             .item-delivery-box__select__period__title
               発送までの日数
             .item-delivery-box__select__period__pulldown
               = f.select :delivery_period, options_for_select(Item.delivery_periods.keys, selected: @item.delivery_period)
+            .error-text
+              - @item.errors.full_messages_for(:delivery_period).each do |message|
+                = message
       .item-price-box
         .item-price-box__title
           販売価格(300〜9,999,999)
@@ -75,6 +99,9 @@
             .item-price-box__set__price__value
               ¥
               = f.text_field :price, value: @item.price, placeholder: "例）300", id: "item-price"
+            .error-text
+              - @item.errors.full_messages_for(:price).each do |message|
+                = message
           %li.item-price-box__set__fee
             .item-price-box__set__fee__title
               販売手数料 (10%)
