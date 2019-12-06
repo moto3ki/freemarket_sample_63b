@@ -28,7 +28,7 @@
   text-align: center;
 }
 
-.clearfix {
+.clearfix:after {
   content: "";
   display: block;
   clear: both;

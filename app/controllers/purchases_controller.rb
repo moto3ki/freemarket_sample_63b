@@ -9,11 +9,10 @@ class PurchasesController < ApplicationController
     item.status = 1
 
     purchase = Purchase.new(item_params)
-
     if item.save && purchase.save
       redirect_to root_path
     else
-      render new
+      redirect_to new_item_purchase_path(item)
     end
   end
 

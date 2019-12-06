@@ -5,6 +5,7 @@ class SignupController < ApplicationController
  
   def member_info
     @user = User.new 
+    session["password"] = []
   end
 
   def tel_no
@@ -19,7 +20,6 @@ class SignupController < ApplicationController
   end
 
   def validates_member_info
-    
     #step1で入力した値をsessionに保持
     if params[:user]["birth_day(1i)"].present? && params[:user]["birth_day(2i)"].present? && params[:user]["birth_day(3i)"].present?
 
@@ -54,7 +54,12 @@ class SignupController < ApplicationController
 
     # 仮で作成したインスタンスのバリデーションチェックを行う.
     # 仮のインスタンスを作成しないとバリデーションが通らないため
-    render '/signup/member_info' unless @user.valid?(:member_info_set)
+    unless @user.valid?(:member_info_set)
+      unless session["devise.sns_id"].present?
+        session["password"] = []
+      end
+      render '/signup/member_info'
+    end
   end
 
   def validates_tel_no
@@ -70,12 +75,18 @@ class SignupController < ApplicationController
       birth_day:       session[:birth_day],
       tel_no:          session[:tel_no]
     )
-
-
+    
     render '/signup/tel_no' unless @user.valid?
 
     if @user.save 
       session[:id] = @user.id
+
+      if session["devise.sns_id"].present?
+         sns = SnsCredential.find(session["devise.sns_id"])
+         sns.user_id = @user.id
+         sns.save
+      end
+      
       sign_in User.find(session[:id]) unless user_signed_in?
     end
   end
@@ -112,7 +123,6 @@ class SignupController < ApplicationController
       building_name:    send_address_params[:building_name],
       tel_no:           send_address_params[:tel_no]
     )
-
     
   end
 
