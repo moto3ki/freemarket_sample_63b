@@ -21,17 +21,20 @@
               - @user.errors.full_messages_for(:email).each do |message|
                 %div
                   = message
-            .signup-form
-              .signup-form__label  パスワード
-              %span.require 必須
-              = f.password_field  :password, class:"input-default", placeholder:"7文字以上",autocomplete:"off"
-            .error-text
-              - @user.errors.full_messages_for(:password).each do |message|
-                %div
-                  = message
-              .signup-form__label__check-box
-                %input.signup-form__label__check-box__input{type: "checkbox"}
-                %label.signup-form__label__check-box__text パスワードを表示する
+            - if session["password"].present?
+              = f.hidden_field  :password, value: session["password"]
+            -else
+              .signup-form
+                .signup-form__label  パスワード
+                %span.require 必須
+                = f.password_field  :password, class:"input-default", placeholder:"7文字以上",autocomplete:"off", value: session["password"]
+              .error-text
+                - @user.errors.full_messages_for(:password).each do |message|
+                  %div
+                    = message
+                .signup-form__label__check-box
+                  %input.signup-form__label__check-box__input{type: "checkbox"}
+                  %label.signup-form__label__check-box__text パスワードを表示する
             .signup-form
               %h3.signup-form__label 本人確認
               %br
@@ -81,7 +84,4 @@
                     利用規約
                 %p.signup-text
                   に同意したものとみなします
-
                 = f.submit "次へ進む", class: 'signup-btn--red'
-
-  =render 'shared/sub-footer'
