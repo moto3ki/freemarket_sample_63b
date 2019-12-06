@@ -3,6 +3,7 @@
 # Use this hook to configure devise mailer, warden hooks and so forth.
 # Many of these configuration options can be set straight in your model.
 Devise.setup do |config|
+  #facebookの環境変数
   # The secret key used by Devise. Devise uses this key to generate
   # random tokens. Changing this key will render invalid all existing
   # confirmation, reset password and unlock tokens in the database.
@@ -260,7 +261,9 @@ Devise.setup do |config|
   # Add a new OmniAuth provider. Check the wiki for more information on setting
   # up on your models and hooks.
   # config.omniauth :github, 'APP_ID', 'APP_SECRET', scope: 'user,public_repo'
-
+  config.omniauth :facebook,ENV['FACEBOOK_ID'],ENV['FACEBOOK_SECRET_KEY']
+  config.omniauth :google_oauth2,ENV['GOOGLE_ID'],ENV['GOOGLE_SECRET_KEY'],skip_jwt: true
+  #skip_jwt:trueはOSのクロックのズレを修正する役割を持っています。この記述をしないと後にJWT::InvalidIatErrorがででしまいます。
   # ==> Warden configuration
   # If you want to use other strategies, that are not supported by Devise, or
   # change the failure app, you can configure them inside the config.warden block.

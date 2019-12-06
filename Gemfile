@@ -86,6 +86,11 @@ gem 'jquery-rails'
 gem 'payjp'
 gem 'active_hash'
 gem 'active_decorator'
-gem 'ancestry'
-# エラーメッセージを日本語化
 gem 'rails-i18n'
+gem 'omniauth'
+gem 'omniauth-rails_csrf_protection'
+gem 'omniauth-facebook'
+gem 'omniauth-google-oauth2'
+gem 'dotenv-rails'
+gem 'ancestry'
+

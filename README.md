@@ -37,6 +37,7 @@ Things you may want to cover:
 - has_many :ratings, through: :rates, source: :rated_user
 - has_one  :send_address
 - has_one  :real_address
+- has_many :sns_credentials, dependent: :destroy
 
 
 ## 2. credit_cards Table
@@ -169,6 +170,16 @@ Things you may want to cover:
 ### Association
 - belongs_to :user
 - belongs_to :item
+
+## 12. sns_credentials Table
+|Column|Type|Options|
+|------|----|-------|
+|user_id|integer|foreign_key: true|
+|uid|string|
+|provider|string|
+
+### Association
+- belongs_to :user,optional: true
 
 
 * Database initialization
