@@ -1,0 +1,140 @@
+.signup-header{
+  height: 128px;
+  line-height: 128px;
+  background-color: $main_back_color;
+
+  &__left {
+    @include height_width(49px, 185px);
+    line-height: 49px;
+    display: inline-block;
+    margin: 40px 0 0;
+  }
+
+  &__right {
+    padding-left: 44px;
+    display: inline-block;
+    vertical-align: top;
+    
+
+    .right-box {
+      min-width: 500px;
+      line-height: 90px;
+
+      &__step {
+        @include string_set( 12px, nomal, #888);
+        margin-right: 40px;
+        min-width: 60px;
+        position: relative;
+        z-index: 1;
+        display: inline-block;
+
+        .circle-status1 {
+          background: #ccc;
+          @include height_width(12px, 12px);
+          margin: 8px auto 0;
+          border-radius: 50%;
+          position: absolute;
+          bottom: 15px;
+          right: 0;
+          left: 0;
+
+          &:after {
+            left: 50%;
+            position: absolute;
+            bottom: 5px;
+            z-index: -1;
+            display: block;
+            content: '';
+            width: 70px;
+            height: 2px;
+            background: #ccc;
+          }
+        }
+        .circle-status2 {
+          background: #ccc;
+          @include height_width(12px, 12px);
+          margin: 8px auto 0;
+          border-radius: 50%;
+          position: absolute;
+          bottom: 15px;
+          right: 0;
+          left: 0;
+
+          &:before {
+            right: 50%;
+            position: absolute;
+            bottom: 5px;
+            z-index: -1;
+            display: block;
+            content: '';
+            width: 70px;
+            height: 2px;
+            background: #ccc;
+          }
+          &:after {
+            left: 50%;
+            position: absolute;
+            bottom: 5px;
+            z-index: -1;
+            display: block;
+            content: '';
+            width: 70px;
+            height: 2px;
+            background: #ccc;
+          }
+        }
+        
+        .circle-status3 {
+          background: #ccc;
+          @include height_width(12px, 12px);
+          margin: 8px auto 0;
+          border-radius: 50%;
+          position: absolute;
+          bottom: 15px;
+          right: 0;
+          left: 0;
+
+          &:before {
+            right: 50%;
+            position: absolute;
+            bottom: 5px;
+            z-index: -1;
+            display: block;
+            content: '';
+            width: 70px;
+            height: 2px;
+            background: #ccc;
+          }
+        }
+      }
+    }
+  }
+}
+#title-red {
+  font-weight: 600;
+  color: $main-color;
+}
+#circle-red {
+  background-color: $main-color;
+}
+#left-border-red {
+  background-color: $main-color;
+  &:before{
+    background-color: $main-color;
+  }
+}
+#right-border-red {
+  background-color: $main-color;
+  &:after{
+    background-color: $main-color;
+  }
+}
+#both-border-red {
+  background-color: $main-color;
+  &:before{
+    background-color: $main-color;
+  }
+  &:after{
+    background-color: $main-color;
+  }
+}

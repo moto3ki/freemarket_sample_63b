@@ -14,7 +14,11 @@
       = yield
       = render "shared/sell_button"
       = render "shared/footer"
-    - else
-      = render "shared/sub-header"
+    - elsif params[:controller] == "signup"
+      = render "shared/progress_header"
       = yield
-      = render "shared/sub-footer"
+      = render "shared/sub_footer"
+    - else
+      = render "shared/sub_header"
+      = yield
+      = render "shared/sub_footer"
