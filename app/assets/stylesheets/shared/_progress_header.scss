@@ -21,7 +21,7 @@
       line-height: 90px;
 
       &__step {
-        @include string_set( 12px, nomal, #888);
+        @include string_set( 12px, normal, #888);
         margin-right: 40px;
         min-width: 60px;
         position: relative;
@@ -29,81 +29,32 @@
         display: inline-block;
 
         .circle-status1 {
-          background: #ccc;
-          @include height_width(12px, 12px);
-          margin: 8px auto 0;
-          border-radius: 50%;
-          position: absolute;
-          bottom: 15px;
-          right: 0;
-          left: 0;
+          @include circle_set;
 
           &:after {
+            @include before_after_set;
             left: 50%;
-            position: absolute;
-            bottom: 5px;
-            z-index: -1;
-            display: block;
-            content: '';
-            width: 70px;
-            height: 2px;
-            background: #ccc;
           }
         }
         .circle-status2 {
-          background: #ccc;
-          @include height_width(12px, 12px);
-          margin: 8px auto 0;
-          border-radius: 50%;
-          position: absolute;
-          bottom: 15px;
-          right: 0;
-          left: 0;
+          @include circle_set;
 
           &:before {
+            @include before_after_set;
             right: 50%;
-            position: absolute;
-            bottom: 5px;
-            z-index: -1;
-            display: block;
-            content: '';
-            width: 70px;
-            height: 2px;
-            background: #ccc;
           }
           &:after {
+            @include before_after_set;
             left: 50%;
-            position: absolute;
-            bottom: 5px;
-            z-index: -1;
-            display: block;
-            content: '';
-            width: 70px;
-            height: 2px;
-            background: #ccc;
           }
         }
         
         .circle-status3 {
-          background: #ccc;
-          @include height_width(12px, 12px);
-          margin: 8px auto 0;
-          border-radius: 50%;
-          position: absolute;
-          bottom: 15px;
-          right: 0;
-          left: 0;
+          @include circle_set;
 
           &:before {
+            @include before_after_set;
             right: 50%;
-            position: absolute;
-            bottom: 5px;
-            z-index: -1;
-            display: block;
-            content: '';
-            width: 70px;
-            height: 2px;
-            background: #ccc;
           }
         }
       }
@@ -111,8 +62,8 @@
   }
 }
 #title-red {
-  font-weight: 600;
-  color: $main-color;
+  @include string_set( 12px, bold, $main-color);
+  
 }
 #circle-red {
   background-color: $main-color;
