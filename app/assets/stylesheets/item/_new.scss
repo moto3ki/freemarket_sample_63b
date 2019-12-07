@@ -21,16 +21,43 @@
         @include string_set(14px, normal, #333333);
         margin-top: 8px;
       }
-      &__upload{
-        padding: 40px;
+      &__images{
+        @include flexbox_space-between;
         margin-top: 16px;
-        border: 1px dashed lightgray;
-        background-color: $main_back_color;
-        cursor: pointer;
-        &__message{
-          @include string_set(13px, bold, #333333);
-          text-align: center;
-          padding: 20px 0;
+        .preview{
+          display: flex;
+          justify-content: flex-start;
+          .img_view{
+            width: 116px;
+            margin-right: 14px;
+            background-color: $main_back_color;
+            border: 1px solid $dark_gray;
+            box-sizing: border-box;
+            img{
+              @include height_width(114px, 100%);
+              vertical-align: bottom;
+            }
+            .delete-btn{
+              line-height: 44px;
+              text-align: center;
+              cursor: pointer;
+            }
+          }
+        }
+        .upload1{
+          width: calc(700px - 160px);
+          padding: 40px;
+          border: 1px dashed lightgray;
+          background-color: $main_back_color;
+          cursor: pointer;
+          &__message{
+            @include string_set(13px, bold, #333333);
+            text-align: center;
+            padding: 20px 0;
+            i{
+              padding: 12px 0;
+            }
+          }
         }
       }
     }

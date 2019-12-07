@@ -8,16 +8,23 @@
           出品画像
         .item-image-box__explain
           最大10枚までアップロードできます
-        = f.label :image do
-          .item-image-box__upload
-            = f.file_field :image, class: "img-hidden"
-            - if @item.item_images.present?
-              = image_tag @item.item_images[0].image.to_s
-            - else
-              %p.item-image-box__upload__message
-                ドラッグアンドドロップ
-                %br
-                またはクリックしてファイルをアップロード
+        = f.fields_for :item_images do |image|
+          .item-image-box__images
+            .preview
+              - if @item.item_images.ids.present?
+                - @item.item_images.each do |item_image|
+                  .img_view{ 'data-already-image-no': item_image.id }
+                    = image_tag item_image.image.to_s, id: "img_prev", class: 'already-image'
+                    .delete-btn.blue-link.already-image-del
+                      削除
+                .del-image-list
+            = image.label :image, for: "set-image" do
+              .upload1
+                = image.file_field :image, id: "set-image", class: "set-image img-hidden", name: 'item_images[image][]', 'data-image-no': 0
+                %p.upload1__message
+                  ドラッグアンドドロップ
+                  %br
+                  またはクリックしてファイルをアップロード
         .error-text
           - @item_images.errors.full_messages_for(:image).each do |message|
             = message
