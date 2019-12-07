@@ -10,7 +10,6 @@ class SignupController < ApplicationController
 
   def tel_no
     @user = User.new 
-    
   end
 
   def address
