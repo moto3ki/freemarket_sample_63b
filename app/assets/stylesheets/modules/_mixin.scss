@@ -109,3 +109,16 @@
   right: 0;
   left: 0;
 }
+
+/* category_barの設定 */
+@mixin category_bar_set {
+  background-color: #fff;
+  box-shadow: 2px 2px 4px grey;
+  display: none;
+}
+
+/* 文字の上下の高さと上下を中央に設定 */
+@mixin text-height-center ($height) {
+  height: $height;
+  line-height: $height;
+}
