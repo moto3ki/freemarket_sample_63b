@@ -1,4 +1,5 @@
 class CreditCardsController < ApplicationController
+  before_action :set_categories, only: [:new]
 
   require "payjp"
 
@@ -48,5 +49,11 @@ class CreditCardsController < ApplicationController
       customer = Payjp::Customer.retrieve(credit_card.customer_id)
       @default_card_information = customer.cards.retrieve(credit_card.card_id)
     end
+  end
+
+  private
+
+  def set_categories
+    @parents = Category.where(ancestry: nil)
   end
 end
