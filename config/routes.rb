@@ -9,6 +9,8 @@ Rails.application.routes.draw do
       get 'member_info'
       get 'tel_no'
       get 'address'
+      post 'credit'
+      post 'pay', to: 'signup#pay'      
     end
   end
 

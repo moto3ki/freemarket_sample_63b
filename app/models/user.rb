@@ -28,7 +28,7 @@ class User < ApplicationRecord
   validates :email,             presence: true,on: :member_info_set
   validates :email,             format: { with: VALID_EMAIL_REGEX },uniqueness: true,allow_blank: true,on: :member_info_set
   validates :password,          presence: true,on: :member_info_set
-  validates :password,          format: {with: /\A(?=.*?[a-z])(?=.*?\d)[a-z\d]{7,128}+\z/i, message: "英字と数字の両方を含めて設定してください"}, allow_blank: true,on: :member_info_set
+  validates :password,          format: {with: /\A(?=.*?[a-z])(?=.*?\d)[a-z\d]+\z/i, message: "英字と数字の両方を含めて設定してください"}, allow_blank: true,on: :member_info_set
   validates :password,          length: { in: 7..128, message: "7文字以上128文字以下で入力してください"}, allow_blank: true,on: :member_info_set
   validates :kanji_last_name,   presence: true,on: :member_info_set
   validates :kanji_last_name,   format: {with: VALID_KANJIL_REGEX}, allow_blank: true,on: :member_info_set
