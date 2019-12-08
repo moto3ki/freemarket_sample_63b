@@ -84,3 +84,41 @@
   border-bottom: 2px solid #f5f5f5;
   line-height: 1.4;
 }
+
+/* progress_barのbefore,afterの設定 */
+@mixin before_after_set {
+  position: absolute;
+  bottom: 5px;
+  z-index: -1;
+  display: block;
+  content: '';
+  width: 70px;
+  height: 2px;
+  background: #ccc;
+}
+
+/* progress_barのcircleの設定 */
+@mixin circle_set {
+  background: #ccc;
+  height: 12px;
+  width: 12px;
+  margin: 8px auto 0;
+  border-radius: 50%;
+  position: absolute;
+  bottom: 15px;
+  right: 0;
+  left: 0;
+}
+
+/* category_barの設定 */
+@mixin category_bar_set {
+  background-color: #fff;
+  box-shadow: 2px 2px 4px grey;
+  display: none;
+}
+
+/* 文字の上下の高さと上下を中央に設定 */
+@mixin text-height-center ($height) {
+  height: $height;
+  line-height: $height;
+}

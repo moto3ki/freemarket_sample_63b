@@ -1,0 +1,77 @@
+%header.signup-header.text-center
+  .signup-header__left
+    = link_to root_path do
+      = image_tag("/logo_image/fmarket_logo_white.svg")
+  - if  params[:action] == "member_info"
+    .signup-header__right
+      %ol.right-box.clearfix
+        %li.right-box__step#title-red
+          会員情報
+          .circle-status1#circle-red
+        %li.right-box__step
+          電話番号認証
+          .circle-status2
+        %li.right-box__step
+          お届け先住所入力
+          .circle-status2
+        %li.right-box__step
+          支払い方法
+          .circle-status2
+        %li.right-box__step
+          完了
+          .circle-status3
+  - elsif params[:action] == "tel_no"
+    .signup-header__right
+      %ol.right-box.clearfix
+        %li.right-box__step
+          会員情報
+          .circle-status1#right-border-red
+        %li.right-box__step#title-red
+          電話番号認証
+          .circle-status2#left-border-red
+        %li.right-box__step
+          お届け先住所入力
+          .circle-status2
+        %li.right-box__step
+          支払い方法
+          .circle-status2
+        %li.right-box__step
+          完了
+          .circle-status3
+  - elsif params[:action] == "address"
+    .signup-header__right
+      %ol.right-box.clearfix
+        %li.right-box__step
+          会員情報
+          .circle-status1#right-border-red
+        %li.right-box__step
+          電話番号認証
+          .circle-status2#both-border-red
+        %li.right-box__step#title-red
+          お届け先住所入力
+          .circle-status2#left-border-red 
+        %li.right-box__step
+          支払い方法
+          .circle-status2
+        %li.right-box__step
+          完了
+          .circle-status3
+  - else params[:action] == "create"
+    .signup-header__right
+      %ol.right-box.clearfix
+        %li.right-box__step
+          会員情報
+          .circle-status1#right-border-red
+        %li.right-box__step
+          電話番号認証
+          .circle-status2#both-border-red
+        %li.right-box__step
+          お届け先住所入力
+          .circle-status2#both-border-red
+        %li.right-box__step
+          支払い方法
+          .circle-status2#both-border-red
+        %li.right-box__step#title-red
+          完了
+          .circle-status3#left-border-red 
+  

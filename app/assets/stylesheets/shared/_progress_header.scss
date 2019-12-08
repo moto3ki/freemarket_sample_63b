@@ -1,0 +1,91 @@
+.signup-header{
+  height: 128px;
+  line-height: 128px;
+  background-color: $main_back_color;
+
+  &__left {
+    @include height_width(49px, 185px);
+    line-height: 49px;
+    display: inline-block;
+    margin: 40px 0 0;
+  }
+
+  &__right {
+    padding-left: 44px;
+    display: inline-block;
+    vertical-align: top;
+    
+
+    .right-box {
+      min-width: 500px;
+      line-height: 90px;
+
+      &__step {
+        @include string_set( 12px, normal, #888);
+        margin-right: 40px;
+        min-width: 60px;
+        position: relative;
+        z-index: 1;
+        display: inline-block;
+
+        .circle-status1 {
+          @include circle_set;
+
+          &:after {
+            @include before_after_set;
+            left: 50%;
+          }
+        }
+        .circle-status2 {
+          @include circle_set;
+
+          &:before {
+            @include before_after_set;
+            right: 50%;
+          }
+          &:after {
+            @include before_after_set;
+            left: 50%;
+          }
+        }
+        
+        .circle-status3 {
+          @include circle_set;
+
+          &:before {
+            @include before_after_set;
+            right: 50%;
+          }
+        }
+      }
+    }
+  }
+}
+#title-red {
+  @include string_set( 12px, bold, $main-color);
+  
+}
+#circle-red {
+  background-color: $main-color;
+}
+#left-border-red {
+  background-color: $main-color;
+  &:before{
+    background-color: $main-color;
+  }
+}
+#right-border-red {
+  background-color: $main-color;
+  &:after{
+    background-color: $main-color;
+  }
+}
+#both-border-red {
+  background-color: $main-color;
+  &:before{
+    background-color: $main-color;
+  }
+  &:after{
+    background-color: $main-color;
+  }
+}

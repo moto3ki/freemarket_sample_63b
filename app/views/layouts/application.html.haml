@@ -9,12 +9,16 @@
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
   %body
-    - if params[:controller] == "home" || params[:controller] == "users" || params[:controller] == "items" && (params[:action] == "show" || params[:action] == "own_show")
+    - if params[:controller] == "home" || params[:controller] == "users" || params[:controller] == "items" && (params[:action] == "show" || params[:action] == "own_show") || params[:controller] == "real_address" || params[:controller] == "categories"
       = render "shared/header"
       = yield
       = render "shared/sell_button"
       = render "shared/footer"
-    - else
-      = render "shared/sub-header"
+    - elsif params[:controller] == "signup"
+      = render "shared/progress_header"
       = yield
-      = render "shared/sub-footer"
+      = render "shared/sub_footer"
+    - else
+      = render "shared/sub_header"
+      = yield
+      = render "shared/sub_footer"
