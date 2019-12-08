@@ -37,7 +37,7 @@ Rails.application.routes.draw do
     resources :real_address, only: [:new, :create]
   end
   
-  resources :items, only: [:new, :show, :create]
+  resources :prefectures, only: [:show]
   resources :categories, only: [:index]
   
 end

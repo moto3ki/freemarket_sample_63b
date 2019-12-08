@@ -7,7 +7,7 @@ class ItemsController < ApplicationController
   end
 
   def show
-    
+    @items = Item.where(user_id: @item.user_id)
   end
   
   def create
