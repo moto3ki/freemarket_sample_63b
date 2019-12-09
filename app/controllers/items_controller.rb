@@ -25,10 +25,9 @@ class ItemsController < ApplicationController
       image_save_result = @item_images.valid?
     else
       image_save_result = @item_images.valid?
-    end
-    
+      end
     # itemレコード、item_imagesのバリデーションを通過した場合
-    if item_save_result && item_save_result
+    if item_save_result && image_save_result
       if @item.save
         params[:item_images][:image].each do |image|
           @item_images = ItemImage.create(image: image, item_id: @item.id)
