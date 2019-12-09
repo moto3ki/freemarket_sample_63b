@@ -33,3 +33,11 @@
   display: block;
   clear: both;
 }
+
+.day, .month, .year {
+  @include height_width(48px, 43%);
+  border: 1px solid #ccc;
+  background-color: #fff;
+  cursor: pointer;
+  display: inline-block;
+}

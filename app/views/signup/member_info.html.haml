@@ -32,6 +32,8 @@
                 - @user.errors.full_messages_for(:password).each do |message|
                   %div
                     = message
+                .signup-form__label__passtext
+                  %p ※ 英字と数字の両方を含めて設定してください
                 .signup-form__label__check-box
                   %input.signup-form__label__check-box__input{type: "checkbox"}
                   %label.signup-form__label__check-box__text パスワードを表示する
@@ -52,7 +54,7 @@
               - @user.errors.full_messages_for(:kanji_first_name).each do |message|
                 %div
                   = message
-            .signup-for
+            .signup-form
               .signup-form__label  お名前カナ(全角)
               %span.require 必須
               .signup-form__second

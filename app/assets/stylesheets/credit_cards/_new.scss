@@ -51,22 +51,6 @@
                 margin: 8px 0 0;
               }
 
-                .month {
-                  @include height_width(48px, 43%);
-                  border: 1px solid #ccc;
-                  background-color: #fff;
-                  cursor: pointer;
-                  display: inline-block;
-                }
-
-                .year {
-                  @include height_width(48px, 43%);
-                  border: 1px solid #ccc;
-                  background-color: #fff;
-                  cursor: pointer;
-                  display: inline-block;
-                }
-
                 .question {
                   .text {
                     color: #0099e8;
