@@ -14,25 +14,33 @@ class ItemsController < ApplicationController
     
     item_save_result  = true
     image_save_result = true
-    # 商品の保存
+    @item_images = ItemImage.new
+    # itemsレコード保存のエラーチェック
     @item = Item.new(item_params)
-    item_save_result = @item.save
-    # パラメータからimageを取得し、枚数分保存
+    item_save_result = @item.valid?
+    # item_imagesレコード保存のエラーチェック
     if params[:item_images].present?
-      params[:item_images][:image].each do |image|
-        @item_images = ItemImage.new(image: image, item_id: @item.id)
-        image_save_result =  @item_images.save
-      end
+      @item_images = ItemImage.new(image: params[:item_images][:image][0].image,
+                                   item_id: @item.id)
+      image_save_result = @item_images.valid?
     else
-      @item_images = ItemImage.new(image: nil)
-      image_save_result = @item_images.save
+      image_save_result = @item_images.valid?
     end
-    # 商品・商品画像の保存成功時
-    if item_save_result && image_save_result
+    
+    # itemレコード、item_imagesのバリデーションを通過した場合
+    if item_save_result && item_save_result
+      if @item.save
+        params[:item_images][:image].each do |image|
+          @item_images = ItemImage.create(image: image, item_id: @item.id)
+        end
+      end
       redirect_to root_path
     else
       render action: :new
     end
+
+    rescue
+      render action: :new
   end
 
   def edit
