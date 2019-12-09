@@ -7,12 +7,14 @@
 @import "modules/common";
 
 @import "shared/header";
+@import "shared/sub_header";
+@import "shared/progress_header";
 @import "shared/footer";
-@import "shared/sub-header";
-@import "shared/sub-footer";
+@import "shared/sub_footer";
 @import "shared/sell_button";
 @import "shared/side_bar";
 @import "shared/bread-crumbs";
+@import "shared/category_bar";
 
 @import "home/index";
 
