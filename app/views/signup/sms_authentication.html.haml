@@ -1,0 +1,14 @@
+.signup-container
+  .signup-main
+    .signup-panel
+      %h2.signup-panel__title 電話番号登録
+      = form_with(model:@user,url: address_signup_index_path,local: true, method: :get) do |f|
+        .signup-panel__insert
+          .signup-inner
+            .signup-form
+              .signup-form__label 認証番号
+              = f.text_field :tel_no, class:"input-default", placeholder: "認証番号を入力"
+              .signup-form
+                %p.signup-text 
+                  本人確認のため、携帯電話のSMS(ショートメッセージサービス)を利用するして認証を行います。
+              = f.submit "認証して完了", class: 'signup-btn--red'

@@ -1,0 +1,20 @@
+.category-tag
+  .category-tag__list
+    .list-parent
+      - @parents.each do |parent|
+        .list-parent__text
+          = link_to "#" do
+            = parent.name
+          .list-child
+            - parent.children.each do |child|
+              .list-child__text
+                = link_to "#" do
+                  = child.name
+                .list-grandchild
+                  - child.children.each do |grandchild|
+                    .list-grandchild__text
+                      = link_to "#" do
+                        = grandchild.name
+      .list-parent__text
+        = link_to "#" do
+          カテゴリー一覧

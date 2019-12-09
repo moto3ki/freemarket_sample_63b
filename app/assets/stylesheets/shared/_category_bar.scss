@@ -1,0 +1,61 @@
+.category-tag {
+  position: relative;
+  margin-left: 15%;
+  z-index: 2;
+
+  &__list {
+    .list-parent {
+      @include height_width(400px, 220px);
+      @include category_bar_set;
+
+      &__text {
+        @include hover_background_color($main-color);
+        @include text-height-center (44px);
+        font-size: 14px;
+        padding-left: 15px;
+        cursor: pointer;
+        a{
+          color: black;
+        }
+
+        .list-child {
+          @include height_width(400px, 220px);
+          @include category_bar_set;
+          position: absolute;
+          left: 220px;
+          top: 0;
+  
+          &__text {
+            @include hover_background_color($dark_gray);
+            @include text-height-center (26px);
+            font-size: 14px;
+            padding-left: 15px;
+            cursor: pointer;
+            a {
+              color: black;
+            }
+
+            .list-grandchild {
+              @include height_width(400px, 340px);
+              @include category_bar_set;
+              position: absolute;
+              left: 220px;
+              top: 0;
+    
+              &__text {
+                @include hover_background_color($dark_gray);
+                @include text-height-center (26px);
+                font-size: 14px;
+                padding-left: 15px;
+                cursor: pointer;
+                a {
+                  color: black;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
