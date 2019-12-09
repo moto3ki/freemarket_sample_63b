@@ -8,18 +8,31 @@ class ItemsController < ApplicationController
   end
 
   def show
-    
+    @items = Item.where(user_id: @item.user_id)
   end
   
   def create
-    @item = Item.new(item_params)
-    @item_images = @item.item_images.new(item_image_params)
     
-    # 商品と商品画像が正常に登録できた場合
-    if @item.save && @item_images.save
+    item_save_result  = true
+    image_save_result = true
+    # 商品の保存
+    @item = Item.new(item_params)
+    item_save_result = @item.save
+    # パラメータからimageを取得し、枚数分保存
+    if params[:item_images].present?
+      params[:item_images][:image].each do |image|
+        @item_images = ItemImage.new(image: image, item_id: @item.id)
+        image_save_result =  @item_images.save
+      end
+    else
+      @item_images = ItemImage.new(image: nil)
+      image_save_result = @item_images.save
+    end
+    # 商品・商品画像の保存成功時
+    if item_save_result && image_save_result
       redirect_to root_path
     else
-      render :new
+      render action: :new
     end
   end
 
@@ -29,10 +42,33 @@ class ItemsController < ApplicationController
   end
 
   def update
-    if @item.update(item_params)
+    image_save_result = true
+    @item_images = ItemImage.new
+    # 画像削除
+    if params[:del_item_images].present?
+      params[:del_item_images][:id].each do |id|
+        item_image = ItemImage.find(id)
+        item_image.destroy
+      end
+    end
+    # 画像追加
+    if params[:item_images].present?
+      params[:item_images][:image].each do |image|
+        @item_images = ItemImage.new(image: image, item_id: @item.id)
+        image_save_result =  @item_images.save
+      end
+    else
+      if @item.item_images.count == 0
+        @item_images = ItemImage.new(image: nil)
+        image_save_result = @item_images.save
+      end
+    end
+    
+    # 商品編集
+    if @item.update(item_params) && image_save_result
       redirect_to own_show_item_path(@item)
     else
-      render :edit
+      render template: 'items/new'
     end
   end
 
@@ -62,11 +98,11 @@ class ItemsController < ApplicationController
           .merge(user_id: current_user.id,
                  status: 0,
                  like_cnt: 0,
-                 )
+                )
   end
 
   def item_image_params
-    params.require(:item).permit(:image)
+    params.require(:item_images).require(:image)
   end
 
   def set_item

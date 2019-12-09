@@ -8,6 +8,7 @@ class Item < ApplicationRecord
   belongs_to_active_hash :prefecture
   # belongs_to :category
 
+  # accepts_nested_attributes_for :item_images
 
   NOT_NULL_MESSAGE   = "入力してください"
   NOT_SELECT_MESSAGE = "選択してください"
