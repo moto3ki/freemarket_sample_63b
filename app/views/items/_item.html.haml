@@ -6,8 +6,8 @@
       .item-container__overview__left__main-image
         = image_tag item.item_images[0].image.to_s
       .item-container__overview__left__sub-images
-        - 10.times do |i|
-          = image_tag("/logo_image/profile.jpg")
+        - item.item_images.each do |item_image|
+          = image_tag item_image.image.to_s
     .item-container__overview__right
       = render "items/item_overview", { item: item }
   .item-container__price

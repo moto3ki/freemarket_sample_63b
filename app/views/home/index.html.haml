@@ -3,15 +3,4 @@
   .popular-category
     .popular-category__title
       人気のカテゴリー
-  .item-lists
-    .item-lists__head
-      .item-lists__head__title
-        出品一覧
-      .item-lists__head__more-link
-        = link_to "#" do
-          もっと見る
-          = icon 'fas', 'angle-right'
-    %ul.item-lists__items
-      - @items.each do |item|
-        = render partial: "list", locals: {item: item}
-
+  = render partial: "shared/items", locals: {items: @items}
