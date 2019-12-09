@@ -1,3 +1,7 @@
+= render partial: "shared/header"
+%nav.bread-crumbs
+  - breadcrumb :real_address
+  = breadcrumbs separator: " &rsaquo; "
 %main.l-container.clearfix
   .l-content
     %section.l-chapter-container.mypage-identification
