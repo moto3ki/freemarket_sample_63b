@@ -1,7 +1,9 @@
 class SignupController < ApplicationController
   before_action :validates_member_info, only: :tel_no
   before_action :validates_tel_no, only: :address
-  before_action :validates_address, only: :create
+  before_action :validates_address, only: :credit
+
+  require "payjp"
  
   def member_info
     @user = User.new 
@@ -13,9 +15,7 @@ class SignupController < ApplicationController
   end
 
   def address
-    
     @send_address = SendAddress.new
-    
   end
 
   def validates_member_info
@@ -63,18 +63,17 @@ class SignupController < ApplicationController
 
   def validates_tel_no
     session[:tel_no] = user_params[:tel_no]
-    @user = User.new(
-      nickname:        session[:nickname],
-      email:           session[:email],
-      password:        session[:password],
-      kanji_last_name: session[:kanji_last_name],
-      kanji_first_name:session[:kanji_first_name],
-      kana_last_name:  session[:kana_last_name],
-      kana_first_name: session[:kana_first_name],
-      birth_day:       session[:birth_day],
-      tel_no:          session[:tel_no]
+    @user = User.new( 
+    nickname:        session[:nickname],
+    email:           session[:email],
+    password:        session[:password],
+    kanji_last_name: session[:kanji_last_name],
+    kanji_first_name:session[:kanji_first_name],
+    kana_last_name:  session[:kana_last_name],
+    kana_first_name: session[:kana_first_name],
+    birth_day:       session[:birth_day],
+    tel_no:          session[:tel_no]
     )
-    
     render '/signup/tel_no' unless @user.valid?
 
     if @user.save 
@@ -85,44 +84,40 @@ class SignupController < ApplicationController
          sns.user_id = @user.id
          sns.save
       end
-      
       sign_in User.find(session[:id]) unless user_signed_in?
     end
   end
 
   def validates_address
-    @send_address = SendAddress.new(
-      user_id:          current_user.id,
-      kanji_last_name:  send_address_params[:kanji_last_name],
-      kanji_first_name: send_address_params[:kanji_first_name],
-      kana_last_name:   send_address_params[:kana_last_name],
-      kana_first_name:  send_address_params[:kana_first_name],
-      post_code:        send_address_params[:post_code],
-      prefecture_id:    send_address_params[:prefecture_id],
-      city:             send_address_params[:city],
-      address:          send_address_params[:address],
-      building_name:    send_address_params[:building_name],
-      tel_no:           send_address_params[:tel_no]
-    )
-
+    @send_address = SendAddress.create(send_address_params)
     render '/signup/address' unless @send_address.valid?
   end
 
-  def create
-    @send_address = SendAddress.create(
-      user_id:          current_user.id,
-      kanji_last_name:  send_address_params[:kanji_last_name],
-      kanji_first_name: send_address_params[:kanji_first_name],
-      kana_last_name:   send_address_params[:kana_last_name],
-      kana_first_name:  send_address_params[:kana_first_name],
-      post_code:        send_address_params[:post_code],
-      prefecture_id:    send_address_params[:prefecture_id],
-      city:             send_address_params[:city],
-      address:          send_address_params[:address],
-      building_name:    send_address_params[:building_name],
-      tel_no:           send_address_params[:tel_no]
-    )
-    
+  def credit
+    credit_card = CreditCard.where(user_id: current_user.id)
+  end
+
+  def pay
+    Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
+    if params['payjp-token'].blank?
+      render '/signup/create'
+    else
+      customer = Payjp::Customer.create(
+      description: '登録テスト',
+      card: params['payjp-token'],
+      metadata: {user_id: current_user.id}
+      ) 
+      @credit_card = CreditCard.new(user_id: current_user.id, customer_id: customer.id, card_id: customer.default_card)
+      if @credit_card.save
+        render '/signup/create'
+      else
+        redirect_to action: "pay"
+      end
+    end
+  end
+
+
+  def create  
   end
 
   private
@@ -152,7 +147,7 @@ class SignupController < ApplicationController
       :address,          
       :building_name,
       :tel_no
-    )
+    ).merge(user_id: current_user.id)
   end
 end
 

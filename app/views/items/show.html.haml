@@ -20,18 +20,22 @@
         = icon 'fab', 'pinterest-square', class: "sns-container__icon--pinterest"
   .other-item-container
     = link_to "#", class:"other-item-container__title blue-link" do
-      XXXXさんのその他の商品
+      = @item.user.nickname + "さんのその他の商品"
     .other-item-container__items
-      - 9.times do |i|
+      - @items.each do |item|
         .other-item-container__items__item
-          = link_to "#", class: "item-link" do
-            = image_tag("/item_image/sample.png", class: "other-item-container__items__item__image")
+          = link_to item_path(item), class: "item-link" do
+            - if item.status == 1
+              .sold-out
+                .sold-out__string
+                  SOLD
+            = image_tag item.item_images[0].image.to_s, class: "other-item-container__items__item__image"
             .other-item-container__items__item__explain
               .other-item-container__items__item__explain__title
-                サンプル商品サンプル商品サンプル商品サンプル商品
+                = item.name
               .other-item-container__items__item__explain__bottom
                 .other-item-container__items__item__explain__bottom__price
-                  ¥8,888
+                  = comma_to_jpy(item.price)
                 .other-item-container__items__item__explain__bottom__likes
                   = icon 'far', 'heart'
                   いいね
