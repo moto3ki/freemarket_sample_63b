@@ -12,11 +12,11 @@
             = icon 'fa', 'search', id: "search-icon"
     .header__inner__bottom
       %ul.header__inner__bottom__left
-        %li.header__inner__bottom__left__contents
+        %li.header__inner__bottom__left--category
           = link_to categories_path, class: "left-links" do
             = icon 'fa', 'list', class: "left-icon"
             カテゴリーから探す
-        %li.header__inner__bottom__left__contents
+        %li.header__inner__bottom__left--brand
           = link_to "#", class: "left-links" do
             = icon 'fa', 'tags', class: "left-icon"
             ブランドから探す
@@ -46,3 +46,4 @@
             = link_to "新規登録", new_user_registration_path
           %li.header__inner__bottom__right__signin
             = link_to "ログイン", new_user_session_path
+  = render "shared/category_bar"

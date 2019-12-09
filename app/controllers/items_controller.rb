@@ -1,5 +1,6 @@
 class ItemsController < ApplicationController
   before_action :set_item, only: [:show, :edit, :update, :own_show, :destroy]
+  before_action :set_categories, only: [:show, :own_show]
 
   def new
     @item = Item.new
@@ -106,5 +107,9 @@ class ItemsController < ApplicationController
 
   def set_item
     @item = Item.find(params[:id])
+  end
+
+  def set_categories
+    @parents = Category.where(ancestry: nil)
   end
 end
