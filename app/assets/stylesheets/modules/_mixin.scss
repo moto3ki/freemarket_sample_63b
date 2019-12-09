@@ -122,3 +122,14 @@
   height: $height;
   line-height: $height;
 }
+
+/*ログイン用フォーム*/
+@mixin form_set($width){
+  width: $width;
+  padding: 10px 16px 8px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  background: #fff;
+  line-height: 1.5;
+  font-size: 16px;
+}
