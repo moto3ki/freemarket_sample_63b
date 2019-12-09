@@ -18,13 +18,19 @@
           支払い金額
         .item-container__pay-price__value
           = comma_to_jpy(@item.price)
-      .item-container__purchase-button
-        = link_to "購入する", item_purchases_path, method: :post
-    .delivery-address-container
-      .delivery-address-container__title
-        配送先
-      .delivery-address-container__value
     .payment-method-container
       .payment-method-container__title
         支払い方法
       .payment-method-container__value
+        = "**** **** **** " + @default_card_information.last4
+      .payment-method-container__value
+        - exp_month = @default_card_information.exp_month.to_s
+        - exp_year = @default_card_information.exp_year.to_s.slice(2,3)
+        = exp_month + " / " + exp_year
+    .delivery-address-container
+      .delivery-address-container__title
+        配送先
+      .delivery-address-container__value
+    .purchase-button
+      = link_to "購入する", item_purchases_path, method: :post
+
