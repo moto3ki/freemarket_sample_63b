@@ -3,6 +3,8 @@
     .item-lists__head__title
       - if params[:controller] == "home"
         出品一覧
+      - elsif params[:controller] == "items"
+        = @keyword + "の検索結果"
       - else
         = items[0].item_list_title
     - if params[:controller] == "home"
