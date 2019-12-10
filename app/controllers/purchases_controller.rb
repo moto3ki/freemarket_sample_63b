@@ -1,10 +1,11 @@
 class PurchasesController < ApplicationController
 
+  before_action :set_credit_card
+
   require 'payjp'
 
   def create
     item = Item.find(params[:item_id])
-    credit_card = CreditCard.find_by(user_id: current_user.id)
     Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
     Payjp::Charge.create(
       amount: item.price,
@@ -22,7 +23,6 @@ class PurchasesController < ApplicationController
   end
 
   def new
-    credit_card = CreditCard.find_by(user_id: current_user.id)
     if credit_card.blank?
       redirect_to controller: "credit_cards", action: "new"
     else
@@ -39,6 +39,10 @@ class PurchasesController < ApplicationController
   private
   def item_params
     params.permit(:item_id).merge(user_id: current_user.id)
+  end
+
+  def set_credit_card
+    credit_card = CreditCard.find_by(user_id: current_user.id)
   end
     
 end
