@@ -23,12 +23,12 @@ class PurchasesController < ApplicationController
   end
 
   def new
-    if credit_card.blank?
+    if @credit_card.blank?
       redirect_to controller: "credit_cards", action: "new"
     else
       Payjp.api_key = ENV['PAYJP_PRIVATE_KEY']
-      customer = Payjp::Customer.retrieve(credit_card.customer_id)    
-      @default_card_information = customer.cards.retrieve(credit_card.card_id)
+      customer = Payjp::Customer.retrieve(@credit_card.customer_id)    
+      @default_card_information = customer.cards.retrieve(@credit_card.card_id)
 
       @item = Item.find(params[:item_id])
       @send_address = current_user.send_address
@@ -42,7 +42,7 @@ class PurchasesController < ApplicationController
   end
 
   def set_credit_card
-    credit_card = CreditCard.find_by(user_id: current_user.id)
+    @credit_card = current_user.credit_cards.first
   end
     
 end
