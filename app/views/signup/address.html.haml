@@ -42,7 +42,8 @@
             .signup-form
               .signup-form__label 都道府県
               %span.require 必須
-              = f.collection_select :prefecture_id, Prefecture.all, :id, :name, class:"input-default"
+              .signup-form__label__pull_down
+                = f.collection_select :prefecture_id, Prefecture.all, :id, :name,{prompt: ""}, class: "pull_down"
             .error-text
               - @send_address.errors.full_messages_for(:prefecture_id).each do |message|
                 %div
