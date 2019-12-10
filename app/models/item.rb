@@ -93,4 +93,16 @@ class Item < ApplicationRecord
     "4~7日で発送": 3
   }, _prefix: true
 
+
+  # 販売手数料算出
+  def calc_frofit(rate)
+    fee = (self.price * (rate.to_f / 100)).floor
+    profit = self.price - fee
+  end
+
+  # 販売手数料算出
+  def calc_fee(price)
+    rate = self.commission_rate / 100
+    (price * rate).floor
+  end
 end

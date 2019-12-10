@@ -25,6 +25,7 @@ Things you may want to cover:
 |kana_first_name|string|null: false|
 |birth_day|date|null: false|
 |tel_no|string|
+|sales|integer|default: 0|
 
 ### Association
 - has_many :items
@@ -166,6 +167,9 @@ Things you may want to cover:
 |------|----|-------|
 |user_id|integer|null: false, foreign_key: true|
 |item_id|integer|null: false, foreign_key: true|
+|price|integer|default: 0|
+|profit|integer|default: 0|
+|pay_flg|integer|
 
 ### Association
 - belongs_to :user
@@ -180,6 +184,37 @@ Things you may want to cover:
 
 ### Association
 - belongs_to :user,optional: true
+
+
+## 13. sales_management Table
+|Column|Type|Options|
+|------|----|-------|
+|sales|integer|default: 0|
+|profit|integer|default: 0|
+
+### Association
+
+
+## 14. sales_commission Table
+|Column|Type|Options|
+|------|----|-------|
+|rate|integer|null: false
+|adapt_date|date|
+
+### Association
+
+
+## 15. todolists Table
+|Column|Type|Options|
+|------|----|-------|
+|user_id|integer|null: false, foreign_key: true|
+|status|integer|default: 0|
+|title|string|null: false|
+|content|text|
+|date|date|
+
+### Association
+- belongs_to :user
 
 
 * Database initialization

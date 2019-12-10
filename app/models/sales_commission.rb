@@ -1,0 +1,2 @@
+class SalesCommission < ApplicationRecord
+end
