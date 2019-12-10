@@ -3,7 +3,7 @@
     .user-box__top.text-center
       .user-box__top__photo
       .user-box__top__title
-        nickname
+        = @user.nickname
       .user-box__top__score
         .user-box__top__score__left
           .user-box__top__score__left__title
@@ -48,5 +48,11 @@
         .user-box__social-media__box--line
           = link_to "#" do
             = icon 'fab', 'line', class: "line-icon"
+    .other-item-container
+      = link_to "#", class:"other-item-container__title blue-link" do
+        この出品者の商品
+      .other-item-container__items
+        - @items.each do |item|
+          = render 'items/item_box', { item: item }
 
 

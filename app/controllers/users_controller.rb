@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:edit, :update]
+  before_action :set_user, only: [:edit, :update, :show]
   before_action :set_categories, only: [:index, :edit, :update, :logout, :selling_items, :sold_items, :show]
 
   def index
@@ -31,7 +31,7 @@ class UsersController < ApplicationController
   end
   
   def show
-
+    @items = @user.items
   end
 
   private
