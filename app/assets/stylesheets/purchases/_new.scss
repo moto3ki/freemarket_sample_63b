@@ -63,22 +63,21 @@
           padding: 14px 0;
         }
       }
-      &__purchase-button{
+    }
+    .payment-method-container{
+      padding: 24px 87.5px;
+      box-sizing: border-box;
+      border-bottom: 1px solid $main_back_color;
+      &__title{
+        @include string_set(14px, bold, #333333);
         width: 320px;
         margin: 0 auto;
         margin-top: 16px;
-        a{
-          @include string_set(14px, bold, #FFFFFF);
-          text-decoration: none;
-          width: 100%;
-          background-color: #888888;
-          text-align: center;
-          padding: 15px 0;
-          display: block;
-          margin: 0 auto;
-          width: 100%;
-          cursor: pointer;
-        }
+      }
+      &__value{
+        width: 320px;
+        margin: 0 auto;
+        margin-top: 16px;
       }
     }
     .delivery-address-container{
@@ -97,20 +96,21 @@
         margin-top: 16px;
       }
     }
-    .payment-method-container{
-      padding: 24px 87.5px;
-      box-sizing: border-box;
-      border-bottom: 1px solid $main_back_color;
-      &__title{
-        @include string_set(14px, bold, #333333);
-        width: 320px;
+    .purchase-button{
+      width: 320px;
+      margin: 0 auto;
+      margin-top: 16px;
+      a{
+        @include string_set(14px, bold, #FFFFFF);
+        text-decoration: none;
+        width: 100%;
+        background-color: #888888;
+        text-align: center;
+        padding: 15px 0;
+        display: block;
         margin: 0 auto;
-        margin-top: 16px;
-      }
-      &__value{
-        width: 320px;
-        margin: 0 auto;
-        margin-top: 16px;
+        width: 100%;
+        cursor: pointer;
       }
     }
   }

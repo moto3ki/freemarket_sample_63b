@@ -8,7 +8,7 @@ class User < ApplicationRecord
   has_many :items
   has_many :purchases
   # has_many :comments
-  # has_many :credit_cards
+  has_many :credit_cards
   # has_many :likes
   # has_many :liked_items, through: :likes, source: :item
   # has_many :rates
