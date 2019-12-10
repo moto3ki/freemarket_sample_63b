@@ -1,8 +1,8 @@
 .signup-container
   .signup-main
     .signup-panel
-      %h2.signup-panel__title 電話番号登録
-      = form_with(model:@user,url: address_signup_index_path,local: true, method: :get) do |f|
+      %h2.signup-panel__title 電話番号認証
+      = form_with(model:@user,url: sms_authentication_signup_index_path,local: true, method: :get) do |f|
         .signup-panel__insert
           .signup-inner
             .signup-form
@@ -12,3 +12,26 @@
                 %p.signup-text 
                   本人確認のため、携帯電話のSMS(ショートメッセージサービス)を利用するして認証を行います。
               = f.submit "認証して完了", class: 'signup-btn--red'
+        .signup-panel__insert
+          .signup-inner
+            .signup-form
+              .signup-form__label 30秒たっても認証番号が届かない方
+            .signup-form
+              %br
+              %p.signup-text 
+                電話で認証確認することもできます
+              = link_to "#",class: ".btn-default signup-btn--red" do
+                電話で認証番号を聞く
+        .signup-panel__insert
+          .signup-inner
+            .signup-form
+              .signup-form__label 認証番号を採草することもできます。もう一度
+              .signup-form__label 電話番号を入力してください。
+          .signup-inner
+            .signup-form
+              %br
+              %br
+              %p.signup-text 
+                = link_to tel_no_signup_index_path, class: "text__link" do
+                  電話番号を再度入力する
+

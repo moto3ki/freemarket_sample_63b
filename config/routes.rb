@@ -8,6 +8,8 @@ Rails.application.routes.draw do
     collection do
       get 'member_info'
       get 'tel_no'
+      post 'tel_no', to: 'signup#sms_post'
+      get 'sms_authentication'
       get 'address'
       post 'credit'
       post 'pay', to: 'signup#pay'      

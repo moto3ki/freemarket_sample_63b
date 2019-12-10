@@ -94,4 +94,5 @@ gem 'omniauth-google-oauth2'
 gem 'dotenv-rails'
 gem 'ancestry'
 gem 'gretel'
-
+gem 'twilio-ruby'
+gem 'phony_rails'

@@ -2,7 +2,7 @@
   .signup-main
     .signup-panel
       %h2.signup-panel__title 電話番号登録
-      = form_with(model:@user,url: address_signup_index_path,local: true, method: :get) do |f|
+      = form_with(model:@user,url: tel_no_signup_index_path,local: true, method: :post) do |f|
         .signup-panel__insert
           .signup-inner
             .signup-form

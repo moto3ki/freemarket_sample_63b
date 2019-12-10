@@ -51,10 +51,8 @@ ActiveRecord::Schema.define(version: 2019_12_09_105144) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "prefecture_id", null: false
-    t.bigint "categoy_id"
     t.bigint "category_id"
     t.index ["category_id"], name: "index_items_on_category_id"
-    t.index ["categoy_id"], name: "index_items_on_categoy_id"
     t.index ["condition"], name: "index_items_on_condition"
     t.index ["delivery_period"], name: "index_items_on_delivery_period"
     t.index ["name"], name: "index_items_on_name"
