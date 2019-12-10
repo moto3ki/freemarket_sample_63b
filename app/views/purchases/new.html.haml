@@ -31,6 +31,14 @@
       .delivery-address-container__title
         配送先
       .delivery-address-container__value
+        = "〒"
+        = @send_address.post_code
+      .delivery-address-container__value
+        = @send_address.city
+        = @send_address.address
+      .delivery-address-container__value
+        = @send_address.kanji_last_name
+        = @send_address.kanji_first_name
     .purchase-button
       = link_to "購入する", item_purchases_path, method: :post
 

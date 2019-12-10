@@ -36,6 +36,7 @@ class PurchasesController < ApplicationController
       @default_card_information = customer.cards.retrieve(credit_card.card_id)
 
       @item = Item.find(params[:item_id])
+      @send_address = current_user.send_address
     end
   end
 
@@ -44,5 +45,5 @@ class PurchasesController < ApplicationController
   def item_params
     params.permit(:item_id).merge(user_id: current_user.id)
   end
-  
+    
 end
