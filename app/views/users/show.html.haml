@@ -1,0 +1,52 @@
+%main.user-show-top
+  .user-box
+    .user-box__top.text-center
+      .user-box__top__photo
+      .user-box__top__title
+        nickname
+      .user-box__top__score
+        .user-box__top__score__left
+          .user-box__top__score__left__title
+            評価
+          .user-box__top__score__left__score
+            0
+        .user-box__top__score__right
+          .user-box__top__score__right__title
+            出品数
+          .user-box__top__score__right__score
+            0
+    .user-box__text
+      .user-box__text__rating
+        .user-box__text__rating--laugh
+          = icon 'fas', 'laugh', class: "smile-wink-icon"
+          .rating-score
+            34
+        .user-box__text__rating--men
+          = icon 'fas', 'meh', class: "men-icon"
+          .rating-score
+            0
+        .user-box__text__rating--frown
+          = icon 'fas', 'frown', class: "frown-icon"
+          .rating-score
+            0
+      .user-box__text__profile
+        %p
+          %br
+            即購入ＯＫ！ お得な『フォロー割』『まとめ割』実施中！
+          %br
+            初めまして。ご覧いただきありがとうございます( ´ ▽ ` )ノ
+          %br
+            厳選された古着を格安にて提供させていただきます♪
+    .user-box__social-media
+      .user-box__social-media__box.text-center
+        .user-box__social-media__box--facebook
+          = link_to "#" do
+            = icon 'fab', 'facebook-square', class: "facebook-icon"
+        .user-box__social-media__box--twitter
+          = link_to "#" do
+            = icon 'fab', 'twitter-square', class: "twitter-icon"
+        .user-box__social-media__box--line
+          = link_to "#" do
+            = icon 'fab', 'line', class: "line-icon"
+
+

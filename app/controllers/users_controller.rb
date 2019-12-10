@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:edit, :update]
-  before_action :set_categories, only: [:index, :edit, :update, :logout, :selling_items, :sold_items]
+  before_action :set_categories, only: [:index, :edit, :update, :logout, :selling_items, :sold_items, :show]
 
   def index
     @purchases = current_user.purchases
@@ -30,6 +30,10 @@ class UsersController < ApplicationController
     @sold_items = current_user.items.where(status: 1)
   end
   
+  def show
+
+  end
+
   private
 
   def user_params
