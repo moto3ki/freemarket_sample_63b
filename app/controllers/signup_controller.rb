@@ -71,7 +71,6 @@ class SignupController < ApplicationController
 
   def validates_member_info
     #step1で入力した値をsessionに保持
-    # binding.pry
     unless session[:tel_no].present?
       if params[:user]["birth_day(1i)"].present? && params[:user]["birth_day(2i)"].present? && params[:user]["birth_day(3i)"].present?
 
