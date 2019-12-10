@@ -2,10 +2,6 @@ class PurchasesController < ApplicationController
 
   require 'payjp'
 
-  def  done
-    
-  end
-
   def create
     item = Item.find(params[:item_id])
     credit_card = CreditCard.find_by(user_id: current_user.id)
@@ -20,9 +16,8 @@ class PurchasesController < ApplicationController
 
     purchase = Purchase.new(item_params)
     if item.save && purchase.save
-      redirect_to root_path
     else
-      redirect_to action: 'done'
+      redirect_to new_item_purchase_path(item)
     end
   end
 
