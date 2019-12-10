@@ -1,6 +1,7 @@
 FactoryBot.define do
 
   factory :user do
+    id                    {1}
     nickname              {"yamada"}
     email                 {"kkk@gmail.com"}
     password              {"aaaa0000"}
@@ -10,7 +11,6 @@ FactoryBot.define do
     kana_first_name       {"タロウ"}
     birth_day             {"2019-01-01"}
     tel_no                {"09011112222"}
-
   end
 
 end
