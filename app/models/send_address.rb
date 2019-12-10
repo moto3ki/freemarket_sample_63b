@@ -15,7 +15,7 @@ class SendAddress < ApplicationRecord
   validates :post_code,         presence: true
   validates :post_code,         format: {with: /\A\d{3}[-]\d{4}$\z/,message:"のフォーマットが不適切です"}, allow_blank: true
   validates :prefecture_id,     presence: true
-  validates :prefecture_id,     format: {with: /\A([1-9]|0[1-9]|[1-3][0-9]|4[0-7])\z/,message:"を入力してください"}, allow_blank: true
+  validates :prefecture_id,     format: {with: /\A([1-9]|[1-3][0-9]|4[0-7])\z/,message:"を入力してください"}, allow_blank: true
   validates :city,              presence: true
   validates :address,           presence: true
 end
