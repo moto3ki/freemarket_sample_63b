@@ -26,7 +26,7 @@ class User < ApplicationRecord
   validates :nickname,          presence: true
   validates :email,             presence: true
   validates :email,             format: { with: VALID_EMAIL_REGEX },uniqueness: true,allow_blank: true
-  validates :password,          presence: true
+  validates :password,          presence: true, unless: :created_at?
   validates :password,          format: {with: /\A(?=.*?[a-z])(?=.*?\d)[a-z\d]+\z/i, message: "は英字と数字の両方を含めて設定してください"}, allow_blank: true
   validates :kanji_last_name,   presence: true
   validates :kanji_last_name,   format: {with: VALID_KANJIL_REGEX}, allow_blank: true

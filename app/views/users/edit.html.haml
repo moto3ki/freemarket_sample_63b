@@ -1,26 +1,27 @@
 %nav.bread-crumbs
   - breadcrumb :profile
   = breadcrumbs separator: " &rsaquo; "
-%main.l-container.clearfix
-  .l-content
-    .profile
-      .profile__head
-        プロフィール
-      = form_with model: @user, local: true  do |f|
-        - if @user.errors.any?
-          .setting-profile-icon
-            %figure
-              %img
-            = f.text_field :nickname, class: "error-form",placeholder: "例）たっちゃん"
-            .error-comment
-              入力して下さい。
-        - else
-          .setting-profile-icon
-            %figure
-              %img
-            = f.text_field :nickname, class: "input-default",placeholder: "例）たっちゃん"
-        .setting-profile-content
-          = f.text_area :profile, class: "textarea-default", placeholder: "例）こんにちは！ご覧いただきありがとうございます。気持ちよくお取引出来るよう心がけていますので、よろしくお願いします！！"
-          = f.submit "変更する", class: "btn-default btn-red"
+%main.user-edit-top
+  .l-container.clearfix
+    .l-content
+      .profile
+        .profile__head
+          プロフィール
+        = form_with model: @user, local: true  do |f|
+          - if @user.errors.any?
+            .setting-profile-icon
+              %figure
+                %img
+              = f.text_field :nickname, class: "error-form",placeholder: "例）たっちゃん"
+              .error-comment
+                入力して下さい。
+          - else
+            .setting-profile-icon
+              %figure
+                %img
+              = f.text_field :nickname, class: "input-default",placeholder: "例）たっちゃん"
+          .setting-profile-content
+            = f.text_area :profile, class: "textarea-default", placeholder: "例）こんにちは！ご覧いただきありがとうございます。気持ちよくお取引出来るよう心がけていますので、よろしくお願いします！！"
+            = f.submit "変更する", class: "btn-default btn-red"
 
-  = render "shared/side_bar"
+    = render "shared/side_bar"

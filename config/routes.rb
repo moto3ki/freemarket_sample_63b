@@ -29,7 +29,7 @@ Rails.application.routes.draw do
       get 'own_show'
     end
   end
-  resources :users, only: [:index, :edit, :update] do
+  resources :users, only: [:index, :edit, :update, :show] do
     collection do
       get 'logout'
       get 'selling_items'
