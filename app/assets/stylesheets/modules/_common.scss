@@ -38,6 +38,7 @@
   @include pull_down(100%);
   margin-top: 8px;
 }
+
 .day, .month, .year {
   @include height_width(48px, 43%);
   border: 1px solid #ccc;

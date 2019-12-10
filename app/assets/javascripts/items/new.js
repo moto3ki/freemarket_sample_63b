@@ -121,26 +121,37 @@ $(function() {
   
   function ajaxSearch(category_id, id_tag){
     var category_no = 0;
-    // 変更があったselectboxをもとにselectboxにつけるID名を設定
-    if (id_tag == 'item_category_id') {
-      category_no = 2;
+    if (category_id != '') {
+      // 変更があったselectboxをもとにselectboxにつけるID名を設定
+      if (id_tag == 'item_category_id') {
+        category_no = 2;
+      }
+      else if(id_tag == 'item_category_id2') {
+        category_no = 3;
+      }
+      // 非同期で子カテゴリの情報を取得
+      $.ajax({
+        type: 'GET',
+        url: '/categories/search',
+        data: { category_id: category_id },
+        dataType: 'json'
+      })
+      .done(function(children) {
+        addCategoryBox(children, category_no);
+      })
+      .fail(function() {
+        alert("通信に失敗しました");
+      });
     }
-    else if(id_tag == 'item_category_id2') {
-      category_no = 3;
+    else {
+      if (id_tag == 'item_category_id') {
+        $('#item_category_id2').remove();
+        $('#item_category_id3').remove();
+      }
+      else if(id_tag == 'item_category_id2') {
+        $('#item_category_id3').remove();
+      }
     }
-    // 非同期で子カテゴリの情報を取得
-    $.ajax({
-      type: 'GET',
-      url: '/categories/search',
-      data: { category_id: category_id },
-      dataType: 'json'
-    })
-    .done(function(children) {
-      addCategoryBox(children, category_no);
-    })
-    .fail(function() {
-      alert("通信に失敗しました");
-    });
   }
   // 親カテゴリが変更された場合
   $(document).on('change', '#item_category_id', function(){
