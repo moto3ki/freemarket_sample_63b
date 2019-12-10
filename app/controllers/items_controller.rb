@@ -5,6 +5,7 @@ class ItemsController < ApplicationController
   def new
     @item = Item.new
     @item_images = ItemImage.new
+    @parents = Category.where(ancestry: nil)
   end
 
   def show
@@ -15,18 +16,17 @@ class ItemsController < ApplicationController
     
     item_save_result  = true
     image_save_result = true
+    @parents = Category.where(ancestry: nil)
     @item_images = ItemImage.new
     # itemsレコード保存のエラーチェック
     @item = Item.new(item_params)
     item_save_result = @item.valid?
     # item_imagesレコード保存のエラーチェック
     if params[:item_images].present?
-      @item_images = ItemImage.new(image: params[:item_images][:image][0].image,
-                                   item_id: @item.id)
-      image_save_result = @item_images.valid?
+      image_save_result = true
     else
       image_save_result = @item_images.valid?
-      end
+    end
     # itemレコード、item_imagesのバリデーションを通過した場合
     if item_save_result && image_save_result
       if @item.save
@@ -101,7 +101,8 @@ class ItemsController < ApplicationController
                   :delivery_method,
                   :prefecture_id,
                   :delivery_period,
-                  :price)
+                  :price,
+                  :category_id)
           .merge(user_id: current_user.id,
                  status: 0,
                  like_cnt: 0,

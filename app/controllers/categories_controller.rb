@@ -5,6 +5,14 @@ class CategoriesController < ApplicationController
 
   end
 
+  def search
+    @children = Category.find(params[:category_id]).children
+    respond_to do |format|
+      format.html
+      format.json
+    end
+  end
+  
   private
 
   def set_categories
