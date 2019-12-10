@@ -51,12 +51,12 @@
             .item-detail-box__select__category__title
               カテゴリー
             .item-detail-box__select__category__pulldown
-              = f.select :category, [['---', 0], ['sample', 1]]
+              = f.collection_select :category_id, @parents, :id, :name, { prompt: "---" }, {class: 'select-box'}
           .item-detail-box__select__status
             .item-detail-box__select__status__title
               商品の状態
             .item-detail-box__select__status__pulldown
-              = f.select :condition, options_for_select(Item.conditions.keys, selected: @item.condition)
+              = f.select :condition, options_for_select(Item.conditions.keys, selected: @item.condition), {}, {class: 'select-box'}
             .error-text
               - @item.errors.full_messages_for(:condition).each do |message|
                 = message
@@ -68,7 +68,7 @@
             .item-delivery-box__select__payer__title
               配送料の負担
             .item-delivery-box__select__payer__pulldown
-              = f.select :delivery_charge, options_for_select(Item.delivery_charges.keys, selected: @item.delivery_charge)
+              = f.select :delivery_charge, options_for_select(Item.delivery_charges.keys, selected: @item.delivery_charge), {}, {class: 'select-box'}
             .error-text
               - @item.errors.full_messages_for(:delivery_charge).each do |message|
                 = message
@@ -76,7 +76,7 @@
             .item-delivery-box__select__method__title
               配送の方法
             .item-delivery-box__select__method__pulldown
-              = f.select :delivery_method, options_for_select(Item.delivery_methods.keys, selected: @item.delivery_method)
+              = f.select :delivery_method, options_for_select(Item.delivery_methods.keys, selected: @item.delivery_method), {}, {class: 'select-box'}
             .error-text
               - @item.errors.full_messages_for(:delivery_method).each do |message|
                 = message
@@ -84,7 +84,7 @@
             .item-delivery-box__select__area__title
               発送元の地域
             .item-delivery-box__select__area__pulldown
-              = f.collection_select :prefecture_id, Prefecture.all, :id, :name, selected: @item.prefecture_id
+              = f.collection_select :prefecture_id, Prefecture.all, :id, :name, {selected: @item.prefecture_id}, {class: 'select-box'}
             .error-text
               - @item.errors.full_messages_for(:prefecture_id).each do |message|
                 = message
@@ -92,7 +92,7 @@
             .item-delivery-box__select__period__title
               発送までの日数
             .item-delivery-box__select__period__pulldown
-              = f.select :delivery_period, options_for_select(Item.delivery_periods.keys, selected: @item.delivery_period)
+              = f.select :delivery_period, options_for_select(Item.delivery_periods.keys, selected: @item.delivery_period), {}, {class: 'select-box'}
             .error-text
               - @item.errors.full_messages_for(:delivery_period).each do |message|
                 = message

@@ -99,6 +99,73 @@ $(function() {
   }
 
   /****************************************/
+  /* カテゴリーボックス出力関数               */
+  /****************************************/
+  function addCategoryBox(children, category_no) {
+    // selectboxを追加
+    let html = `<select class='select-box' name="item[category_id]" id="item_category_id${category_no}">
+                <option value="">---</option>`;
+    // 取得したcategoryレコード分プルダウンを追加
+    children.forEach(function(child){
+      html = html + `<option value=${child.id}>${child.name}</option>`;
+    });
+    // 前回のプルダウンを削除
+    $(`#item_category_id${category_no}`).remove();
+    // 親カテゴリが変更された場合、３個目のプルダウンも削除
+    if(category_no == 2){
+      $('#item_category_id3').remove();
+    }
+    // selectboxを追加
+    $(".item-detail-box__select__category__pulldown").append(html);
+  }
+  
+  function ajaxSearch(category_id, id_tag){
+    var category_no = 0;
+    if (category_id != '') {
+      // 変更があったselectboxをもとにselectboxにつけるID名を設定
+      if (id_tag == 'item_category_id') {
+        category_no = 2;
+      }
+      else if(id_tag == 'item_category_id2') {
+        category_no = 3;
+      }
+      // 非同期で子カテゴリの情報を取得
+      $.ajax({
+        type: 'GET',
+        url: '/categories/search',
+        data: { category_id: category_id },
+        dataType: 'json'
+      })
+      .done(function(children) {
+        addCategoryBox(children, category_no);
+      })
+      .fail(function() {
+        alert("通信に失敗しました");
+      });
+    }
+    else {
+      if (id_tag == 'item_category_id') {
+        $('#item_category_id2').remove();
+        $('#item_category_id3').remove();
+      }
+      else if(id_tag == 'item_category_id2') {
+        $('#item_category_id3').remove();
+      }
+    }
+  }
+  // 親カテゴリが変更された場合
+  $(document).on('change', '#item_category_id', function(){
+    var category_id = $("#item_category_id").val();
+    var id_tag = $(this).attr('id');
+    ajaxSearch(category_id, id_tag);
+  });
+  // 子カテゴリが変更された場合
+  $(document).on('change', '#item_category_id2', function(){
+    var category_id = $("#item_category_id2").val();
+    var id_tag = $(this).attr('id');
+    ajaxSearch(category_id, id_tag);
+  });
+  /****************************************/
   /* 販売利益算出関数                       */
   /****************************************/
   function calcProfit() {
