@@ -17,15 +17,15 @@
       カテゴリー
     %td.item-info__data
       = link_to "#", class: "blue-link" do
-        レディース
+        = item.category.parent.parent.name
       %br
       = link_to "#", class: "blue-link" do
         = icon 'fas', 'angle-right'
-        靴
+        = item.category.parent.name
       %br
       = link_to "#", class: "blue-link" do
         = icon 'fas', 'angle-right'
-        ハイヒール
+        = item.category.name
   %tr
     %th.item-info__heading
       ブランド
