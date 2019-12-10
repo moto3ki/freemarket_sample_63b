@@ -1,0 +1,15 @@
+.bread-crumbs {
+  position: relative;
+  border-top: 1px solid #eee;
+  background: #fff;
+  box-shadow: 0 3px 3px 0 rgba(0,0,0,0.16);
+  height: 50px;
+  .breadcrumbs {
+    margin-left: 190px;
+    margin-top: 12px;
+    a {
+      color: #333;
+    }
+  }
+  
+}

@@ -45,9 +45,17 @@
         display: flex;
         align-items: center;
         font-weight: bold;
-        &__contents{
-          width: 150px;
+        &--category{
+          @include height_width(40px, 150px);
+          line-height: 40px;
           margin-right: 10px;
+          cursor: pointer;
+        }
+        &--brand{
+          @include height_width(40px, 150px);
+          line-height: 40px;
+          margin-right: 10px;
+          cursor: pointer;
         }
         .left-icon{
           color: $main_color;

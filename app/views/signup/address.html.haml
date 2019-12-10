@@ -2,7 +2,7 @@
   .signup-main
     .signup-panel
       %h2.signup-panel__title 発送元・お届け先住所入力
-      = form_with(model: @send_address,url: signup_index_path,local: true, method: :post) do |f|
+      = form_with(model: @send_address,url: credit_signup_index_path,local: true) do |f|
         .signup-panel__insert
           .signup-inner
             .signup-form
@@ -42,7 +42,8 @@
             .signup-form
               .signup-form__label 都道府県
               %span.require 必須
-              = f.collection_select :prefecture_id, Prefecture.all, :id, :name, class:"input-default"
+              .signup-form__label__pull_down
+                = f.collection_select :prefecture_id, Prefecture.all, :id, :name,{prompt: ""}, class: "pull_down"
             .error-text
               - @send_address.errors.full_messages_for(:prefecture_id).each do |message|
                 %div

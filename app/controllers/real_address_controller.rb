@@ -1,6 +1,6 @@
 class RealAddressController < ApplicationController
-
   before_action :set_user, only: [:new, :create]
+  before_action :set_categories, only: [:new, :create]
 
   def new
     @realaddress = @user.real_address
@@ -28,11 +28,18 @@ class RealAddressController < ApplicationController
     end
   end
   
+
+  private
+
+  def real_address_params
+    params.require(:real_address).permit(:post_code, :prefectures, :city, :address, :building_name).merge(user_id: current_user.id)
+  end
+
   def set_user
     @user = User.find(params[:user_id])
   end
 
-  def real_address_params
-    params.require(:real_address).permit(:post_code, :prefectures, :city, :address, :building_name).merge(user_id: current_user.id)
+  def set_categories
+    @parents = Category.where(ancestry: nil)
   end
 end

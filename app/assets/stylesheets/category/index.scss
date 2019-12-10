@@ -49,7 +49,7 @@
           padding: 24px 30px 10px 30px;
           
           p {
-            @include string_set(16px, nomal, $link-color);
+            @include string_set(16px, normal, $link-color);
             margin-top: 8px;
             margin-bottom: 8px;
           }

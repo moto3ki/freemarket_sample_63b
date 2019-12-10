@@ -9,6 +9,8 @@ Rails.application.routes.draw do
       get 'member_info'
       get 'tel_no'
       get 'address'
+      post 'credit'
+      post 'pay', to: 'signup#pay'      
     end
   end
 
@@ -39,7 +41,10 @@ Rails.application.routes.draw do
     resources :real_address, only: [:new, :create]
   end
   
-  resources :items, only: [:new, :show, :create]
-  resources :categories, only: [:index]
-  
+  resources :prefectures, only: [:show]
+  resources :categories, only: [:index] do
+    collection do
+      get 'search'
+    end
+  end
 end

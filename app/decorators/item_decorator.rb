@@ -10,4 +10,8 @@ module ItemDecorator
       "着払い"
     end
   end
+
+  def item_list_title
+    prefecture.name + "の商品一覧"
+  end
 end

@@ -1,25 +1,46 @@
 class ItemsController < ApplicationController
   before_action :set_item, only: [:show, :edit, :update, :own_show, :destroy]
+  before_action :set_categories, only: [:show, :own_show]
 
   def new
     @item = Item.new
     @item_images = ItemImage.new
+    @parents = Category.where(ancestry: nil)
   end
 
   def show
-    
+    @items = Item.where(user_id: @item.user_id)
   end
   
   def create
-    @item = Item.new(item_params)
-    @item_images = @item.item_images.new(item_image_params)
     
-    # 商品と商品画像が正常に登録できた場合
-    if @item.save && @item_images.save
+    item_save_result  = true
+    image_save_result = true
+    @parents = Category.where(ancestry: nil)
+    @item_images = ItemImage.new
+    # itemsレコード保存のエラーチェック
+    @item = Item.new(item_params)
+    item_save_result = @item.valid?
+    # item_imagesレコード保存のエラーチェック
+    if params[:item_images].present?
+      image_save_result = true
+    else
+      image_save_result = @item_images.valid?
+    end
+    # itemレコード、item_imagesのバリデーションを通過した場合
+    if item_save_result && image_save_result
+      if @item.save
+        params[:item_images][:image].each do |image|
+          @item_images = ItemImage.create(image: image, item_id: @item.id)
+        end
+      end
       redirect_to root_path
     else
-      render :new
+      render action: :new
     end
+
+    rescue
+      render action: :new
   end
 
   def edit
@@ -28,10 +49,33 @@ class ItemsController < ApplicationController
   end
 
   def update
-    if @item.update(item_params)
+    image_save_result = true
+    @item_images = ItemImage.new
+    # 画像削除
+    if params[:del_item_images].present?
+      params[:del_item_images][:id].each do |id|
+        item_image = ItemImage.find(id)
+        item_image.destroy
+      end
+    end
+    # 画像追加
+    if params[:item_images].present?
+      params[:item_images][:image].each do |image|
+        @item_images = ItemImage.new(image: image, item_id: @item.id)
+        image_save_result =  @item_images.save
+      end
+    else
+      if @item.item_images.count == 0
+        @item_images = ItemImage.new(image: nil)
+        image_save_result = @item_images.save
+      end
+    end
+    
+    # 商品編集
+    if @item.update(item_params) && image_save_result
       redirect_to own_show_item_path(@item)
     else
-      render :edit
+      render template: 'items/new'
     end
   end
 
@@ -57,18 +101,23 @@ class ItemsController < ApplicationController
                   :delivery_method,
                   :prefecture_id,
                   :delivery_period,
-                  :price)
+                  :price,
+                  :category_id)
           .merge(user_id: current_user.id,
                  status: 0,
                  like_cnt: 0,
-                 )
+                )
   end
 
   def item_image_params
-    params.require(:item).permit(:image)
+    params.require(:item_images).require(:image)
   end
 
   def set_item
     @item = Item.find(params[:id])
+  end
+
+  def set_categories
+    @parents = Category.where(ancestry: nil)
   end
 end

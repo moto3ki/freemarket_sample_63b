@@ -1,0 +1,31 @@
+.signup-container
+  .signup-main
+    .signup-panel
+      %h2.signup-panel__title クレジットカード情報入力
+      = form_with(model: @credit_cards,url: pay_signup_index_path,local: true, method: :post, id: 'charge-form',  html: {name: "inputForm"}) do |f|
+        .signup-panel__insert
+          .signup-inner
+            .signup-form
+              .signup-form__label カード番号
+              %span.require 必須
+              = f.text_field :credit_card_number, class:"input-default", placeholder: '半角数字のみ', maxlength: "16"
+              .card-img
+              = image_tag("/card_image/visa.svg", width: '49', height: '20', alt: "visa")
+              = image_tag("/card_image/master-card.svg", width: '34', height: '20', alt: "master-card")
+              = image_tag("/card_image/saison-card.svg", width: '30', height: '20', alt: "saison-card")
+              = image_tag("/card_image/jcb.svg", width: '32', height: '20', alt: "jcb")
+              = image_tag("/card_image/american_express.svg", width: '21', height: '20', alt: "american_express")
+              = image_tag("/card_image/dinersclub.svg", width: '32', height: '20', alt: "dinersclub")
+              = image_tag("/card_image/discover.svg", width: '32', height: '20', alt: "discover")
+            .card-list
+              .signup-form.clearfix
+                .signup-form__label 有効期限
+                .require 必須
+              != sprintf(f.date_select(:expiration_date,with_css_classes:'input-expire', order:[:month,:year], use_month_numbers:true, discard_day:true, start_year:Time.now.year-2000, end_year:Time.now.year+10-2000, date_separator:'%s'),'月') + '年'
+            .signup-form
+              .signup-form__label セキュリティコード
+              %span.require 必須
+              = f.text_field :cvc, class: "input-default", placeholder: 'カード背面4桁もしくは3桁の番号', maxlength: "4"
+            .signup-form
+              .signup-form#credit_card_token
+                = f.submit "次へ進む",id: 'token_submit',class: 'btn-default btn-red'

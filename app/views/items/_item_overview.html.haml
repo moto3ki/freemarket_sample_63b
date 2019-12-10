@@ -17,15 +17,15 @@
       カテゴリー
     %td.item-info__data
       = link_to "#", class: "blue-link" do
-        レディース
+        = item.category.parent.parent.name
       %br
       = link_to "#", class: "blue-link" do
         = icon 'fas', 'angle-right'
-        靴
+        = item.category.parent.name
       %br
       = link_to "#", class: "blue-link" do
         = icon 'fas', 'angle-right'
-        ハイヒール
+        = item.category.name
   %tr
     %th.item-info__heading
       ブランド
@@ -55,7 +55,7 @@
     %th.item-info__heading
       配送元地域
     %td.item-info__data
-      = link_to "#", class: "blue-link" do
+      = link_to prefecture_path(item.prefecture_id), class: "blue-link" do
         = item.prefecture.name
   %tr
     %th.item-info__heading

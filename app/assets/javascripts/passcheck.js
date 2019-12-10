@@ -1,5 +1,5 @@
 $(function() {
-  var password  = '#user_encrypted_password';
+  var password  = '#user_password';
     // パスワードの入力画面のクラスをpasswardに入れる
   var passcheck = '.signup-form__label__check-box__input';
     // チェックボックスのクラスをpasscheck
