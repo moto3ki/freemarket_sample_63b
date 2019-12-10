@@ -6,7 +6,8 @@
           = image_tag("/logo_image/fmarket_logo_white.svg")
       .header__inner__top__search
         .header__inner__top__search--input
-          %input#item-search{type: "text", placeholder: "何かお探しですか？"}/
+          = form_tag('/items/search', method: :get) do
+            %input#item-search{type: "text", placeholder: "何かお探しですか？", name: "keyword"}
         .header__inner__top__search--icon
           = link_to "#" do
             = icon 'fa', 'search', id: "search-icon"

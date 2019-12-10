@@ -84,6 +84,12 @@ class ItemsController < ApplicationController
     
   end
 
+  # 商品検索
+  def search
+   @items = Item.where('name LIKE(?)', "%#{params[:keyword]}%")
+   @keyword = params[:keyword]
+  end
+
   private
   def item_params
     params.require(:item)
