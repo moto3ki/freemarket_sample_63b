@@ -7,12 +7,12 @@
     margin: 0 auto;
     padding-top: 50px;
     width: 700px;
-    background-color: $light-gray;
+    background-color: white;
 
     &__top {
       &__photo {
         @include height_width(180px, 180px);
-        background-color: red;
+        background-color: gray;
         border-radius: 50%;
         margin: 0 auto;
       }
@@ -54,7 +54,7 @@
       }
     }
     &__text {
-      background-color: #fff;
+      background-color: white;
 
       &__rating {
         @include height_width(38px, 400px);
@@ -124,6 +124,10 @@
         padding: 30px 50px 60px 50px;
         border-top: 2px solid #f5f5f5;
         line-height: 1.5;
+
+        &__content {
+          @include string_set(16px, 400, black);
+        }
       }
     }
     &__social-media {
@@ -240,7 +244,6 @@
               -webkit-transform: rotate(-45deg);
             }
           }
-  
         }
       }
     }

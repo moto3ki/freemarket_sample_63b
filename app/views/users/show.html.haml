@@ -14,7 +14,7 @@
           .user-box__top__score__right__title
             出品数
           .user-box__top__score__right__score
-            0
+            = @user.items.count
     .user-box__text
       .user-box__text__rating
         .user-box__text__rating--laugh
@@ -30,13 +30,8 @@
           .rating-score
             0
       .user-box__text__profile
-        %p
-          %br
-            即購入ＯＫ！ お得な『フォロー割』『まとめ割』実施中！
-          %br
-            初めまして。ご覧いただきありがとうございます( ´ ▽ ` )ノ
-          %br
-            厳選された古着を格安にて提供させていただきます♪
+        .user-box__text__profile__content
+          = simple_format @user.profile
     .user-box__social-media
       .user-box__social-media__box.text-center
         .user-box__social-media__box--facebook
