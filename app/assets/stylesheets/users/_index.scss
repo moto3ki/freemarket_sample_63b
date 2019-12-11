@@ -39,7 +39,7 @@
           }
 
           &__name {
-            @include string_set(14px, 600, #333);
+            @include string_set(14px, 600, black);
             margin: 8px 0 0;
           }
 
@@ -50,10 +50,11 @@
             &--left {
               display: inline-block;
               font-size: 14px;
+              color: black;
 
               .left-count {
                 margin: 0 0 0 8px;
-                @include string_set(14px, 600, #333);
+                @include string_set(14px, 600, black);
 
               }
             }
@@ -61,11 +62,12 @@
             &--right {
               display: inline-block;
               font-size: 14px;
+              color: black;
               margin: 0 0 0 16px;
 
               .right-count {
                 margin: 0 0 0 8px;
-                @include string_set(14px, 600, #333);
+                @include string_set(14px, 600, black);
               }
             }
           }
