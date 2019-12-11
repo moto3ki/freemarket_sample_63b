@@ -45,12 +45,20 @@
       .transaction-view
         .transaction-view__title
           取引画面
-        .transaction-view__send-message
-          .transaction-view__send-message__main
-            = icon 'fas', 'truck'
-            発送をしてください
-          .transaction-view__send-message__sub
-            商品が購入され支払いされました。商品の発送を行なってください。
-        = link_to "商品の発送をしたので、発送を通知する", "#", class: "transaction-view__send-complete-btn"
+        - if @todolist.status == 0
+          .transaction-view__send-message
+            .transaction-view__send-message__main
+              = icon 'fas', 'truck'
+              発送をしてください
+            .transaction-view__send-message__sub
+              商品が購入され支払いされました。商品の発送を行なってください。
+          = link_to "商品の発送をしたので、発送を通知する", todolist_path(@todolist), method: :patch, class: "transaction-view__send-complete-btn"
+        - else
+          .transaction-view__send-message
+            .transaction-view__send-message__main
+              = icon 'fas', 'check'
+              商品の発送を通知しました
+            .transaction-view__send-message__sub
+              購入者の受取確認と評価をしばらくお待ちください
           
 

@@ -52,5 +52,5 @@ Rails.application.routes.draw do
       get 'search'
     end
   end
-  resources :todolists, only: [:show]
+  resources :todolists, only: [:show, :update]
 end

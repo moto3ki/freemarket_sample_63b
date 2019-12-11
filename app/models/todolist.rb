@@ -14,4 +14,14 @@ class Todolist < ApplicationRecord
     self.save
   end
 
+  def evaluate_todo(purchase)
+    self.user_id = purchase.user_id
+    self.status  = 0
+    self.todo_no = 2
+    self.title   = "商品が発送されました"
+    self.content = "商品が発送されました。商品が到着したら、出品者の評価をしてください。"
+    self.date    = Date.today
+    self.item_id = purchase.item_id
+    self.save
+  end
 end
