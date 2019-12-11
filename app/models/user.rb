@@ -16,6 +16,7 @@ class User < ApplicationRecord
   has_many :sns_credentials, dependent: :destroy
   has_one :send_address
   has_one :real_address
+  has_many :todolists
 
 
   #メールアドレス用バリデーション
