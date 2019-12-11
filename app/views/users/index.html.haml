@@ -48,7 +48,7 @@
           %ul.content__list
             - @todolists.each do |todolist|
               %li.content__list__news
-                = link_to  "#", class: "news-link" do
+                = link_to todolist_path(todolist), class: "news-link" do
                   .news-logo
                     = image_tag todolist.item.item_images[0].image.to_s, class:'logo-image'
                   .news-body

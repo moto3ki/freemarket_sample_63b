@@ -1,0 +1,56 @@
+.todolist-show-page
+  .todolist-inner
+    .todolist-left-content
+      .transaction-info
+        .transaction-info__title
+          取引情報
+        %table.transaction-info__details
+          %tr
+            %th
+              商品
+            %td
+              = image_tag @item.item_images[0].image.to_s, class: "todo-item-image"
+              %br
+              = @item.name
+          %tr
+            %th
+              送料
+            %td
+              = @item.delivery_charge
+          %tr
+            %th
+              販売手数料
+            %td
+              = comma_to_jpy(@item.purchase.profit)
+          %tr
+            %th
+              販売利益
+            %td
+              = comma_to_jpy(@item.purchase.fee)
+          %tr
+            %th
+              購入日時
+            %td
+              = @item.purchase.created_at
+          %tr
+            %th
+              お届け先
+            %td
+              = @buyer.send_address.post_code
+              %br
+              = @buyer.send_address.join_address
+              %br
+              = @buyer.send_address.join_kanji_name
+    .todolist-right-content
+      .transaction-view
+        .transaction-view__title
+          取引画面
+        .transaction-view__send-message
+          .transaction-view__send-message__main
+            = icon 'fas', 'truck'
+            発送をしてください
+          .transaction-view__send-message__sub
+            商品が購入され支払いされました。商品の発送を行なってください。
+        = link_to "商品の発送をしたので、発送を通知する", "#", class: "transaction-view__send-complete-btn"
+          
+

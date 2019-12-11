@@ -1,0 +1,76 @@
+.todolist-show-page{
+  @include height_width(100%, 100%);
+  padding-top: 40px;
+  background-color: rgb(245, 245, 245);
+  font-family: Arial, Helvetica, sans-serif;
+  
+  .todolist-inner{
+    @include flexbox_space-between;
+    width: 1100px;
+    margin: 0 auto;
+
+    .todolist-left-content{
+      width: 300px;
+      background-color: white;
+      .transaction-info{
+        &__title{
+          background-color: rgb(245, 245, 245);
+        }
+        &__details{
+            th{
+              width: 30%;
+              padding: 10px 5px;
+              border-bottom: 1px solid $normal-gray;
+              border-right: 1px solid $normal-gray;
+            }
+            // tr{
+            //   width: 100px;
+            //   padding: 5px;
+            //   border-bottom: 1px solid $normal-gray;
+            // }
+            td{
+              width: 70%;
+              padding: 5px;
+              border-bottom: 1px solid $normal-gray;
+            }
+            .todo-item-image{
+              width: 100px;
+            }
+        }
+      }
+    }
+
+    .todolist-right-content{
+      width: 700px;
+      background-color: white;
+      .transaction-view{
+        &__title{
+          @include string_set(28px, bold, black);
+          text-align: center;
+          margin: 20px 0;
+        }
+        &__send-message{
+          background-color: #fff6de;
+          text-align: center;
+          padding: 30px 0;
+          &__main{
+            @include string_set(20px, bold, $main_color);
+            color: $main_color;
+          }
+          &__sub{
+            margin-top: 10px;
+          }
+        }
+        &__send-complete-btn{
+          @include string_set(14px, normal, #FFFFFF);
+          display: block;
+          width: 80%;
+          margin: 16px auto;
+          padding: 16px;
+          text-align: center;
+          background-color: $main_color;
+        }
+      }
+    }
+  }
+}

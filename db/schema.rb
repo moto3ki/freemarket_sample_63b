@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_10_162906) do
+ActiveRecord::Schema.define(version: 2019_12_11_054316) do
 
   create_table "categories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
@@ -61,6 +61,19 @@ ActiveRecord::Schema.define(version: 2019_12_10_162906) do
     t.index ["user_id"], name: "index_items_on_user_id"
   end
 
+  create_table "notices", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "item_id"
+    t.integer "read_flg", default: 0
+    t.string "title", null: false
+    t.text "content"
+    t.date "date"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["item_id"], name: "index_notices_on_item_id"
+    t.index ["user_id"], name: "index_notices_on_user_id"
+  end
+
   create_table "purchases", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "item_id", null: false
@@ -69,6 +82,7 @@ ActiveRecord::Schema.define(version: 2019_12_10_162906) do
     t.integer "price", default: 0
     t.integer "profit", default: 0
     t.integer "pay_flg"
+    t.integer "fee"
     t.index ["item_id"], name: "index_purchases_on_item_id"
     t.index ["user_id"], name: "index_purchases_on_user_id"
   end
@@ -164,6 +178,8 @@ ActiveRecord::Schema.define(version: 2019_12_10_162906) do
   add_foreign_key "item_images", "items"
   add_foreign_key "items", "categories"
   add_foreign_key "items", "users"
+  add_foreign_key "notices", "items"
+  add_foreign_key "notices", "users"
   add_foreign_key "purchases", "items"
   add_foreign_key "purchases", "users"
   add_foreign_key "real_addresses", "users"
