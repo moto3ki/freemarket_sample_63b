@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_10_155129) do
+ActiveRecord::Schema.define(version: 2019_12_10_162906) do
 
   create_table "categories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
@@ -133,6 +133,9 @@ ActiveRecord::Schema.define(version: 2019_12_10_155129) do
     t.date "date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "todo_no", null: false
+    t.bigint "item_id"
+    t.index ["item_id"], name: "index_todolists_on_item_id"
     t.index ["user_id"], name: "index_todolists_on_user_id"
   end
 
@@ -166,5 +169,6 @@ ActiveRecord::Schema.define(version: 2019_12_10_155129) do
   add_foreign_key "real_addresses", "users"
   add_foreign_key "send_addresses", "users"
   add_foreign_key "sns_credentials", "users"
+  add_foreign_key "todolists", "items"
   add_foreign_key "todolists", "users"
 end

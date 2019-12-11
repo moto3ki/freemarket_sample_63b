@@ -1,0 +1,33 @@
+.header-todolists{
+  position: absolute;
+  top: 30px;
+  left: -90px;
+  width: 300px;
+  box-shadow: 2px 2px 4px grey;
+  z-index: 2;
+  display: none;
+  background-color: white;
+  .todolist{
+    color: black;
+    border-bottom: 1px solid $normal_gray;
+    @include flexbox_space-between;
+    padding: 5px 10px;
+    &__left{
+      width: 50px;
+      &__image{
+        width: 50px;
+      }
+    }
+    &__right{
+      width: 200px;
+      
+      &__message{
+        @include string-set(12px, normal, black);
+      }
+      &__date{
+        @include string-set(12px, normal, grey);
+      }
+    }
+  }
+}
+

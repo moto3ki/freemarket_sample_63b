@@ -45,18 +45,19 @@
               = link_to  "#", class: "all-show-btn" do
                 一覧を見る
           %ul.content__list
-            %li.content__list__news
-              = link_to  "#", class: "news-link" do
-                .news-logo
-                  = image_tag "/logo_image/logo_red.svg", class:'logo-image'
-                .news-body
-                  .news-text
-                    ご登録のメールアドレスに認証メールを送りました。メールに記載のURLをクリックして、メールアドレスを認証してください。
-                  .news-icon-time
-                    = icon 'far', 'clock', class: 'icon-time'
-                    .notice-date
-                      １日前
-                = icon 'fas', 'angle-right', class: 'icon-arrow-right'
+            - @todolists.each do |todolist|
+              %li.content__list__news
+                = link_to  "#", class: "news-link" do
+                  .news-logo
+                    = image_tag todolist.item.item_images[0].image.to_s, class:'logo-image'
+                  .news-body
+                    .news-text
+                      = todolist.content
+                    .news-icon-time
+                      = icon 'far', 'clock', class: 'icon-time'
+                      .notice-date
+                        = todolist.days_elapsed
+                  = icon 'fas', 'angle-right', class: 'icon-arrow-right'
             %li.all-show
               = link_to  "#", class: "all-show-btn" do
                 一覧を見る

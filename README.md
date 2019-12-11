@@ -198,7 +198,7 @@ Things you may want to cover:
 ## 14. sales_commission Table
 |Column|Type|Options|
 |------|----|-------|
-|rate|integer|null: false
+|rate|integer|null: false|
 |adapt_date|date|
 
 ### Association
@@ -209,6 +209,7 @@ Things you may want to cover:
 |------|----|-------|
 |user_id|integer|null: false, foreign_key: true|
 |status|integer|default: 0|
+|todo_no|integer|null: false|
 |title|string|null: false|
 |content|text|
 |date|date|

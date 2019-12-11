@@ -35,12 +35,10 @@
             = link_to "#", class: "signin-links" do
               = icon 'fas', 'check', class: "signin-icon"
               やることリスト
+              = render partial: "shared/todolist", locals: { todolists: @todolists }
           %li.header__inner__bottom__right__contents
             = link_to users_path, class: "signin-links" do
-              = image_tag("/logo_image/profile.jpg", class: "profile-image")
               マイページ
-          %li.header__inner__bottom__right__contents
-            = link_to "ログアウト", destroy_user_session_path, method: :delete, class: '"signin-links'
       - else
         %ul.header__inner__bottom__right
           %li.header__inner__bottom__right__signup

@@ -21,7 +21,7 @@ class PurchasesController < ApplicationController
     
     # やることリストを作成
     todolist = Todolist.new
-    todolist.buyer_todo(current_user)
+    todolist.buyer_todo(current_user, item)
     todolist = Todolist.new
     todolist.seller_todo(item)
     

@@ -1,0 +1,10 @@
+%ul.header-todolists
+  - todolists.each do |todolist|
+    %li.todolist
+      .todolist__left
+        = image_tag todolist.item.item_images[0].image.to_s, class: "todolist__left__image"
+      .todolist__right
+        .todolist__right__message
+          = todolist.content
+        .todolist__right__date
+          = todolist.days_elapsed
