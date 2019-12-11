@@ -42,6 +42,7 @@ Rails.application.routes.draw do
     end
     
     resources :real_address, only: [:new, :create]
+    resources :send_address, only: [:new, :create]
   end
   
   resources :prefectures, only: [:show]
