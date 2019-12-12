@@ -38,7 +38,7 @@ class PurchasesController < ApplicationController
                             price:   item.price,
                             profit:  profit,
                             pay_flg: 0,
-                            commission: fee)
+                            fee:     fee)
     # ステータスを1:購入済に更新
     item.status = 1
 
