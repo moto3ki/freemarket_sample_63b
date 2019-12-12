@@ -23,4 +23,8 @@ class Notice < ApplicationRecord
     self.type_no = 2
     self.date    = Date.today
   end
+
+  def already_read
+    self.read_flg = 1
+  end
 end

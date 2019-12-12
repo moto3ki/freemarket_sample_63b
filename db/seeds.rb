@@ -1,3 +1,5 @@
+require 'date'
+
 # カテゴリー親要素
 lady = Category.create(name: "レディース")
 man = Category.create(name: "メンズ")
@@ -44,3 +46,8 @@ baby_kids_2.children.create([
   {name: "パンツ"}
 ])
 
+# sales_commisionsテーブル初期値
+SalesCommission.create(rate: 10, adapt_date: Date.today)
+
+# sales_managementsテーブル初期値
+SalesManagement.create(sales: 0, profit: 0)

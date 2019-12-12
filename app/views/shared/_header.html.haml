@@ -31,9 +31,9 @@
             = link_to users_path, class: "signin-links" do
               .cnt-base
                 = icon 'far', 'bell', class: "signin-icon"
-                - if @notices.count > 0
+                - if @unread_notices_cnt > 0
                   .cnt-base__cnt
-                    = @notices.count
+                    = @unread_notices_cnt
               お知らせ
               = render partial: "shared/notice", locals: { notices: @notices }
           %li.header__inner__bottom__right__contents

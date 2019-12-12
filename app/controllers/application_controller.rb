@@ -33,5 +33,6 @@ class ApplicationController < ActionController::Base
 
   def get_notice
     @notices = current_user.notices
+    @unread_notices_cnt = current_user.notices.where(read_flg: 0).count
   end
 end
