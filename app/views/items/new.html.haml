@@ -5,6 +5,7 @@
         商品の情報を入力
       .item-image-box
         .item-image-box__title
+          .require 必須
           出品画像
         .item-image-box__explain
           最大10枚までアップロードできます
@@ -30,6 +31,7 @@
             = message
       .item-content-box
         .item-content-box__name-title
+          .require 必須
           商品名
         .item-content-box__name-input
           = f.text_field :name, class: "", value: @item.name, placeholder: "商品名（必須40文字まで）"
@@ -37,6 +39,7 @@
           - @item.errors.full_messages_for(:name).each do |message|
             = message
         .item-content-box__explain-title
+          .require 必須
           商品説明
         .item-content-box__explain-input
           = f.text_area :explain, class: "", value: @item.explain, placeholder: "商品の説明（必須1,000文字以内）（色、素材、重さ、定価、注意点など）例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです"
@@ -49,11 +52,13 @@
         .item-detail-box__select
           .item-detail-box__select__category
             .item-detail-box__select__category__title
+              .require 必須
               カテゴリー
             .item-detail-box__select__category__pulldown
               = f.collection_select :category_id, @parents, :id, :name, { prompt: "---" }, {class: 'select-box'}
           .item-detail-box__select__status
             .item-detail-box__select__status__title
+              .require 必須
               商品の状態
             .item-detail-box__select__status__pulldown
               = f.select :condition, options_for_select(Item.conditions.keys, selected: @item.condition), {}, {class: 'select-box'}
@@ -66,6 +71,7 @@
         .item-delivery-box__select
           .item-delivery-box__select__payer
             .item-delivery-box__select__payer__title
+              .require 必須
               配送料の負担
             .item-delivery-box__select__payer__pulldown
               = f.select :delivery_charge, options_for_select(Item.delivery_charges.keys, selected: @item.delivery_charge), {}, {class: 'select-box'}
@@ -74,6 +80,7 @@
                 = message
           .item-delivery-box__select__method
             .item-delivery-box__select__method__title
+              .require 必須
               配送の方法
             .item-delivery-box__select__method__pulldown
               = f.select :delivery_method, options_for_select(Item.delivery_methods.keys, selected: @item.delivery_method), {}, {class: 'select-box'}
@@ -82,6 +89,7 @@
                 = message
           .item-delivery-box__select__area
             .item-delivery-box__select__area__title
+              .require 必須
               発送元の地域
             .item-delivery-box__select__area__pulldown
               = f.collection_select :prefecture_id, Prefecture.all, :id, :name, {selected: @item.prefecture_id}, {class: 'select-box'}
@@ -90,6 +98,7 @@
                 = message
           .item-delivery-box__select__period
             .item-delivery-box__select__period__title
+              .require 必須
               発送までの日数
             .item-delivery-box__select__period__pulldown
               = f.select :delivery_period, options_for_select(Item.delivery_periods.keys, selected: @item.delivery_period), {}, {class: 'select-box'}
@@ -102,13 +111,14 @@
         %ul.item-price-box__set
           %li.item-price-box__set__price
             .item-price-box__set__price__title
+              .require 必須
               価格
-            .item-price-box__set__price__value
-              ¥
-              = f.text_field :price, value: @item.price, placeholder: "例）300", id: "item-price"
             .error-text
               - @item.errors.full_messages_for(:price).each do |message|
                 = message
+            .item-price-box__set__price__value
+              ¥
+              = f.text_field :price, value: @item.price, placeholder: "例）300", id: "item-price"
           %li.item-price-box__set__fee
             .item-price-box__set__fee__title
               販売手数料 (10%)
@@ -120,8 +130,7 @@
             .item-price-box__set__profit__value#item-sell-profit
               \-
       .item-sell-box
-        .item-sell-box__sell-button
-          = f.submit
+        = f.submit class: "item-sell-box__sell-button"
         .item-sell-box__back-button
           = link_to "#" do
             もどる

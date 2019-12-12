@@ -8,4 +8,12 @@ $(function() {
       $('.header-todolists', this).hide()
     }
   );
+  $(menus).hover(
+    function() {
+      $('.header-notices', this).show()
+    },
+    function() {
+      $('.header-notices', this).hide()
+    }
+  );
 });
