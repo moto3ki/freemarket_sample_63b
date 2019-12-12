@@ -8,6 +8,7 @@ class SignupController < ApplicationController
   def member_info
     @user = User.new 
     session["password"] = []
+    session[:tel_no] = []
   end
 
   def tel_no
@@ -32,7 +33,7 @@ class SignupController < ApplicationController
         client.api.account.messages.create(from: ENV["TWILIO_PHONE_NUMBER"], to: phone_number, body: sms_number)
       rescue
         #失敗した場合ここが動く
-        render "signup/tel_no"
+        redirect_to  tel_no_signup_index_path
         return false
       end
     else 
@@ -67,6 +68,32 @@ class SignupController < ApplicationController
 
   def address
     @send_address = SendAddress.new
+  end
+
+  def credit
+    credit_card = CreditCard.where(user_id: current_user.id)
+  end
+
+  def pay
+    Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
+    if params['payjp-token'].blank?
+      render '/signup/create'
+    else
+      customer = Payjp::Customer.create(
+      description: '登録テスト',
+      card: params['payjp-token'],
+      metadata: {user_id: current_user.id}
+      ) 
+      @credit_card = CreditCard.new(user_id: current_user.id, customer_id: customer.id, card_id: customer.default_card)
+      if @credit_card.save
+        render '/signup/create'
+      else
+        redirect_to action: "pay"
+      end
+    end
+  end
+
+  def create  
   end
 
   def validates_member_info
@@ -122,32 +149,6 @@ class SignupController < ApplicationController
   def validates_address
     @send_address = SendAddress.create(send_address_params)
     render '/signup/address' unless @send_address.valid?
-  end
-
-  def credit
-    credit_card = CreditCard.where(user_id: current_user.id)
-  end
-
-  def pay
-    Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
-    if params['payjp-token'].blank?
-      render '/signup/create'
-    else
-      customer = Payjp::Customer.create(
-      description: '登録テスト',
-      card: params['payjp-token'],
-      metadata: {user_id: current_user.id}
-      ) 
-      @credit_card = CreditCard.new(user_id: current_user.id, customer_id: customer.id, card_id: customer.default_card)
-      if @credit_card.save
-        render '/signup/create'
-      else
-        redirect_to action: "pay"
-      end
-    end
-  end
-
-  def create  
   end
 
   def user_sesssion_set

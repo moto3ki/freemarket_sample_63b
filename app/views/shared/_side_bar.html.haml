@@ -92,9 +92,14 @@
             プロフィール
             = icon 'fas','angle-right', class: 'icon-arrow-right'
       %li
-        = link_to  "#", class: "mypage-nav-list-item" do
-          発送元・お届け先住所変更
-          = icon 'fas','angle-right', class: 'icon-arrow-right'
+        - if params[:controller] == "send_address" && params[:action] == "new"
+          = link_to new_user_send_address_path(current_user), class: "side-active" do
+            発送元・お届け先住所変更
+            = icon 'fas','angle-right', class: 'icon-arrow-right'
+        - else
+          = link_to new_user_send_address_path(current_user), class: "mypage-nav-list-item" do
+            発送元・お届け先住所変更
+            = icon 'fas','angle-right', class: 'icon-arrow-right'
       %li
         - if params[:controller] == "credit_cards" && (params[:action] == "show" || params[:action] == "new" || params[:action] == "delete")
           = link_to  paymethod_show_credit_cards_path, class: "side-active" do

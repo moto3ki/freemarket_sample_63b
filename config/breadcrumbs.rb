@@ -32,6 +32,11 @@ crumb :real_address do
   parent :mypage
 end
 
+crumb :send_address do
+  link "配送元・お届け先住所の登録", new_user_send_address_path
+  parent :mypage
+end
+
 crumb :logout do
   link "ログアウト", logout_users_path
   parent :mypage
