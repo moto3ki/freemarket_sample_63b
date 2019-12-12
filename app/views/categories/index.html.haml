@@ -1,30 +1,31 @@
-.category
-  .category__all
-    .category__all__title
-      カテゴリー一覧
-    .category__all__list
-      - @parents.each do |parent|
-        = link_to "#", class: "category-name" do
-          = parent.name
-    .category__all__box.clearfix
-      - @parents.each do |parent|
-        .category__all__box__content
-          .box-title
+%main.category-top
+  .category
+    .category__all
+      .category__all__title
+        カテゴリー一覧
+      .category__all__list
+        - @parents.each do |parent|
+          = link_to category_path(parent), class: "category-name" do
             = parent.name
-          .box-all.clearfix
-            %p
-              = link_to "#" do
-                すべて
-            - parent.children.each do |child|
-              .box-all__sub-title
-                = child.name
-              .box-all__sub-list.clearfix
-                .box-all__sub-list__name
-                  %p
-                    = link_to "#" do
-                      すべて
-                - child.children.each do |grandchild|
+      .category__all__box.clearfix
+        - @parents.each do |parent|
+          .category__all__box__content
+            .box-title
+              = parent.name
+            .box-all.clearfix
+              %p
+                = link_to category_path(parent) do
+                  すべて
+              - parent.children.each do |child|
+                .box-all__sub-title
+                  = child.name
+                .box-all__sub-list.clearfix
                   .box-all__sub-list__name
                     %p
-                      = link_to "#" do
-                        = grandchild.name
+                      = link_to category_path(child) do
+                        すべて
+                  - child.children.each do |grandchild|
+                    .box-all__sub-list__name
+                      %p
+                        = link_to category_path(grandchild) do
+                          = grandchild.name

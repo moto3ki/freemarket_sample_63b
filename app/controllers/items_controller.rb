@@ -38,16 +38,16 @@ class ItemsController < ApplicationController
     else
       render action: :new
     end
-
-    rescue
-      render action: :new
+    
+  rescue
+    render action: :new
   end
-
+  
   def edit
     @item_images = ItemImage.new
     render template: 'items/new'
   end
-
+  
   def update
     image_save_result = true
     @item_images = ItemImage.new
@@ -78,7 +78,7 @@ class ItemsController < ApplicationController
       render template: 'items/new'
     end
   end
-
+  
   def destroy
     if @item.destroy
       redirect_to selling_items_users_path
@@ -86,39 +86,39 @@ class ItemsController < ApplicationController
       render own_show
     end
   end
-
+  
   def own_show
     
   end
-
+  
   # 商品検索
   def search
-   @items = Item.where('name LIKE(?)', "%#{params[:keyword]}%")
-   @keyword = params[:keyword]
+    @items = Item.where('name LIKE(?)', "%#{params[:keyword]}%")
+    @keyword = params[:keyword]
   end
-
+  
   private
   def item_params
     params.require(:item)
-          .permit(:name,
-                  :explain,
-                  :condition,
-                  :delivery_charge,
-                  :delivery_method,
-                  :prefecture_id,
-                  :delivery_period,
-                  :price,
-                  :category_id)
-          .merge(user_id: current_user.id,
-                 status: 0,
-                 like_cnt: 0,
-                )
+    .permit(:name,
+    :explain,
+    :condition,
+    :delivery_charge,
+    :delivery_method,
+    :prefecture_id,
+    :delivery_period,
+    :price,
+    :category_id)
+    .merge(user_id: current_user.id,
+    status: 0,
+    like_cnt: 0,
+    )
   end
-
+  
   def item_image_params
     params.require(:item_images).require(:image)
   end
-
+  
   def set_item
     @item = Item.find(params[:id])
   end

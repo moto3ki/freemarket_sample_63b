@@ -16,6 +16,7 @@
         cursor: pointer;
         a{
           color: black;
+          display: block;
         }
 
         .list-child {
@@ -33,6 +34,7 @@
             cursor: pointer;
             a {
               color: black;
+              display: block;
             }
 
             .list-grandchild {
@@ -50,6 +52,7 @@
                 cursor: pointer;
                 a {
                   color: black;
+                  display: block;
                 }
               }
             }

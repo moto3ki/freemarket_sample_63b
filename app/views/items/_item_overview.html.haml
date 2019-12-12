@@ -16,14 +16,14 @@
     %th.item-info__heading
       カテゴリー
     %td.item-info__data
-      = link_to "#", class: "blue-link" do
+      = link_to category_path(item.category.parent.parent), class: "blue-link" do
         = item.category.parent.parent.name
       %br
-      = link_to "#", class: "blue-link" do
+      = link_to category_path(item.category.parent), class: "blue-link" do
         = icon 'fas', 'angle-right'
         = item.category.parent.name
       %br
-      = link_to "#", class: "blue-link" do
+      = link_to category_path(item.category), class: "blue-link" do
         = icon 'fas', 'angle-right'
         = item.category.name
   %tr

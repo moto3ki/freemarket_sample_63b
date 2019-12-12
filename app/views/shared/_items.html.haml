@@ -2,14 +2,16 @@
   .item-lists__head
     .item-lists__head__title
       - if params[:controller] == "home"
-        出品一覧
+        = category.name + "新着アイテム"
       - elsif params[:controller] == "items"
         = @keyword + "の検索結果"
+      - elsif params[:controller] == "categories"
+        = @category.name + "の商品一覧"
       - else
         = items[0].item_list_title
     - if params[:controller] == "home"
       .item-lists__head__more-link
-        = link_to "#" do
+        = link_to category_path(category) do
           もっと見る
           = icon 'fas', 'angle-right'
   %ul.item-lists__items

@@ -47,7 +47,7 @@ Rails.application.routes.draw do
   end
   
   resources :prefectures, only: [:show]
-  resources :categories, only: [:index] do
+  resources :categories, only: [:index, :show] do
     collection do
       get 'search'
     end
