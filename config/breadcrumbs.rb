@@ -2,6 +2,22 @@ crumb :root do
   link "メルカリ", root_path
 end
 
+crumb :category_list do
+  link "カテゴリー一覧", categories_path
+  parent :root
+end
+
+crumb :category_title do
+  @category = Category.find(params[:id])
+  link @category.name, category_path
+  parent :category_list
+end
+
+crumb :user_page do
+  link current_user.nickname, user_path
+  parent :root
+end
+
 crumb :mypage do
   link "マイページ", users_path
   parent :root
@@ -19,6 +35,11 @@ end
 
 crumb :profile do
   link "プロフィール", edit_user_path
+  parent :mypage
+end
+
+crumb :change_address do
+  link "発送元・お届け先住所変更", new_user_send_address_path
   parent :mypage
 end
 
