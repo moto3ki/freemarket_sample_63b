@@ -41,6 +41,33 @@
             
           }
         }
+        .side-active {
+          position: relative;
+          display: block;
+          min-height: 16px;
+          padding: 16px;
+          background: $dark_gray;
+          @include string_set(14px, 600, #333);
+          text-decoration: none;
+
+          &:hover{
+            text-decoration: none;
+          }
+
+          a{
+            touch-action: manipulation;
+          }
+
+          .icon-arrow-right {
+            position: absolute;
+            top: 50%;
+            right: 16px;
+            color: #333;
+            font-size: 22px;
+            transform: translate(0, -50%);
+          }
+        }
+        
       }
     }
     &__head {
@@ -48,4 +75,8 @@
       @include string_set(16px, 600, #333);
     }
   }
+}
+
+.side-none {
+  text-decoration: line-through;
 }

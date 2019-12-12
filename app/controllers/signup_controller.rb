@@ -130,7 +130,6 @@ class SignupController < ApplicationController
       birth_day:       session[:birth_day],
       tel_no:          "09012345678"
     )
-
     # 仮で作成したインスタンスのバリデーションチェックを行う.
     # 仮のインスタンスを作成しないとバリデーションが通らないため
     unless @user.valid?(:member_info_set)
