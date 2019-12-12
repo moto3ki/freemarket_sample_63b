@@ -1,11 +1,11 @@
 - if @selling_items
   %nav.bread-crumbs
     - breadcrumb :selling_items
-    = breadcrumbs separator: " &rsaquo; "
+    = breadcrumbs separator: " &#12297; "
 - else @sold_items
   %nav.bread-crumbs
     - breadcrumb :sold_items
-    = breadcrumbs separator: " &rsaquo; "
+    = breadcrumbs separator: " &#12297; "
 .user-sell-items-page
   .inner-container
     = render partial: "shared/side_bar"
