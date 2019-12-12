@@ -81,6 +81,7 @@
       }
       &__credit-link{
         text-align: right;
+        padding-left: 100px;
       }
     }
     .delivery-address-container{
@@ -97,6 +98,9 @@
         width: 320px;
         margin: 0 auto;
         margin-top: 16px;
+      }
+      &__credit-link{
+      text-align: right;
       }
     }
     .purchase-button{
