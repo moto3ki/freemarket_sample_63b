@@ -41,6 +41,8 @@ Rails.application.routes.draw do
       get 'logout'
       get 'selling_items'
       get 'sold_items'
+      get 'sold_score'
+
     end
     
     resources :real_address, only: [:new, :create]
