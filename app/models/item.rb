@@ -7,7 +7,8 @@ class Item < ApplicationRecord
   has_one  :purchase, dependent: :destroy
   belongs_to_active_hash :prefecture
   belongs_to :category
-  has_one :todolist
+  has_many :todolists
+  has_many :notices
 
   NOT_NULL_MESSAGE   = "入力してください"
   NOT_SELECT_MESSAGE = "選択してください"

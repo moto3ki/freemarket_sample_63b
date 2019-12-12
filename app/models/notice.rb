@@ -10,6 +10,7 @@ class Notice < ApplicationRecord
     self.title   = "購入が完了しました"
     self.content = "商品が届いたら評価してください。"
     self.date    = Date.today
+    self.type_no = 1
     self.save
   end
 
@@ -19,6 +20,7 @@ class Notice < ApplicationRecord
     self.read_flg = 0
     self.title   = "購入者から評価されました"
     self.content = "購入者から評価されました。入金が行われたためご確認ください。"
+    self.type_no = 2
     self.date    = Date.today
   end
 end
