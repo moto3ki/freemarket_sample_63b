@@ -5,28 +5,24 @@ class SendAddressController < ApplicationController
     @send_address = @user.send_address
     unless  @send_address
       @send_address = SendAddress.new
-    else 
-      @send_address.valid?
     end
   end
 
   def create
-    @send_address = @user.send_address
-    begin
-      if @send_address.present?
-        @send_address = SendAddress.new(send_address_params)
-        @send_address.valid?
-        @send_address  = SendAddress.update(send_address_params)
-       
-      else
-        @send_address = SendAddress.new(send_address_params)
-        @send_address.valid?
-        SendAddress.create(send_address_params)
+    if  @address = SendAddress.find_by(user_id: current_user.id)
+      @send_address = SendAddress.new(send_address_params)
+      unless @send_address.valid?
+        render action: :new  and return 
       end
-      redirect_to action: "new"
-    rescue
-      render new
+      @send_address  = @address.update(send_address_params)
+    else
+      @send_address = SendAddress.new(send_address_params)
+      unless @send_address.valid?
+        render action: :new  and return 
+      end
+      SendAddress.create(send_address_params)
     end
+    redirect_to new_user_send_address_path(current_user)
   end
 
   private
