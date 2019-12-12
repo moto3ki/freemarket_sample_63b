@@ -1,69 +1,70 @@
 %nav.bread-crumbs
   - breadcrumb :real_address
   = breadcrumbs separator: " &rsaquo; "
-%main.l-container.clearfix
-  .l-content
-    %section.l-chapter-container.mypage-identification
-      %h2.l-chapter-head
-        本人情報の登録
-      = form_with model: @realaddress, url: user_real_address_index_path, local: true, method: :post, class: "l-single-inner" do |f|
-        %div
-          %p
-            お客さまの本人情報をご登録ください。
-            %br
-            登録されたお名前・生年月日を変更する場合、本人確認書類の提出が必要になります。
-          %p.text-right
-            %a{href: "/jp/help_center/article/495/", target: "_blank"}
-              本人確認書類のアップロードについて
-              %i.fas.fa-angle-right
-          .form-group
-            %label :お名前
+%main.real-address-new-top
+  .l-container.clearfix
+    .l-content
+      %section.l-chapter-container.mypage-identification
+        %h2.l-chapter-head
+          本人情報の登録
+        = form_with model: @realaddress, url: user_real_address_index_path, local: true, method: :post, class: "l-single-inner" do |f|
+          %div
             %p
-            = current_user.kanji_last_name
-            = current_user.kanji_first_name
-          .form-group
-            %label :お名前カナ
-            %p
-            = current_user.kana_last_name
-            = current_user.kana_first_name
-          .form-group
-            %label :生年月日
-            %p
-            = current_user.birth_day
-          .form-group
-            %label :郵便番号
-            %span.form-arbitrary 任意
-            %br
-            = f.text_field :post_code, class: "input-default", placeholder: "例）1234567", type: "text"
-            - if @realaddress.errors.any?
-              %ul.has-error-text
-                - @realaddress.errors.full_messages.each do |message|
-                  %li= message
-          .form-group
-            %label :都道府県
-            %span.form-arbitrary 任意
-            .select-wrap
-              %i.fas.fa-angle-down
-              = f.collection_select :prefectures, Prefecture.all, :id, :name
-          .form-group
-            %label :市区町村
-            %span.form-arbitrary 任意
-            %br
-            = f.text_field :city, class: "input-default", placeholder: "例) 横浜市緑区", type: "text"
-          .form-group
-            %label :番地
-            %span.form-arbitrary 任意
-            %br
-            = f.text_field :address, class: "input-default", placeholder: "例) 青山1−1−1", type: "text"
-          .form-group
-            %label :建物名
-            %span.form-arbitrary 任意
-            %br
-            = f.text_field :building_name, class: "input-default", placeholder: "例) 柳ビル103", type: "text"
-          = f.submit "登録する", class: "btn-default btn-red"
-          .form-group.text-right
-            %p
-              %a{href: "/jp/help_center/article/423/", target: "_blank"}
-                本人情報の登録について
+              お客さまの本人情報をご登録ください。
+              %br
+              登録されたお名前・生年月日を変更する場合、本人確認書類の提出が必要になります。
+            %p.text-right
+              %a{href: "/jp/help_center/article/495/", target: "_blank"}
+                本人確認書類のアップロードについて
                 %i.fas.fa-angle-right
-  = render partial: "shared/side_bar"
+            .form-group
+              %label :お名前
+              %p
+              = current_user.kanji_last_name
+              = current_user.kanji_first_name
+            .form-group
+              %label :お名前カナ
+              %p
+              = current_user.kana_last_name
+              = current_user.kana_first_name
+            .form-group
+              %label :生年月日
+              %p
+              = current_user.birth_day
+            .form-group
+              %label :郵便番号
+              %span.form-arbitrary 任意
+              %br
+              = f.text_field :post_code, class: "input-default", placeholder: "例）1234567", type: "text"
+              - if @realaddress.errors.any?
+                %ul.has-error-text
+                  - @realaddress.errors.full_messages.each do |message|
+                    %li= message
+            .form-group
+              %label :都道府県
+              %span.form-arbitrary 任意
+              .select-wrap
+                %i.fas.fa-angle-down
+                = f.collection_select :prefectures, Prefecture.all, :id, :name
+            .form-group
+              %label :市区町村
+              %span.form-arbitrary 任意
+              %br
+              = f.text_field :city, class: "input-default", placeholder: "例) 横浜市緑区", type: "text"
+            .form-group
+              %label :番地
+              %span.form-arbitrary 任意
+              %br
+              = f.text_field :address, class: "input-default", placeholder: "例) 青山1−1−1", type: "text"
+            .form-group
+              %label :建物名
+              %span.form-arbitrary 任意
+              %br
+              = f.text_field :building_name, class: "input-default", placeholder: "例) 柳ビル103", type: "text"
+            = f.submit "登録する", class: "btn-default btn-red"
+            .form-group.text-right
+              %p
+                %a{href: "/jp/help_center/article/423/", target: "_blank"}
+                  本人情報の登録について
+                  %i.fas.fa-angle-right
+    = render partial: "shared/side_bar"
