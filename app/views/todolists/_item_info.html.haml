@@ -1,0 +1,56 @@
+.item-info
+  .item-info__title
+    取引情報
+  %table.item-info__details
+    %tr
+      %th
+        商品
+      %td
+        = image_tag item.item_images[0].image.to_s, class: "todo-item-image"
+        %br
+        = link_to item_path(item) do
+          = item.name
+          %br
+          = comma_to_jpy(item.price)
+    %tr
+      %th
+        送料
+      %td
+        = item.delivery_charge
+    - if current_user.id == item.user_id
+      %tr
+        %th
+          販売手数料
+        %td
+          = comma_to_jpy(item.purchase.profit)
+      %tr
+        %th
+          販売利益
+        %td
+          = comma_to_jpy(item.purchase.fee)
+    %tr
+      %th
+        購入日時
+      %td
+        = item.purchase.created_at
+    %tr
+      %th
+        お届け先
+      %td
+        = buyer.send_address.post_code
+        %br
+        = buyer.send_address.join_address
+        %br
+        = buyer.send_address.join_kanji_name
+.user-info
+  - if current_user.id == item.user_id
+    .user-info__title
+      購入者情報
+    .user-info__name
+      = buyer.nickname
+  - else
+    .user-info__title
+      出品者情報
+    = link_to "#", class: "user-info__link" do
+      = item.user.nickname
+      = icon 'fas', 'angle-right'

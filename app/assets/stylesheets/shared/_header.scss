@@ -79,7 +79,7 @@
           margin-left: 20px;
           position: relative;
           .signin-icon{
-            margin-right: 5px;
+            margin-right: 10px;
           }
           .signin-links{
             color: black;
@@ -93,6 +93,21 @@
             }
             &:hover{
               color: $link_color;
+            }
+          }
+          .cnt-base{
+            position: relative;
+            &__cnt{
+              position: absolute;
+              top: -10px;
+              right:-5px;
+              width: 20px;
+              line-height: 20px;
+              @include string_set(12px, normal, white);
+              text-align: center;
+              color: white;
+              border-radius: 100%;
+              background-color: $main-color;
             }
           }
         }

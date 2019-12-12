@@ -20,14 +20,20 @@
     }
     &__right{
       width: 200px;
-      
+      background-color: red;
       &__message{
         @include string-set(12px, normal, black);
+        white-space: normal;
       }
       &__date{
-        @include string-set(12px, normal, grey);
+        @include string-set(12px, normal, #888888);
       }
     }
+  }
+  .todolist-nothing{
+    @include string-set(14px, bold, #888888);
+    margin: 20px 0;
+    text-align: center;
   }
 }
 

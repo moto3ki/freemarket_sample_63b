@@ -1,0 +1,137 @@
+.todolist-show-page{
+  @include height_width(100%, 100%);
+  padding-top: 40px;
+  background-color: rgb(245, 245, 245);
+  font-family: Arial, Helvetica, sans-serif;
+  
+  .todolist-inner{
+    @include flexbox_space-between;
+    width: 1100px;
+    margin: 0 auto;
+
+    .todolist-left-content{
+      width: 300px;
+      .item-info{
+        &__title{
+          @include string_set(16px, bold, #333333);
+        }
+        &__details{
+          background-color: white;
+          th{
+            width: 30%;
+            padding: 10px 5px;
+            border-bottom: 1px solid $normal-gray;
+            border-right: 1px solid $normal-gray;
+          }
+          td{
+            width: 70%;
+            padding: 5px;
+            border-bottom: 1px solid $normal-gray;
+          }
+          .todo-item-image{
+            width: 100px;
+          }
+        }
+      }
+      .user-info{
+        margin-top: 40px;
+        &__title{
+          @include string_set(16px, bold, #333333);
+        }
+        &__link{
+          @include flexbox_space-between;
+          @include string_set(16px, bold, #333333);
+          background-color: white;
+          padding: 20px;
+        }
+      }
+    }
+    .todolist-right-content{
+      width: 700px;
+      background-color: white;
+      .item-view{
+        &__title{
+          @include string_set(28px, bold, black);
+          text-align: center;
+          margin: 20px 0;
+        }
+        &__message{
+          background-color: #fff6de;
+          text-align: center;
+          padding: 30px 0;
+          margin-bottom: 50px;
+          &__main{
+            @include string_set(20px, bold, $main_color);
+            color: $main_color;
+          }
+          &__sub{
+            margin-top: 10px;
+          }
+        }
+        &__confirmed-item{
+          width: 280px;
+          margin: 0 auto;
+          cursor: pointer;
+          input{
+            cursor: pointer;
+          }
+        }
+        &__evaluate{
+          margin: 20px 0 50px;
+          .evaluate-box{
+            display: flex;
+            justify-content: center;
+            .face-select{
+              @include height_width(80px, 80px);
+              font-size: 30px;
+              border: 1px solid $normal-gray;
+              margin: 10px;
+              text-align: center;
+              border-radius: 10px;
+              cursor: pointer;
+              &--laugh{
+                margin-top: 10px;
+                color: magenta;
+              }
+              &--meh{
+                margin-top: 10px;
+                color: orange;
+              }
+              &--frown{
+                margin-top: 10px;
+                color: skyblue;
+              }
+              &__string{
+                font-size: 16px;
+              }
+            }
+            .selected{
+              border: 1px solid $main-color;
+            }
+            input{
+              display: none;
+            }
+          }
+          .rate-post{
+            display: block;
+            margin: 20px auto;
+            color: white;
+            background-color: #888888;
+            padding: 10px;
+            width: 280px;
+            cursor: pointer;
+          }
+        }
+        &__complete-btn{
+          @include string_set(14px, normal, #FFFFFF);
+          display: block;
+          width: 80%;
+          margin: 16px auto;
+          padding: 16px;
+          text-align: center;
+          background-color: $main_color;
+        }
+      }
+    }
+  }
+}

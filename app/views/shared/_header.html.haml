@@ -28,12 +28,20 @@
               = icon 'far', 'heart', class: "signin-icon"
               いいね一覧
           %li.header__inner__bottom__right__contents
-            = link_to "#", class: "signin-links" do
-              = icon 'far', 'bell', class: "signin-icon"
+            = link_to users_path, class: "signin-links" do
+              .cnt-base
+                = icon 'far', 'bell', class: "signin-icon"
+                - if @notices.count > 0
+                  .cnt-base__cnt
+                    = @notices.count
               お知らせ
           %li.header__inner__bottom__right__contents
-            = link_to "#", class: "signin-links" do
-              = icon 'fas', 'check', class: "signin-icon"
+            = link_to users_path, class: "signin-links" do
+              .cnt-base
+                = icon 'fas', 'check', class: "signin-icon"
+                - if @todolists.count > 0
+                  .cnt-base__cnt
+                    = @todolists.count
               やることリスト
               = render partial: "shared/todolist", locals: { todolists: @todolists }
           %li.header__inner__bottom__right__contents

@@ -7,11 +7,11 @@
         = item.user.nickname
       %br
       = icon 'fas', 'laugh', class: "smile-wink-icon"
-      34
+      = item.user.rate.good
       = icon 'fas', 'meh', class: "meh-icon"
-      0
+      = item.user.rate.normal
       = icon 'fas', 'frown', class: "frown-icon"
-      0 
+      = item.user.rate.bad
   %tr
     %th.item-info__heading
       カテゴリー

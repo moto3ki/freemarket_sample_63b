@@ -17,6 +17,8 @@ class User < ApplicationRecord
   has_one :send_address
   has_one :real_address
   has_many :todolists
+  has_many :notices
+  has_one :rate
 
 
   #メールアドレス用バリデーション
@@ -79,5 +81,9 @@ class User < ApplicationRecord
       nickname: auth.info.name,
       email: auth.info.email
     )
+  end
+
+  def add_sales(profit)
+    self.sales += profit
   end
 end

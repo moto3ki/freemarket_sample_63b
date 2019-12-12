@@ -22,5 +22,5 @@
     = link_to "#", class:"other-item-container__title blue-link" do
       = @item.user.nickname + "さんのその他の商品"
     .other-item-container__items
-      - @items.each do |item|
-        = render 'item_box', { item: @item }
+      - @seller_items.each do |item|
+        = render 'item_box', { item: item }

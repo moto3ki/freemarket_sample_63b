@@ -52,4 +52,6 @@ Rails.application.routes.draw do
       get 'search'
     end
   end
+  resources :todolists, only: [:show, :update]
+  resources :notices, only: [:show, :update]
 end

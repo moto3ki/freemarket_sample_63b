@@ -14,16 +14,18 @@ class PurchasesController < ApplicationController
       currency: 'jpy'
     )
     
-    # 販売手数料を取得
+    # 販売手数料のレートを取得
     sales_commission = SalesCommission.first
-    # 販売手数料から利益を計算
+    # レートから利益を計算
     profit = item.calc_frofit(sales_commission.rate)
+    fee = item.price - profit
     
-    # やることリストを作成
+    # 出品者へやることリストを作成
     todolist = Todolist.new
-    todolist.buyer_todo(current_user, item)
-    todolist = Todolist.new
-    todolist.seller_todo(item)
+    todolist.send_item_todo(item)
+    # 購入者へお知らせを作成
+    notice = Notice.new
+    notice.purchased_item_to_buyer(current_user, item)
     
     # 決済金額を売上に加算
     sales_management = SalesManagement.first
@@ -35,7 +37,8 @@ class PurchasesController < ApplicationController
                             item_id: item.id,
                             price:   item.price,
                             profit:  profit,
-                            pay_flg: 0)
+                            pay_flg: 0,
+                            commission: fee)
     # ステータスを1:購入済に更新
     item.status = 1
 
