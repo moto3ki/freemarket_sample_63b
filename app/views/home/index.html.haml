@@ -3,4 +3,6 @@
   .popular-category
     .popular-category__title
       人気のカテゴリー
-  = render partial: "shared/items", locals: {items: @items}
+  = render partial: "shared/items", locals: {items: @ladys, category: @parents[0]}
+  = render partial: "shared/items", locals: {items: @mens, category: @parents[1]}
+  = render partial: "shared/items", locals: {items: @baby_kids, category: @parents[2]}
