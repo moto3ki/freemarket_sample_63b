@@ -1,0 +1,15 @@
+%ul.header-notices
+  - if notices.present?
+    - notices.each do |notice|
+      = link_to notice_path(notice) do
+        %li.notice
+          .notice__left
+            = image_tag notice.item.item_images[0].image.to_s, class: "notice__left__image"
+          .notice__right
+            .notice__right__message
+              = notice.content
+            .notice__right__date
+              = notice.days_elapsed
+  - else
+    .notice-nothing
+      現在、お知らせはありません

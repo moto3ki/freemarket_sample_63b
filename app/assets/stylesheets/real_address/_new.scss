@@ -1,91 +1,96 @@
-.l-container {
-  margin: 40px auto 0;
-  width: 1020px;
-  .l-content {
-    float: right;
-    width: 700px;
-    background-color:white;
-    .l-chapter-container:first-child {
-      margin: 0;
+.real-address-new-top {
+  width: 100%;
+  background-color: $normal_gray;
+  padding: 40px 0;
+  .l-container {
+    margin: 0 auto;
+    width: 1020px;
+    .l-content {
+      float: right;
+      width: 700px;
+      background-color:white;
+      .l-chapter-container:first-child {
+        margin: 0;
+        .l-single-inner {
+          border-top: 1px solid #f5f5f5;
+          padding: 40px;
+          }
+          .form-group {
+            margin: 40px 0 0;
+            label {
+              font-weight: 600;
+              display: inline-block;
+            }
+            .form-arbitrary {
+              background: #ccc;
+              margin: 0 0 0 8px;
+              margin: 0 0 0 8px;
+              padding: 2px 4px;
+              border-radius: 2px;
+              color: #fff;
+              font-size: 12px;
+              vertical-align: top;
+            }
+            .input-default {
+              width: 94.5%;
+              margin: 8px 0 0;
+              height: 30px;
+              padding: 10px 16px 8px;
+              border-radius: 4px;
+              border: 1px solid #ccc;
+              background: #fff;
+              line-height: 1.5;
+              font-size: 16px;
+              .has-error {
+                border-color: #ea352d;
+              }
+            }
+            .select-wrap {
+              height: 100%;
+              position: relative;
+              z-index: 0;
+              #real_address_prefectures {
+                @include pull_down(100%);
+                background-color: #fff;
+                margin-top: 8px;
+              }
+              .fa-angle-down {
+                position: absolute;
+                right: 20px;
+                top: 24px;
+                z-index: 3;
+                color: #888;
+                font-size: 30px;
+                -webkit-transform: translate(0, -50%);
+                transform: translate(0, -50%);
+                margin-top: 8px;
+              }
+            }
+            .has-error-text {
+              color: #ea352d;
+              line-height: 1.5;
+              font-size: 14px;
+            }
+          }
+        }
+      .l-chapter-container {
+        margin: 40px 0 0;
+        background: #fff; 
+      }
+      h2 {
+        text-align: center;
+      }
       .l-single-inner {
         border-top: 1px solid #f5f5f5;
-        padding: 40px;
+        padding: 64px;
+        p {
+          margin: 8px 0 0;
+          line-height: 1.5;
         }
-        .form-group {
-          margin: 40px 0 0;
-          label {
-            font-weight: 600;
-            display: inline-block;
-          }
-          .form-arbitrary {
-            background: #ccc;
-            margin: 0 0 0 8px;
-            margin: 0 0 0 8px;
-            padding: 2px 4px;
-            border-radius: 2px;
-            color: #fff;
-            font-size: 12px;
-            vertical-align: top;
-          }
-          .input-default {
-            width: 94.5%;
-            margin: 8px 0 0;
-            height: 30px;
-            padding: 10px 16px 8px;
-            border-radius: 4px;
-            border: 1px solid #ccc;
-            background: #fff;
-            line-height: 1.5;
-            font-size: 16px;
-            .has-error {
-              border-color: #ea352d;
-            }
-          }
-          .select-wrap {
-            height: 100%;
-            position: relative;
-            #real_address_prefectures {
-              @include pull_down(100%);
-              background-color: #fff;
-              margin-top: 8px;
-            }
-            .fa-angle-down {
-              position: absolute;
-              right: 20px;
-              top: 24px;
-              z-index: 3;
-              color: #888;
-              font-size: 30px;
-              -webkit-transform: translate(0, -50%);
-              transform: translate(0, -50%);
-              margin-top: 8px;
-            }
-          }
-          .has-error-text {
-            color: #ea352d;
-            line-height: 1.5;
-            font-size: 14px;
-          }
-        }
-      }
-    .l-chapter-container {
-      margin: 40px 0 0;
-      background: #fff; 
-    }
-    h2 {
-      text-align: center;
-    }
-    .l-single-inner {
-      border-top: 1px solid #f5f5f5;
-      padding: 64px;
-      p {
-        margin: 8px 0 0;
-        line-height: 1.5;
       }
     }
   }
 }
-
 
 
 .l-chapter-head {
@@ -94,6 +99,7 @@
   border-bottom: 1px solid #f5f5f5;
   text-align: center;
   margin-bottom: 0;
+  background: #fff; 
 }
 
 
@@ -111,9 +117,6 @@ a {
   color: #0099e8;
   text-decoration: none;
 }
-
-
-
 .btn-default {
   display: block;
   width: 100%;
@@ -132,3 +135,5 @@ a {
   border: 1px solid #ea352d;
   color: #fff;
 }
+
+

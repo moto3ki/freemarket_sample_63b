@@ -9,7 +9,7 @@
         .mypage-user__link
           = link_to  user_path(current_user), class: "user-link" do
             %img.mypage-user__link__icon
-            .mypage-user__link__name
+            .mypage-user__link__name.blue-link
               = current_user.nickname
             .mypage-user__link__rating
               .mypage-user__link__rating--left

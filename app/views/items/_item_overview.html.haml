@@ -6,12 +6,20 @@
       = link_to user_path(item.user_id), class: "blue-link" do
         = item.user.nickname
       %br
-      = icon 'fas', 'laugh', class: "smile-wink-icon"
-      = item.user.rate.good
-      = icon 'fas', 'meh', class: "meh-icon"
-      = item.user.rate.normal
-      = icon 'fas', 'frown', class: "frown-icon"
-      = item.user.rate.bad
+      - if item.user.rate.present?
+        = icon 'fas', 'laugh', class: "smile-wink-icon"
+        = item.user.rate.good
+        = icon 'fas', 'meh', class: "meh-icon"
+        = item.user.rate.normal
+        = icon 'fas', 'frown', class: "frown-icon"
+        = item.user.rate.bad
+      - else
+        = icon 'fas', 'laugh', class: "smile-wink-icon"
+        0
+        = icon 'fas', 'meh', class: "meh-icon"
+        0
+        = icon 'fas', 'frown', class: "frown-icon"
+        0
   %tr
     %th.item-info__heading
       カテゴリー
