@@ -35,6 +35,7 @@
                   .cnt-base__cnt
                     = @notices.count
               お知らせ
+              = render partial: "shared/notice", locals: { notices: @notices }
           %li.header__inner__bottom__right__contents
             = link_to users_path, class: "signin-links" do
               .cnt-base

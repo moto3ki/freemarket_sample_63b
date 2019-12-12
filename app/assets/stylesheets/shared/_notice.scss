@@ -1,4 +1,4 @@
-.header-todolists{
+.header-notices{
   position: absolute;
   top: 30px;
   left: -90px;
@@ -7,7 +7,7 @@
   z-index: 2;
   display: none;
   background-color: white;
-  .todolist{
+  .notice{
     color: black;
     border-bottom: 1px solid $normal_gray;
     @include flexbox_space-between;
@@ -29,7 +29,7 @@
       }
     }
   }
-  .todolist-nothing{
+  .notice-nothing{
     @include string-set(14px, bold, #888888);
     margin: 20px 0;
     text-align: center;
