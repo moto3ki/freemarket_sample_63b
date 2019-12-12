@@ -1,23 +1,14 @@
 %nav.bread-crumbs
   - breadcrumb :real_address
   = breadcrumbs separator: " &#12297; "
-%main.l-container.clearfix
-  .l-content
-    %section.l-chapter-container.mypage-identification
-      %h2.l-chapter-head
-        本人情報の登録
-      = form_with model: @realaddress, url: user_real_address_index_path, local: true, method: :post, class: "l-single-inner" do |f|
-        %div
-          %p
-            お客さまの本人情報をご登録ください。
-            %br
-            登録されたお名前・生年月日を変更する場合、本人確認書類の提出が必要になります。
-          %p.text-right
-            %a{href: "/jp/help_center/article/495/", target: "_blank"}
-              本人確認書類のアップロードについて
-              %i.fas.fa-angle-right
-          .form-group
-            %label :お名前
+%main.real-address-new-top
+  .l-container.clearfix
+    .l-content
+      %section.l-chapter-container.mypage-identification
+        %h2.l-chapter-head
+          本人情報の登録
+        = form_with model: @realaddress, url: user_real_address_index_path, local: true, method: :post, class: "l-single-inner" do |f|
+          %div
             %p
               お客さまの本人情報をご登録ください。
               %br
