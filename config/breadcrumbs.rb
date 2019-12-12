@@ -33,6 +33,11 @@ crumb :sold_items do
   parent :mypage
 end
 
+crumb :sold_score do
+  link "売上・振込申請", sold_score_users_path
+  parent :mypage
+end
+
 crumb :profile do
   link "プロフィール", edit_user_path
   parent :mypage
