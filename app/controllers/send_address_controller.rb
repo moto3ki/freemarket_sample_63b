@@ -1,5 +1,6 @@
 class SendAddressController < ApplicationController
   before_action :set_user, only: [:new, :create]
+  before_action :set_categories, only: [:new]
 
   def new
     @send_address = @user.send_address
@@ -46,6 +47,10 @@ class SendAddressController < ApplicationController
     ).merge(user_id: current_user.id)
   end
 
+  def set_categories
+    @parents = Category.where(ancestry: nil)
+  end
+  
 end
 
 
