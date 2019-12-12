@@ -1,0 +1,24 @@
+-# %nav.bread-crumbs
+-#   - breadcrumb :logout
+-#   = breadcrumbs separator: " &rsaquo; "
+%main.user-sold-score-top
+  .l-container.clearfix
+    .l-content
+      .sold-box
+        .sold-box__title
+          売上・振込申請
+        %ul.sold-box__list
+          %li
+            .sold-score.clearfix
+              .sold-score__left
+                現在の売上金
+              .sold-score__right
+                ¥#{current_user.sales}
+          %li
+            = link_to "#" do
+              .sold-history
+                .sold-history__title
+                  売上履歴
+                .sold-history__icon
+                  = icon 'fas','angle-right', class: 'icon-arrow-right'
+    = render "shared/side_bar"
