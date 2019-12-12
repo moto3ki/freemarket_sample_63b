@@ -1,64 +1,69 @@
 .todolist-show-page
   .todolist-inner
     .todolist-left-content
-      .transaction-info
-        .transaction-info__title
-          取引情報
-        %table.transaction-info__details
-          %tr
-            %th
-              商品
-            %td
-              = image_tag @item.item_images[0].image.to_s, class: "todo-item-image"
-              %br
-              = @item.name
-          %tr
-            %th
-              送料
-            %td
-              = @item.delivery_charge
-          %tr
-            %th
-              販売手数料
-            %td
-              = comma_to_jpy(@item.purchase.profit)
-          %tr
-            %th
-              販売利益
-            %td
-              = comma_to_jpy(@item.purchase.fee)
-          %tr
-            %th
-              購入日時
-            %td
-              = @item.purchase.created_at
-          %tr
-            %th
-              お届け先
-            %td
-              = @buyer.send_address.post_code
-              %br
-              = @buyer.send_address.join_address
-              %br
-              = @buyer.send_address.join_kanji_name
+      = render partial: "item_info", locals: { item: @item, buyer: @buyer }
     .todolist-right-content
-      .transaction-view
-        .transaction-view__title
+      .item-view
+        .item-view__title
           取引画面
-        - if @todolist.status == 0
-          .transaction-view__send-message
-            .transaction-view__send-message__main
-              = icon 'fas', 'truck'
-              発送をしてください
-            .transaction-view__send-message__sub
-              商品が購入され支払いされました。商品の発送を行なってください。
-          = link_to "商品の発送をしたので、発送を通知する", todolist_path(@todolist), method: :patch, class: "transaction-view__send-complete-btn"
-        - else
-          .transaction-view__send-message
-            .transaction-view__send-message__main
-              = icon 'fas', 'check'
-              商品の発送を通知しました
-            .transaction-view__send-message__sub
-              購入者の受取確認と評価をしばらくお待ちください
-          
+        - if @todolist.todo_no == 1
+          - if @todolist.status == 0
+            .item-view__message
+              .item-view__message__main
+                = icon 'fas', 'truck'
+                発送をしてください
+              .item-view__message__sub
+                商品が購入され支払いされました。商品の発送を行なってください。
+            = link_to "商品の発送をしたので、発送を通知する", todolist_path(@todolist), method: :patch, class: "item-view__send-complete-btn"
+          - else
+            .item-view__message
+              .item-view__message__main
+                = icon 'fas', 'check'
+                商品の発送を通知しました
+              .item-view__message__sub
+                購入者の受取確認と評価をしばらくお待ちください
+        - elsif @todolist.todo_no == 2
+          - if @todolist.status == 0
+            .item-view__message
+              .item-view__message__main
+                = icon 'fas', 'laugh'
+                受取評価をしてください
+              .item-view__message__sub
+                商品が発送されました。商品が到着したら、出品者の評価をしてください。
+            %label(for="confirmed-item")
+              .item-view__confirmed-item
+                %input(type="checkbox" name="confirmed-item" id="confirmed-item" value="1")
+                商品の中身を確認しました。
 
+            = form_with model: @todolist, local: true do |f|
+              .item-view__evaluate
+                %ul.evaluate-box
+                  %li
+                    = f.radio_button :rate, :good
+                    = f.label :rate_good do
+                      .face-select#laugh-select
+                        = icon 'fas', 'laugh', class: "face-select--laugh"
+                        .face-select__string
+                          良い
+                  %li
+                    = f.radio_button :rate, :normal
+                    = f.label :rate_normal do
+                      .face-select#meh-select
+                        = icon 'fas', 'meh', class: "face-select--meh"
+                        .face-select__string
+                          普通
+                  %li
+                    = f.radio_button :rate, :bad
+                    = f.label :rate_bad do
+                      .face-select#frown-select
+                        = icon 'fas', 'frown', class: "face-select--frown"
+                        .face-select__string
+                          悪い
+                = f.submit "評価を投稿する", disabled: true, class: "rate-post"
+          - else
+            .item-view__message
+              .item-view__message__main
+                = icon 'fas', 'check'
+                受取評価をしました
+              .item-view__message__sub
+                取引が完了しました。お疲れ様でした。

@@ -30,35 +30,38 @@
               やることリスト
         .content
           %ul.content__list.active
-            %li.content__list__news
-              = link_to  "#", class: "news-link" do
-                .news-logo
-                  = image_tag "/logo_image/logo_red.svg", class:'logo-image'
-                .news-body
-                  .news-text
-                    明日、P999還元クーポンの有効期限が切れます！タップして詳細を確認しましょう。
-                  .news-icon-time
-                    = icon 'far', 'clock', class: 'icon-time'
-                    .notice-date
-                      １日前
-                = icon 'fas', 'angle-right', class: 'icon-arrow-right'
+            - if @notices.present?
+              - @notices.each do |notice|
+                %li.content__list__news
+                  = link_to  notice_path(notice), class: "news-link" do
+                    .news-logo
+                      = image_tag notice.item.item_images[0].image.to_s, class:'logo-image'
+                    .news-body
+                      .news-text
+                        = notice.content
+                      .news-icon-time
+                        = icon 'far', 'clock', class: 'icon-time'
+                        .notice-date
+                          = notice.days_elapsed
+                    = icon 'fas', 'angle-right', class: 'icon-arrow-right'
             %li.all-show
               = link_to  "#", class: "all-show-btn" do
                 一覧を見る
           %ul.content__list
-            - @todolists.each do |todolist|
-              %li.content__list__news
-                = link_to todolist_path(todolist), class: "news-link" do
-                  .news-logo
-                    = image_tag todolist.item.item_images[0].image.to_s, class:'logo-image'
-                  .news-body
-                    .news-text
-                      = todolist.content
-                    .news-icon-time
-                      = icon 'far', 'clock', class: 'icon-time'
-                      .notice-date
-                        = todolist.days_elapsed
-                  = icon 'fas', 'angle-right', class: 'icon-arrow-right'
+            - if @todolists.present?
+              - @todolists.each do |todolist|
+                %li.content__list__news
+                  = link_to todolist_path(todolist), class: "news-link" do
+                    .news-logo
+                      = image_tag todolist.item.item_images[0].image.to_s, class:'logo-image'
+                    .news-body
+                      .news-text
+                        = todolist.content
+                      .news-icon-time
+                        = icon 'far', 'clock', class: 'icon-time'
+                        .notice-date
+                          = todolist.days_elapsed
+                    = icon 'fas', 'angle-right', class: 'icon-arrow-right'
             %li.all-show
               = link_to  "#", class: "all-show-btn" do
                 一覧を見る

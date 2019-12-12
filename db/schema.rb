@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_11_054316) do
+ActiveRecord::Schema.define(version: 2019_12_11_173155) do
 
   create_table "categories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
@@ -52,6 +52,7 @@ ActiveRecord::Schema.define(version: 2019_12_11_054316) do
     t.datetime "updated_at", null: false
     t.integer "prefecture_id", null: false
     t.bigint "category_id"
+    t.integer "send_flg", default: 0
     t.index ["category_id"], name: "index_items_on_category_id"
     t.index ["condition"], name: "index_items_on_condition"
     t.index ["delivery_period"], name: "index_items_on_delivery_period"
@@ -85,6 +86,16 @@ ActiveRecord::Schema.define(version: 2019_12_11_054316) do
     t.integer "fee"
     t.index ["item_id"], name: "index_purchases_on_item_id"
     t.index ["user_id"], name: "index_purchases_on_user_id"
+  end
+
+  create_table "rates", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.integer "good", default: 0
+    t.integer "normal", default: 0
+    t.integer "bad", default: 0
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_rates_on_user_id"
   end
 
   create_table "real_addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -182,6 +193,7 @@ ActiveRecord::Schema.define(version: 2019_12_11_054316) do
   add_foreign_key "notices", "users"
   add_foreign_key "purchases", "items"
   add_foreign_key "purchases", "users"
+  add_foreign_key "rates", "users"
   add_foreign_key "real_addresses", "users"
   add_foreign_key "send_addresses", "users"
   add_foreign_key "sns_credentials", "users"

@@ -106,4 +106,8 @@ class Item < ApplicationRecord
     rate = self.commission_rate / 100
     (price * rate).floor
   end
+
+  def send_complete
+    self.send_flg = 1
+  end
 end

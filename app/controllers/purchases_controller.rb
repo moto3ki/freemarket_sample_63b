@@ -25,7 +25,7 @@ class PurchasesController < ApplicationController
     todolist.send_item_todo(item)
     # 購入者へお知らせを作成
     notice = Notice.new
-    notice.purchased_item_notice(current_user, item)
+    notice.purchased_item_to_buyer(current_user, item)
     
     # 決済金額を売上に加算
     sales_management = SalesManagement.first

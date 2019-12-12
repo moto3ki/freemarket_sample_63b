@@ -75,15 +75,10 @@
     }
   }
   &__purchase-link{
-    display: block;
-    width: 90%;
-    margin: 0 auto;
-    background-color: $main_color;
-    @include string_set(24px, bold, white);
-    text-align: center;
-    margin-top: 16px;
-    padding: 20px 0;
-    text-decoration: none;
+    @include move_buy_view_link($main-color);
+  }
+  &__sold-out{
+    @include move_buy_view_link(#888888);
   }
   &__explain{
     width: 90%;

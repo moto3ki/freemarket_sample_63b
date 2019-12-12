@@ -53,4 +53,5 @@ Rails.application.routes.draw do
     end
   end
   resources :todolists, only: [:show, :update]
+  resources :notices, only: [:show, :update]
 end

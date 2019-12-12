@@ -24,4 +24,8 @@ class Todolist < ApplicationRecord
     self.item_id = purchase.item_id
     self.save
   end
+
+  def complete_todo
+    self.status = 1
+  end
 end

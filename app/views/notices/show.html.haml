@@ -1,0 +1,13 @@
+.todolist-show-page
+  .todolist-inner
+    .todolist-left-content
+      = render partial: "todolists/item_info", locals: { item: @item, buyer: @buyer }
+    .todolist-right-content
+      .item-view
+        .item-view__title
+          取引画面
+        .item-view__message
+          .item-view__message__main
+            商品の発送までしばらくお待ちください
+          .item-view__message__sub
+            商品の購入が完了しました。商品の発送までしばらくお待ちください。
