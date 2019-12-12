@@ -14,7 +14,7 @@ class NoticesController < ApplicationController
     @notice.already_read
     @notice.save
 
-    redirect_to todolist_path(todolist) if todolist_jump_flg = 0
+    redirect_to todolist_path(todolist) if todolist_jump_flg == 0
   end
 
   private

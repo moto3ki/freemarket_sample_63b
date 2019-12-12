@@ -1,5 +1,5 @@
 class CreditCardsController < ApplicationController
-  before_action :set_categories, only: [:new]
+  before_action :set_categories, only: [:new, :show]
 
   require "payjp"
 
