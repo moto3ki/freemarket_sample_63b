@@ -4,6 +4,10 @@
   .item-container__overview
     .item-container__overview__left
       .item-container__overview__left__main-image
+        - if item.status == 0
+          .sold-out
+            .sold-out__string
+              SOLD
         = image_tag item.item_images[0].image.to_s
       .item-container__overview__left__sub-images
         - item.item_images.each do |item_image|

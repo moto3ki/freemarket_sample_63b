@@ -17,8 +17,10 @@
     &__left{
       &__main-image{
         @include height_width(300px, 300px);
+        position: relative;
         img{
           @include height_width(100%, 100%);
+          object-fit: contain;
         }
       }
       &__sub-images{

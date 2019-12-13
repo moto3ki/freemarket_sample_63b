@@ -34,6 +34,7 @@
       &__image{
         @include height_width(70%, 100%);
         vertical-align: bottom;
+        object-fit: contain;
       }
       &__namebox{
         box-shadow: 2px 2px 4px gray;

@@ -89,23 +89,6 @@
         .item-link{
           text-decoration: none;
         }
-        .sold-out{
-          position: absolute;
-          border-top: 50px solid $main-color;
-          border-right: 50px solid transparent;
-          border-bottom: 50px solid transparent;
-          border-left: 50px solid $main-color;
-          &__string{
-            @include string_set(20px, bold, white);
-            position: absolute;
-            top: -30px;
-            left: -45px;
-            transform: rotate(-45deg);
-            -moz-transform: rotate(-45deg);
-            -webkit-transform: rotate(-45deg);
-          }
-        }
-
       }
     }
   }
