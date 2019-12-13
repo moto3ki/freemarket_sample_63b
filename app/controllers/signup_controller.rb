@@ -22,23 +22,24 @@ class SignupController < ApplicationController
     #電話番号を+81~の国際書式に書き換え（そうしないと送れない）
     phone_number = user_params[:tel_no].sub(/\A./,'+81')
     #ランダムに5桁の整数を生成
-    sms_number = rand(10000..99999)
+    # sms_number = rand(10000..99999)
+    sms_number = 11111
     #後の認証用にsessionに預ける
     session[:sms_number] = sms_number
     #環境変数を使ってsms送信準備 
-    if client = Twilio::REST::Client.new(ENV["TWILIO_ACCOUNT_SID"],ENV["TWILIO_AUTH_TOKEN"])
-      #送信失敗した場合必ずエラーが出るので、例外処理で挙動を分岐
-      begin 
-        #生成した整数を文章にしたsms送信
-        client.api.account.messages.create(from: ENV["TWILIO_PHONE_NUMBER"], to: phone_number, body: sms_number)
-      rescue
-        #失敗した場合ここが動く
-        redirect_to  tel_no_signup_index_path
-        return false
-      end
-    else 
-      render "signup/tel_no"
-    end
+    # if client = Twilio::REST::Client.new(ENV["TWILIO_ACCOUNT_SID"],ENV["TWILIO_AUTH_TOKEN"])
+    #   #送信失敗した場合必ずエラーが出るので、例外処理で挙動を分岐
+    #   begin 
+    #     #生成した整数を文章にしたsms送信
+    #     client.api.account.messages.create(from: ENV["TWILIO_PHONE_NUMBER"], to: phone_number, body: sms_number)
+    #   rescue
+    #     #失敗した場合ここが動く
+    #     redirect_to  tel_no_signup_index_path
+    #     return false
+    #   end
+    # else 
+    #   render "signup/tel_no"
+    # end
       # 成功した場合、以下のコードが動き、smsの照合画面へと変遷する
     @user.tel_no = nil
     render "/signup/sms_authentication"

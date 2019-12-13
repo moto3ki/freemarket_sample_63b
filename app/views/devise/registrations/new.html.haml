@@ -8,14 +8,10 @@
             %i.far.fa-envelope
               メールアドレスで登録する
           -# = link_to user_facebook_omniauth_authorize_path,class: ".btn-default signup-btn--facebook", method: :post do
-          = link_to "#",class: ".btn-default signup-btn--facebook" do
+          = link_to "#",class: ".btn-default signup-btn--facebook", method: :post do
             %i.fab.fa-facebook-square.facebook-icon
-              FACEBOOKで登録する 
-          = link_to "#",class: ".btn-default signup-btn--google" do
+              FACEBOOKで登録する
+          -# = link_to user_google_oauth2_omniauth_authorize_path,class: ".btn-default signup-btn--google", method: :post do
+          = link_to "#",class: ".btn-default signup-btn--google", method: :post do
             %i.fab.fa-google.google-icon
               Googleで登録する
-          -# = link_to "user_google_oauth2_omniauth_authorize_path",class: ".btn-default signup-btn--google", method: :post do
-            -# %i.fab.fa-google.google-icon
-              Googleで登録する
-              
-

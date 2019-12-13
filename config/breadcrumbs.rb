@@ -14,7 +14,8 @@ crumb :category_title do
 end
 
 crumb :user_page do
-  link current_user.nickname, user_path
+  user = User.find(params[:id])
+  link user.nickname, user_path
   parent :root
 end
 
