@@ -2,7 +2,7 @@
   @include height_width(100%, 100%);
   padding-top: 40px;
   background-color: rgb(245, 245, 245);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: $main_font;
   
   .todolist-inner{
     @include flexbox_space-between;
