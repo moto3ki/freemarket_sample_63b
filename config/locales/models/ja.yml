@@ -39,5 +39,6 @@ ja:
         delivery_period: ''
         price:           ''
         prefecture_id:   ''
+        category_id:     ''
       item_image:
         image:           画像

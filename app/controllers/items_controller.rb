@@ -1,11 +1,10 @@
 class ItemsController < ApplicationController
   before_action :set_item, only: [:show, :edit, :update, :own_show, :destroy]
-  before_action :set_categories, only: [:show, :own_show]
+  before_action :set_categories, only: [:show, :own_show, :edit, :new]
 
   def new
     @item = Item.new
     @item_images = ItemImage.new
-    @parents = Category.where(ancestry: nil)
   end
 
   def show
@@ -45,6 +44,11 @@ class ItemsController < ApplicationController
   
   def edit
     @item_images = ItemImage.new
+    @selected_category3 = Category.find(@item.category_id)
+    @selected_category2 = @selected_category3.parent
+    @selected_category1 = @selected_category2.parent
+    @children = Category.find(@selected_category1.id).children
+    @grandchildren = Category.find(@selected_category2.id).children
     render template: 'items/new'
   end
   
