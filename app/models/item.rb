@@ -16,7 +16,8 @@ class Item < ApplicationRecord
   validates :name,       length: { maximum: 40, message: "40 文字以下で入力してください" }, allow_blank: true
   validates :explain,    presence: { message: NOT_NULL_MESSAGE }
   validates :explain,    length: { maximum: 1000, message: "1000 文字以下で入力してください" }, allow_blank: true
-  validates :condition, 
+  validates :category_id,presence: { message: NOT_SELECT_MESSAGE }
+  validates :condition,
     inclusion: {in: ["新品、未使用",
                      "未使用に近い",
                      "目立った傷や汚れなし",

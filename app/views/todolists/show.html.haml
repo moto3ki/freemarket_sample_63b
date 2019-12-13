@@ -14,7 +14,7 @@
                 発送をしてください
               .item-view__message__sub
                 商品が購入され支払いされました。商品の発送を行なってください。
-            = link_to "商品の発送をしたので、発送を通知する", todolist_path(@todolist), method: :patch, class: "item-view__send-complete-btn"
+            = link_to "商品の発送をしたので、発送を通知する", todolist_path(@todolist), method: :patch, class: "item-view__complete-btn"
           - else
             .item-view__message
               .item-view__message__main

@@ -103,7 +103,7 @@
     .purchase-button{
       width: 320px;
       margin: 0 auto;
-      margin-top: 16px;
+      padding: 32px 0;
       a{
         @include string_set(14px, bold, #FFFFFF);
         text-decoration: none;
