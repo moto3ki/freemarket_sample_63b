@@ -52,6 +52,7 @@ ActiveRecord::Schema.define(version: 2019_12_12_021721) do
     t.datetime "updated_at", null: false
     t.integer "prefecture_id", null: false
     t.bigint "category_id"
+    t.bigint "categoy_id"
     t.integer "send_flg", default: 0
     t.index ["category_id"], name: "index_items_on_category_id"
     t.index ["condition"], name: "index_items_on_condition"
