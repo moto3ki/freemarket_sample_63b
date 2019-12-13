@@ -1,7 +1,7 @@
 .category-top{
   width: 100%;
   background-color: $normal_gray;
-  padding-top: 40px;
+  padding: 40px 0 20px 0;
 
   .category {
     background: transparent;
@@ -18,12 +18,13 @@
       }
       &__list {
         display: block;
-
+        
         .category-name {
+          display: inline-block;
           border-radius: 4px;
-          min-width: 80px;
-          height: 40px;
-          line-height: 40px;
+          min-width: 40px;
+          height: 20px;
+          line-height: 20px;
           -webkit-box-shadow: 1px 1px 1px 1px rgba(14,14,14,0.0580392);
           box-shadow: 1px 1px 1px 1px rgba(14,14,14,0.0580392);
           padding: 14px 30px;
@@ -32,6 +33,7 @@
           font-size: 16px;
           background-color: white;
           @include hover_background_color($main-color);
+
         }
       }
       &__box {
