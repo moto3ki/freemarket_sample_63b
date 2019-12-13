@@ -8,10 +8,12 @@
       .login-form__insert
         .login-inner
           .login-btn
-            = link_to user_facebook_omniauth_authorize_path,class: ".btn-default signup-btn--facebook", method: :post  do
+            -# = link_to user_facebook_omniauth_authorize_path,class: ".btn-default signup-btn--facebook", method: :post  do
+            = link_to "#",class: ".btn-default signup-btn--facebook", method: :post  do
               %i.fab.fa-facebook-square.facebook-icon
               Facebookでログイン
-            = link_to user_google_oauth2_omniauth_authorize_path,class: ".btn-default signup-btn--google", method: :post do
+            -# = link_to "user_google_oauth2_omniauth_authorize_path",class: ".btn-default signup-btn--google", method: :post do
+            = link_to "#",class: ".btn-default signup-btn--google", method: :post do
               %i.fab.fa-google.google-icon
               Googleでログイン
       
