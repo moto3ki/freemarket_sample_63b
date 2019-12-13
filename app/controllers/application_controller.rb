@@ -4,6 +4,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   before_action :get_todolist, if: :user_signed_in?
   before_action :get_notice, if: :user_signed_in?
+  before_action :get_category
 
   def configure_permitted_parameters
     devise_parameter_sanitizer.permit :sign_up, keys: [:nickname]
@@ -34,5 +35,9 @@ class ApplicationController < ActionController::Base
   def get_notice
     @notices = current_user.notices
     @unread_notices_cnt = current_user.notices.where(read_flg: 0).count
+  end
+
+  def get_category
+    @parents = Category.where(ancestry: nil)
   end
 end

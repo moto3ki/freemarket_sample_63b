@@ -19,7 +19,10 @@
       送料込み
   -if item.user.id != current_user&.id
     - if  item.status == 0
-      = link_to "購入画面に進む", new_item_purchase_path(item), class: "item-container__purchase-link"
+      - if user_signed_in?
+        = link_to "購入画面に進む", new_item_purchase_path(item), class: "item-container__purchase-link"
+      -else 
+        = link_to "購入画面に進む", new_user_session_path, class: "item-container__purchase-link"
     - else
       .item-container__sold-out
         売り切れました

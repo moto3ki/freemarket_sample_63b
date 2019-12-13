@@ -9,7 +9,7 @@
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
   %body
-    - if params[:controller] == "home" || params[:controller] == "users" || params[:controller] == "items" && (params[:action] == "show" || params[:action] == "own_show") || params[:controller] == "real_address" || params[:controller] == "send_address" || params[:controller] == "categories" || params[:controller] == "credit_cards" && (params[:action] == "show" || params[:action] == "new")
+    - if params[:controller] == "home" || params[:controller] == "users" || params[:controller] == "items" && (params[:action] == "show" || params[:action] == "own_show") || params[:controller] == "real_address" || params[:controller] == "send_address" || params[:controller] == "categories" || params[:controller] == "credit_cards" && (params[:action] == "show" || params[:action] == "new") || params[:controller] == "prefectures" || params[:controller] == "notices" || params[:controller] == "todolists"
       = render "shared/header"
       = yield
       = render "shared/sell_button"
