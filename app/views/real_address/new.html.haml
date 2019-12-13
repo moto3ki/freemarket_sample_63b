@@ -18,21 +18,21 @@
                 本人確認書類のアップロードについて
                 %i.fas.fa-angle-right
             .form-group
-              %label :お名前
+              %label お名前
               %p
               = current_user.kanji_last_name
               = current_user.kanji_first_name
             .form-group
-              %label :お名前カナ
+              %label お名前カナ
               %p
               = current_user.kana_last_name
               = current_user.kana_first_name
             .form-group
-              %label :生年月日
+              %label 生年月日
               %p
               = current_user.birth_day
             .form-group
-              %label :郵便番号
+              %label 郵便番号
               %span.form-arbitrary 任意
               %br
               = f.text_field :post_code, class: "input-default", placeholder: "例）1234567", type: "text"
@@ -41,23 +41,23 @@
                   - @realaddress.errors.full_messages.each do |message|
                     %li= message
             .form-group
-              %label :都道府県
+              %label 都道府県
               %span.form-arbitrary 任意
               .select-wrap
                 %i.fas.fa-angle-down
                 = f.collection_select :prefectures, Prefecture.all, :id, :name
             .form-group
-              %label :市区町村
+              %label 市区町村
               %span.form-arbitrary 任意
               %br
               = f.text_field :city, class: "input-default", placeholder: "例) 横浜市緑区", type: "text"
             .form-group
-              %label :番地
+              %label 番地
               %span.form-arbitrary 任意
               %br
               = f.text_field :address, class: "input-default", placeholder: "例) 青山1−1−1", type: "text"
             .form-group
-              %label :建物名
+              %label 建物名
               %span.form-arbitrary 任意
               %br
               = f.text_field :building_name, class: "input-default", placeholder: "例) 柳ビル103", type: "text"
