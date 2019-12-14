@@ -23,7 +23,7 @@ class CategoriesController < ApplicationController
       @items = Item.where(category_id: @category.id)
     end
     if @category_ids.present?
-      @items = Item.where(category_id: @category_ids)
+      @items = Item.where(category_id: @category_ids).order("created_at DESC")
     end
   end
   

@@ -17,6 +17,10 @@
   %ul.item-lists__items
     - items.each do |item|
       %li.item-lists__items__item
+        - if item.status == 1
+          .sold-out
+            .sold-out__string
+              SOLD
         = link_to item_path(item), class: "item-link" do
           = image_tag item.item_images[0].image.to_s, class: "item-lists__items__item__image"
           .item-lists__items__item__price

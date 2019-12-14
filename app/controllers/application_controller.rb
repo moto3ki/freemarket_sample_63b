@@ -29,11 +29,11 @@ class ApplicationController < ActionController::Base
   end
 
   def get_todolist
-    @todolists = current_user.todolists.where(status: 0)
+    @todolists = current_user.todolists.where(status: 0).order("created_at DESC")
   end
 
   def get_notice
-    @notices = current_user.notices
+    @notices = current_user.notices.order("created_at DESC")
     @unread_notices_cnt = current_user.notices.where(read_flg: 0).count
   end
 
