@@ -16,8 +16,10 @@
 @import "shared/bread-crumbs";
 @import "shared/item";
 @import "shared/category_bar";
-@import "shared/todolist";
-@import "shared/notice";
+
+@import "header/todolist";
+@import "header/notice";
+@import "header/mypage";
 
 @import "home/index";
 

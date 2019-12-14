@@ -35,7 +35,7 @@
                   .cnt-base__cnt
                     = @unread_notices_cnt
               お知らせ
-              = render partial: "shared/notice", locals: { notices: @notices }
+              = render partial: "shared/header/notice", locals: { notices: @notices }
           %li.header__inner__bottom__right__contents
             = link_to users_path, class: "signin-links" do
               .cnt-base
@@ -44,10 +44,11 @@
                   .cnt-base__cnt
                     = @todolists.count
               やることリスト
-              = render partial: "shared/todolist", locals: { todolists: @todolists }
+              = render partial: "shared/header/todolist", locals: { todolists: @todolists }
           %li.header__inner__bottom__right__contents
             = link_to users_path, class: "signin-links" do
               マイページ
+              = render partial: "shared/header/mypage"
       - else
         %ul.header__inner__bottom__right
           %li.header__inner__bottom__right__signup
