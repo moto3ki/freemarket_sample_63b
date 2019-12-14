@@ -5,15 +5,38 @@ class PurchasesController < ApplicationController
   require 'payjp'
 
   def create
+    balance    = 0
+    use_credit = true
+    use_sales  = false
+
     item = Item.find(params[:item_id])
-    # クレジット決済
-    Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
-    Payjp::Charge.create(
-      amount: item.price,
-      customer: @credit_card.customer_id, 
-      currency: 'jpy'
-    )
-    
+    # 売上金を利用する場合
+    if purchase_params.present? &&
+      purchase_params[:use_sales] == "1"
+      # ユーザの売上金から商品価格を引いた値を計算
+      balance = current_user.confirm_sub_price(item.price)
+      # 売上金のみで決済できる場合
+      if balance >= 0
+       use_credit = false
+      end
+      use_sales = true
+    end
+
+    if use_sales
+      current_user.sub_sales(item.price)
+    end
+
+    if use_credit
+      # クレジット決済する金額を設定
+      credit_kessai_money = use_sales ? balance.abs : item.price
+      # クレジット決済
+      Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
+      Payjp::Charge.create(
+        amount: credit_kessai_money,
+        customer: @credit_card.customer_id, 
+        currency: 'jpy'
+      )
+    end
     # 販売手数料のレートを取得
     sales_commission = SalesCommission.first
     # レートから利益を計算
@@ -22,7 +45,7 @@ class PurchasesController < ApplicationController
     
     # 出品者へやることリストを作成
     todolist = Todolist.new
-    todolist.send_item_todo(item)
+    todolist.send_item_todo(current_user, item)
     # 購入者へお知らせを作成
     notice = Notice.new
     notice.purchased_item_to_buyer(current_user, item)
@@ -41,8 +64,8 @@ class PurchasesController < ApplicationController
                             fee:     fee)
     # ステータスを1:購入済に更新
     item.status = 1
-
-    if item.save && purchase.save
+    
+    if item.save && purchase.save && current_user.save
     else
       redirect_to new_item_purchase_path(item)
     end
@@ -54,6 +77,7 @@ class PurchasesController < ApplicationController
       customer = Payjp::Customer.retrieve(@credit_card.customer_id)    
       @default_card_information = customer.cards.retrieve(@credit_card.card_id)
     end
+    @purchase = Purchase.new
     @item = Item.find(params[:item_id])
     @send_address = current_user.send_address
   end
@@ -68,4 +92,9 @@ class PurchasesController < ApplicationController
     @credit_card = current_user.credit_cards.first
   end
     
+  def purchase_params
+    if params[:purchase].present?
+      params.require(:purchase).permit(:use_sales)
+    end
+  end
 end

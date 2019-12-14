@@ -83,7 +83,20 @@ class User < ApplicationRecord
     )
   end
 
-  def add_sales(profit)
-    self.sales += profit
+  def add_sales(price)
+    self.sales += price
+  end
+
+  def sub_sales(price)
+    
+    if (self.sales - price) >= 0
+      self.sales -= price
+    else
+      self.sales = 0
+    end
+  end
+
+  def confirm_sub_price(price)
+    self.sales - price
   end
 end

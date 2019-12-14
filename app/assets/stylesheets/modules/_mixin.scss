@@ -145,3 +145,15 @@
   padding: 20px 0;
   text-decoration: none;
 }
+
+@mixin purchase_button_desigon($background_color, $cursor){
+  display: block;
+  width: 320px;
+  margin: 0 auto;
+  margin-top: 32px;
+  padding: 16px 0;
+  @include string_set(14px, bold, #FFFFFF);
+  background-color: $background_color;
+  text-align: center;
+  cursor: $cursor;
+}
