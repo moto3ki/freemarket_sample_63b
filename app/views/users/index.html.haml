@@ -77,10 +77,12 @@
               過去の取引
         .buy-item__content
           %ul#buying-list.buy-item__content__list.active-2
-            = render 'users/buy_item/list', { buy_items: @purchasing_items }
-            %li.buy-item__content__list__text
-          %ul#buyed-list.buy-item__content__list
-            = render 'users/buy_item/list', { buy_items: @purchased_items }
+            = render 'users/buy_item/list', { purchases: @purchasing }
             %li.all-show
-              = link_to  "#", class: "all-show-btn" do
+              = link_to  buying_items_users_path, class: "all-show-btn" do
+                一覧を見る
+          %ul#buyed-list.buy-item__content__list
+            = render 'users/buy_item/list', { purchases: @purchased }
+            %li.all-show
+              = link_to  bought_items_users_path, class: "all-show-btn" do
                 一覧を見る

@@ -1,10 +1,9 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:edit, :update, :show]
-  before_action :set_categories, only: [:index, :edit, :update, :logout, :selling_items, :sold_items, :show, :sold_score]
-
+  
   def index
-    @purchasing_items = current_user.purchases.where(pay_flg: 0)
-    @purchased_items  = current_user.purchases.where(pay_flg: 1)
+    @purchasing = current_user.purchases.where(pay_flg: 0).order("created_at DESC").limit(5)
+    @purchased  = current_user.purchases.where(pay_flg: 1).order("created_at DESC").limit(5)
   end
 
   def edit
@@ -37,6 +36,16 @@ class UsersController < ApplicationController
     render template: 'users/sell_items'
   end
   
+  def buying_items
+    @purchases = current_user.purchases.where(pay_flg: 0)
+    render template: 'users/buy_items'
+  end
+
+  def bought_items
+    @purchases = current_user.purchases.where(pay_flg: 1)
+    render template: 'users/buy_items'
+  end
+
   def show
     @items = @user.items
   end
@@ -53,9 +62,5 @@ class UsersController < ApplicationController
 
   def set_user
     @user = User.find(params[:id])
-  end
-  
-  def set_categories
-    @parents = Category.where(ancestry: nil)
   end
 end

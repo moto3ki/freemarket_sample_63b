@@ -39,6 +39,16 @@ crumb :sold_items do
   parent :mypage
 end
 
+crumb :buying_items do
+  link "購入した商品 - 取引中", buying_items_users_path
+  parent :mypage
+end
+
+crumb :bought_items do
+  link "購入した商品 - 過去の取引", bought_items_users_path
+  parent :mypage
+end
+
 crumb :sold_score do
   link "売上・振込申請", sold_score_users_path
   parent :mypage

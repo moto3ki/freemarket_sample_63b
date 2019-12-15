@@ -18,7 +18,7 @@
         .item__right
           = icon 'fas', 'angle-right', class: 'icon-arrow-right'
 - else
-  .item-nothing
+  .default-nothing
     - if params[:action] == "sell_items"
       出品中の商品がありません
     - elsif params[:action] == "selling_items"

@@ -42,6 +42,8 @@ Rails.application.routes.draw do
       get 'sell_items'
       get 'selling_items'
       get 'sold_items'
+      get 'buying_items'
+      get 'bought_items'
       get 'sold_score'
 
     end
