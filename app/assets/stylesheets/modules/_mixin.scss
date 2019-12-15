@@ -157,3 +157,10 @@
   text-align: center;
   cursor: $cursor;
 }
+
+@mixin item_pulldown{
+  display: block;
+  background: transparent;
+  appearance: none; 
+  width: 400px;
+}
