@@ -39,6 +39,7 @@ Rails.application.routes.draw do
   resources :users, only: [:index, :edit, :update, :show] do
     collection do
       get 'logout'
+      get 'sell_items'
       get 'selling_items'
       get 'sold_items'
       get 'sold_score'

@@ -62,7 +62,7 @@ class PurchasesController < ApplicationController
                             profit:  profit,
                             pay_flg: 0,
                             fee:     fee)
-    # ステータスを1:購入済に更新
+    # ステータスを1:取引中に更新
     item.status = 1
     
     if item.save && purchase.save && current_user.save

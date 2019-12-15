@@ -5,5 +5,11 @@
         = image_tag buy_item.item.item_images[0].image.to_s, class:'item-image'
       .item-body
         .item-text
-          = buy_item.item.name + "  購入しました。  取引が完了しました。"
+          -if buy_item.pay_flg == 0
+            -if buy_item.item.send_flg == 0
+              = "「#{buy_item.item.name}」 を購入しました。 商品の発送をお待ちください"
+            -else
+              = "「#{buy_item.item.name}」 を購入しました。 商品が発送されました。到着後、出品者の評価をしてください"
+          -else
+            = "「#{buy_item.item.name}」 を購入しました。 取引が完了しました"
       = icon 'fas', 'angle-right', class: 'icon-arrow-right'

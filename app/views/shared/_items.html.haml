@@ -18,7 +18,7 @@
     %ul.item-lists__items
       - items.each do |item|
         %li.item-lists__items__item
-          - if item.status == 1
+          - if item.status != 0
             .sold-out
               .sold-out__string
                 SOLD

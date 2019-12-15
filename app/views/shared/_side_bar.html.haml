@@ -23,18 +23,23 @@
           いいね！一覧
           = icon 'fas','angle-right', class: 'icon-arrow-right'
       %li
-        - if params[:controller] == "users" && params[:action] == "selling_items"
-          = link_to selling_items_users_path, class: "side-active" do
+        - if params[:controller] == "users" && params[:action] == "sell_items"
+          = link_to sell_items_users_path, class: "side-active" do
             出品した商品-出品中
             = icon 'fas','angle-right', class: 'icon-arrow-right'
         - else
-          = link_to selling_items_users_path, class: "mypage-nav-list-item" do
+          = link_to sell_items_users_path, class: "mypage-nav-list-item" do
             出品した商品-出品中
             = icon 'fas','angle-right', class: 'icon-arrow-right'
-      %li.side-none
-        %a.mypage-nav-list-item
-          出品した商品-取引中
-          = icon 'fas','angle-right', class: 'icon-arrow-right'
+      %li
+        - if params[:controller] == "users" && params[:action] == "selling_items"
+          = link_to selling_items_users_path, class: "side-active" do
+            出品した商品-取引中
+            = icon 'fas','angle-right', class: 'icon-arrow-right'
+        - else
+          = link_to selling_items_users_path, class: "mypage-nav-list-item" do
+            出品した商品-取引中
+            = icon 'fas','angle-right', class: 'icon-arrow-right'
       %li
         - if params[:controller] == "users" && params[:action] == "sold_items"
           = link_to sold_items_users_path, class: "side-active" do

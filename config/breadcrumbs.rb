@@ -24,8 +24,13 @@ crumb :mypage do
   parent :root
 end
 
+crumb :sell_items do
+  link "出品した商品 - 出品中", sell_items_users_path
+  parent :mypage
+end
+
 crumb :selling_items do
-  link "出品した商品 - 出品中", selling_items_users_path
+  link "出品した商品 - 取引中", selling_items_users_path
   parent :mypage
 end
 

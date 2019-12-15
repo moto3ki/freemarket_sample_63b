@@ -3,7 +3,8 @@ class UsersController < ApplicationController
   before_action :set_categories, only: [:index, :edit, :update, :logout, :selling_items, :sold_items, :show, :sold_score]
 
   def index
-    @purchases = current_user.purchases
+    @purchasing_items = current_user.purchases.where(pay_flg: 0)
+    @purchased_items  = current_user.purchases.where(pay_flg: 1)
   end
 
   def edit
@@ -22,12 +23,18 @@ class UsersController < ApplicationController
 
   end
 
+  def sell_items
+    @items = current_user.items.where(status: 0)
+  end
+
   def selling_items
-    @selling_items = current_user.items.where(status: 0)
+    @items = current_user.items.where(status: 1)
+    render template: 'users/sell_items'
   end
 
   def sold_items
-    @sold_items = current_user.items.where(status: 1)
+    @items = current_user.items.where(status: 2)
+    render template: 'users/sell_items'
   end
   
   def show

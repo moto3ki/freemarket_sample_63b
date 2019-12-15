@@ -76,6 +76,11 @@
             background-color: $light_gray;
           }
         }
+        .item-nothing{
+          padding: 24px;
+          text-align: center;
+          @include string_set(24px, bold, $dark-gray);
+        }
       }
       &__items{
         display: none;

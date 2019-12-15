@@ -34,7 +34,6 @@
               .item-view__confirmed-item
                 %input(type="checkbox" name="confirmed-item" id="confirmed-item" value="1")
                 商品の中身を確認しました。
-
             = form_with model: @todolist, local: true do |f|
               .item-view__evaluate
                 %ul.evaluate-box
@@ -66,4 +65,4 @@
                 = icon 'fas', 'check'
                 受取評価をしました
               .item-view__message__sub
-                取引が完了しました。お疲れ様でした。
+                取引が完了しました。このたびはご利用ありがとうございました
