@@ -10,18 +10,24 @@
           = link_to users_path(current_user), class: "mypage-nav-list-item" do
             マイページ
             = icon 'fas', 'angle-right', class: 'icon-arrow-right'
-      %li.side-none
-        %a.mypage-nav-list-item
-          お知らせ
-          = icon 'fas','angle-right', class: 'icon-arrow-right'
-      %li.side-none
-        %a.mypage-nav-list-item
-          やることリスト
-          = icon 'fas','angle-right', class: 'icon-arrow-right'
-      %li.side-none
-        %a.mypage-nav-list-item
-          いいね！一覧
-          = icon 'fas','angle-right', class: 'icon-arrow-right'
+      %li
+        - if params[:controller] == "users" && params[:action] == "notices"
+          = link_to notices_users_path, class: "side-active" do
+            お知らせ
+            = icon 'fas', 'angle-right', class: 'icon-arrow-right'
+        - else
+          = link_to notices_users_path, class: "mypage-nav-list-item" do
+            お知らせ
+            = icon 'fas', 'angle-right', class: 'icon-arrow-right'
+      %li
+        - if params[:controller] == "users" && params[:action] == "todolists"
+          = link_to todolists_users_path, class: "side-active" do
+            やることリスト
+            = icon 'fas', 'angle-right', class: 'icon-arrow-right'
+        - else
+          = link_to todolists_users_path, class: "mypage-nav-list-item" do
+            やることリスト
+            = icon 'fas', 'angle-right', class: 'icon-arrow-right'
       %li
         - if params[:controller] == "users" && params[:action] == "sell_items"
           = link_to sell_items_users_path, class: "side-active" do

@@ -22,6 +22,16 @@ class UsersController < ApplicationController
 
   end
 
+  def notices
+    @notices_todoes = current_user.notices.order("created_at DESC")
+    render template: 'users/notices_todoes'
+  end
+
+  def todolists
+    @notices_todoes = current_user.todolists.where(status: 0).order("created_at DESC")
+    render template: 'users/notices_todoes'
+  end
+
   def sell_items
     @items = current_user.items.where(status: 0)
   end

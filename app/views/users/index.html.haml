@@ -30,40 +30,14 @@
               やることリスト
         .content
           %ul.content__list.active
-            - if @notices.present?
-              - @notices.each do |notice|
-                %li.content__list__news
-                  = link_to  notice_path(notice), class: "news-link" do
-                    .news-logo
-                      = image_tag notice.item.item_images[0].image.to_s, class:'logo-image'
-                    .news-body
-                      .news-text
-                        = notice.content
-                      .news-icon-time
-                        = icon 'far', 'clock', class: 'icon-time'
-                        .notice-date
-                          = notice.days_elapsed
-                    = icon 'fas', 'angle-right', class: 'icon-arrow-right'
+            = render 'users/notice_todo/list', { notices_todoes: @notices, path: "notices" }
             %li.all-show
-              = link_to  "#", class: "all-show-btn" do
+              = link_to  notices_users_path, class: "all-show-btn" do
                 一覧を見る
           %ul.content__list
-            - if @todolists.present?
-              - @todolists.each do |todolist|
-                %li.content__list__news
-                  = link_to todolist_path(todolist), class: "news-link" do
-                    .news-logo
-                      = image_tag todolist.item.item_images[0].image.to_s, class:'logo-image'
-                    .news-body
-                      .news-text
-                        = todolist.content
-                      .news-icon-time
-                        = icon 'far', 'clock', class: 'icon-time'
-                        .notice-date
-                          = todolist.days_elapsed
-                    = icon 'fas', 'angle-right', class: 'icon-arrow-right'
+            = render 'users/notice_todo/list', { notices_todoes: @todolists, path: "todolists" }
             %li.all-show
-              = link_to  "#", class: "all-show-btn" do
+              = link_to  todolists_users_path, class: "all-show-btn" do
                 一覧を見る
       .buy-item
         .buy-item__title

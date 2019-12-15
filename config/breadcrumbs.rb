@@ -24,6 +24,16 @@ crumb :mypage do
   parent :root
 end
 
+crumb :notices do
+  link "お知らせ", notices_users_path
+  parent :mypage
+end
+
+crumb :todolists do
+  link "やることリスト", todolists_users_path
+  parent :mypage
+end
+
 crumb :sell_items do
   link "出品した商品 - 出品中", sell_items_users_path
   parent :mypage
