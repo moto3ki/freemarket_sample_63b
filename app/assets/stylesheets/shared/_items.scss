@@ -1,7 +1,6 @@
 .item-lists{
   width: 100%;
   margin: 0 auto;
-  padding-bottom: 100px;
   background-color: rgb(235, 229, 229);
   &__head{
     width: 70%;
@@ -27,6 +26,7 @@
     justify-content: flex-start;
     flex-direction: row;
     flex-wrap: wrap;
+    padding-bottom: 50px;
     &__item{
       @include height_width(220px, 180px);
       margin: 10px;
@@ -65,5 +65,10 @@
         text-decoration: none;
       }
     }
+  }
+  &__nothing{
+    @include string_set(40px, bold, #afaeae);
+    text-align: center;
+    padding: 100px 0 200px 0;
   }
 }
