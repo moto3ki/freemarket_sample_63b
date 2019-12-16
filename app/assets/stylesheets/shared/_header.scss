@@ -1,4 +1,5 @@
 .header{
+  font-family: $main_font;
   @include height_width(100px, 100%);
   box-shadow: 2px 2px 4px gray;
   position:relative;

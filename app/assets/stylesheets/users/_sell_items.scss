@@ -11,7 +11,7 @@
       @include height_width(100%, 700px);
       background-color: #FFF;
       &__title{
-        @include string-set(16ox, bold, #333333);
+        @include string-set(16px, bold, #333333);
         padding: 0 16px;
         line-height: 72px;
       }
@@ -23,7 +23,7 @@
           width: 50%;
           line-height: 72px;
           background-color: #EEE;
-          @include string-set(16ox, bold, #333333);
+          @include string-set(16px, bold, #333333);
           &:hover{
             color: #888888;
           }
@@ -50,12 +50,12 @@
               margin-left: 16px;
               float: left;
               &__top{
-                @include string-set(14ox, normal, #333333);
+                @include string-set(14px, normal, #333333);
               }
               &__bottom{
                 margin-top: 8px;
                &__icon{
-                @include string-set(14ox, normal, #888888);
+                @include string-set(14px, normal, #888888);
                 margin-right: 6px;
                }
               }

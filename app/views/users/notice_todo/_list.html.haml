@@ -1,0 +1,20 @@
+- if notices_todoes.present?
+  - notices_todoes.each do |notice_todo|
+    %li.notice-todo
+      = link_to  "/#{path}/#{notice_todo.id}", class: "news-link" do
+        .news-logo
+          = image_tag notice_todo.item.item_images[0].image.to_s, class:'logo-image'
+        .news-body
+          .news-text
+            = notice_todo.content
+          .news-icon-time
+            = icon 'far', 'clock', class: 'icon-time'
+            .notice-date
+              = notice_todo.days_elapsed
+        = icon 'fas', 'angle-right', class: 'icon-arrow-right'
+- else
+  .default-nothing
+    - if path == "notices"
+      お知らせはありません
+    - else
+      やることリストはありません

@@ -1,0 +1,24 @@
+%nav.bread-crumbs
+  - breadcrumb :sales_histories
+  = breadcrumbs separator: " &#12297; "
+%main.user-saleshistories-page
+  .l-container.clearfix
+    .l-content
+      .sales-histories-box
+        .sales-histories-box__title
+          過去の売上履歴
+        %ul.sales-histories-box__list
+          - @sales_histories.each do |sales_history|
+            = link_to "/#{sales_history.path_set}/#{sales_history.notice_todolist_id}" do
+              %li.sales-history
+                .sales-history__left
+                  .sales-history__left__datetime
+                    = sales_history.created_at.strftime("%Y年%m月%d日 %H時%M分")
+                  .sales-history__left__message
+                    = sales_history.sales_message
+                .sales-history__right
+                  .sales-history__right__price
+                    = comma_to_jpy(sales_history.price)
+                  .sales-history__right__icon
+                    = icon 'fas','angle-right', class: 'icon-arrow-right'
+    = render "shared/side_bar"

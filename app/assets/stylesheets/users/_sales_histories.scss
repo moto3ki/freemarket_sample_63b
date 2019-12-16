@@ -1,0 +1,59 @@
+.user-saleshistories-page {
+  width: 100%;
+  background-color: $normal_gray;
+  padding: 40px 0;
+  font-family: $main_font;
+
+  .l-container {
+    width: 1020px;
+    margin: 0 auto;
+
+    .l-content {
+      width: 700px;
+      float: right;
+      background-color: #fff;
+
+      .sales-histories-box {
+        &__title {
+          font-size: 24px;
+          padding: 8px 24px;
+          text-align: center;
+          border-bottom: 1px solid #f5f5f5;
+          line-height: 1.4;
+        }
+        &__list {
+          .sales-history{
+            padding: 16px;
+            @include flexbox_space-between;
+            border-bottom: 1px solid $main_back_color;
+            &__left{
+              &__datetime{
+                @include string-set(14px, normal, #888888);
+              }
+              &__message{
+                margin-top: 8px;
+                @include string-set(14px, normal, #333333);
+              }
+            }
+            &__right{
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              @include string-set(18px, normal, #333333);
+              &__price{
+                margin-right: 6px;
+              }
+              &__icon{
+                @include string-set(18px, normal, #888888);
+              }
+            }
+            &:hover{
+              background-color: $light_gray;
+            }
+          }
+
+        }
+      }
+    }
+  }
+}

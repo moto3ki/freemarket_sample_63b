@@ -2,6 +2,7 @@
   width: 100%;
   background-color: $normal_gray;
   padding: 40px 0;
+  font-family: $main_font;
   
   .l-container {
     width: 1020px;
@@ -123,79 +124,6 @@
           &__list.active {
             display: block;
 
-            &__news,li {
-              border-bottom: 1px solid $dark_gray;
-              position: relative;
-
-              .news-link {
-                display: block;
-                min-height: 60px;
-                padding: 16px;
-                color: #333;
-                font-size: 14px;
-                text-decoration: none;
-                @include hover_background_color($light_gray);
-
-                .news-logo {
-                  position: relative;
-                  overflow: hidden;
-                  float: left;
-                  @include height_width(48px, 48px);
-                  background-color: $dark_gray;
-                  margin: 0;
-
-                  .logo-image {
-                    position: absolute;
-                    top: 6px;
-                    right: 8px;
-                    z-index: 1;
-                    width: 65%;
-                  }
-                }
-
-                .news-body {
-                  margin: 0 40px 0 68px;
-
-                  .news-text {
-                    overflow: hidden;
-                    display: block;
-                    display: -webkit-box;
-                    max-height: 4.4em;
-                    -webkit-line-clamp: 3;
-                    -webkit-box-orient: vertical;
-                    text-overflow: ellipsis;
-                    line-height: 1.5;
-                    text-decoration: none;
-                  }
-
-                  .news-icon-time {
-                    display: inline-block;
-                    color: #888;
-
-                    .icon-time {
-                      margin: 0 8px 0 0;
-                      font-size: 16px;
-                      vertical-align: middle;
-                    }
-
-                    .notice-date {
-                      display: inline-block;
-                      vertical-align: middle;
-                    }
-                  }
-                }
-
-                .icon-arrow-right {
-                  position: absolute;
-                  top: 50%;
-                  right: 16px;
-                  -webkit-transform: translate(0, -50%);
-                  transform: translate(0, -50%);
-                  font-size: 22px;
-                }
-              }
-            }
-
             .all-show {
               padding: 16px;
 
@@ -276,54 +204,6 @@
       &__content {
         &__list.active-2 {
           display: block;
-
-          .item-box,li {
-            border-bottom: 1px solid $dark_gray;
-            position: relative;
-
-            .news-link {
-              display: block;
-              min-height: 60px;
-              padding: 16px;
-              color: #333;
-              font-size: 14px;
-              text-decoration: none;
-              @include hover_background_color($light_gray);
-
-              .item-photo {
-                position: relative;
-                overflow: hidden;
-                float: left;
-                @include height_width(48px, 48px);
-                margin: 0;
-              }
-
-              .item-body {
-                margin: 0 40px 0 68px;
-        
-                .item-text {
-                  overflow: hidden;
-                  display: block;
-                  display: -webkit-box;
-                  max-height: 4.4em;
-                  -webkit-line-clamp: 3;
-                  -webkit-box-orient: vertical;
-                  text-overflow: ellipsis;
-                  line-height: 1.5;
-                  text-decoration: none;
-                }
-              }
-
-              .icon-arrow-right {
-                position: absolute;
-                top: 50%;
-                right: 16px;
-                -webkit-transform: translate(0, -50%);
-                transform: translate(0, -50%);
-                font-size: 22px;
-              }
-            }
-          }
         }
         .all-show {
           padding: 16px;

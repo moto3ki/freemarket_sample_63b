@@ -14,14 +14,16 @@
 @import "shared/sell_button";
 @import "shared/side_bar";
 @import "shared/bread-crumbs";
-@import "shared/item";
+@import "shared/items";
 @import "shared/category_bar";
-@import "shared/todolist";
-@import "shared/notice";
+
+@import "header/todolist";
+@import "header/notice";
+@import "header/mypage";
 
 @import "home/index";
 
-@import "item/new";
+@import "items/new";
 @import "items/show";
 @import "items/own_show";
 @import "items/item";
@@ -33,9 +35,14 @@
 @import "users/index";
 @import "users/edit";
 @import "users/logout";
+@import "users/notices_todoes";
+@import "users/notices_todoes/list";
 @import "users/sell_items";
+@import "users/buy_items";
+@import "users/buy_items/list";
 @import "users/show";
 @import "users/sold_score";
+@import "users/sales_histories";
 
 @import "sign-up/sign-up";
 @import "sign-up/login";

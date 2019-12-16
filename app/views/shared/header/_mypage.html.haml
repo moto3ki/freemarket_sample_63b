@@ -1,0 +1,16 @@
+.header-mypage
+  .user-info
+    .user-info__name
+      = current_user.nickname
+    .user-info__data
+      .user-info__data__rate
+        評価：
+        = current_user.rate ? current_user.rate.tolal_rate : '0'
+      .user-info__data__sellitem-cnt
+        出品数：
+        = current_user.items.count
+  = link_to sold_score_users_path(current_user), class: "user-sales" do
+    .user-sales__title
+      売上金：
+    .user-sales__value
+      = comma_to_jpy(current_user.sales)

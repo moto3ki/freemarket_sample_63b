@@ -1,0 +1,47 @@
+.mypage-buy-item-box,li {
+  position: relative;
+
+  .news-link {
+    display: block;
+    min-height: 60px;
+    padding: 16px;
+    color: #333;
+    font-size: 14px;
+    text-decoration: none;
+    @include hover_background_color($light_gray);
+
+    .item-photo {
+      position: relative;
+      float: left;
+      img{
+        @include height_width(48px, 48px);
+        object-fit: contain;
+      }
+    }
+
+    .item-body {
+      margin: 0 40px 0 68px;
+
+      .item-text {
+        overflow: hidden;
+        display: block;
+        display: -webkit-box;
+        max-height: 4.4em;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+        text-overflow: ellipsis;
+        line-height: 1.5;
+        text-decoration: none;
+      }
+    }
+
+    .icon-arrow-right {
+      position: absolute;
+      top: 50%;
+      right: 16px;
+      -webkit-transform: translate(0, -50%);
+      transform: translate(0, -50%);
+      font-size: 22px;
+    }
+  }
+}

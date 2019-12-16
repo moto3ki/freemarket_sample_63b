@@ -1,9 +1,9 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:edit, :update, :show]
-  before_action :set_categories, only: [:index, :edit, :update, :logout, :selling_items, :sold_items, :show, :sold_score]
-
+  
   def index
-    @purchases = current_user.purchases
+    @purchasing = current_user.purchases.where(pay_flg: 0).order("created_at DESC").limit(5)
+    @purchased  = current_user.purchases.where(pay_flg: 1).order("created_at DESC").limit(5)
   end
 
   def edit
@@ -22,20 +22,50 @@ class UsersController < ApplicationController
 
   end
 
+  def notices
+    @notices_todoes = current_user.notices.order("created_at DESC")
+    render template: 'users/notices_todoes'
+  end
+
+  def todolists
+    @notices_todoes = current_user.todolists.where(status: 0).order("created_at DESC")
+    render template: 'users/notices_todoes'
+  end
+
+  def sell_items
+    @items = current_user.items.where(status: 0).order("created_at DESC")
+  end
+
   def selling_items
-    @selling_items = current_user.items.where(status: 0)
+    @items = current_user.items.where(status: 1).order("created_at DESC")
+    render template: 'users/sell_items'
   end
 
   def sold_items
-    @sold_items = current_user.items.where(status: 1)
+    @items = current_user.items.where(status: 2).order("created_at DESC")
+    render template: 'users/sell_items'
   end
   
+  def buying_items
+    @purchases = current_user.purchases.where(pay_flg: 0).order("created_at DESC")
+    render template: 'users/buy_items'
+  end
+
+  def bought_items
+    @purchases = current_user.purchases.where(pay_flg: 1).order("created_at DESC")
+    render template: 'users/buy_items'
+  end
+
   def show
     @items = @user.items
   end
 
   def sold_score
     
+  end
+
+  def sales_histories
+    @sales_histories = current_user.sales_histories.order("created_at DESC")
   end
 
   private
@@ -46,9 +76,5 @@ class UsersController < ApplicationController
 
   def set_user
     @user = User.find(params[:id])
-  end
-  
-  def set_categories
-    @parents = Category.where(ancestry: nil)
   end
 end

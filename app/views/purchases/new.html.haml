@@ -2,49 +2,61 @@
   .inner-container
     .title-container
       購入内容の確認
-    .item-container
-      .item-container__title
-        .item-container__title__image
-          = image_tag @item.item_images[0].image.to_s
-        .item-container__title__name
-          = @item.name
-      .item-container__price
-        .item-container__price__value
-          = comma_to_jpy(@item.price)
-        .item-container__price__postage
-          = @item.postage_set
-      .item-container__pay-price
-        .item-container__pay-price__title
-          支払い金額
-        .item-container__pay-price__value
-          = comma_to_jpy(@item.price)
-    .payment-method-container
-      .payment-method-container__title
-        支払い方法
-      - if @default_card_information.present?
-        .payment-method-container__value
-          = "**** **** **** " + @default_card_information.last4
-        .payment-method-container__value
-          - exp_month = @default_card_information.exp_month.to_s
-          - exp_year = @default_card_information.exp_year.to_s.slice(2,3)
-          = exp_month + " / " + exp_year
-      - else
-        = link_to "登録してください", paymethod_show_credit_cards_path, class: "payment-method-container__credit-link" 
-    .delivery-address-container
-      .delivery-address-container__title
-        配送先
-      - if @send_address.present?
-        .delivery-address-container__value
-          〒
-          = @send_address.post_code
-        .delivery-address-container__value
-          = @send_address.city
-          = @send_address.address
-        .delivery-address-container__value
-          = @send_address.kanji_last_name
-          = @send_address.kanji_first_name
+    = form_with(model: [@item, @purchase], data: { remote: false }) do |f|
+      .item-container
+        .item-container__title
+          .item-container__title__image
+            = image_tag @item.item_images[0].image.to_s
+          .item-container__title__name
+            = @item.name
+        .item-container__price
+          .item-container__price__value
+            = comma_to_jpy(@item.price)
+          .item-container__price__postage
+            = @item.postage_set
+        .item-container__pay-price
+          .item-container__pay-price__title
+            支払い金額
+          .item-container__pay-price__value
+            = comma_to_jpy(@item.price)
+        .item-container__use-sales
+          .item-container__use-sales__checkbox
+            - if current_user.sales > 0
+              = f.check_box :use_sales, id: :purchase_use_sales
+            - else
+              = f.check_box :use_sales, id: :purchase_use_sales, disabled: :true, class: "checkbox-disabled"
+            = "売上金を使用 (現在の売上: #{comma_to_jpy(current_user.sales)})"
+          .item-container__use-sales__caution
+            ※ 不足分はクレジット決済されます（売上金がある場合選択可能です）
+      .payment-method-container
+        .payment-method-container__title
+          支払い方法
+        - if @default_card_information.present?
+          .payment-method-container__value
+            = "**** **** **** " + @default_card_information.last4
+          .payment-method-container__value
+            - exp_month = @default_card_information.exp_month.to_s
+            - exp_year = @default_card_information.exp_year.to_s.slice(2,3)
+            = exp_month + " / " + exp_year
+        - else
+          = link_to "登録してください", paymethod_show_credit_cards_path, class: "payment-method-container__credit-link" 
+      .delivery-address-container
+        .delivery-address-container__title
+          配送先
+        - if @send_address.present?
+          .delivery-address-container__value
+            〒
+            = @send_address.post_code
+          .delivery-address-container__value
+            = @send_address.city
+            = @send_address.address
+          .delivery-address-container__value
+            = @send_address.kanji_last_name
+            = @send_address.kanji_first_name
+        -else
+          = link_to "登録してください", new_user_send_address_path(current_user.id), class: "payment-method-container__credit-link"
+      -if @default_card_information.present? && @send_address.present?
+        = f.submit "購入する", class: "purchase-button"
       -else
-        = link_to "登録してください", new_user_send_address_path(current_user.id), class: "payment-method-container__credit-link" 
-    -if @default_card_information.present? && @send_address.present?
-      .purchase-button
-        = link_to "購入する", item_purchases_path, method: :post 
+        = f.submit "購入する", class: "purchase-button-disabled", disabled: true
+      

@@ -1,0 +1,35 @@
+- if params[:action] == "sell_items"
+  %nav.bread-crumbs
+    - breadcrumb :sell_items
+    = breadcrumbs separator: " &#12297; "
+- elsif params[:action] == "selling_items"
+  %nav.bread-crumbs
+    - breadcrumb :selling_items
+    = breadcrumbs separator: " &#12297; "
+- else
+  %nav.bread-crumbs
+    - breadcrumb :sold_items
+    = breadcrumbs separator: " &#12297; "
+.user-sell-items-page
+  .inner-container
+    = render partial: "shared/side_bar"
+    .sell-list
+      .sell-list__title
+        出品した商品
+      %ul.sell-list__tabs
+        = link_to sell_items_users_path, class: "sell-list__tabs__tab", id: "sell-tab" do
+          %li
+            出品中
+        = link_to selling_items_users_path, class: "sell-list__tabs__tab", id: "selling-tab" do
+          %li
+            取引中
+        = link_to sold_items_users_path, class: "sell-list__tabs__tab", id: "sold-tab" do
+          %li
+            売却済み
+      #sell-items.sell-list__items
+        = render partial: "users/sell_item/items", locals: { items: @items }
+      #selling-items.sell-list__items
+        = render partial: "users/sell_item/items", locals: { items: @items }
+      #sold-items.sell-list__items
+        = render partial: "users/sell_item/items", locals: { items: @items }
+        

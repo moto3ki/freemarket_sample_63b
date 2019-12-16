@@ -14,14 +14,21 @@
         = link_to category_path(category) do
           もっと見る
           = icon 'fas', 'angle-right'
-  %ul.item-lists__items
-    - items.each do |item|
-      %li.item-lists__items__item
-        = link_to item_path(item), class: "item-link" do
-          = image_tag item.item_images[0].image.to_s, class: "item-lists__items__item__image"
-          .item-lists__items__item__price
-            = comma_to_jpy(item.price)
-          .item-lists__items__item__namebox
-            .item-lists__items__item__namebox__name
-              = item.name
-      
+  - if items.present?
+    %ul.item-lists__items
+      - items.each do |item|
+        %li.item-lists__items__item
+          - if item.status != 0
+            .sold-out
+              .sold-out__string
+                SOLD
+          = link_to item_path(item), class: "item-link" do
+            = image_tag item.item_images[0].image.to_s, class: "item-lists__items__item__image"
+            .item-lists__items__item__price
+              = comma_to_jpy(item.price)
+            .item-lists__items__item__namebox
+              .item-lists__items__item__namebox__name
+                = item.name
+  - else
+    .item-lists__nothing
+      現在、該当の商品はありません

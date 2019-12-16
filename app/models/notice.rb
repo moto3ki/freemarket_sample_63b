@@ -8,10 +8,9 @@ class Notice < ApplicationRecord
     self.item_id = item.id
     self.read_flg = 0
     self.title   = "購入が完了しました"
-    self.content = "商品が届いたら評価してください。"
+    self.content = "「#{item.name}」を購入しました。発送までしばらくお待ちください。"
     self.date    = Date.today
     self.type_no = 1
-    self.save
   end
 
   def rated_and_paid_to_seller(user, item)

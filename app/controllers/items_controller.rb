@@ -9,6 +9,8 @@ class ItemsController < ApplicationController
 
   def show
     @seller_items = Item.where(user_id: @item.user_id)
+                        .where.not(id: params[:id])
+                        .order("created_at DESC")
   end
   
   def create

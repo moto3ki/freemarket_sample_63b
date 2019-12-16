@@ -39,10 +39,15 @@ Rails.application.routes.draw do
   resources :users, only: [:index, :edit, :update, :show] do
     collection do
       get 'logout'
+      get 'notices'
+      get 'todolists'
+      get 'sell_items'
       get 'selling_items'
       get 'sold_items'
+      get 'buying_items'
+      get 'bought_items'
       get 'sold_score'
-
+      get 'sales_histories'
     end
     
     resources :real_address, only: [:new, :create]
@@ -55,6 +60,7 @@ Rails.application.routes.draw do
       get 'search'
     end
   end
+  
   resources :todolists, only: [:show, :update]
   resources :notices, only: [:show, :update]
 end

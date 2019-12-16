@@ -64,3 +64,10 @@
     -webkit-transform: rotate(-45deg);
   }
 }
+
+// 該当なしのフォーマット
+.default-nothing{
+  padding: 24px;
+  text-align: center;
+  @include string_set(24px, bold, $dark-gray);
+}

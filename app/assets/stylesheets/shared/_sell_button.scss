@@ -1,4 +1,5 @@
 .sell_button{
+  font-family: $main_font;
   @include height_width(160px, 160px);
   position: absolute;
   position: fixed;

@@ -65,9 +65,15 @@ $(function() {
       a1 = $(`[data-image-no="${image_no + i + 1}"]`);
       $(a1).data('image-no', image_no + i);
     }
-    // 現在の幅を取得し、画像の幅分アップロードゾーンの幅をプラス
-    var current_width = $(".upload1").width();
-    $(".upload1").width(`calc(${current_width}px + 130px)`);
+    
+    if (item_images.length == 4) {
+      $('.upload1').show();
+    }
+    else {
+      // 現在の幅を取得し、画像の幅分アップロードゾーンの幅をプラス
+      var current_width = $(".upload1").width();
+      $(".upload1").width(`calc(${current_width}px + 130px)`);
+    }
   });
 
   /****************************************/

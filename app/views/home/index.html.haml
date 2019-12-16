@@ -1,8 +1,5 @@
 .home
   = image_tag("/top_image/top.png", class: "top-image")
-  .popular-category
-    .popular-category__title
-      人気のカテゴリー
   = render partial: "shared/items", locals: {items: @ladys, category: @parents[0]}
   = render partial: "shared/items", locals: {items: @men, category: @parents[1]}
   = render partial: "shared/items", locals: {items: @book_music_games, category: @parents[2]}
