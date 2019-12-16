@@ -32,7 +32,7 @@ class TodolistsController < ApplicationController
       purchase = item.purchase
       
       # Todo実施済更新処理
-      @todolist.complete_todo
+      @todolist.complete_todorails
       # 評価処理
       if rate.present?
         rate.rate_count_up(rate_params[:rate])
