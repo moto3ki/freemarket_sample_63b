@@ -1,23 +1,24 @@
 .item-show-page
   = render 'item', { item: @item }
   = render 'comment'
-  .introduction-item-container
-    = link_to "#", class: "blue-link" do
-      .introduction-item-container__left
-        = icon 'fas', 'angle-left'
-        左のアイテム
-    = link_to "#", class: "blue-link" do
-      .introduction-item-container__right
-        右のアイテム
-        = icon 'fas', 'angle-right'
-  .sns-container
-    .sns-container__icon
-      = link_to "#" do
-        = icon 'fab', 'facebook-square', class: "sns-container__icon--facebook"
-      = link_to "#" do
-        = icon 'fab', 'twitter-square', class: "sns-container__icon--twitter"
-      = link_to "#" do
-        = icon 'fab', 'pinterest-square', class: "sns-container__icon--pinterest"
+  -# 機能未実装のためコメント化
+  -# .introduction-item-container
+  -#   = link_to "#", class: "blue-link" do
+  -#     .introduction-item-container__left
+  -#       = icon 'fas', 'angle-left'
+  -#       左のアイテム
+  -#   = link_to "#", class: "blue-link" do
+  -#     .introduction-item-container__right
+  -#       右のアイテム
+  -#       = icon 'fas', 'angle-right'
+  -# .sns-container
+  -#   .sns-container__icon
+  -#     = link_to "#" do
+  -#       = icon 'fab', 'facebook-square', class: "sns-container__icon--facebook"
+  -#     = link_to "#" do
+  -#       = icon 'fab', 'twitter-square', class: "sns-container__icon--twitter"
+  -#     = link_to "#" do
+  -#       = icon 'fab', 'pinterest-square', class: "sns-container__icon--pinterest"
   .other-item-container
     = link_to user_path(@item.user_id), class:"other-item-container__title blue-link" do
       = @item.user.nickname + "さんのその他の商品"
