@@ -16,4 +16,12 @@ $(function() {
       $('.header-notices', this).hide()
     }
   );
+  $(menus).hover(
+    function() {
+      $('.header-mypage', this).show()
+    },
+    function() {
+      $('.header-mypage', this).hide()
+    }
+  );
 });

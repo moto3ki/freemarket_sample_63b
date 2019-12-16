@@ -8,6 +8,7 @@
     width: 700px;
     margin: 0 auto;
     background-color: white;
+    padding-bottom: 32px;
     .title-container{
       @include string_set(22px, bold, #333333);
       padding: 16px;
@@ -63,6 +64,16 @@
           padding: 14px 0;
         }
       }
+      &__use-sales{
+        width: 320px;
+        margin: 0 auto;
+        &__checkbox{
+          @include string_set(14px, normal, #333333);
+        }
+        &__caution{
+          @include string_set(12px, normal, #EA352D);
+        }
+      }
     }
     .payment-method-container{
       padding: 24px 87.5px;
@@ -101,21 +112,10 @@
       }
     }
     .purchase-button{
-      width: 320px;
-      margin: 0 auto;
-      padding: 32px 0;
-      a{
-        @include string_set(14px, bold, #FFFFFF);
-        text-decoration: none;
-        width: 100%;
-        background-color: #888888;
-        text-align: center;
-        padding: 15px 0;
-        display: block;
-        margin: 0 auto;
-        width: 100%;
-        cursor: pointer;
-      }
+      @include purchase_button_desigon($main-color, pointer);
+    }
+    .purchase-button-disabled{
+      @include purchase_button_desigon(#888888, not-allowed);
     }
   }
 }

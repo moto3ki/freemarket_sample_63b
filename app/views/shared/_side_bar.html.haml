@@ -10,31 +10,42 @@
           = link_to users_path(current_user), class: "mypage-nav-list-item" do
             マイページ
             = icon 'fas', 'angle-right', class: 'icon-arrow-right'
-      %li.side-none
-        %a.mypage-nav-list-item
-          お知らせ
-          = icon 'fas','angle-right', class: 'icon-arrow-right'
-      %li.side-none
-        %a.mypage-nav-list-item
-          やることリスト
-          = icon 'fas','angle-right', class: 'icon-arrow-right'
-      %li.side-none
-        %a.mypage-nav-list-item
-          いいね！一覧
-          = icon 'fas','angle-right', class: 'icon-arrow-right'
       %li
-        - if params[:controller] == "users" && params[:action] == "selling_items"
-          = link_to selling_items_users_path, class: "side-active" do
+        - if params[:controller] == "users" && params[:action] == "notices"
+          = link_to notices_users_path, class: "side-active" do
+            お知らせ
+            = icon 'fas', 'angle-right', class: 'icon-arrow-right'
+        - else
+          = link_to notices_users_path, class: "mypage-nav-list-item" do
+            お知らせ
+            = icon 'fas', 'angle-right', class: 'icon-arrow-right'
+      %li
+        - if params[:controller] == "users" && params[:action] == "todolists"
+          = link_to todolists_users_path, class: "side-active" do
+            やることリスト
+            = icon 'fas', 'angle-right', class: 'icon-arrow-right'
+        - else
+          = link_to todolists_users_path, class: "mypage-nav-list-item" do
+            やることリスト
+            = icon 'fas', 'angle-right', class: 'icon-arrow-right'
+      %li
+        - if params[:controller] == "users" && params[:action] == "sell_items"
+          = link_to sell_items_users_path, class: "side-active" do
             出品した商品-出品中
             = icon 'fas','angle-right', class: 'icon-arrow-right'
         - else
-          = link_to selling_items_users_path, class: "mypage-nav-list-item" do
+          = link_to sell_items_users_path, class: "mypage-nav-list-item" do
             出品した商品-出品中
             = icon 'fas','angle-right', class: 'icon-arrow-right'
-      %li.side-none
-        %a.mypage-nav-list-item
-          出品した商品-取引中
-          = icon 'fas','angle-right', class: 'icon-arrow-right'
+      %li
+        - if params[:controller] == "users" && params[:action] == "selling_items"
+          = link_to selling_items_users_path, class: "side-active" do
+            出品した商品-取引中
+            = icon 'fas','angle-right', class: 'icon-arrow-right'
+        - else
+          = link_to selling_items_users_path, class: "mypage-nav-list-item" do
+            出品した商品-取引中
+            = icon 'fas','angle-right', class: 'icon-arrow-right'
       %li
         - if params[:controller] == "users" && params[:action] == "sold_items"
           = link_to sold_items_users_path, class: "side-active" do
@@ -44,14 +55,24 @@
           = link_to sold_items_users_path, class: "mypage-nav-list-item" do
             出品した商品-売却済み
             = icon 'fas','angle-right', class: 'icon-arrow-right'
-      %li.side-none
-        %a.mypage-nav-list-item
-          売却した商品-取引中
-          = icon 'fas','angle-right', class: 'icon-arrow-right'
-      %li.side-none
-        %a.mypage-nav-list-item
-          売却した商品-過去の取引
-          = icon 'fas','angle-right', class: 'icon-arrow-right'
+      %li
+        - if params[:controller] == "users" && params[:action] == "buying_items"
+          = link_to buying_items_users_path, class: "side-active" do
+            購入した商品-取引中
+            = icon 'fas','angle-right', class: 'icon-arrow-right'
+        - else
+          = link_to buying_items_users_path, class: "mypage-nav-list-item" do
+            購入した商品-取引中
+            = icon 'fas','angle-right', class: 'icon-arrow-right'
+      %li
+        - if params[:controller] == "users" && params[:action] == "bought_items"
+          = link_to bought_items_users_path, class: "side-active" do
+            購入した商品-過去の取引
+            = icon 'fas','angle-right', class: 'icon-arrow-right'
+        - else
+          = link_to bought_items_users_path, class: "mypage-nav-list-item" do
+            購入した商品-過去の取引
+            = icon 'fas','angle-right', class: 'icon-arrow-right'
       %li.side-none
         %a.mypage-nav-list-item
           ニュース一覧

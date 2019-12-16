@@ -13,9 +13,9 @@
               .sold-score__left
                 現在の売上金
               .sold-score__right
-                ¥#{current_user.sales}
+                = comma_to_jpy(current_user.sales)
           %li
-            = link_to "#" do
+            = link_to sales_histories_users_path do
               .sold-history
                 .sold-history__title
                   売上履歴

@@ -8,7 +8,7 @@
           .require 必須
           出品画像
         .item-image-box__explain
-          最大10枚までアップロードできます
+          最大5枚までアップロードできます
         = f.fields_for :item_images do |image|
           .item-image-box__images
             .preview
@@ -23,9 +23,7 @@
               .upload1
                 = image.file_field :image, id: "set-image", class: "set-image img-hidden", name: 'item_images[image][]', 'data-image-no': 0
                 %p.upload1__message
-                  ドラッグアンドドロップ
-                  %br
-                  またはクリックしてファイルをアップロード
+                  クリックしてファイルをアップロード
         .error-text
           - @item_images.errors.full_messages_for(:image).each do |message|
             = message

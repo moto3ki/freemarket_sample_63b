@@ -1,0 +1,23 @@
+- if params[:action] == "notices"
+  %nav.bread-crumbs
+    - breadcrumb :notices
+    = breadcrumbs separator: " &#12297; "
+- else
+  %nav.bread-crumbs
+    - breadcrumb :todolists
+    = breadcrumbs separator: " &#12297; "
+.user-notices-todoes-page
+  .inner-container
+    = render partial: "shared/side_bar"
+    .notice-todo
+      %ul.notice-todo__tabs
+        = link_to notices_users_path, class: "notice-todo__tabs__tab", id: "notice-tab" do
+          %li
+            お知らせ
+        = link_to todolists_users_path, class: "notice-todo__tabs__tab", id: "todo-tab" do
+          %li
+            やることリスト
+      %ul.notice-todo__lists#notice-lists
+        = render 'users/notice_todo/list', { notices_todoes: @notices_todoes, path: "notices" }
+      %ul.notice-todo__lists#todo-lists
+        = render 'users/notice_todo/list', { notices_todoes: @notices_todoes, path: "todolists" }

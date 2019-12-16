@@ -7,7 +7,15 @@
         .item-view__title
           取引画面
         .item-view__message
-          .item-view__message__main
-            商品の発送までしばらくお待ちください
-          .item-view__message__sub
-            商品の購入が完了しました。商品の発送までしばらくお待ちください。
+          - if @notice.type_no == 1
+            .item-view__message__main
+              商品の発送までしばらくお待ちください
+            .item-view__message__sub
+              商品の購入が完了しました。商品の発送までしばらくお待ちください。
+          - elsif @notice.type_no == 2
+            .item-view__message__main
+              取引が完了しました
+            .item-view__message__sub
+              入金が行われたためご確認ください。
+              %br
+              この度はご利用ありがとうございました

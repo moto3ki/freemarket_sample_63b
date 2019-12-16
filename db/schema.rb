@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_12_021721) do
+ActiveRecord::Schema.define(version: 2019_12_15_164009) do
 
   create_table "categories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
@@ -118,6 +118,16 @@ ActiveRecord::Schema.define(version: 2019_12_12_021721) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "sales_histories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "notice_todolist_id", null: false
+    t.integer "notice_todolist_status", null: false
+    t.integer "price", default: 0, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_sales_histories_on_user_id"
+  end
+
   create_table "sales_managements", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "sales", default: 0
     t.integer "profit", default: 0
@@ -196,6 +206,7 @@ ActiveRecord::Schema.define(version: 2019_12_12_021721) do
   add_foreign_key "purchases", "users"
   add_foreign_key "rates", "users"
   add_foreign_key "real_addresses", "users"
+  add_foreign_key "sales_histories", "users"
   add_foreign_key "send_addresses", "users"
   add_foreign_key "sns_credentials", "users"
   add_foreign_key "todolists", "items"

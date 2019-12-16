@@ -1,0 +1,26 @@
+- if params[:action] == "buying_items"
+  %nav.bread-crumbs
+    - breadcrumb :buying_items
+    = breadcrumbs separator: " &#12297; "
+- elsif params[:action] == "bought_items"
+  %nav.bread-crumbs
+    - breadcrumb :bought_items
+    = breadcrumbs separator: " &#12297; "
+.user-buy-items-page
+  .inner-container
+    = render partial: "shared/side_bar"
+    .buy-list
+      .buy-list__title
+        購入した商品
+      %ul.buy-list__tabs
+        = link_to buying_items_users_path, class: "buy-list__tabs__tab", id: "buying-tab" do
+          %li
+            取引中
+        = link_to bought_items_users_path, class: "buy-list__tabs__tab", id: "bought-tab" do
+          %li
+            過去の取引
+      %ul.buy-list__items#buying-items
+        = render partial: "users/buy_item/list", locals: { purchases: @purchases }
+      %ul.buy-list__items#bought-items
+        = render partial: "users/buy_item/list", locals: { purchases: @purchases }
+        

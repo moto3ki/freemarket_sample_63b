@@ -1,0 +1,44 @@
+.user-buy-items-page{
+  @include height_width(100%, 100%);
+  background-color: $main_back_color;
+  padding-top: 40px;
+  .inner-container{
+    width: 1020px;
+    margin: 0 auto;
+    font-family: $main-font;
+    @include flexbox_space-between;
+    .buy-list{
+      @include height_width(100%, 700px);
+      background-color: #FFF;
+      &__title{
+        @include string-set(16ox, bold, #333333);
+        padding: 0 16px;
+        line-height: 72px;
+      }
+      &__tabs{
+        display: flex;
+        text-align: center;
+        &__tab{
+          display: block;
+          width: 50%;
+          line-height: 72px;
+          background-color: #EEE;
+          @include string-set(16ox, bold, #333333);
+          &:hover{
+            color: #888888;
+          }
+        }
+        .active{
+          border-top: 2px solid $main-color;
+          background-color: #FFF;
+        }
+      }
+      .active-items{
+        display: block;
+      }
+      &__items{
+        display: none;
+      }
+    }
+  }
+}

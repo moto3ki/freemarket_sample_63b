@@ -12,7 +12,7 @@
           .user-box__top__score__left__title
             評価
           .user-box__top__score__left__score
-            0
+            = @user.rate ? @user.rate.tolal_rate : '0'
         .user-box__top__score__right
           .user-box__top__score__right__title
             出品数
@@ -23,15 +23,15 @@
         .user-box__text__rating--laugh
           = icon 'fas', 'laugh', class: "smile-wink-icon"
           .rating-score
-            34
+            = @user.rate ? @user.rate.good : '0'
         .user-box__text__rating--men
           = icon 'fas', 'meh', class: "men-icon"
           .rating-score
-            0
+            = @user.rate ? @user.rate.normal : '0'
         .user-box__text__rating--frown
           = icon 'fas', 'frown', class: "frown-icon"
           .rating-score
-            0
+            = @user.rate ? @user.rate.bad : '0'
       .user-box__text__profile
         .user-box__text__profile__content
           = simple_format @user.profile

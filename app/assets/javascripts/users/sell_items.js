@@ -5,11 +5,15 @@ $(function(){
 
   if (href.indexOf(user_url) === 0) {
     
-    if (href == "/users/selling_items"){
+    if (href == "/users/sell_items"){
+      $("#sell-tab").addClass("active");
+      $("#sell-items").addClass("active-items");
+    }
+    else if (href == "/users/selling_items"){
       $("#selling-tab").addClass("active");
       $("#selling-items").addClass("active-items");
     }
-    if (href == "/users/sold_items"){
+    else if (href == "/users/sold_items"){
       $("#sold-tab").addClass("active");
       $("#sold-items").addClass("active-items");
     }

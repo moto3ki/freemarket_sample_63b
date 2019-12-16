@@ -2,7 +2,6 @@
   font-family: $main_font;
   width: 100%;
   margin: 0 auto;
-  padding-bottom: 100px;
   background-color: rgb(235, 229, 229);
   &__head{
     width: 70%;
@@ -24,12 +23,14 @@
   &__items{
     width: 70%;
     margin: 0 auto;
-    @include flexbox_space-between;
+    display: flex;
+    justify-content: flex-start;
     flex-direction: row;
     flex-wrap: wrap;
+    padding-bottom: 50px;
     &__item{
       @include height_width(220px, 180px);
-      margin: 10px 10px;
+      margin: 10px;
       background-color: white;
       position: relative;
       &__image{
@@ -65,10 +66,10 @@
         text-decoration: none;
       }
     }
-    .item-empty {
-      @include height_width(220px, 180px);
-      margin: 10px 10px;
-      position: relative;
-    }
+  }
+  &__nothing{
+    @include string_set(40px, bold, #afaeae);
+    text-align: center;
+    padding: 100px 0 200px 0;
   }
 }

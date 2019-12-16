@@ -46,7 +46,7 @@
         }
         .upload1{
           width: calc(700px - 160px);
-          padding: 40px;
+          padding: 50px 40px;
           border: 1px dashed lightgray;
           background-color: $main_back_color;
           cursor: pointer;
@@ -55,7 +55,7 @@
             text-align: center;
             padding: 20px 0;
             i{
-              padding: 12px 0;
+              padding: 2px 0;
             }
           }
         }
@@ -110,12 +110,9 @@
           }
           &__pulldown{
             select{
-              display: block;
-              background: transparent;
-              appearance: none; 
-              width: 400px;
+              @include item_pulldown;
             }
-          }
+          } 
         }
         &__status{
           margin-top: 50px;
@@ -124,10 +121,7 @@
           }
           &__pulldown{
             select{
-              display: block;
-              background: transparent;
-              appearance: none; 
-              width: 400px;
+              @include item_pulldown;
             }
           }
         }
@@ -146,10 +140,7 @@
           }
           &__pulldown{
             select{
-              display: block;
-              background: transparent;
-              appearance: none; 
-              width: 400px;
+              @include item_pulldown;
             }
           } 
         }
@@ -160,10 +151,7 @@
           }
           &__pulldown{
             select{
-              display: block;
-              background: transparent;
-              appearance: none; 
-              width: 400px;
+              @include item_pulldown;
             }
           } 
         }
@@ -174,10 +162,7 @@
           }
           &__pulldown{
             select{
-              display: block;
-              background: transparent;
-              appearance: none; 
-              width: 400px;
+              @include item_pulldown;
             }
           } 
         }
@@ -188,10 +173,7 @@
           }
           &__pulldown{
             select{
-              display: block;
-              background: transparent;
-              appearance: none; 
-              width: 400px;
+              @include item_pulldown;
             }
           } 
         }
