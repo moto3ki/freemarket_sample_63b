@@ -14,4 +14,12 @@ module ItemDecorator
   def item_list_title
     prefecture.name + "の商品一覧"
   end
+
+  def name_cut
+    if name.length > 20
+      return name[0..20] + "..."
+    else
+      return name
+    end
+  end
 end
