@@ -1,7 +1,7 @@
 - if purchases.present?
   - purchases.each do |purchase|
     %li.mypage-buy-item-box
-      = link_to  "#", class: "news-link" do
+      = link_to  item_path(purchase.item_id), class: "news-link" do
         .item-photo
           = image_tag purchase.item.item_images[0].image.to_s
         .item-body
