@@ -57,9 +57,16 @@
             padding: 24px 30px 10px 30px;
             
             p {
-              @include string_set(16px, normal, $link-color);
+              @include string_set(16px, normal, #0099E8);
               margin-top: 8px;
               margin-bottom: 8px;
+              a {
+                color: #0099E8;
+                &:hover {
+                  text-decoration: underline;
+                  color: $link-color;
+                }
+              }
             }
             &__sub-title {
               padding-top: 15px;
