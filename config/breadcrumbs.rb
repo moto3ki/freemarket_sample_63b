@@ -60,8 +60,13 @@ crumb :bought_items do
 end
 
 crumb :sold_score do
-  link "売上・振込申請", sold_score_users_path
+  link "売上", sold_score_users_path
   parent :mypage
+end
+
+crumb :sales_histories do
+  link "売上履歴", sales_histories_users_path
+  parent :sold_score
 end
 
 crumb :profile do

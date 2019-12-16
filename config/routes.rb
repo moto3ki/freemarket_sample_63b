@@ -47,7 +47,7 @@ Rails.application.routes.draw do
       get 'buying_items'
       get 'bought_items'
       get 'sold_score'
-
+      get 'sales_histories'
     end
     
     resources :real_address, only: [:new, :create]
@@ -60,6 +60,7 @@ Rails.application.routes.draw do
       get 'search'
     end
   end
+  
   resources :todolists, only: [:show, :update]
   resources :notices, only: [:show, :update]
 end

@@ -11,7 +11,6 @@ class Notice < ApplicationRecord
     self.content = "「#{item.name}」を購入しました。発送までしばらくお待ちください。"
     self.date    = Date.today
     self.type_no = 1
-    self.save
   end
 
   def rated_and_paid_to_seller(user, item)

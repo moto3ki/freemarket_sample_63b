@@ -33,26 +33,26 @@ class UsersController < ApplicationController
   end
 
   def sell_items
-    @items = current_user.items.where(status: 0)
+    @items = current_user.items.where(status: 0).order("created_at DESC")
   end
 
   def selling_items
-    @items = current_user.items.where(status: 1)
+    @items = current_user.items.where(status: 1).order("created_at DESC")
     render template: 'users/sell_items'
   end
 
   def sold_items
-    @items = current_user.items.where(status: 2)
+    @items = current_user.items.where(status: 2).order("created_at DESC")
     render template: 'users/sell_items'
   end
   
   def buying_items
-    @purchases = current_user.purchases.where(pay_flg: 0)
+    @purchases = current_user.purchases.where(pay_flg: 0).order("created_at DESC")
     render template: 'users/buy_items'
   end
 
   def bought_items
-    @purchases = current_user.purchases.where(pay_flg: 1)
+    @purchases = current_user.purchases.where(pay_flg: 1).order("created_at DESC")
     render template: 'users/buy_items'
   end
 
@@ -62,6 +62,10 @@ class UsersController < ApplicationController
 
   def sold_score
     
+  end
+
+  def sales_histories
+    @sales_histories = current_user.sales_histories.order("created_at DESC")
   end
 
   private

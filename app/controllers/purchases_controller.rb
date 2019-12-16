@@ -8,6 +8,7 @@ class PurchasesController < ApplicationController
     balance    = 0
     use_credit = true
     use_sales  = false
+    use_sales_value = 0
 
     item = Item.find(params[:item_id])
     # 売上金を利用する場合
@@ -23,7 +24,7 @@ class PurchasesController < ApplicationController
     end
 
     if use_sales
-      current_user.sub_sales(item.price)
+      use_sales_value = current_user.sub_sales(item.price)
     end
 
     if use_credit
@@ -53,7 +54,6 @@ class PurchasesController < ApplicationController
     # 決済金額を売上に加算
     sales_management = SalesManagement.first
     sales_management.add_sales(item.price)
-    sales_management.save
 
     # 購入情報を作成
     purchase = Purchase.new(user_id: current_user.id,
@@ -65,7 +65,19 @@ class PurchasesController < ApplicationController
     # ステータスを1:取引中に更新
     item.status = 1
     
-    if item.save && purchase.save && current_user.save
+    if item.save             &&
+       purchase.save         &&
+       current_user.save     &&
+       sales_management.save &&
+       todolist.save         &&
+       notice.save
+      # 売上を使用した場合
+      if use_sales
+        SalesHistory.create(user_id: current_user.id, 
+                            notice_todolist_id: notice.id, 
+                            notice_todolist_status: 1, 
+                            price: -use_sales_value)
+      end
     else
       redirect_to new_item_purchase_path(item)
     end

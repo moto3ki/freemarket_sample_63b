@@ -19,7 +19,7 @@ class TodolistsController < ApplicationController
       @todolist.complete_todo
       # 商品の送信を送付済に更新
       item.send_complete
-      if @todolist.save && item.save
+      if @todolist.save && item.save && buyer_todo.save
         redirect_to action: "show"
       else
         render action: "show"
@@ -60,6 +60,11 @@ class TodolistsController < ApplicationController
          sales_management.save &&
          purchase.save         &&
          item.save
+         # 売上履歴を作成
+         SalesHistory.create(user_id: seller.id, 
+                             notice_todolist_id: @todolist.id, 
+                             notice_todolist_status: 2,
+                             price: purchase.profit)
          redirect_to action: "show"
       else
         render :show

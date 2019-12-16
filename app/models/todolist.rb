@@ -11,7 +11,6 @@ class Todolist < ApplicationRecord
     self.content = "#{item.user.nickname}さんが#{item.name}を購入しました。発送してください。"
     self.date    = Date.today
     self.item_id = item.id
-    self.save
   end
 
   def evaluate_todo(purchase)
@@ -22,7 +21,6 @@ class Todolist < ApplicationRecord
     self.content = "商品が発送されました。商品が到着したら、出品者の評価をしてください。"
     self.date    = Date.today
     self.item_id = purchase.item_id
-    self.save
   end
 
   def complete_todo

@@ -19,7 +19,7 @@ class User < ApplicationRecord
   has_many :todolists
   has_many :notices
   has_one :rate
-
+  has_many :sales_histories
 
   #メールアドレス用バリデーション
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i 
@@ -91,8 +91,11 @@ class User < ApplicationRecord
     
     if (self.sales - price) >= 0
       self.sales -= price
+      return price
     else
+      use_sales = self.sales
       self.sales = 0
+      return use_sales
     end
   end
 
