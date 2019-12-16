@@ -35,7 +35,6 @@ class ItemsController < ApplicationController
           @item_images = ItemImage.create(image: image, item_id: @item.id)
         end
       end
-      redirect_to root_path
     else
       render action: :new
     end

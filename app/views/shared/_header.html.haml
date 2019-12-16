@@ -20,7 +20,7 @@
       - if user_signed_in?
         %ul.header__inner__bottom__right
           %li.header__inner__bottom__right__contents
-            = link_to users_path, class: "signin-links" do
+            = link_to notices_users_path, class: "signin-links" do
               .cnt-base
                 = icon 'far', 'bell', class: "signin-icon"
                 - if @unread_notices_cnt > 0
@@ -29,7 +29,7 @@
               お知らせ
               = render partial: "shared/header/notice", locals: { notices: @notices }
           %li.header__inner__bottom__right__contents
-            = link_to users_path, class: "signin-links" do
+            = link_to todolists_users_path, class: "signin-links" do
               .cnt-base
                 = icon 'fas', 'check', class: "signin-icon"
                 - if @todolists.count > 0

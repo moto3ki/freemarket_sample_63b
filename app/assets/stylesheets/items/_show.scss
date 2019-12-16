@@ -50,13 +50,14 @@
     }
     &__items{
       margin: 0 auto;
-      @include flexbox_space-between;
+      display: flex;
+      justify-content: flex-start;
       flex-direction: row;
       flex-wrap: wrap;
       &__item{
         width: 220px;
         height: 330px;
-        margin: 10px 0;
+        margin: 10px 6px;
         position: relative;
         &__image{
           width: 100%;

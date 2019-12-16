@@ -1,7 +1,7 @@
 .user-buy-items-page{
   @include height_width(100%, 100%);
   background-color: $main_back_color;
-  padding-top: 40px;
+  padding: 40px 0;
   .inner-container{
     width: 1020px;
     margin: 0 auto;

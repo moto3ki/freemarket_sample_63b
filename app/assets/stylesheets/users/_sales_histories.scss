@@ -39,8 +39,8 @@
               display: flex;
               justify-content: center;
               align-items: center;
-              @include string-set(18px, normal, #333333);
               &__price{
+                @include string-set(14px, normal, #333333);
                 margin-right: 6px;
               }
               &__icon{
