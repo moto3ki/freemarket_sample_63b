@@ -44,7 +44,7 @@ ActiveRecord::Schema.define(version: 2019_12_15_164009) do
     t.integer "status", null: false
     t.integer "condition", null: false
     t.integer "delivery_charge", null: false
-    t.integer "delivery_method", null: false
+    t.integer "delivery_method", null: false, unsigned: true
     t.integer "delivery_period", null: false
     t.integer "price", null: false
     t.integer "like_cnt", null: false
@@ -52,7 +52,6 @@ ActiveRecord::Schema.define(version: 2019_12_15_164009) do
     t.datetime "updated_at", null: false
     t.integer "prefecture_id", null: false
     t.bigint "category_id"
-    t.bigint "categoy_id"
     t.integer "send_flg", default: 0
     t.index ["category_id"], name: "index_items_on_category_id"
     t.index ["condition"], name: "index_items_on_condition"
